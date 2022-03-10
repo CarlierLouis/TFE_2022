@@ -1,5 +1,5 @@
 # TFE_2022
-## Développement d'une application web et mobile avec MERN (MongoDB, Express, React.Js, Node.Js) pour 2 écoles communales 
+## Développement d'une application web responsive avec MERN (MongoDB, Express, React.Js, Node.Js) pour 2 écoles communales + application mobile
 
 ## Backlog
 
