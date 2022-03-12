@@ -20,8 +20,13 @@
   },
   "homepage": "https://github.com/CarlierLouis/TFE_2022#readme",
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.27",
+    "@react-google-maps/api": "^2.7.0",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "google-map-react": "^2.1.10",
+    "react-router-dom": "5.3.0",
+    "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
