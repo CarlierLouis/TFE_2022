@@ -1,5 +1,5 @@
 # TFE_2022
-## Développement d'une application web responsive avec MERN (MongoDB, Express, React.Js, Node.Js) pour 2 écoles communales + application mobile
+## Développement d'une application web responsive avec MERN (MongoDB, Express, React.Js, Node.Js) pour 2 écoles communales
 
 ## Backlog
 
@@ -40,5 +40,3 @@ _____________________
 * En tant qu'Eleve/Parent, j'ai la possibilité de visualiser mon horaire dans la section dédiée
 
 * En tant qu'Eleve/Parent, je suis notifié lorsqu'une annonce a été envoyée à mon intention
-
-* [Transposition vers une application mobile]
