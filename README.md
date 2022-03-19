@@ -22,14 +22,13 @@ _____________________
 
 * En tant qu'Eleve/Parent, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
 
-* En tant qu'Administrateur, j'ai la possibilité de modérer les différents comptes créés par les Elèves/Parent et Enseignants.
+* En tant qu'Administrateur, j'ai la possibilité de modérer les différents comptes créés par les Elèves/Parents et Enseignants.
 
 * En tant qu'Enseignant, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
 
 * En tant qu'Eleve/Parent, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
 
 * En tant qu'Enseignant, j'ai la possibilité de modifier certaines de mes informations personnelles dans la section dédiée
-
 
 * En tant qu'Eleve/Parent, j'ai la possibilité de modifier certaines de mes informations personnelles dans la section dédiée
 
