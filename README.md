@@ -20,24 +20,24 @@ _____________________
 
 * En tant qu'Enseignant, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
 
-* En tant qu'Eleve/Parent, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
+* En tant qu'Elève/Parent, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
 
 * En tant qu'Administrateur, j'ai la possibilité de modérer les différents comptes créés par les Elèves/Parents et Enseignants.
 
 * En tant qu'Enseignant, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
 
-* En tant qu'Eleve/Parent, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
+* En tant qu'Elève/Parent, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
 
 * En tant qu'Enseignant, j'ai la possibilité de modifier certaines de mes informations personnelles dans la section dédiée
 
-* En tant qu'Eleve/Parent, j'ai la possibilité de modifier certaines de mes informations personnelles dans la section dédiée
+* En tant qu'Elève/Parent, j'ai la possibilité de modifier certaines de mes informations personnelles dans la section dédiée
 
 * En tant qu'Enseignant, j'ai la possibilité d'envoyer des documents/informations à destinations d'élèves (partie annonces, documents, sortie scolaire et autres, ect.)
 
-* En tant qu'Eleve/Parent, j'ai la possibilité de visualiser/recevoir les données envoyées par un enseignant (partie annonces, documents, sortie scolaire et autres, ect.)
+* En tant qu'Elève/Parent, j'ai la possibilité de visualiser/recevoir les données envoyées par un enseignant (partie annonces, documents, sortie scolaire et autres, ect.)
 
 * En tant qu'Enseignant, j'ai la possibilité de partager un horaire dans la section dédiée
 
-* En tant qu'Eleve/Parent, j'ai la possibilité de visualiser mon horaire dans la section dédiée
+* En tant qu'Elève/Parent, j'ai la possibilité de visualiser mon horaire dans la section dédiée
 
-* En tant qu'Eleve/Parent, je suis notifié lorsqu'une annonce a été envoyée à mon intention
+* En tant qu'Elève/Parent, je suis notifié lorsqu'une annonce a été envoyée à mon intention
