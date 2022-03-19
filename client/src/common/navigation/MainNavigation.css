@@ -26,6 +26,12 @@
   color: white;
 }
 
+.main-navigation__title a:hover,
+.main-navigation__title a:active,
+.main-navigation__title a.hover {
+    color: #292929;
+}
+
 .main-navigation__header-nav {
   display: none;
 }
