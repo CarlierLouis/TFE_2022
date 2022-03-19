@@ -14,7 +14,7 @@ _____________________
 
 * En tant qu'Administrateur, j'ai la possibilité d'ajouter des éléments (événements, articles, actualités sur l'école, ect.) sur la partie visible par les visiteurs.
 
-* En tant qu'Administrateur, j'ai accès à une partie modération me permettant la gestion des différents Eleves/Enseignants (partie ajout/suppression/modification des comptes "de confiance")
+* En tant qu'Administrateur, j'ai accès à une partie modération me permettant la gestion des différents Elèves/Enseignants (partie ajout/suppression/modification des comptes "de confiance")
 
 * En tant qu'Administrateur, j'ai la possibilité d'ajouter des comptes et emails "de confiance" via des documents excels
 
