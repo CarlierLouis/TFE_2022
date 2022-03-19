@@ -14,13 +14,15 @@ _____________________
 
 * En tant qu'Administrateur, j'ai la possibilité d'ajouter des éléments (événements, articles, actualités sur l'école, ect.) sur la partie visible par les visiteurs.
 
-* En tant qu'Administrateur, j'ai accès à une partie modération me permettant la gestion des différents comptes Eleves/Enseignants (ajout/suppression/modification/ajout des emails "de confiance")
+* En tant qu'Administrateur, j'ai accès à une partie modération me permettant la gestion des différents Eleves/Enseignants (partie ajout/suppression/modification des comptes "de confiance")
 
 * En tant qu'Administrateur, j'ai la possibilité d'ajouter des comptes et emails "de confiance" via des documents excels
 
 * En tant qu'Enseignant, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
 
 * En tant qu'Eleve/Parent, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
+
+* En tant qu'Administrateur, j'ai la possibilité de modérer les différents comptes créés par les Elèves/Parent et Enseignants.
 
 * En tant qu'Enseignant, j'ai accès à mon interface dédiée avec les différentes sections auquelles j'ai accès
 
