@@ -16,7 +16,7 @@ _____________________
 
 * En tant qu'Administrateur, j'ai accès à une partie modération me permettant la gestion des différents comptes Eleves/Enseignants (ajout/suppression/modification/ajout des emails "de confiance")
 
-* En tant qu'Administrateur, j'ai la possibilité d'ajouter des comptes et des emails "de confiance" via des documents excels
+* En tant qu'Administrateur, j'ai la possibilité d'ajouter des comptes et emails "de confiance" via des documents excels
 
 * En tant qu'Enseignant, j'ai la possibilité de me créer un compte (ne peu créer un compte que ceux dont les emails sont connus par la db + validation par email)
 
