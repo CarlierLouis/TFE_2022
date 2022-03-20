@@ -3,6 +3,7 @@ const { validationResult } = require('express-validator');
 const { restart } = require('nodemon');
 
 const HttpError = require('../models/http-error');
+const News = require('../models/news');
 
 let DUMMY_DATA = [
     {
@@ -37,7 +38,7 @@ const getNews = (req, res, next) => {
     res.json({ news });
 };
 
-const createNews = (req, res, next) => {
+const createNews = async(req, res, next) => {
     // express-validator
     const errors =  validationResult(req);
     if (!errors.isEmpty()) {
@@ -45,14 +46,19 @@ const createNews = (req, res, next) => {
     }
 
     const { exemple1, exemple2 }  = req.body;
-    const createdNews = {
-        id: uuid(),
-        exemple1,
+
+    const createdNews = new News ({
+        exemple1,   
         exemple2
-    };
+    });
 
-    DUMMY_DATA.push(createdNews);
-
+    try {
+        await createdNews.save();
+    } 
+    catch (err) {
+        const error = HttpError('Création de la nouvelle actualité raté, veillez réessayer', 500);
+        return next(error);
+    }
     res.status(201).json({news: createdNews});
 };
 

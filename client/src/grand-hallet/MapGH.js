@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
+
 const containerStyle = {
-  width: '400px',
-  height: '400px',
+  width: '100%',
+  height: '300px',
 };
 
 const center = {
@@ -11,7 +12,7 @@ const center = {
   lng: 5.038149998040227  
 };
 
-class Map extends Component {
+class MapGH extends Component {
   render() {
     return (
       <LoadScript
@@ -30,4 +31,4 @@ class Map extends Component {
   }
 }
 
-export default Map;
+export default MapGH;
