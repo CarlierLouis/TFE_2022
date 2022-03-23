@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import MainHeader from '../common/navigation/MainHeader';
-import NavLinksMoxhe from './NavLinksMoxhe';
-import SideDrawer from '../common/navigation/SideDrawer';
-import Backdrop from '../common/UIElements/Backdrop';
-import '../common/navigation/MainNavigation.css';
+import MainHeader from './MainHeader';
+import NavLinks from './NavLinks';
+import SideDrawer from './SideDrawer';
+import Backdrop from '../UIElements/Backdrop';
+import './MainNavigation.css'
+import { propTypes } from 'google-map-react';
 
 
-const MainNavigationMoxhe = props => {
+const MainNavigation = props => {
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
     
     const openDrawerHandler = () => {
@@ -23,7 +24,7 @@ const MainNavigationMoxhe = props => {
             {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
             <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
                 <nav className='main-navigation__drawer-nav'>
-                    <NavLinksMoxhe />
+                    <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink} />
                 </nav>
             </SideDrawer>
             
@@ -38,11 +39,11 @@ const MainNavigationMoxhe = props => {
                      width={150} height={42} /></Link>
                 </h1>
                 <nav className='main-navigation__header-nav'>
-                    <NavLinksMoxhe />
+                    <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink}  />
                 </nav>
             </MainHeader>
     </React.Fragment>
     );
 };
 
-export default MainNavigationMoxhe;
+export default MainNavigation;

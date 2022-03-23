@@ -1,16 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../common/navigation/NavLinks.css';
+import './NavLinks.css';
 
 
-const NavLinksMoxhe = props => {
+const NavLinks = props => {
     return <ul className='nav-links'>
         <li>
-            <NavLink to="/moxhe" exact>Acceuil</NavLink>
+            <NavLink to={"/" + props.schoolLink} exact>Acceuil</NavLink>
         </li>
         <li>
-            <NavLink to="/moxhe/actu" >Actualités</NavLink>
+            <NavLink to={"/"+ props.actuLink +"/actu"} >Actualités</NavLink>
         </li>
         <li>
             <NavLink to="/inscription">Inscription</NavLink>
@@ -21,4 +21,4 @@ const NavLinksMoxhe = props => {
     </ul>
 };
 
-export default NavLinksMoxhe;
+export default NavLinks;

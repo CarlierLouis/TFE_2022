@@ -7,24 +7,24 @@ const containerStyle = {
   height: '300px',
 };
 
-const center = {
-  lat: 50.694356732800614,
-  lng: 5.038149998040227  
-};
 
 class MapGH extends Component {
-  render() {
+  render(props) {
+    const center =  {
+      lat: 50.694356732800614,
+      lng: 5.038149998040227  
+    };
     return (
       <LoadScript
         googleMapsApiKey="AIzaSyCcvgi-SicUc3IGhIpqj_kr7Aw_r-6pDR4"
       >
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={center}
+          center={{lat: this.props.lat, lng: this.props.lng}}
           zoom={15}
         >
         
-        <Marker position={center} />
+        <Marker position={{lat: this.props.lat, lng: this.props.lng}} />
         </GoogleMap>
       </LoadScript>
     )

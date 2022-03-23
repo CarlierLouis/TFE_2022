@@ -2,20 +2,12 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom';
 
-// Navbars
-import MainNavigationGH from './grand-hallet/MainNavigationGH';
-import MainNavigationMoxhe from './moxhe/MainNavigationMoxhe';
 
-// Maps
-import MapGH from './grand-hallet/MapGH';
-import MapMoxhe from './moxhe/MapMoxhe';
-
-//Home Pages
-import HomeGH from './grand-hallet/HomeGH';
-import HomeMoxhe from './moxhe/HomeMoxhe';
-
-// Portail de redirection
+import MainNavigation from './common/navigation/MainNavigation';
+import Map from './common/showcase/Map'
+import Home from './common/showcase/Home'
 import Portal from './common/portal/Portal';
+import NavLinks from './common/navigation/NavLinks';
 
 
 const App = () => {
@@ -25,34 +17,37 @@ const App = () => {
       <main>
         <Switch>
           
+            {/* Porail de redirection */}
             <Route path="/" exact>
               <Portal></Portal>
             </Route>
 
             {/* Partie de l'école de Grand-Hallet */}
-            <Route  path="/grand-hallet" exact>
-            <MainNavigationGH />
-              <HomeGH></HomeGH>
-              <MapGH></MapGH>
+            <Route path="/grand-hallet" exact>
+            <MainNavigation schoolLink="grand-hallet" actuLink="grand-hallet" />
+              <Home schoolName="Grand-Hallet"></Home>
+              <Map lat={50.694356732800614} lng={5.038149998040227}></Map>
             </Route>
 
-            <Route  path="/grand-hallet/actu" exact>
-            <MainNavigationGH />
+            <Route path="/grand-hallet/actu" exact>
+            <MainNavigation schoolLink="grand-hallet" actuLink="grand-hallet" />
             </Route>
 
 
           {/* Partie de l'école de Moxhe*/}
           <Route path="/moxhe" exact>
             
-          <MainNavigationMoxhe />
-            <HomeMoxhe></HomeMoxhe>
-            <MapMoxhe></MapMoxhe>
+          <MainNavigation schoolLink="moxhe" actuLink="moxhe" />
+            <Home schoolName="Moxhe"></Home>
+            <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
           </Route>
 
           <Route  path="/moxhe/actu" exact>
-            <MainNavigationMoxhe />
+            <MainNavigation schoolLink="moxhe" actuLink="moxhe" />
             </Route>
 
+
+          {/* Footer */}
 
         </Switch>
       
