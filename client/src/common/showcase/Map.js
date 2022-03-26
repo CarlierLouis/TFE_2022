@@ -9,11 +9,7 @@ const containerStyle = {
 
 
 class MapGH extends Component {
-  render(props) {
-    const center =  {
-      lat: 50.694356732800614,
-      lng: 5.038149998040227  
-    };
+  render() {
     return (
       <LoadScript
         googleMapsApiKey="AIzaSyCcvgi-SicUc3IGhIpqj_kr7Aw_r-6pDR4"

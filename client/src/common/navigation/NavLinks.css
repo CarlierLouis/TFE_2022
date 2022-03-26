@@ -8,6 +8,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  margin-right: 100px;
 }
 
 .nav-links li {

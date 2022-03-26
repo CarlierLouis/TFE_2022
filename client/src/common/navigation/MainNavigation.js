@@ -35,8 +35,8 @@ const MainNavigation = props => {
                     <span />
                 </button>
                 <h1>
-                    <Link to="/"><img className='main-navigation__logo' src="Hannut_logo_blanc.png"
-                     width={150} height={42} /></Link>
+                    <Link to={"/" + props.schoolLink}><img className='main-navigation__logo' src={props.schoolLogo}
+                      /></Link>
                 </h1>
                 <nav className='main-navigation__header-nav'>
                     <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink}  />

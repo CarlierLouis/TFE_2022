@@ -40,6 +40,10 @@
   height: 100%;
 }
 
+.main-navigation__logo {
+  width: 100%;
+}
+
 
 @media (min-width: 768px) {
   .main-navigation__menu-btn {
