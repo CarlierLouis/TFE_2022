@@ -2,12 +2,13 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom';
 
-
 import MainNavigation from './common/navigation/MainNavigation';
 import Map from './common/showcase/Map'
 import Home from './common/showcase/Home'
 import Portal from './common/portal/Portal';
 import Footer from './common/showcase/Footer';
+
+import  'bootstrap/dist/css/bootstrap.min.css' ;
 
 
 const App = () => {
@@ -27,7 +28,6 @@ const App = () => {
             <MainNavigation schoolLink="grand-hallet"
              actuLink="grand-hallet"
             schoolLogo="img/Grand-Hallet_blanc.png" />
-            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
             <Home></Home>
             <Map lat={50.694356732800614} lng={5.038149998040227}></Map>
             <Footer></Footer>
