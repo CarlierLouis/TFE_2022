@@ -20,29 +20,31 @@ const MainNavigation = props => {
     };
 
     return (
-        <React.Fragment>
-            {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
-            <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
-                <nav className='main-navigation__drawer-nav'>
-                    <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink} />
-                </nav>
-            </SideDrawer>
-            
-            <MainHeader>
-                <button className='main-navigation__menu-btn' onClick={openDrawerHandler}>
-                    <span />
-                    <span />
-                    <span />
-                </button>
-                <h1>
-                    <Link to={"/" + props.schoolLink}><img className='main-navigation__logo' src={props.schoolLogo}
-                      /></Link>
-                </h1>
-                <nav className='main-navigation__header-nav'>
-                    <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink}  />
-                </nav>
-            </MainHeader>
-    </React.Fragment>
+
+<React.Fragment>
+    {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
+    <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
+        <nav className='main-navigation__drawer-nav'>
+            <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink} />
+        </nav>
+    </SideDrawer>
+    
+    <MainHeader>
+        <button className='main-navigation__menu-btn' onClick={openDrawerHandler}>
+            <span />
+            <span />
+            <span />
+        </button>
+        <h1>
+            <Link to={"/" + props.schoolLink}><img className='main-navigation__logo' src={props.schoolLogo}
+                /></Link>
+        </h1>
+        <nav className='main-navigation__header-nav'>
+            <NavLinks schoolLink={props.schoolLink} actuLink={props.actuLink}  />
+        </nav>
+    </MainHeader>
+</React.Fragment>
+
     );
 };
 
