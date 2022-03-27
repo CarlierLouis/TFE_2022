@@ -9,10 +9,14 @@ const Footer = props => {
                      width={150} height={42} />
         </div>
         <div className="info-center">
-        <a>Ecole Fondamentale de Grand-Hallet</a>
+        <a>{props.title}<br></br>
+        {props.addresse},<br></br>
+         4280 Hannut<br></br>
+         </a>
         </div>
         <div className="rs-right">
-            <a>Info RS,ect.</a>
+            <a>0495/77.71.45<br></br>
+         jacqueline.delathuy@hannut.be.</a>
         </div>
     </footer>
 }

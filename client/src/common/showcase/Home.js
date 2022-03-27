@@ -1,7 +1,12 @@
 import React from 'react';
+import './Home.css';
 
 const Home  = props => {
-    return <h1>Accueil<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br></h1>
+    return(
+    <div>
+        
+    </div>
+    )
 }
 
 export default Home;

@@ -1,6 +1,5 @@
 .showcase_footer {
     background-color: #ECF0F7;
-    height: 200px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -8,15 +7,19 @@
 }
 
 .footer-Hannut__logo {
-    margin: 4%;
+    margin: 2%;
 }
 
 .info-center {
-    margin: 5%;
+    margin: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
 }
 
 .rs-right {
-    margin: 5%;
+    margin: 2%;
+    text-align: center;
 }
 
 @media (max-width: 768px) {

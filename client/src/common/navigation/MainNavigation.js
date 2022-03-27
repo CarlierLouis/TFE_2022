@@ -6,7 +6,6 @@ import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css'
-import { propTypes } from 'google-map-react';
 
 
 const MainNavigation = props => {
