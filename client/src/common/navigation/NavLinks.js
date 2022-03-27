@@ -13,9 +13,6 @@ const NavLinks = props => {
             <NavLink to={"/"+ props.actuLink +"/actu"} >Actualités</NavLink>
         </li>
         <li>
-            <NavLink to="/inscription">Inscription</NavLink>
-        </li>
-        <li>
             <NavLink to="/connexion">Connexion</NavLink>
         </li>
         <li>

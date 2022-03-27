@@ -1,8 +1,26 @@
 .showcase_footer {
     background-color: #ECF0F7;
     height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-Hannut__logo {
     margin: 4%;
+}
+
+.info-center {
+    margin: 5%;
+}
+
+.rs-right {
+    margin: 5%;
+}
+
+@media (max-width: 768px) {
+.showcase_footer {
+    flex-direction: column;
+}
 }

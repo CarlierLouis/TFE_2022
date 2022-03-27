@@ -1,35 +1,21 @@
-html {
-    background-image: url('../../../public/./img/background-portal.jpg');
-    background-size: 100%;
+.portal {
+    text-align: center;
+}
+
+.portal-GH {
+    margin: 5%;
+}
+
+.portal-Moxhe {
+    margin: 5%;
 }
 
 .txt-GH {
-    width: 500px;
     max-width: 100%;
 }
 
 .txt-Moxhe {
-    width: 270px; 
     max-width: 54%;
-}
-
-.portal-photo__GH {
-    width: 700px;
-    float: left;
-    margin-top: 5%;
-    margin-left: 8%;
-    max-width: 50%;
-    text-align: center;
-}
-
-.portal-photo__Moxhe {
-    width: 700px;
-    float: right;
-    margin-top: 5%;
-    margin-right: 8%;
-    max-width: 50%;
-    margin-bottom: 100px;
-    text-align: center;
 }
 
 .txt-GH:hover {
@@ -39,6 +25,3 @@ html {
 .txt-Moxhe:hover {
     opacity: 0.8;
 }
-
-
-
