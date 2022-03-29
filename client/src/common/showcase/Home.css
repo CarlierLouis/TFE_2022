@@ -1,0 +1,18 @@
+.home-div {
+    text-align: center;
+}
+
+.home-div img {
+    margin: 2%;
+    width: 45%
+}
+
+@media (max-width: 768px) {
+.home-div {
+    flex-direction: column
+}
+
+.home-div img {
+    width: 80%
+}
+}

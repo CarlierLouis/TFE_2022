@@ -16,7 +16,7 @@ const Footer = props => {
         </div>
         <div className="rs-right">
             <a>0495/77.71.45<br></br>
-         jacqueline.delathuy@hannut.be.</a>
+         jacqueline.delathuy@hannut.be</a>
         </div>
     </footer>
 }
