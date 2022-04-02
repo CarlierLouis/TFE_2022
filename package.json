@@ -10,7 +10,7 @@
     "client": "cd client && npm start"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/CarlierLouis/TFE_2022.git"
   },
   "author": "CarlierLouis",

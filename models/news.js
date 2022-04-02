@@ -4,8 +4,10 @@ const Schema = mongoose.Schema;
 
 const newsSchema =  new Schema ({
     
-    exemple1: {type: String, required: true},
-    exemple2: {type: String, required: true}
+    title: {type: String, required: true},
+    description: {type: String, required: true},
+    image: {type: String, required: true},
+    school: {type: String, required: true}
 })
 
 module.exports = mongoose.model('News', newsSchema);

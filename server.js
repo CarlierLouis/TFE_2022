@@ -11,7 +11,8 @@ const app = express();
 
 app.use(bodyParser.json()); 
 
-app.use('/api/news', newsRoutes);
+app.use(`/api/news`, newsRoutes);
+
 
 app.use((req , res, next ) => {
     const error = new HttpError('Route introuvable', 404);
@@ -35,4 +36,3 @@ mongoose
 .catch(err => {
     console.log(err);
 });
-

@@ -5,51 +5,43 @@ const { restart } = require('nodemon');
 const HttpError = require('../models/http-error');
 const News = require('../models/news');
 
-let DUMMY_DATA = [
-    {
-        id: 'uniqueID1',
-        exemple1: 'dummy1',
-        exemple2: 'dummy2'
-    } 
-];
+// Get all News
+const getNews = async (req, res, next) => {
+    const school = req.params.school;
 
-const getNews = (req, res, next) => {
-    const news = DUMMY_DATA;
-
-    // Exemple de "GetNewsById"
-    /* 
-    const newsId = req.params.id;
-
-    =====> Ici l'id est unique et ne retourne que une news 
-    mais si on veut retourner de multiples éléments, on utilisera "filter" au lieu de "find"
-
-    const news = DUMMY_DATA.find(p => {
-        return p.id === newsId;
-    })
-    =====> alors la route est router.get('/:id', newsControllers.GetNewsById);
-    
-    if (!news || news.length === 0) {
-        throw new HttpError('Aucune actualié trouvée', 404);
+    let news;
+    try {
+        news = await News.find({school: school});
+    }
+    catch(err) {
+        const error = new HttpError('Echec de la récupération des actualités, veillez réessayer', 500);
+        return next(error);
     }
 
-    res.json({ news });
-    */
+    if(!news) {
+        const error = new HttpError('Impossible de trouver des actualités pour l\'école spécifiée', 404);
+        return next(error);
+    }
 
     res.json({ news });
 };
 
+// Post News
 const createNews = async(req, res, next) => {
     // express-validator
     const errors =  validationResult(req);
     if (!errors.isEmpty()) {
-        throw new HttpError('Entrées non valides, vérifiez vos données', 422)
+        const error = new HttpError('Entrées non valides, vérifiez vos données', 422);
+        return next(error);
     }
 
-    const { exemple1, exemple2 }  = req.body;
+    const { title, description, image, school }  = req.body;
 
     const createdNews = new News ({
-        exemple1,   
-        exemple2
+        title,   
+        description,
+        image,
+        school
     });
 
     try {
@@ -62,5 +54,73 @@ const createNews = async(req, res, next) => {
     res.status(201).json({news: createdNews});
 };
 
+
+// Update News
+const updateNews = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        const error = new HttpError('Entrées non valides, vérifiez vos données', 422);
+        return next(error);
+    }
+    
+    const {title, description, image} = req.body;
+    const newsId = req.params.nid;
+
+    let news;
+    try {
+        news = await News.findById(newsId);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
+             500);
+        return next(error);
+    }
+
+    news.title = title;
+    news.description = description;
+    news.image = image;
+
+    try {
+        await news.save();  
+    }
+    catch(err){
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
+            500);
+        return next(error);
+    }
+
+    res.json({news: news.toObject({getters: true})});
+};
+
+// Delete News
+const deleteNews =  async (req, res, next) => {
+    const newsId = req.params.nid;
+
+    let news;
+    try {
+        news = await News.findById(newsId);
+    } catch (err) {
+        const error = new HttpError(
+        'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
+        500);
+        return next(error);
+    }
+
+    try {
+        await news.remove();
+    } catch (err) {
+        const error = new HttpError(
+        'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
+        500);
+        return next(error);
+    }
+
+  res.status(200).json({ message: 'Actualité supprimée' })
+}
+
 exports.getNews = getNews;
 exports.createNews = createNews;
+exports.updateNews = updateNews;
+exports.deleteNews = deleteNews;
