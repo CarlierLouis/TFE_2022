@@ -57,7 +57,7 @@ const createTrustedStudent = async(req, res, next) => {
 };
 
 // Update Trusted Student
-const updateTrustedStudents = async (req, res, next) => {
+const updateTrustedStudent = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const error = new HttpError(
@@ -66,11 +66,11 @@ const updateTrustedStudents = async (req, res, next) => {
     }
 
     const { email, classyear } =  req.body;
-    const trustedStudentID = req.params.tsid;
+    const trustedStudentId = req.params.tsid;
 
     let trustedstudent;
     try {
-        trustedstudent= await TrustedStudent.findById(trustedStudentID);
+        trustedstudent= await TrustedStudent.findById(trustedStudentId);
     }
     catch(err) {
         const error = new HttpError(
@@ -95,11 +95,11 @@ const updateTrustedStudents = async (req, res, next) => {
 
 // Delete Trusted Student
 const deleteTrustedStudent = async (req, res, next) => {
-    const trustedStudentID = req.params.tsid;
+    const trustedStudentId = req.params.tsid;
 
     let trustedstudent;
     try {
-        trustedstudent= await TrustedStudent.findById(trustedStudentID);
+        trustedstudent= await TrustedStudent.findById(trustedStudentId);
     }
     catch(err) {
         const error = new HttpError(
@@ -121,5 +121,5 @@ const deleteTrustedStudent = async (req, res, next) => {
 
 exports.getTrustedStudents = getTrustedStudents;
 exports.createTrustedStudent = createTrustedStudent;
-exports.updateTrustedStudents = updateTrustedStudents;
+exports.updateTrustedStudent = updateTrustedStudent;
 exports.deleteTrustedStudent = deleteTrustedStudent;

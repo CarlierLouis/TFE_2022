@@ -22,7 +22,7 @@ router.patch('/:tsid',
     check('email').isEmail(),
     check('email').not().isEmpty(),
     check('classyear').not().isEmpty(),
-], trustedStudentsControllers.updateTrustedStudents);
+], trustedStudentsControllers.updateTrustedStudent);
 
 
 router.delete('/:tsid', trustedStudentsControllers.deleteTrustedStudent);
