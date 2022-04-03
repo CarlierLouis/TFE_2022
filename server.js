@@ -4,14 +4,22 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Routes
 const newsRoutes = require('./routes/news-routes');
+const trustedStudentsRoutes = require('./routes/trusted_students-routes');
+const trustedTeachersRoutes = require('./routes/trusted_teachers-routes');
+const studentsRoutes = require('./routes/students-routes');
+const teachersRoutes = require('./routes/teachers-routes');
+
 const HttpError = require('./models/http-error');
 
 const app = express();
 
 app.use(bodyParser.json()); 
 
-app.use(`/api/news`, newsRoutes);
+app.use('/api/news', newsRoutes);
+
+app.use('/api/trusted/students', trustedStudentsRoutes);
 
 
 app.use((req , res, next ) => {

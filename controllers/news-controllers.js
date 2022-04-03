@@ -1,11 +1,9 @@
-const uuid = require('uuid').v4;
 const { validationResult } = require('express-validator');
-const { restart } = require('nodemon');
 
 const HttpError = require('../models/http-error');
 const News = require('../models/news');
 
-// Get all News
+// Get all News by school
 const getNews = async (req, res, next) => {
     const school = req.params.school;
 
@@ -14,12 +12,14 @@ const getNews = async (req, res, next) => {
         news = await News.find({school: school});
     }
     catch(err) {
-        const error = new HttpError('Echec de la récupération des actualités, veillez réessayer', 500);
+        const error = new HttpError(
+            'Echec de la récupération des actualités, veillez réessayer', 500);
         return next(error);
     }
 
     if(!news) {
-        const error = new HttpError('Impossible de trouver des actualités pour l\'école spécifiée', 404);
+        const error = new HttpError(
+            'Impossible de trouver des actualités pour l\'école spécifiée', 404);
         return next(error);
     }
 
@@ -31,7 +31,8 @@ const createNews = async(req, res, next) => {
     // express-validator
     const errors =  validationResult(req);
     if (!errors.isEmpty()) {
-        const error = new HttpError('Entrées non valides, vérifiez vos données', 422);
+        const error = new HttpError(
+            'Entrées non valides, vérifiez vos données', 422);
         return next(error);
     }
 
@@ -47,19 +48,21 @@ const createNews = async(req, res, next) => {
     try {
         await createdNews.save();
     } 
-    catch (err) {
-        const error = HttpError('Création de la nouvelle actualité raté, veillez réessayer', 500);
+    catch(err) {
+        const error = HttpError(
+            'Création de la nouvelle actualité raté, veillez réessayer', 500);
         return next(error);
     }
+
     res.status(201).json({news: createdNews});
 };
-
 
 // Update News
 const updateNews = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        const error = new HttpError('Entrées non valides, vérifiez vos données', 422);
+        const error = new HttpError(
+            'Entrées non valides, vérifiez vos données', 422);
         return next(error);
     }
     
@@ -72,8 +75,7 @@ const updateNews = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
-             500);
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible', 500);
         return next(error);
     }
 
@@ -86,8 +88,7 @@ const updateNews = async (req, res, next) => {
     }
     catch(err){
         const error = new HttpError(
-            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
-            500);
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible', 500);
         return next(error);
     }
 
@@ -101,23 +102,23 @@ const deleteNews =  async (req, res, next) => {
     let news;
     try {
         news = await News.findById(newsId);
-    } catch (err) {
+    }
+    catch (err) {
         const error = new HttpError(
-        'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
-        500);
+        'Quelque chose ne s\'est pas passé comme prévu, suppression de l\'actualité impossible', 500);
         return next(error);
     }
 
     try {
         await news.remove();
-    } catch (err) {
+    } 
+    catch (err) {
         const error = new HttpError(
-        'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible',
-        500);
+        'Quelque chose ne s\'est pas passé comme prévu, suppression de l\'actualité impossible', 500);
         return next(error);
     }
 
-  res.status(200).json({ message: 'Actualité supprimée' })
+  res.status(200).json({ message: 'Actualité supprimée' });
 }
 
 exports.getNews = getNews;
