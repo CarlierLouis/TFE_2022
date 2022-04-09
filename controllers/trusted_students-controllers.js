@@ -13,16 +13,16 @@ const getTrustedStudents = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Echec de la récupération des contact "élèves de confiance", veillez réessayer', 500);
+            'Echec de la récupération des contacts "élèves de confiance", veillez réessayer', 500);
         return next(error);
     }
     if (!trustedstudents) {
         const error = new HttpError(
-            'Impossible de trouver des contact "élèves de confiance" pour l\'école spécifiée', 404);
+            'Impossible de trouver des contacts "élèves de confiance" pour l\'école spécifiée', 404);
         return next(error);
     }
 
-    res.json({ trustedstudents });
+    res.json({ trustedstudents: trustedstudents.map(trustedstudent => trustedstudent.toObject({ getters: true })) });
 };
 
 // Post Trusted Student
@@ -53,7 +53,7 @@ const createTrustedStudent = async(req, res, next) => {
         return next(error);
     }
     
-    res.status(201).json({trustedstudents: createdTrustedStudent});
+    res.status(201).json({ trustedstudent: createdTrustedStudent });
 };
 
 // Update Trusted Student
@@ -77,7 +77,7 @@ const updateTrustedStudent = async (req, res, next) => {
             'Quelque chose ne s\'est pas passé comme prévu, mise à jour du contact "élève de confiance" impossible', 500);
         return next(error);
     }
-
+    
     trustedstudent.email = email;
     trustedstudent.classyear = classyear;
 

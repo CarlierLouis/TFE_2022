@@ -13,6 +13,7 @@ router.post('/',
     check('description').not().isEmpty(),
     check('image').not().isEmpty(),
     check('school').not().isEmpty(),
+    check('school').isIn(['Grand-Hallet', 'Moxhe']),
 ], newsControllers.createNews);
 
 router.patch('/:nid', 

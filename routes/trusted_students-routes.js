@@ -15,6 +15,7 @@ router.post('/',
     check('firstname').not().isEmpty(),
     check('classyear').not().isEmpty(),
     check('school').not().isEmpty(),
+    check('school').isIn(['Grand-Hallet', 'Moxhe']),
 ], trustedStudentsControllers.createTrustedStudent);
 
 router.patch('/:tsid',

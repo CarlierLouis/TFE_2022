@@ -23,6 +23,10 @@ app.use('/api/trusted/students', trustedStudentsRoutes);
 
 app.use('/api/trusted/teachers', trustedTeachersRoutes);
 
+app.use('/api/students', studentsRoutes);
+
+app.use('/api/teachers', teachersRoutes);
+
 
 app.use((req , res, next ) => {
     const error = new HttpError('Route introuvable', 404);

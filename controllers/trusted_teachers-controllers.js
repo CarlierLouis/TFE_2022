@@ -22,7 +22,7 @@ const getTrustedTeachers = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ trustedteachers });
+    res.json({ trustedteachers: trustedteachers.map(trustedeacher => trustedeacher.toObject({ getters: true })) });
 };
 
 // Post Trusted Teacher

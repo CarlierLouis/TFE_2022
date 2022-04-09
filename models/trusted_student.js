@@ -8,7 +8,7 @@ const trustedStudentSchema =  new Schema ({
     name: {type: String, required: true},
     firstname: {type: String, required: true},
     classyear: {type: String, required: true},
-    school: {type: String, required: true}
+    school: {type: String,enum: ['Grand-Hallet', 'Moxhe'] , required: true},
 })
 
 module.exports = mongoose.model('TrustedStudent', trustedStudentSchema);

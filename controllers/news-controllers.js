@@ -23,7 +23,7 @@ const getNews = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ news });
+    res.json({ news: news.map(news => news.toObject({ getters: true })) });
 };
 
 // Post News
