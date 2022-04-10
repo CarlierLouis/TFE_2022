@@ -7,7 +7,9 @@ import './Portal.css';
 
 const Portal  = () => {
     return (
+
 <CardGroup className="portal">
+<div className='portal-img-div'><img className='portal-img' src="img/portail-title.png"></img></div>
   <Card className="portal-GH border-0" style={{ backgroundColor: 'rgb(31, 30, 30)'}}>
     <Link to="/grand-hallet">
   <div className="animated-portal-div">
@@ -35,7 +37,6 @@ const Portal  = () => {
   </Link>
 
   </Card>
-  
 </CardGroup>
 
 

@@ -2,10 +2,32 @@ html {
     background-color: rgb(31, 30, 30);
 }
 
+
+.portal-img-div {
+    align-items: center;
+    width: 100%;
+}
+
+.portal-img {
+    width: 100%;
+    top: 0;
+    margin-right: 3%;
+}
+
+@media (min-width: 768px) {
+    .portal-img {
+        width: 40%;
+    }
+}
+
 .portal {
     text-align: center;
     background-color: rgb(31, 30, 30);
+    margin-bottom: 5%;
+    position:absolute;
+    top: 0;
 }
+
 
 .portal-GH {
     margin: 5%;
@@ -28,13 +50,23 @@ html {
 
 .txt-GH {
     background-color: rgb(31, 30, 30);
-    max-width: 100%;
+    width:50%;
 }
-
 
 .txt-Moxhe {
-    max-width: 54%;
+    background-color: rgb(31, 30, 30);
+    width: 29%;
 }
+
+@media (max-width: 768px) {
+    .txt-GH {
+        width: 100%;
+    }  
+    .txt-Moxhe {
+        width: 55%;
+    } 
+}
+
 
 
 
