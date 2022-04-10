@@ -4,11 +4,12 @@ html {
 
 .portal {
     text-align: center;
-    background-color: rgb(31, 30, 30) ;
+    background-color: rgb(31, 30, 30);
 }
 
 .portal-GH {
     margin: 5%;
+    border: none;
 }
 
 
@@ -30,14 +31,48 @@ html {
     max-width: 100%;
 }
 
+
 .txt-Moxhe {
     max-width: 54%;
 }
 
-.txt-GH:hover {
-    opacity: 0.8;
+
+
+.animated-portal-div {
+  background-color: rgb(31, 30, 30);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 95%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 }
 
-.txt-Moxhe:hover {
-    opacity: 0.8;
+.animated-portal-div span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.animated-portal-div span:after {
+  content: '▀▀';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.animated-portal-div:hover span {
+  padding-right: 25px;
+  display: flex;
+}
+
+.animated-portal-div:hover span:after {
+  opacity: 1;   
+  right: 0;
 }
