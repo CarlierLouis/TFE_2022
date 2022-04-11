@@ -26,7 +26,12 @@ const App = () => {
             <MainNavigation schoolLink="grand-hallet"
              actuLink="grand-hallet"
             schoolLogo="img/Grand-Hallet_blanc.png" />
-            <Home schoolPhoto1="img/Grand-Hallet-photo_1.jpg" schoolPhoto2="img/Grand-Hallet-photo_1.jpg"></Home>
+
+            <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
+            caroussel2="img/Grand-Hallet-photo_1.jpg" 
+            caroussel3="img/Grand-Hallet-photo_1.jpg">
+            </Home>
+
             <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
             <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
           </Route>
@@ -44,7 +49,12 @@ const App = () => {
           <MainNavigation schoolLink="moxhe" 
           actuLink="moxhe" 
           schoolLogo="img/Moxhe_blanc.png" />
-          <Home schoolPhoto1="img/Moxhe-photo_1.jpg" schoolPhoto2="img/Moxhe-photo_1.jpg"></Home>
+
+          <Home caroussel1="img/Moxhe-photo_1.jpg" 
+            caroussel2="img/Moxhe-photo_1.jpg" 
+            caroussel3="img/Moxhe-photo_1.jpg">
+          </Home>
+
           <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
         </Route>
