@@ -7,6 +7,8 @@ import Map from './common/showcase/Map'
 import Home from './common/showcase/Home'
 import Portal from './common/portal/Portal';
 import Footer from './common/showcase/Footer';
+import Auth_Student from './student/pages/Auth_Student';
+import Auth_Teacher from './teacher/pages/Auth_Teacher';
 
 
 const App = () => {
@@ -24,7 +26,6 @@ const App = () => {
           {/* Partie de l'école de Grand-Hallet */}
           <Route path="/grand-hallet" exact>
             <MainNavigation schoolLink="grand-hallet"
-             actuLink="grand-hallet"
             schoolLogo="img/Grand-Hallet_blanc.png" />
 
             <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
@@ -38,10 +39,22 @@ const App = () => {
 
           <Route path="/grand-hallet/actu" exact>
             <MainNavigation schoolLink="grand-hallet"
-             actuLink="grand-hallet" 
              schoolLogo="img/Grand-Hallet_blanc.png" />
              <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
           </Route>
+
+          <Route path="/grand-hallet/parent-eleve">
+            <MainNavigation schoolLink="grand-hallet"
+              schoolLogo="img/Grand-Hallet_blanc.png" />
+              <Auth_Student />
+          </Route>
+
+          <Route path="/grand-hallet/prof">
+            <MainNavigation schoolLink="grand-hallet"
+              schoolLogo="img/Grand-Hallet_blanc.png" />
+              <Auth_Teacher />
+          </Route>
+
 
 
         {/* Partie de l'école de Moxhe*/}
@@ -65,6 +78,19 @@ const App = () => {
           schoolLogo="img/Moxhe_blanc.png" />
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
+
+        <Route path="/moxhe/parent-eleve">
+            <MainNavigation schoolLink="moxhe"
+              schoolLogo="img/Moxhe_blanc.png" />
+              <Auth_Student />
+          </Route>
+
+          <Route path="/moxhe/prof">
+            <MainNavigation schoolLink="moxhe"
+              schoolLogo="img/Moxhe_blanc.png" />
+              <Auth_Teacher />
+          </Route>
+
 
 
       </Switch>

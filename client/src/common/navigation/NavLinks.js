@@ -10,13 +10,13 @@ const NavLinks = props => {
             <NavLink to={"/" + props.schoolLink} exact>Accueil</NavLink>
         </li>
         <li>
-            <NavLink to={"/"+ props.actuLink +"/actu"} >Actualités</NavLink>
+            <NavLink to={"/"+ props.schoolLink +"/actu"} >Actualités</NavLink>
         </li>
         <li>
-            <NavLink to={"/"+ props.actuLink + "/espace-parent-eleve"}>Espace Parent/Elève</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/parent-eleve"}>Espace Parent/Elève</NavLink>
         </li>
         <li>
-            <NavLink to={"/"+ props.actuLink + "/espace-prof"}>Espace Prof</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/prof"}>Espace Prof</NavLink>
         </li>
         <li>
             <NavLink to="/" exact>Nos écoles</NavLink>

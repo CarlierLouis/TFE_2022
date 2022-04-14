@@ -1,0 +1,10 @@
+.cardUIElem.student_auth {
+    width: 90%;
+    max-width: 25rem;
+    margin: 7rem auto;
+    text-align: center;
+}
+  
+.student_auth form {
+    margin-bottom: 1rem;
+}
