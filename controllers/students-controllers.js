@@ -12,7 +12,7 @@ const signup = async (req, res, next) => {
         );
     }
 
-    const { email, password, school, classyear } = req.body;
+    const { email, name, firstname, password, school, classyear } = req.body;
 
     let existingStudent
     try {
@@ -32,6 +32,8 @@ const signup = async (req, res, next) => {
 
     const createdStudent = new Student ({
         email, 
+        name,
+        firstname,
         password,
         school, 
         classyear

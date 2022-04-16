@@ -1,0 +1,16 @@
+.cardUIElem.auth-card {
+    width: 90%;
+    max-width: 25rem;
+    margin: 7rem auto;
+    text-align: center;
+}
+  
+.auth-card form {
+    margin-bottom: 1rem;
+}
+
+.auth-title {
+    margin-top: 150px;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

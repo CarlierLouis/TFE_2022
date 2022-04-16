@@ -9,9 +9,11 @@ router.post('/signup',
 [
     check('email').isEmail(),
     check('email').not().isEmpty(),
+    check('name').not().isEmpty(),
+    check('firstname').not().isEmpty(),
     check('password').not().isEmpty(),
     check('school').not().isEmpty(),
-    check('school').isIn(['Grand-Hallet', 'Moxhe']),
+    check('school').isIn(['grand-hallet', 'moxhe']),
 ], teachersControllers.signup);
 
 router.post('/login', teachersControllers.login);

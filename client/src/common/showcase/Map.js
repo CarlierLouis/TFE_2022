@@ -14,7 +14,7 @@ class MapGH extends Component {
         googleMapsApiKey="AIzaSyCcvgi-SicUc3IGhIpqj_kr7Aw_r-6pDR4"
       >
         <GoogleMap
-          mapContainerStyle={containerStyle}
+          mapContainerStyle={containerStyle}  
           center={{lat: this.props.lat, lng: this.props.lng}}
           zoom={15}
         >
