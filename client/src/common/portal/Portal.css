@@ -9,18 +9,12 @@
     margin-right: 3%;
 }
 
-@media (min-width: 768px) {
-    .portal-img {
-        width: 40%;
-    }
-}
-
 .portal {
     text-align: center;
     background-color: rgb(31, 30, 30);
-    margin-bottom: 5%;
     position:absolute;
     top: 0;
+    bottom: 0;
 }
 
 
@@ -51,15 +45,6 @@
 .txt-Moxhe {
     background-color: rgb(31, 30, 30);
     width: 29%;
-}
-
-@media (max-width: 768px) {
-    .txt-GH {
-        width: 100%;
-    }  
-    .txt-Moxhe {
-        width: 55%;
-    } 
 }
 
 
@@ -101,3 +86,29 @@
   opacity: 1;   
   right: 0;
 }
+
+
+@media (min-width: 820px) {
+    .portal-img {
+        width: 700px;
+    }
+}
+
+
+@media (max-width: 820px) {
+    .txt-GH {
+        width: 100%;
+    }  
+    .txt-Moxhe {
+        width: 55%;
+    } 
+
+    .portal {
+        height: 110%;
+    }
+
+    .portal-img {
+        width: 100%;
+    }
+}
+
