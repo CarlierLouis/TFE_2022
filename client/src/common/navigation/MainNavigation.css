@@ -26,11 +26,6 @@
   color: white;
 }
 
-.main-navigation__title a:hover,
-.main-navigation__title a:active,
-.main-navigation__title a.hover {
-    color: #292929;
-}
 
 .main-navigation__header-nav {
   display: none;
@@ -42,15 +37,23 @@
 
 .main-navigation__logo {
   width: 80%;
+  float: left;
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 1150px) {
   .main-navigation__menu-btn {
     display: none;
   }
 
   .main-navigation__header-nav {
     display: block;
+  }
+  
+}
+
+@media (max-width: 1150px) {
+  .main-navigation__logo {
+    float: right;
   }
 }

@@ -1,13 +1,15 @@
-import React, { useState     } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from '../common/UIElements/Card';
 import Button from '../common/FormElements/Button';
 import Input from '../common/FormElements/Input';
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../common/util/validators';
 import { useForm } from '../common/hooks/form-hooks';
+import { AuthContext } from '../common/context/auth-context';
 
 import './Auth.css';
 
 const Auth = props => {
+    const auth = useContext(AuthContext);
     const [isLoginMode, setIsLoginMode] = useState(true);
     const [formState, inputHandler, setFormData] = useForm ({ 
         email: {
@@ -23,6 +25,7 @@ const Auth = props => {
      const authSubmitHandler = event => {
          event.preventDefault();
          console.log(formState.inputs);
+         auth.login();
      }
 
      const switchModeHandler = () => {
@@ -61,7 +64,7 @@ return (
         element="input" 
         id="email" 
         type="email" 
-        label="E-Mail"
+        label="E-mail"
         validators= {[VALIDATOR_EMAIL()]}
         errorText="Veillez entrer un email valide."
         onInput={inputHandler}
@@ -95,7 +98,7 @@ return (
         element="input" 
         id="password" 
         type="password" 
-        label="Password"
+        label="Mot de passe"
         validators= {[VALIDATOR_MINLENGTH(5)]}
         errorText="Veillez entrer un mot de passe valide."
         onInput={inputHandler} 
