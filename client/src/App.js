@@ -9,6 +9,7 @@ import Portal from './portal/Portal';
 import Footer from './showcase/Footer';
 import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
+import News from './showcase/News';
 
 
 const App = () => {
@@ -56,6 +57,7 @@ if (isLoggedIn) {
       <Route path="/grand-hallet/actu" exact>
         <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
+          <News school="grand-hallet"/>
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
@@ -82,6 +84,7 @@ if (isLoggedIn) {
           <MainNavigation schoolLink="moxhe" 
                           actuLink="moxhe" 
                           schoolLogo="img/Moxhe_blanc.png" />
+          <News school="moxhe"/>
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
 
@@ -118,6 +121,7 @@ else {
       <Route path="/grand-hallet/actu" exact>
         <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
+          <News school="grand-hallet"/>
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
@@ -157,6 +161,7 @@ else {
           <MainNavigation schoolLink="moxhe" 
                           actuLink="moxhe" 
                           schoolLogo="img/Moxhe_blanc.png" />
+          <News school="moxhe"/>
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
 
