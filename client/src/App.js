@@ -125,14 +125,16 @@ else {
         <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
           <Auth connexiontitle_1=""
-                connexiontitle_2="" />
+                connexiontitle_2=""
+                schoolname="grand-hallet" />
       </Route>
 
       <Route path="/grand-hallet/prof">
         <MainNavigation schoolLink="grand-hallet"
           schoolLogo="img/Grand-Hallet_blanc.png" />
           <Auth connexiontitle_1=""
-                connexiontitle_2=""/>
+                connexiontitle_2=""
+                schoolname="grand-hallet"/>
       </Route>
 
 
@@ -162,14 +164,16 @@ else {
             <MainNavigation schoolLink="moxhe"
               schoolLogo="img/Moxhe_blanc.png" />
               <Auth connexiontitle_1=""
-                    connexiontitle_2="" />
+                    connexiontitle_2=""
+                    schoolname="moxhe" />
           </Route>
 
           <Route path="/moxhe/prof">
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="img/Moxhe_blanc.png" />
               <Auth connexiontitle_1=""
-                    connexiontitle_2=""/>
+                    connexiontitle_2=""
+                    schoolname="moxhe"/>
           </Route>
 
 </Switch>

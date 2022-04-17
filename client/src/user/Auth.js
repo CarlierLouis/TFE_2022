@@ -5,12 +5,17 @@ import Input from '../common/FormElements/Input';
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../common/util/validators';
 import { useForm } from '../common/hooks/form-hooks';
 import { AuthContext } from '../common/context/auth-context';
+import ErrorModal from '../common/UIElements/ErrorModal';
+import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 
 import './Auth.css';
 
 const Auth = props => {
     const auth = useContext(AuthContext);
     const [isLoginMode, setIsLoginMode] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState();
+
     const [formState, inputHandler, setFormData] = useForm ({ 
         email: {
             value: '',
@@ -22,42 +27,84 @@ const Auth = props => {
         }
      }, false);
 
-     const authSubmitHandler = event => {
-         event.preventDefault();
-         console.log(formState.inputs);
-         auth.login();
-     }
 
      const switchModeHandler = () => {
-         if (!isLoginMode) {
-             setFormData({
-                 ...formState.inputs,
-                 name: undefined,
-                 firstname: undefined
-             }, formState.inputs.email.isValid && formState.inputs.password.isValid);
-         }
-         else {
-             setFormData({
-                 ...formState.inputs,
-                 name: {
-                     value: '',
-                     isValid: false
-                 },
-                 firstname: {
-                     value: '',
-                     isValid: false
-                 }
-             }, false);
-         }
-        setIsLoginMode(prevMode => !prevMode)
+        if (!isLoginMode) {
+            setFormData({
+                ...formState.inputs,
+                name: undefined,
+                firstname: undefined 
+            }, formState.inputs.email.isValid && formState.inputs.password.isValid);
+        }
+        else {
+            setFormData({
+                ...formState.inputs,
+                name: {
+                    value: '',
+                    isValid: false
+                },
+                firstname: {
+                    value: '',
+                    isValid: false
+                }
+            }, false);
+        }
+       setIsLoginMode(prevMode => !prevMode)
+    };
+
+
+
+     const authSubmitHandler = async event => {
+        event.preventDefault();
+         
+        if (isLoginMode) {
+
+        }
+        else {
+        try {
+        setIsLoading(true);
+        const response = await fetch('http://localhost:5000/api/teachers/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: formState.inputs.email.value,
+                name: formState.inputs.name.value,
+                firstname: formState.inputs.firstname.value,
+                password : formState.inputs.password.value,
+                school: props.schoolname
+            })
+        });
+
+        const responseData = await response.json();
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+        console.log(responseData);
+        setIsLoading(false);
+        auth.login();
+        } 
+        catch(err) {
+            setIsLoading(false);
+            setError(err.message || 'Quelque chose ne s\'est pas passé comme prévu, veillez réesseyer');
+            }
+        } 
      };
+
+     const errorHandler = () => {
+        setError(null);
+    };
 
 
 return (
-<div>
+<React.Fragment>
+<ErrorModal error={error} onClear={errorHandler}/>
+
 <h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
     <Card className="auth-card">
-        <h2>Connexion</h2>
+        {isLoading && <LoadingSpinner asOverlay/>}
+        <h2>Connexion requise</h2>
         <form className='auth-card' onSubmit={authSubmitHandler}>
 
         <Input 
@@ -115,7 +162,8 @@ return (
 
         </Button>
     </Card>
-</div>
+
+</React.Fragment>
     );
 };
 
