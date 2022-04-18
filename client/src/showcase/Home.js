@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import Card from '../common/UIElements/Card';
 
 import './Home.css';
 
@@ -30,7 +31,15 @@ const Home  = props => {
 </Carousel.Item>
 </Carousel>
 
+
+<Card className='home-card-div'><a style={{maxWidth: '50%'}}>okzzzzzzzzzzzzzzzzzzzokzzzzzzzzzzzzzzzzzzz
+okzzzzzzzzzzzzzzzzzzz
+vokzzzzzzzzzzzzzzzzzzz
+okzzzzzzzzzzzzzzzzzzz
+okzzzzzzzzzzzzzzzzzzz
+okzzzzzzzzzzzzzzzzzzz</a></Card>
 </div>
+
     )
 }
 

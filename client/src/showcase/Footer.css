@@ -6,6 +6,10 @@
     justify-content: center;
 }
 
+.showcase_footer a {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .footer-Hannut__logo {
     margin: 2%;
 }

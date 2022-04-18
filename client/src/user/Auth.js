@@ -87,7 +87,7 @@ const Auth = props => {
         } 
         catch(err) {
             setIsLoading(false);
-            setError(err.message || 'Quelque chose ne s\'est pas passé comme prévu, veillez réesseyer');
+            setError(err.message || 'Quelque chose ne s\'est pas passé comme prévu, veuillez réessayer');
             }
         } 
      };
@@ -100,11 +100,11 @@ const Auth = props => {
 return (
 <React.Fragment>
 <ErrorModal error={error} onClear={errorHandler}/>
-
 <h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}
         <h2>Connexion requise</h2>
+        <hr />
         <form className='auth-card' onSubmit={authSubmitHandler}>
 
         <Input 

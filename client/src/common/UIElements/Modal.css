@@ -1,18 +1,17 @@
-.modal {
-  z-index: 101;
+.modalUIElem {
+  z-index: 100;
   position: fixed;
   top: 22vh;
   left: 10%;
   width: 80%;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
 }
 
 .modal__header {
   width: 100%;
   padding: 1rem 0.5rem;
-  background: #2a006e;
+  background: #628699;
   color: white;
 }
 
@@ -55,4 +54,9 @@
   transform: translateY(-10rem);
   opacity: 0;
   transition: all 200ms;
+}
+
+.modal-error-message {
+  font-size: 1.2rem;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

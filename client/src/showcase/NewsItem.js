@@ -13,6 +13,11 @@ const NewsItem = props => {
             <h2>{props.title}</h2>
             <h2>{props.description}</h2>
             <h2>{props.image}</h2>
+            
+          </div>
+          
+          <div>
+            <img className='news-item__image' src="./img/portail-title.png" />
           </div>
       </Card>
     </li>

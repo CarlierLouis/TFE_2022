@@ -11,7 +11,6 @@ import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
 
-
 const App = () => {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -58,6 +57,7 @@ if (isLoggedIn) {
         <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
           <News school="grand-hallet"/>
+          
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
@@ -85,6 +85,7 @@ if (isLoggedIn) {
                           actuLink="moxhe" 
                           schoolLogo="img/Moxhe_blanc.png" />
           <News school="moxhe"/>
+          
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
 
@@ -110,8 +111,8 @@ else {
         schoolLogo="img/Grand-Hallet_blanc.png" />
 
         <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
-        caroussel2="img/Grand-Hallet-photo_1.jpg" 
-        caroussel3="img/Grand-Hallet-photo_1.jpg">
+        caroussel2="img/Grand-Hallet-photo_2.jpg" 
+        caroussel3="img/Grand-Hallet-photo_3.jpg">
         </Home>
 
         <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
@@ -122,6 +123,7 @@ else {
         <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
           <News school="grand-hallet"/>
+          
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
@@ -153,7 +155,7 @@ else {
                 caroussel3="img/Moxhe-photo_1.jpg">
           </Home>
 
-          <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
+          <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
         </Route>
 
@@ -162,6 +164,7 @@ else {
                           actuLink="moxhe" 
                           schoolLogo="img/Moxhe_blanc.png" />
           <News school="moxhe"/>
+          
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
 
