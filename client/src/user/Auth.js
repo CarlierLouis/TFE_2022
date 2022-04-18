@@ -146,7 +146,7 @@ return (
         id="password" 
         type="password" 
         label="Mot de passe"
-        validators= {[VALIDATOR_MINLENGTH(5)]}
+        validators= {[VALIDATOR_MINLENGTH(8)]}
         errorText="Veillez entrer un mot de passe valide."
         onInput={inputHandler} 
         />
