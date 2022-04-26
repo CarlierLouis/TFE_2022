@@ -2,10 +2,14 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const newsControllers = require('../controllers/news-controllers');
+const checkAuthTeacher = require('../middleware/check-auth-teacher');
+const checkAuthStudent = require('../middleware/check-auth-student');
 
 const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
+
+router.use(checkAuthTeacher);
 
 router.post('/',
 [
