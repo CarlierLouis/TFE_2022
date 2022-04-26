@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+
 import Card from '../common/UIElements/Card';
 import Button from '../common/FormElements/Button';
 import Input from '../common/FormElements/Input';
@@ -7,14 +8,14 @@ import { useForm } from '../common/hooks/form-hooks';
 import { AuthContext } from '../common/context/auth-context';
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
+import { useHttpClient } from '../common/hooks/http-hook';
 
 import './Auth.css';
 
 const Auth = props => {
     const auth = useContext(AuthContext);
     const [isLoginMode, setIsLoginMode] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
 
     const [formState, inputHandler, setFormData] = useForm ({ 
         email: {
@@ -34,7 +35,8 @@ const Auth = props => {
                 ...formState.inputs,
                 name: undefined,
                 firstname: undefined 
-            }, formState.inputs.email.isValid && formState.inputs.password.isValid);
+            }, 
+            formState.inputs.email.isValid && formState.inputs.password.isValid);
         }
         else {
             setFormData({
@@ -58,48 +60,44 @@ const Auth = props => {
         event.preventDefault();
          
         if (isLoginMode) {
-
+            try {
+                const responseData = await sendRequest(
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/login`, 
+                    'POST',
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                        password: formState.inputs.password.value
+                    }),
+                    {'Content-Type': 'application/json'},
+                );
+                auth.login(responseData.teacherId, responseData.token);
+            }
+            catch(err) {}
         }
         else {
-        try {
-        setIsLoading(true);
-        const response = await fetch(`http://localhost:5000/api/${props.usertype}/signup`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: formState.inputs.email.value,
-                name: formState.inputs.name.value,
-                firstname: formState.inputs.firstname.value,
-                password : formState.inputs.password.value,
-                school: props.schoolname
-            })
-        });
-
-        const responseData = await response.json();
-        if (!response.ok) {
-            throw new Error(responseData.message);
-        }
-        console.log(responseData);
-        setIsLoading(false);
-        auth.login();
-        } 
-        catch(err) {
-            setIsLoading(false);
-            setError(err.message || 'Quelque chose ne s\'est pas passé comme prévu, veuillez réessayer');
+            try {
+                const formData = new FormData();
+                formData.append('email', formState.inputs.email.value);
+                formData.append('name', formState.inputs.name.value);
+                formData.append('firstname', formState.inputs.firstname.value);
+                formData.append('password ', formState.inputs.password.value);
+                formData.append('school', formState.inputs.props.schoolname);
+                const responseData = await sendRequest(
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/signup`,
+                    'POST',
+                    formData
+                );
+                auth.login(responseData.teacherId, responseData.token);
             }
-        } 
-     };
-
-     const errorHandler = () => {
-        setError(null);
+            catch(err) {}
+        }
     };
+
 
 
 return (
 <React.Fragment>
-<ErrorModal error={error} onClear={errorHandler}/>
+<ErrorModal error={error} onClear={clearError}/>
 <h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}

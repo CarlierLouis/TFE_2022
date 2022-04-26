@@ -12,18 +12,18 @@ import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
 
 const App = () => {
-const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [token, setToken] = useState(false);
 
-const login = useCallback(() => {
-  setIsLoggedIn(true);
+const login = useCallback((token) => {
+    setToken(token);
 }, [])
 
 const logout = useCallback(() => {
-  setIsLoggedIn(false);
+    setToken(null);
 }, [])
 
 let routes;
-if (isLoggedIn) {
+if (token) {
   routes = (
 
 <Switch>
@@ -192,7 +192,13 @@ else {
 }
   
   return (
-  <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout}}>
+  <AuthContext.Provider 
+    value={{
+      isLoggedIn: !!token,
+      token: token,
+      login: login,
+      logout: logout
+    }}>
     <Router>
       <main>
       {routes}
