@@ -132,7 +132,8 @@ else {
                         schoolLogo="img/Grand-Hallet_blanc.png" />
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
-                schoolname="grand-hallet" />
+                schoolname="grand-hallet"
+                usertype="students" />
       </Route>
 
       <Route path="/grand-hallet/prof">
@@ -140,7 +141,8 @@ else {
           schoolLogo="img/Grand-Hallet_blanc.png" />
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
-                schoolname="grand-hallet"/>
+                schoolname="grand-hallet"
+                usertype="teachers"/>
       </Route>
 
 

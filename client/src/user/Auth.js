@@ -63,7 +63,7 @@ const Auth = props => {
         else {
         try {
         setIsLoading(true);
-        const response = await fetch('http://localhost:5000/api/teachers/signup', {
+        const response = await fetch(`http://localhost:5000/api/${props.usertype}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

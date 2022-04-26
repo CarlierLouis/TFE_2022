@@ -1,9 +1,13 @@
 const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const HttpError = require('../models/http-error');
 
 const Student = require('../models/student');
 
+
+// Students Signup
 const signup = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()){
@@ -30,20 +34,55 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
+
+    let hashedPassword;
+    try {
+        hashedPassword = await bcrypt.hash(password, 12);
+    }
+    catch(err) {
+        const error = new HttpError('Le compte n\'a pas pu être créé, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
+
+
     const createdStudent = new Student ({
         email, 
         name,
         firstname,
-        password,
+        password: hashedPassword,
         school, 
         classyear
     });
 
-    await createdStudent.save();
+    try {
+        await createdStudent.save();
+    }
+    catch(err) {
+        const error = new HttpError('Création du compte ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    } 
 
-    res.status(201).json({ student: createdStudent.toObject({ getters: true}) })
-}
+    let token;
+    try {
+    token = jwt.sign({studentId: createdStudent.id, email: createdStudent.email},
+        'supersecret_dont_share',
+        {expiresIn: '1h'}
+    );
+    }
+    catch(err) {
+        const error = new HttpError('Création du compte ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
 
+    res.status(201).json({ 
+        studentId: createdStudent.id,
+        email: createdStudent.email,
+        token: token }
+    );
+};
+
+
+// Students Login
 const login = async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -57,14 +96,48 @@ const login = async (req, res, next) => {
         return next(error);
     }
 
-    if (!existingStudent || existingStudent.password != password) {
+    if (!existingStudent) {
         const error = new HttpError(
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
     };
 
-    res.json({message: 'Vous êtes connecté'})
+    let isValidPassword = false;
+    try {
+        isValidPassword = await bcrypt.compare(password, existingStudent.password);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Vous ne pouvez pas vous connecter, veillez vérifier vos identfiants et réessayer.', 500)
+        return next(error);
+    }
+
+    if (!isValidPassword) {
+        const error = new HttpError(
+            'Identifiants invalides, connexion impossible', 401)
+        return next(error);
+    }
+
+    let token;
+    try {
+    token = jwt.sign({studentId: existingStudent.id, email: existingStudent.email},
+        'supersecret_dont_share',
+        {expiresIn: '1h'}
+    );
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Connexion ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
+    
+    res.json({ 
+        studentId: existingStudent.id,
+        email: existingStudent.email,
+        token: token
+     });
 }
+
 
 // Get all students by school 
 const getStudents = async (req, res, next) => {

@@ -24,6 +24,7 @@ app.use((req, res, next) => {
     next();
   });
 
+  
 app.use('/api/news', newsRoutes);
 
 app.use('/api/trusted/students', trustedStudentsRoutes);

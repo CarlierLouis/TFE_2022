@@ -1,9 +1,14 @@
 const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const HttpError = require('../models/http-error');
 
 const Teacher = require('../models/teacher');
+const teacher = require('../models/teacher');
 
+
+// Teachers Signup
 const signup = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()){
@@ -30,19 +35,55 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
+    let hashedPassword;
+    try {
+        hashedPassword = await bcrypt.hash(password, 12);
+    }
+    catch(err) {
+        const error = new HttpError('Le compte n\'a pas pu être créé, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
+
+
     const createdTeacher = new Teacher ({
         email,
         name,
         firstname, 
-        password,
+        password: hashedPassword,
         school
     });
 
-    await createdTeacher.save();
+    try {
+        await createdTeacher.save();
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Création du compte ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    } 
 
-    res.status(201).json({ teacher: createdTeacher.toObject({ getters: true}) })
-}
+    let token;
+    try {
+    token = jwt.sign({teacherId: createdTeacher.id, email: createdTeacher.email},
+        'supersecret_dont_share',
+        {expiresIn: '1h'}
+    );
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Création du compte ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
 
+    res.status(201).json({ 
+        teacherId: createdTeacher.id,
+         email: createdTeacher.email,
+          token: token }
+    );
+};
+
+
+// Teachers Login
 const login = async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -56,14 +97,48 @@ const login = async (req, res, next) => {
         return next(error);
     }
 
-    if (!existingTeacher || existingTeacher.password != password) {
+    if (!existingTeacher) {
         const error = new HttpError(
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
     };
 
-    res.json({message: 'Vous êtes connecté'})
+    let isValidPassword = false;
+    try {
+        isValidPassword = await bcrypt.compare(password, existingTeacher.password);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Vous ne pouvez pas vous connecter, veillez vérifier vos identfiants et réessayer.', 500)
+        return next(error);
+    }
+
+    if (!isValidPassword) {
+        const error = new HttpError(
+            'Identifiants invalides, connexion impossible', 401)
+        return next(error);
+    }
+
+    let token;
+    try {
+    token = jwt.sign({teacherId: existingTeacher.id, email: existingTeacher.email},
+        'supersecret_dont_share',
+        {expiresIn: '1h'}
+    );
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Conexion ratée, veillez réessayer plus tard.', 500);
+        return next(error);
+    }
+
+    res.json({ 
+        teacherId: existingTeacher.id,
+        email: existingTeacher.email,
+        token: token
+     });
 }
+
 
 // Get all teachers by school 
 const getTeachers = async (req, res, next) => {
