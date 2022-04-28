@@ -9,8 +9,6 @@ const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
 
-router.use(checkAuthTeacher);
-
 router.post('/',
 [
     check('title').not().isEmpty(),

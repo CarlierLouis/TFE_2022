@@ -29,12 +29,60 @@ const Auth = props => {
      }, false);
 
 
-     const switchModeHandler = () => {
+
+     const authSubmitHandler = async event => {
+        event.preventDefault();
+         
+        if (isLoginMode) {
+            try {
+                const responseData = await sendRequest(
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/login`, 
+                    'POST',
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                        password: formState.inputs.password.value
+                    }),
+                    {'Content-Type': 'application/json'},
+                );
+            
+            auth.login(responseData.teacherId , responseData.token); 
+        }
+
+        catch(err) {
+
+        }
+        }
+        else {
+            try {
+                const formData = new FormData();
+                formData.append('email', formState.inputs.email.value);
+                formData.append('name', formState.inputs.name.value);
+                formData.append('firstname', formState.inputs.firstname.value);
+                formData.append('password ', formState.inputs.password.value);
+                formData.append('school', formState.inputs.props.schoolname);
+                
+                /*if (props.usertype = "students") {
+                    formData.apprend('classyear', '4');
+                }*/
+                const responseData = await sendRequest(
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/signup`,
+                    'POST',
+                    formData
+                );
+                
+                auth.login(responseData.teacherId , responseData.token);
+            }
+            catch(err) {}
+        }
+    };
+
+
+    const switchModeHandler = () => {
         if (!isLoginMode) {
             setFormData({
                 ...formState.inputs,
                 name: undefined,
-                firstname: undefined 
+                firstname: undefined
             }, 
             formState.inputs.email.isValid && formState.inputs.password.isValid);
         }
@@ -56,52 +104,13 @@ const Auth = props => {
 
 
 
-     const authSubmitHandler = async event => {
-        event.preventDefault();
-         
-        if (isLoginMode) {
-            try {
-                const responseData = await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/login`, 
-                    'POST',
-                    JSON.stringify({
-                        email: formState.inputs.email.value,
-                        password: formState.inputs.password.value
-                    }),
-                    {'Content-Type': 'application/json'},
-                );
-                auth.login(responseData.teacherId, responseData.token);
-            }
-            catch(err) {}
-        }
-        else {
-            try {
-                const formData = new FormData();
-                formData.append('email', formState.inputs.email.value);
-                formData.append('name', formState.inputs.name.value);
-                formData.append('firstname', formState.inputs.firstname.value);
-                formData.append('password ', formState.inputs.password.value);
-                formData.append('school', formState.inputs.props.schoolname);
-                const responseData = await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/signup`,
-                    'POST',
-                    formData
-                );
-                auth.login(responseData.teacherId, responseData.token);
-            }
-            catch(err) {}
-        }
-    };
-
-
-
 return (
 <React.Fragment>
 <ErrorModal error={error} onClear={clearError}/>
 <h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}
-        <h2>Connexion requise</h2>
+        <h2>{isLoginMode ? 'Se connecter': 'S\'inscrire'}</h2>
         <hr />
         <form className='auth-card' onSubmit={authSubmitHandler}>
 
@@ -115,7 +124,7 @@ return (
         onInput={inputHandler}
          />
 
-        {!isLoginMode && (
+        {!isLoginMode && 
         <Input 
         element="input" 
         id="name" 
@@ -125,9 +134,9 @@ return (
         errorText="Veillez entrer un nom"
         onInput={inputHandler}
         />
-        )}
+        }
 
-        {!isLoginMode && (
+        {!isLoginMode && 
         <Input 
         element="input"
         id="firstname" 
@@ -137,7 +146,7 @@ return (
         errorText="Veillez entrer un prénom"
         onInput={inputHandler}
         />
-        )}
+        }
 
         <Input 
         element="input" 

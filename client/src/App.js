@@ -13,13 +13,16 @@ import News from './showcase/News';
 
 const App = () => {
 const [token, setToken] = useState(false);
+const [userId, setUserId] = useState(false);
 
-const login = useCallback((token) => {
+const login = useCallback((uid, token) => {
     setToken(token);
+    setUserId(uid)
 }, [])
 
 const logout = useCallback(() => {
     setToken(null);
+    setUserId(null);
 }, [])
 
 let routes;
@@ -133,7 +136,8 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="students" />
+                usertype="students"
+                usertypeId="studentId" />
       </Route>
 
       <Route path="/grand-hallet/prof">
@@ -142,7 +146,8 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="teachers"/>
+                usertype="teachers"
+                usertypeId="teacherId"/>
       </Route>
 
 
@@ -196,6 +201,7 @@ else {
     value={{
       isLoggedIn: !!token,
       token: token,
+      userId: userId,
       login: login,
       logout: logout
     }}>
