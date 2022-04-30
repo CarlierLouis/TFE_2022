@@ -3,13 +3,16 @@ const jwt = require('jsonwebtoken');
 const HttpError = require("../models/http-error");
 
 module.exports = (req,res,next) => {
+    if (req.method === 'OPTIONS') {
+        return next();
+    }
     try {
         const token = req.headers.authorization.split(' ')[1]; // Authorization: 'Bearer TOKEN'
-        if (!token) {
+        if (!token) { 
             throw new Error('Authentification ratée !');
         }
         const decodedToken = jwt.verify(token, 'supersecret_dont_share');
-        req.userData = { studentId: decodedToken.studentId }
+        req.userData = { userId: decodedToken.studentId }
         next();
     }
     catch(err) {

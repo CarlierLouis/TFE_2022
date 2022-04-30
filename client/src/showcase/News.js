@@ -1,44 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import NewsList from './NewsList';
+import  { useHttpClient } from '../common/hooks/http-hook';
+import { AuthContext } from '../common/context/auth-context';
 
 const News = props => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
+    const auth = useContext(AuthContext);
     const [loadedNews, setLoadedNews] = useState();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
 
     useEffect(() => {
-        const sendRequest = async () => {
-            setIsLoading(true);
+        const fetchnews = async () => {
             try {
-            const response = await fetch(`http://localhost:5000/api/news/${props.school}`);
-
-            const responseData = await response.json();
-
-            if (!response.ok) {
-                throw new Error(responseData.message);
-            }
-
+            const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`, 'GET', null,
+            {Authorization: 'Bearer ' + auth.token});
             setLoadedNews(responseData.news);
+            console.log(auth.userId);
+            console.log(auth.token);
             }
-            catch (err) {
-                setIsLoading(false);
-                setError(err.message);
-            }
-            setIsLoading(false);
+            catch(err) {}
         };
-        sendRequest();
-    }, []);
-
-    const errorHandler = () => {
-        setError(null);
-    }
+        fetchnews();
+      }, [sendRequest]);
 
     return (
         <React.Fragment>
-            <ErrorModal error={error} onClear={errorHandler} />
+            <ErrorModal error={error} onClear={clearError} />
             {isLoading && 
             <div className='center'>
                 <LoadingSpinner />

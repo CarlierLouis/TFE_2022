@@ -7,6 +7,8 @@ const checkAuthStudent = require('../middleware/check-auth-student');
 
 const router = express.Router();
 
+router.use(checkAuthTeacher);
+
 router.get('/:school', newsControllers.getNews);
 
 router.post('/',
