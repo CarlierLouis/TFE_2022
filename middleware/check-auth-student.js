@@ -11,7 +11,7 @@ module.exports = (req,res,next) => {
         if (!token) { 
             throw new Error('Authentification ratée !');
         }
-        const decodedToken = jwt.verify(token, 'supersecret_dont_share');
+        const decodedToken = jwt.verify(token, process.env.TOKENKEY);
         req.userData = { userId: decodedToken.studentId }
         next();
     }

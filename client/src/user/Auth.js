@@ -11,7 +11,7 @@ import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import { useHttpClient } from '../common/hooks/http-hook';
 
 import './Auth.css';
-import { stringify } from 'uuid';
+
 
 const Auth = props => {
     const auth = useContext(AuthContext);

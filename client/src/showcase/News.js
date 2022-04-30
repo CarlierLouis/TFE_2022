@@ -14,6 +14,7 @@ const News = props => {
     useEffect(() => {
         const fetchnews = async () => {
             try {
+            //const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`);
             const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`, 'GET', null,
             {Authorization: 'Bearer ' + auth.token});
             setLoadedNews(responseData.news);
@@ -24,7 +25,7 @@ const News = props => {
         };
         fetchnews();
       }, [sendRequest]);
-      
+
 
     return (
         <React.Fragment>

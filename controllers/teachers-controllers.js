@@ -65,7 +65,7 @@ const signup = async (req, res, next) => {
     let token;
     try {
     token = jwt.sign({userId: createdTeacher.id, email: createdTeacher.email},
-        'supersecret_dont_share',
+        process.env.TOKENKEY,
         {expiresIn: '1h'}
     );
     }
@@ -122,7 +122,7 @@ const login = async (req, res, next) => {
     let token;
     try {
         token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
-            'supersecret_dont_share',
+            process.env.TOKENKEY,
             {expiresIn: '1h'}
     );
     }
