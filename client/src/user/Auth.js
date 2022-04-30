@@ -54,23 +54,31 @@ const Auth = props => {
         }
         else {
             try {
+                // DONT WORK (nned to do with th JSON.stringify)
+                /*
                 const formData = new FormData();
                 formData.append('email', formState.inputs.email.value);
                 formData.append('name', formState.inputs.name.value);
                 formData.append('firstname', formState.inputs.firstname.value);
                 formData.append('password ', formState.inputs.password.value);
-                formData.append('school', formState.inputs.props.schoolname);
-                
-                /*if (props.usertype = "students") {
-                    formData.apprend('classyear', '4');
-                }*/
+                formData.append('school', JSON.stringify(props.schoolname));
+                */
+            
                 const responseData = await sendRequest(
                     process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/signup`,
                     'POST',
-                    formData
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                        name: formState.inputs.name.value,
+                        firstname: formState.inputs.firstname.value,
+                        password : formState.inputs.password.value,
+                        school: props.schoolname,
+                        classyear: "4",
+                    }),
+                    {'Content-Type': 'application/json'},
                 );
                 
-                auth.login(responseData.teacherId , responseData.token);
+                auth.login(responseData.userId , responseData.token);
             }
             catch(err) {}
         }

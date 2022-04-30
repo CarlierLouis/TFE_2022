@@ -136,8 +136,7 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="students"
-                usertypeId="studentId" />
+                usertype="students" />
       </Route>
 
       <Route path="/grand-hallet/prof">
@@ -146,8 +145,7 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="teachers"
-                usertypeId="teacherId"/>
+                usertype="teachers" />
       </Route>
 
 
