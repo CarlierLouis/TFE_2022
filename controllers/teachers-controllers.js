@@ -64,7 +64,7 @@ const signup = async (req, res, next) => {
 
     let token;
     try {
-    token = jwt.sign({teacherId: createdTeacher.id, email: createdTeacher.email},
+    token = jwt.sign({userId: createdTeacher.id, email: createdTeacher.email},
         'supersecret_dont_share',
         {expiresIn: '1h'}
     );
@@ -76,7 +76,7 @@ const signup = async (req, res, next) => {
     }
 
     res.status(201).json({ 
-        teacherId: createdTeacher.id,
+        userId: createdTeacher.id,
         email: createdTeacher.email,
         token: token }
     );
@@ -121,7 +121,7 @@ const login = async (req, res, next) => {
 
     let token;
     try {
-        token = jwt.sign({teacherId: existingTeacher.id, email: existingTeacher.email},
+        token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
             'supersecret_dont_share',
             {expiresIn: '1h'}
     );
@@ -133,7 +133,7 @@ const login = async (req, res, next) => {
     }
 
     res.json({ 
-        teacherId: existingTeacher.id,
+        userId: existingTeacher.id,
         email: existingTeacher.email,
         token: token
      });

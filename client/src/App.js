@@ -137,7 +137,8 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="students" />
+                usertype="students"
+                usertypeId="studentId" />
       </Route>
 
       <Route path="/grand-hallet/prof">
@@ -146,7 +147,8 @@ else {
           <Auth connexiontitle_1=""
                 connexiontitle_2=""
                 schoolname="grand-hallet"
-                usertype="teachers" />
+                usertype="teachers"
+                usertypeId="teacherId" />
       </Route>
 
 
@@ -179,7 +181,8 @@ else {
               schoolLogo="img/Moxhe_blanc.png" />
               <Auth connexiontitle_1=""
                     connexiontitle_2=""
-                    schoolname="moxhe" />
+                    schoolname="moxhe"
+                    usertype="students" />
           </Route>
 
           <Route path="/moxhe/prof">
@@ -187,7 +190,8 @@ else {
                             schoolLogo="img/Moxhe_blanc.png" />
               <Auth connexiontitle_1=""
                     connexiontitle_2=""
-                    schoolname="moxhe"/>
+                    schoolname="moxhe"
+                    usertype="teachers"/>
           </Route>
 
 </Switch>

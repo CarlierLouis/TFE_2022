@@ -19,11 +19,12 @@ const News = props => {
             setLoadedNews(responseData.news);
             console.log(auth.userId);
             console.log(auth.token);
-            }
+        }
             catch(err) {}
         };
         fetchnews();
       }, [sendRequest]);
+      
 
     return (
         <React.Fragment>

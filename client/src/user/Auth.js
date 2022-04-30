@@ -11,6 +11,7 @@ import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import { useHttpClient } from '../common/hooks/http-hook';
 
 import './Auth.css';
+import { stringify } from 'uuid';
 
 const Auth = props => {
     const auth = useContext(AuthContext);
@@ -29,7 +30,6 @@ const Auth = props => {
      }, false);
 
 
-
      const authSubmitHandler = async event => {
         event.preventDefault();
          
@@ -44,8 +44,8 @@ const Auth = props => {
                     }),
                     {'Content-Type': 'application/json'},
                 );
-            
-            auth.login(responseData.teacherId , responseData.token); 
+                
+            auth.login(responseData.userId , responseData.token); 
         }
 
         catch(err) {
