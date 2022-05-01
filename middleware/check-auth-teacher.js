@@ -11,7 +11,7 @@ module.exports = (req,res,next) => {
         if (!token) { 
             throw new Error('Authentification ratée !');
         }
-        const decodedToken = jwt.verify(token, process.env.TOKENKEY);
+        const decodedToken = jwt.verify(token, process.env.TOKENKEY_TEACHER);
         req.userData = { userId: decodedToken.teacherId }
         next();
     }
