@@ -120,7 +120,7 @@ else {
         </Home>
 
         <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
+        <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
       <Route path="/grand-hallet/actu" exact>
@@ -129,7 +129,7 @@ else {
           <News school="grand-hallet"/>
           
           <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
+          <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
       <Route path="/grand-hallet/parent-eleve">
@@ -165,7 +165,7 @@ else {
           </Home>
 
           <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
+          <Footer title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
         </Route>
 
         <Route  path="/moxhe/actu" exact>
@@ -175,7 +175,7 @@ else {
           <News school="moxhe"/>
           
           <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
+          <Footer title="École Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
 
         <Route path="/moxhe/parent-eleve">

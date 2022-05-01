@@ -25,6 +25,7 @@ const Footer = props => {
     <div style={{backgroundColor: '#628699', height: '30px', width: '100%'}}></div>
     </div>
     
+    
     );
 }
 

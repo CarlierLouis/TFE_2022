@@ -7,6 +7,7 @@ import './Home.css';
 const Home  = props => {
     return(
 <div>
+
 <Carousel variant="dark" className='caroussel-div'>
 <Carousel.Item>
   <img
@@ -30,7 +31,6 @@ const Home  = props => {
   />
 </Carousel.Item>
 </Carousel>
-
 
 <Card className='home-card-div'><a style={{maxWidth: '50%'}}>« Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. 

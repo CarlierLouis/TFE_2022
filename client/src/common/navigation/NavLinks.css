@@ -16,16 +16,20 @@
   margin: 1rem;
 }
 
+
 .nav-links a {
   border: 1px solid transparent;
   color: white;
   text-decoration: none;
   padding: 0.5rem;
+  transition: all 0.5s ease;
+  padding-bottom: 16px;
 }
 
 .nav-links a:hover,
 .nav-links a:active,
 .nav-links a.active {
+  border-bottom: solid 0.3rem;
   color: #628699;
 }
 
@@ -42,6 +46,23 @@
     color: white;
     text-decoration: none;
   }
+  
+}
+
+@media (max-width: 1150px) {
+  .nav-links a.active {
+    border: none;
+    color: #628699;
+  }
+
+  .nav-links a:hover {
+    border: none;
+  }
+
+  .nav-links a {
+    transition: none;
+  }
+
 }
 
 
