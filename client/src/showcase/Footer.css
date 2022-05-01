@@ -26,8 +26,16 @@
     text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
 .showcase_footer {
     flex-direction: column;
+}
+
+.footer-Hannut__logo {
+    margin-left: 10%;
+}
+
+.rs-right {
+    margin-left: 7%;
 }
 }

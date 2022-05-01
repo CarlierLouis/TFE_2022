@@ -1,0 +1,22 @@
+.question-actu {
+    width: 3%;
+    position: fixed;
+    transition: transform 0.5s;
+    margin-left: 1%;
+    margin-top: 0.5%;
+}
+
+.question-actu:hover {
+    transform: scale(1.2);
+}
+
+.question-modal {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 820px) {
+    .question-actu {
+        display: none;
+    }
+}

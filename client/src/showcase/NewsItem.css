@@ -1,7 +1,9 @@
 .news-item {
   margin: 1rem;
-  width: calc(45%);
+  width: calc(35%);
   min-width: 17.5rem;
+  margin-right: 1%;
+  margin-left: 1%;
 }
 
 .news-item a:hover,
