@@ -127,16 +127,22 @@ const Auth = props => {
 return (
 <React.Fragment>
 
-<img className='question-auth' src='/svg/question.gif'onClick={openQuestionHandler} ></img>
+<img className='question-auth' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
 <Modal className='question-modal'
     show={showQuestion}
     onCancel={closeQuestionHandler}
     footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>
-        Vous devez vous connecter ou créer un compte afin d'accèder au fonctionnalités dédiées aux {props.usertypefr}.
+        <a>Vous devez vous connecter ou créer un compte afin d'accéder aux fonctionnalités dédiées 
+            aux {props.usertypefr}.
+        </a>
+        <br></br><br></br>
+        <a style={{fontStyle: 'italic', fontSize: '18px'}}>
+            * La création de compte est dédée au élèves inscits ainsi qu'aux membres du personnel enseignant.
+        </a>
 </Modal>
 
 
-<ErrorModal error={error} onClear={clearError}/>
+<ErrorModal error={error} onClear={clearError}/>    
 <h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}

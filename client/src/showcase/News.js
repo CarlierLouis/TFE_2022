@@ -32,8 +32,8 @@ const News = props => {
             const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`, 'GET', null,
             {Authorization: 'Bearer ' + auth.token});
             setLoadedNews(responseData.news);
-            console.log(auth.userId);
-            console.log(auth.token);
+            //console.log(auth.userId);
+            //console.log(auth.token);
         }
             catch(err) {}
         };
@@ -43,7 +43,7 @@ const News = props => {
 
     return (
         <React.Fragment>
-            <img className='question-actu' src='/svg/question.gif'onClick={openQuestionHandler} ></img>
+            <img className='question-actu' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
 
             <Modal className='question-modal'
 				show={showQuestion}

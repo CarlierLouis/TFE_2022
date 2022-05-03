@@ -7,7 +7,6 @@ import './Home.css';
 const Home  = props => {
     return(
 <div>
-
 <Carousel variant="dark" className='caroussel-div'>
 <Carousel.Item>
   <img
@@ -56,7 +55,10 @@ Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac eui
 Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. 
 Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. 
 Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. 
-Curabitur eu amet. »</a></Card>
+Curabitur eu amet. »</a></Card><br></br>
+
+
+
 </div>
 
 

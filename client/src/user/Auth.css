@@ -19,8 +19,11 @@
 .question-auth {
     width: 3%;
     position: fixed;
-    transition: transform 0.5s;
+    bottom: 0;
+    transition: transform 0.5s; 
     margin-left: 1%;
+    margin-left: 95%;
+    margin-bottom: 0.5%;
 }
 
 .question-auth:hover {
