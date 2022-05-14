@@ -167,7 +167,7 @@ return (
         type="text" 
         label="Nom" 
         validators={[VALIDATOR_REQUIRE()]}
-        errorText="Veillez entrer un nom"
+        errorText="Veillez entrer un nom."
         onInput={inputHandler}
         />
         }
@@ -179,7 +179,7 @@ return (
         type="text" 
         label="Prénom" 
         validators={[VALIDATOR_REQUIRE()]} 
-        errorText="Veillez entrer un prénom"
+        errorText="Veillez entrer un prénom."
         onInput={inputHandler}
         />
         }

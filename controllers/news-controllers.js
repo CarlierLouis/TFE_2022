@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const { validationResult } = require('express-validator');
 
 const HttpError = require('../models/http-error');
@@ -36,13 +38,14 @@ const createNews = async(req, res, next) => {
         return next(error);
     }
 
-    const { title, description, image, school }  = req.body;
+    const { title, description, date, school }  = req.body;
 
     const createdNews = new News ({
         title,   
         description,
-        image,
-        school
+        date,
+        school,
+        image: req.file.path,
     });
 
     try {
@@ -66,7 +69,7 @@ const updateNews = async (req, res, next) => {
         return next(error);
     }
     
-    const {title, description, image} = req.body;
+    const {title, description, date} = req.body;
     const newsId = req.params.nid;
 
     let news;
@@ -81,7 +84,8 @@ const updateNews = async (req, res, next) => {
 
     news.title = title;
     news.description = description;
-    news.image = image;
+    news.date = date;
+    news.image = req.file.path;
 
     try {
         await news.save();  

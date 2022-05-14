@@ -10,7 +10,7 @@ const NewsItem = props => {
     <li className="news-item">
       <Card className="news-item__content">
           <div className="news-item__info">
-          <img className='news-item__image' src="/img/Grand-Hallet-photo_2.jpg" />
+          <img className='news-item__image' src={`http://localhost:5000/${props.image}`} />
             <h2>{props.title}</h2>
             <h3>{props.description}</h3>
           </div>

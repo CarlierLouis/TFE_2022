@@ -10,6 +10,7 @@ import Footer from './showcase/Footer';
 import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
+import NewNews from './admin/NewNews'
 
 let logoutTimer;
 
@@ -93,6 +94,12 @@ if (token) {
           <News school="grand-hallet"/>
           
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
+      </Route>
+
+      <Route path="/espace-perso">
+      <MainNavigation schoolLink="grand-hallet"
+                        schoolLogo="img/Grand-Hallet_blanc.png" />
+        <NewNews schoolname="grand-hallet"></NewNews>
       </Route>
 
 
