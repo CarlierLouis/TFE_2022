@@ -20,12 +20,12 @@ const NavLinks = props => {
 
         {!auth.isLoggedIn && 
         <li>
-            <NavLink to={"/"+ props.schoolLink + "/parent-eleve"}>Espace Parent/Elève</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/login/parent-eleve"}>Espace Parent/Elève</NavLink>
         </li>}
 
         {!auth.isLoggedIn && 
         <li>
-            <NavLink to={"/"+ props.schoolLink + "/prof"}>Espace Prof</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/login/prof"}>Espace Prof</NavLink>
         </li>}
 
         {!auth.isLoggedIn &&
@@ -36,6 +36,16 @@ const NavLinks = props => {
         {auth.isLoggedIn && auth.role == "Admin" &&
         <li>
             <NavLink to={"/" + props.schoolLink + "/admin"} exact>Admin</NavLink>
+        </li>}
+
+        {auth.isLoggedIn && auth.role == "Default" &&
+        <li>
+            <NavLink to={"/" + props.schoolLink + "/espace-prof"} exact>Espace personnel</NavLink>
+        </li>}
+
+        {auth.isLoggedIn && auth.role == "Student" &&
+        <li>
+            <NavLink to={"/" + props.schoolLink + "/espace-eleve"} exact>Espace personnel</NavLink>
         </li>}
 
         {auth.isLoggedIn &&
