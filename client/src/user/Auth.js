@@ -56,8 +56,32 @@ const Auth = props => {
                     }),
                     {'Content-Type': 'application/json'},
                 );
-                
-            auth.login(responseData.userId , responseData.token); 
+
+
+            const responseData2 = await sendRequest(`http://localhost:5000/api/${props.usertype}/${props.schoolname}`, 'GET', null,
+            {Authorization: 'Bearer ' + auth.token});
+            
+            if (props.usertype == "teachers") {
+            responseData2.teachers.forEach(element => {
+                if (element._id == responseData.userId) {
+                    if (element.role == "Default") {
+                    auth.login(responseData.userId , responseData.token, "Default"); 
+                    console.log("c'est un prof");
+                    }
+                    else if (element.role == "Admin") {
+                        auth.login(responseData.userId , responseData.token, "Admin"); 
+                        console.log("c'est un admin");
+                    }
+                }
+            });
+        }
+        else {
+            auth.login(responseData.userId , responseData.token, "Student"); 
+        }
+
+            
+            
+           
         }
 
         catch(err) {

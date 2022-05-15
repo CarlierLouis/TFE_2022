@@ -34,11 +34,19 @@ const News = props => {
             setLoadedNews(responseData.news);
             //console.log(auth.userId);
             //console.log(auth.token);
+
+            //
+            /*responseData.news.forEach(element => {
+                if (element.title == "aaaaa") {
+                  console.log("ok");
+                }
+            });*/
         }
             catch(err) {}
         };
         fetchnews();
       }, [sendRequest]);
+
 
 
     return (

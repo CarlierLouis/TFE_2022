@@ -18,18 +18,20 @@ const App = () => {
 const [token, setToken] = useState(false);
 const [tokenExpirationDate, setTokenExpirationDate] = useState();
 const [userId, setUserId] = useState(false);
+const [role, setRole] = useState(false);
 
 
-const login = useCallback((uid, token, expirationDate) => {
+const login = useCallback((uid, token, role, expirationDate) => {
     setToken(token);
     setUserId(uid);
+    setRole(role);
     const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60); // 1hour
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem('userData', JSON.stringify(
-      {userId: uid, token: token, expiration: tokenExpirationDate.toISOString()}
+      {userId: uid, token: token,  role: role, expiration: tokenExpirationDate.toISOString()}
       ));
 }, [])
-
+  
 const logout = useCallback(() => {
     setToken(null);
     setTokenExpirationDate(null);
@@ -96,7 +98,7 @@ if (token) {
           <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
       </Route>
 
-      <Route path="/espace-perso">
+      <Route path="/grand-hallet/espace-perso">
       <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="img/Grand-Hallet_blanc.png" />
         <NewNews schoolname="grand-hallet"></NewNews>
@@ -129,6 +131,13 @@ if (token) {
           
           <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
         </Route>
+
+        <Route path="/moxhe/espace-perso">
+      <MainNavigation schoolLink="moxhe"
+                        schoolLogo="img/Moxhe_blanc.png" />
+        <NewNews schoolname="moxhe"></NewNews>
+      </Route>
+
 
 </Switch>
 
@@ -248,6 +257,7 @@ else {
       isLoggedIn: !!token,
       token: token,
       userId: userId,
+      role: role,
       login: login,
       logout: logout
     }}>

@@ -23,6 +23,7 @@ const NewsList = props => {
           key={news.id}
           id={news.id}
           title={news.title}
+          date={news.date}
           description={news.description}
           image={news.image}
         />

@@ -11,6 +11,7 @@ const NewsItem = props => {
       <Card className="news-item__content">
           <div className="news-item__info">
           <img className='news-item__image' src={`http://localhost:5000/${props.image}`} />
+            <h2 className="news-date">{props.date}</h2>
             <h2>{props.title}</h2>
             <h3>{props.description}</h3>
           </div>
