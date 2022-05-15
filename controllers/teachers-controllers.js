@@ -121,10 +121,18 @@ const login = async (req, res, next) => {
 
     let token;
     try {
+        if (existingTeacher.role == "Admin") {
+            token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
+                process.env.TOKENKEY_ADMIN,
+                {expiresIn: '1h'}
+            ); 
+        }
+        else {
         token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
             process.env.TOKENKEY_TEACHER,
             {expiresIn: '1h'}
     );
+        }
     }
     catch(err) {
         const error = new HttpError(

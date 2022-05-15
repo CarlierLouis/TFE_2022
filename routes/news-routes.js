@@ -3,13 +3,15 @@ const { check } = require('express-validator');
 
 const newsControllers = require('../controllers/news-controllers');
 const checkAuthTeacher = require('../middleware/check-auth-teacher');
-const checkAuthStudent = require('../middleware/check-auth-student');
+const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const fileUpload = require('../middleware/file-upload')
 
 const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
+
+router.use(checkAuthAdmin);
 
 router.post('/',
 fileUpload.single('image'),
