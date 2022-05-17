@@ -5,13 +5,13 @@ import Input from '../common/FormElements/Input';
 import Button from '../common/FormElements/Button';
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
-import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH} from '../common/util/validators';
+import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH} from '../common/util/validators';
 import { useForm } from '../common/hooks/form-hooks';
 import { useHttpClient } from '../common/hooks/http-hook';
 import {AuthContext} from '../common/context/auth-context';
 import ImageUpload from '../common/FormElements/ImageUpload';
 
-import './NewNews.css';
+import './News.css';
 
 const NewNews = props => {
 	const auth = useContext(AuthContext);
@@ -71,8 +71,8 @@ const NewNews = props => {
 					id="title"
 					element="input"
 					type="text"
-					label="Titre"
-					validators={[VALIDATOR_REQUIRE()]}
+					label="Titre (20 caractères max)"
+					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(20)]}
 					errorText="Veillez entrer un titre valide."
 					onInput={inputHandler}
 				/>

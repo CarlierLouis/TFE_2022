@@ -61,7 +61,7 @@ useEffect(() => {
 
 let routes;
 
-if (token && role == "Admin") {
+if (token && role === "Admin") {
   routes = (
     
 <Switch>
@@ -138,7 +138,7 @@ if (token && role == "Admin") {
   );
 }
 
-else if (token && role == "Default") {
+else if (token && role === "Default") {
   routes = (
     
 <Switch>
@@ -218,7 +218,7 @@ else if (token && role == "Default") {
   );
 }
 
-else if (token && role == "Student") {
+else if (token && role === "Student") {
   routes = (
     
 <Switch>

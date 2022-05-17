@@ -5,8 +5,6 @@ import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import NewsList from './NewsList';
 import  { useHttpClient } from '../common/hooks/http-hook';
 import { AuthContext } from '../common/context/auth-context';
-import Modal from '../common/UIElements/Modal';
-import Button from '../common/FormElements/Button';
 
 import './News.css';
 
@@ -14,16 +12,6 @@ const News = props => {
     const auth = useContext(AuthContext);
     const [loadedNews, setLoadedNews] = useState();
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
-    
-    const [showQuestion, setShowQuestion] = useState(false);
-
-    const openQuestionHandler = () => {
-		setShowQuestion(true);
-	};
-
-	const closeQuestionHandler = () => {
-		setShowQuestion(false);
-	};
 
     useEffect(() => {
         const fetchnews = async () => {
@@ -51,16 +39,6 @@ const News = props => {
 
     return (
         <React.Fragment>
-            <img className='question-actu' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
-
-            <Modal className='question-modal'
-				show={showQuestion}
-				onCancel={closeQuestionHandler}
-				footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>
-                    Vous retrouverez sur cette page toutes les informations concernants l'actualité de l'école
-                    ainsi que les différents événements relatifs à celle-ci.
-
-            </Modal>
 
             <ErrorModal error={error} onClear={clearError} />
             {isLoading && 

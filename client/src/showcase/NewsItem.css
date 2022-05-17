@@ -6,6 +6,7 @@
   margin-left: 1%;
 }
 
+
 .news-item a:hover,
 .news-item a:active {
   background: #628699;
@@ -49,6 +50,18 @@
   color: #1F1E1E;
   padding: 2%;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: 65px;
+}
+
+.seemore {
+  color: #628699;
+  text-decoration: none;
+  font-style: italic;
+  border: none
+}
+
+.seemore:hover {
+  color: black;
 }
 
 
