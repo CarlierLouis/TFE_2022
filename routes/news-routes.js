@@ -2,7 +2,6 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const newsControllers = require('../controllers/news-controllers');
-const checkAuthTeacher = require('../middleware/check-auth-teacher');
 const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const fileUpload = require('../middleware/file-upload')
@@ -10,6 +9,8 @@ const fileUpload = require('../middleware/file-upload')
 const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
+
+router.get('/:nid', newsControllers.getNewsById);
 
 router.use(checkAuthAdmin);
 

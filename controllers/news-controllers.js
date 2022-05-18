@@ -11,7 +11,7 @@ const getNews = async (req, res, next) => {
 
     let news;
     try {
-        news = await News.find({school: school});
+        news = await News.find({school: school}).sort({date: 'desc'});
     }
     catch(err) {
         const error = new HttpError(
@@ -26,6 +26,29 @@ const getNews = async (req, res, next) => {
     }
 
     res.json({ news: news.map(news => news.toObject({ getters: true })) });
+};
+
+// Get News by id
+const getNewsById = async (req, res, next) => {
+    const newsId = req.params.nid;
+
+    let news;
+    try {
+        news = await News.findById(newsId);
+    }
+    catch(err) {
+        const error = new HttpError("L'actualité n'a pas pu être trouvée", 500);
+        return next(error);
+    }
+
+    if(!news) {
+        const error = new HttpError('Aucune actualité trouvée avec cet id', 404);
+        return next(error);
+    }
+
+    res.json({
+        news: news.toObject({getters: true})
+    });
 };
 
 // Post News
@@ -126,6 +149,7 @@ const deleteNews =  async (req, res, next) => {
 }
 
 exports.getNews = getNews;
+exports.getNewsById = getNewsById;
 exports.createNews = createNews;
 exports.updateNews = updateNews;
 exports.deleteNews = deleteNews;

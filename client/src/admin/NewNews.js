@@ -81,7 +81,7 @@ const NewNews = props => {
 					element="textarea"
 					label="Description"
 					validators={[VALIDATOR_MINLENGTH(10)]}
-					errorText="veillez entrer une description valide."
+					errorText="Veillez entrer une description valide."
 					onInput={inputHandler}
 				/>
 				<Input

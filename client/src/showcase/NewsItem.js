@@ -44,7 +44,7 @@ const closeMoreHandler = () => {
             <div className="news-item__info">
             <img className='news-item__image' src={`http://localhost:5000/${props.image}`} />
               <h2 className="news-date">{props.date}</h2>
-              <h2>{props.title}</h2>
+              <h2 className='news-title'>{props.title}</h2>
               <h3>{descriptionText}
                 <button className='seemore' style={seemore} onClick={openMoreHandler}>&nbsp; voir plus</button>
               </h3>

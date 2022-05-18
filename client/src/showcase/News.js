@@ -17,7 +17,8 @@ const News = props => {
         const fetchnews = async () => {
             try {
             //const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`);
-            const responseData = await sendRequest(`http://localhost:5000/api/news/${props.school}`, 'GET', null,
+            const responseData = await sendRequest(
+                process.env.REACT_APP_BACKEND_URL + `/api/news/${props.school}`, 'GET', null,
             {Authorization: 'Bearer ' + auth.token});
             setLoadedNews(responseData.news);
             //console.log(auth.userId);

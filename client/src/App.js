@@ -10,7 +10,8 @@ import Footer from './showcase/Footer';
 import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
-import NewNews from './admin/NewNews'
+import NewNews from './admin/NewNews';
+import UpdateNews from './admin/UpdateNews';
 
 let logoutTimer;
 
@@ -96,12 +97,15 @@ if (token && role === "Admin") {
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
   </Route>
   
-  <Route path="/grand-hallet/admin">
+  <Route path="/grand-hallet/admin/add-news">
   <MainNavigation schoolLink="grand-hallet"
                     schoolLogo="img/Grand-Hallet_blanc.png" />
     <NewNews schoolname="grand-hallet"></NewNews>
   </Route>
-  
+
+  <Route path="/grand-hallet/admin/update-news/:newsId">
+  <UpdateNews schoolname="grand-hallet"></UpdateNews>
+  </Route>
 
 
   {/* Partie de l'école de Moxhe*/}
