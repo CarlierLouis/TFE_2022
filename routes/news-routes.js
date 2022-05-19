@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
 
-router.get('/:nid', newsControllers.getNewsById);
+router.get('/id/:nid', newsControllers.getNewsById);
 
 router.use(checkAuthAdmin);
 
