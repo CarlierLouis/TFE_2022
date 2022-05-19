@@ -47,7 +47,7 @@ const UpdateNews = props => {
 		const fetchNews = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/news/${newsId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/news/id/${newsId}`
 				);
 				setLoadedNews(responseData.news);
 				setFormData({

@@ -307,8 +307,7 @@ else {
   routes = (
 
 <Switch>
-<Redirect from="/grand-hallet/admin" to="/grand-hallet" />
-<Redirect from="/moxhe/admin" to="/moxhe" />
+
   
 
   {/* Porail de redirection */}
