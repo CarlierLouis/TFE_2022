@@ -26,6 +26,7 @@ const NewsList = props => {
           date={news.date}
           description={news.description}
           image={news.image}
+          school={props.school}
         />
       ))}
     </ul>

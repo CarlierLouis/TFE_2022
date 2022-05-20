@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from '../common/UIElements/Modal';
 import Button from '../common/FormElements/Button';
 
 import Card from '../common/UIElements/Card';
+import { AuthContext } from '../common/context/auth-context';
 
 import './NewsItem.css';
 
 const NewsItem = props => {
+  const auth = useContext(AuthContext);
   const [showMore, setShowMore] = useState(false);
 
   const openMoreHandler = () => {
@@ -42,12 +44,21 @@ const closeMoreHandler = () => {
       <li className="news-item">
         <Card className="news-item__content">
             <div className="news-item__info">
-            <img className='news-item__image' src={`http://localhost:5000/${props.image}`} />
+            <img className='news-item__image' src={process.env.REACT_APP_BACKEND_URL + `/${props.image}`} />
               <h2 className="news-date">{props.date}</h2>
               <h2 className='news-title'>{props.title}</h2>
               <h3>{descriptionText}
                 <button className='seemore' style={seemore} onClick={openMoreHandler}>&nbsp; voir plus</button>
               </h3>
+              {auth.isLoggedIn && auth.role == "Admin" &&
+              <hr></hr>
+              }
+              {auth.isLoggedIn && auth.role == "Admin" &&
+              <a href={`/${props.school}/admin/update-news/${props.id}`} className='update-news-link'>Mettre à jour</a>
+              }
+              {auth.isLoggedIn && auth.role == "Admin" &&
+              <a className='delete-news-link'>Supprimer</a>
+              }
             </div>
         </Card>
       </li>

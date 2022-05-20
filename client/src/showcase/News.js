@@ -46,7 +46,7 @@ const News = props => {
             <div className='center'>
                 <LoadingSpinner />
             </div>}
-            {!isLoading && loadedNews && <NewsList items={loadedNews} />}
+            {!isLoading && loadedNews && <NewsList items={loadedNews} school={props.school} />}
         </React.Fragment>
     );
 }

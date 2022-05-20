@@ -158,8 +158,8 @@ return (
 					id="image" 
 					onInput={inputHandler}
 					errorText="Veillez entrer une image"
-					initialValue={loadedNews.image}
 					initialValid={true} />
+
 
 			<Button type="submit" disabled={!formState.isValid}>
 				Mettre à jour l'actualité

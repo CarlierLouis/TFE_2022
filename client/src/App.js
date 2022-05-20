@@ -70,7 +70,6 @@ if (token && role === "Admin") {
 <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
 
-
 <Route path="/" exact>
         <Portal></Portal>
 </Route>
@@ -146,8 +145,8 @@ else if (token && role === "Default") {
   routes = (
     
 <Switch>
-<Redirect from="/grand-hallet/login/parent-eleve" to="/grand-hallet" />
-<Redirect from="/moxhe/login/parent-eleve" to="/moxhe" />
+<Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
+<Redirect from="/moxhe/login/prof" to="/moxhe" />
 
 <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
 <Redirect from="/moxhe/login/prof" to="/moxhe" />
@@ -307,8 +306,6 @@ else {
   routes = (
 
 <Switch>
-
-  
 
   {/* Porail de redirection */}
   <Route path="/" exact>

@@ -25,6 +25,7 @@ fileUpload.single('image'),
 ], newsControllers.createNews);
 
 router.patch('/:nid', 
+fileUpload.single('image'),
 [
     check('title').not().isEmpty(),
     check('description').not().isEmpty(),

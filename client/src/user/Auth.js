@@ -77,11 +77,7 @@ const Auth = props => {
         }
         else {
             auth.login(responseData.userId , responseData.token, "Student"); 
-        }
-
-            
-            
-           
+        }   
         }
 
         catch(err) {
