@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import MainNavigation from './common/navigation/MainNavigation';
 import Map from './showcase/Map'
@@ -66,76 +66,75 @@ if (token && role === "Admin") {
   routes = (
     
 <Switch>
-<Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-<Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
 
-<Route path="/" exact>
-        <Portal></Portal>
-</Route>
-
-  {/* Partie de l'école de Grand-Hallet */}
-  <Route path="/grand-hallet" exact>
-    <MainNavigation schoolLink="grand-hallet"
-    schoolLogo="img/Grand-Hallet_blanc.png" />
-
-    <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
-    caroussel2="img/Grand-Hallet-photo_1.jpg" 
-    caroussel3="img/Grand-Hallet-photo_1.jpg">
-    </Home>
-
-    <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-    <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
+  <Route path="/" exact>
+          <Portal />
   </Route>
 
-  <Route path="/grand-hallet/actu" exact>
-    <MainNavigation schoolLink="grand-hallet"
-                    schoolLogo="img/Grand-Hallet_blanc.png" />
-      <News school="grand-hallet"/>
-      
-      <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-  </Route>
-  
-  <Route path="/grand-hallet/admin/add-news">
-  <MainNavigation schoolLink="grand-hallet"
-                    schoolLogo="img/Grand-Hallet_blanc.png" />
-    <NewNews schoolname="grand-hallet"></NewNews>
-  </Route>
+    {/* Partie de l'école de Grand-Hallet */}
+    <Route path="/grand-hallet" exact>
+      <MainNavigation schoolLink="grand-hallet"
+      schoolLogo="/img/Grand-Hallet_blanc.png" />
 
-  <Route path="/grand-hallet/admin/update-news/:newsId">
-  <UpdateNews schoolname="grand-hallet"></UpdateNews>
-  </Route>
+      <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
+
+      <Map lat={50.694356732800614} lng={5.038149998040227} />
+      <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
+
+    <Route path="/grand-hallet/actu" exact>
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+        <News school="grand-hallet"/>
+        
+        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
+    
+    <Route path="/grand-hallet/admin/add-news">
+      <MainNavigation schoolLink="grand-hallet"
+                        schoolLogo="/img/Grand-Hallet_blanc.png" />
+        <NewNews schoolname="grand-hallet" />
+    </Route>
+
+    <Route path="/grand-hallet/admin/update-news/:newsId">
+      <UpdateNews schoolname="grand-hallet" />
+    </Route>
 
 
-  {/* Partie de l'école de Moxhe*/}
-  <Route path="/moxhe" exact>
+    {/* Partie de l'école de Moxhe*/}
+    <Route path="/moxhe" exact>
       <MainNavigation schoolLink="moxhe" 
       actuLink="moxhe" 
-      schoolLogo="img/Moxhe_blanc.png" />
+      schoolLogo="/img/Moxhe_blanc.png" />
 
-      <Home caroussel1="img/Moxhe-photo_1.jpg" 
-            caroussel2="img/Moxhe-photo_2.jpg" 
-            caroussel3="img/Moxhe-photo_3.jpg">
-      </Home>
+      <Home caroussel1="/img/Moxhe-photo_1.jpg" 
+            caroussel2="/img/Moxhe-photo_2.jpg" 
+            caroussel3="/img/Moxhe-photo_3.jpg" />
 
-      <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
-      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
+      <Map lat={50.63151053045548} lng={5.081328142211933} />
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
     </Route>
 
     <Route  path="/moxhe/actu" exact>
       <MainNavigation schoolLink="moxhe" 
                       actuLink="moxhe" 
-                      schoolLogo="img/Moxhe_blanc.png" />
+                      schoolLogo="/img/Moxhe_blanc.png" />
       <News school="moxhe"/>
       
-      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
 
-    <Route path="/moxhe/admin">
-    <MainNavigation schoolLink="moxhe"
-                      schoolLogo="img/Moxhe_blanc.png" />
-      <NewNews schoolname="moxhe"></NewNews>
+    <Route path="/moxhe/admin/add-news">
+      <MainNavigation schoolLink="moxhe"
+                        schoolLogo="/img/Moxhe_blanc.png" />
+        <NewNews schoolname="moxhe" />
     </Route>
+    
 </Switch>
 
   );
@@ -145,74 +144,70 @@ else if (token && role === "Default") {
   routes = (
     
 <Switch>
-<Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-<Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
-<Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-<Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
     <Route path="/" exact>
-            <Portal></Portal>
+      <Portal />
     </Route>
 
       {/* Partie de l'école de Grand-Hallet */}
-      <Route path="/grand-hallet" exact>
-        <MainNavigation schoolLink="grand-hallet"
-        schoolLogo="img/Grand-Hallet_blanc.png" />
+    <Route path="/grand-hallet" exact>
+      <MainNavigation schoolLink="grand-hallet"
+      schoolLogo="/img/Grand-Hallet_blanc.png" />
 
-        <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
-        caroussel2="img/Grand-Hallet-photo_1.jpg" 
-        caroussel3="img/Grand-Hallet-photo_1.jpg">
-        </Home>
+      <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
 
-        <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
+      <Map lat={50.694356732800614} lng={5.038149998040227} />
+      <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-      <Route path="/grand-hallet/actu" exact>
-        <MainNavigation schoolLink="grand-hallet"
-                        schoolLogo="img/Grand-Hallet_blanc.png" />
-          <News school="grand-hallet"/>
-          
-          <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
+    <Route path="/grand-hallet/actu" exact>
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+        <News school="grand-hallet"/>
+        
+        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-      <Route path="/grand-hallet/espace-prof">
-    <MainNavigation schoolLink="grand-hallet"
-                      schoolLogo="img/Grand-Hallet_blanc.png" />
-      
+    <Route path="/grand-hallet/espace-prof">
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
     </Route>
       
 
 
       {/* Partie de l'école de Moxhe*/}
-      <Route path="/moxhe" exact>
-          <MainNavigation schoolLink="moxhe" 
-          actuLink="moxhe" 
-          schoolLogo="img/Moxhe_blanc.png" />
+    <Route path="/moxhe" exact>
+      <MainNavigation schoolLink="moxhe" 
+      actuLink="moxhe" 
+      schoolLogo="/img/Moxhe_blanc.png" />
 
-          <Home caroussel1="img/Moxhe-photo_1.jpg" 
-                caroussel2="img/Moxhe-photo_2.jpg" 
-                caroussel3="img/Moxhe-photo_3.jpg">
-          </Home>
+      <Home caroussel1="/img/Moxhe-photo_1.jpg" 
+            caroussel2="/img/Moxhe-photo_2.jpg" 
+            caroussel3="/img/Moxhe-photo_3.jpg" />
 
-          <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
-        </Route>
+      <Map lat={50.63151053045548} lng={5.081328142211933} />
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-        <Route  path="/moxhe/actu" exact>
-          <MainNavigation schoolLink="moxhe" 
-                          actuLink="moxhe" 
-                          schoolLogo="img/Moxhe_blanc.png" />
-          <News school="moxhe"/>
-          
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
-        </Route>
-
-        <Route path="/moxhe/espace-prof">
-    <MainNavigation schoolLink="moxhe"
-                      schoolLogo="img/Moxhe_blanc.png" />
+    <Route  path="/moxhe/actu" exact>
+      <MainNavigation schoolLink="moxhe" 
+                      actuLink="moxhe" 
+                      schoolLogo="/img/Moxhe_blanc.png" />
+      <News school="moxhe"/>
       
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
+    </Route>
+
+    <Route path="/moxhe/espace-prof">
+      <MainNavigation schoolLink="moxhe"
+                      schoolLogo="/img/Moxhe_blanc.png" />
     </Route>
 
 
@@ -225,76 +220,71 @@ else if (token && role === "Student") {
   routes = (
     
 <Switch>
-<Redirect from="/grand-hallet/login/parent-eleve" to="/grand-hallet" />
-<Redirect from="/moxhe/login/parent-eleve" to="/moxhe" />
+  <Redirect from="/grand-hallet/login/parent-eleve" to="/grand-hallet" />
+  <Redirect from="/moxhe/login/parent-eleve" to="/moxhe" />
 
-<Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-<Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
-    <Route path="/" exact>
-            <Portal></Portal>
+  <Route path="/" exact>
+    <Portal />
+  </Route>
+
+    {/* Partie de l'école de Grand-Hallet */}
+    <Route path="/grand-hallet" exact>
+      <MainNavigation schoolLink="grand-hallet"
+      schoolLogo="/img/Grand-Hallet_blanc.png" />
+
+      <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
+
+      <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
+      <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
 
-      {/* Partie de l'école de Grand-Hallet */}
-      <Route path="/grand-hallet" exact>
-        <MainNavigation schoolLink="grand-hallet"
-        schoolLogo="img/Grand-Hallet_blanc.png" />
-
-        <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
-        caroussel2="img/Grand-Hallet-photo_1.jpg" 
-        caroussel3="img/Grand-Hallet-photo_1.jpg">
-        </Home>
-
-        <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
-
-      <Route path="/grand-hallet/actu" exact>
-        <MainNavigation schoolLink="grand-hallet"
-                        schoolLogo="img/Grand-Hallet_blanc.png" />
-          <News school="grand-hallet"/>
-          
-          <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
-
-      <Route path="/grand-hallet/espace-eleve">
-    <MainNavigation schoolLink="grand-hallet"
-                      schoolLogo="img/Grand-Hallet_blanc.png" />
-      
-    </Route>
-      
-
-
-      {/* Partie de l'école de Moxhe*/}
-      <Route path="/moxhe" exact>
-          <MainNavigation schoolLink="moxhe" 
-          actuLink="moxhe" 
-          schoolLogo="img/Moxhe_blanc.png" />
-
-          <Home caroussel1="img/Moxhe-photo_1.jpg" 
-                caroussel2="img/Moxhe-photo_2.jpg" 
-                caroussel3="img/Moxhe-photo_3.jpg">
-          </Home>
-
-          <Map lat={50.63151053045548} lng={5.081328142211933}></Map>
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
-        </Route>
-
-        <Route  path="/moxhe/actu" exact>
-          <MainNavigation schoolLink="moxhe" 
-                          actuLink="moxhe" 
-                          schoolLogo="img/Moxhe_blanc.png" />
-          <News school="moxhe"/>
-          
-          <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
-        </Route>
-
-        <Route path="/moxhe/espace-eleve">
-    <MainNavigation schoolLink="moxhe"
-                      schoolLogo="img/Moxhe_blanc.png" />
-      
+    <Route path="/grand-hallet/actu" exact>
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+        <News school="grand-hallet"/>
+        
+        <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
 
+    <Route path="/grand-hallet/espace-eleve">
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+    </Route>
+    
+
+
+    {/* Partie de l'école de Moxhe*/}
+    <Route path="/moxhe" exact>
+      <MainNavigation schoolLink="moxhe" 
+      actuLink="moxhe" 
+      schoolLogo="/img/Moxhe_blanc.png" />
+
+      <Home caroussel1="/img/Moxhe-photo_1.jpg" 
+            caroussel2="/img/Moxhe-photo_2.jpg" 
+            caroussel3="/img/Moxhe-photo_3.jpg" />
+
+      <Map lat={50.63151053045548} lng={5.081328142211933} />
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
+
+    <Route  path="/moxhe/actu" exact>
+      <MainNavigation schoolLink="moxhe" 
+                      actuLink="moxhe" 
+                      schoolLogo="/img/Moxhe_blanc.png" />
+      <News school="moxhe"/>
+      
+      <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
+    </Route>
+
+    <Route path="/moxhe/espace-eleve">
+      <MainNavigation schoolLink="moxhe"
+                      schoolLogo="/img/Moxhe_blanc.png" />
+    </Route>
 
 </Switch>
 
@@ -309,99 +299,96 @@ else {
 
   {/* Porail de redirection */}
   <Route path="/" exact>
-      <Portal></Portal>
+      <Portal />
   </Route>
 
-      {/* Partie de l'école de Grand-Hallet */}
-      <Route path="/grand-hallet" exact>
-        <MainNavigation schoolLink="grand-hallet"
-        schoolLogo="img/Grand-Hallet_blanc.png" />
+    {/* Partie de l'école de Grand-Hallet */}
+    <Route path="/grand-hallet" exact>
+    <MainNavigation schoolLink="grand-hallet"
+    schoolLogo="/img/Grand-Hallet_blanc.png" />
 
-        <Home caroussel1="img/Grand-Hallet-photo_1.jpg" 
-        caroussel2="img/Grand-Hallet-photo_2.jpg" 
-        caroussel3="img/Grand-Hallet-photo_3.jpg">
-        </Home>
+    <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
+    caroussel2="/img/Grand-Hallet-photo_2.jpg" 
+    caroussel3="/img/Grand-Hallet-photo_3.jpg" />
 
-        <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-        <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
+    <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
+    <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-      <Route path="/grand-hallet/actu" exact>
-        <MainNavigation schoolLink="grand-hallet"
-                        schoolLogo="img/Grand-Hallet_blanc.png" />
-          <News school="grand-hallet"/>
-          
-          <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"></Footer>
-      </Route>
+    <Route path="/grand-hallet/actu" exact>
+    <MainNavigation schoolLink="grand-hallet"
+                    schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <News school="grand-hallet"/>
+      
+      <Map lat={50.694356732800614} lng={5.038149998040227} />
+      <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-      <Route path="/grand-hallet/login/parent-eleve">
-        <MainNavigation schoolLink="grand-hallet"
-                        schoolLogo="img/Grand-Hallet_blanc.png" />
-          <Auth connexiontitle_1=""
-                connexiontitle_2=""
-                schoolname="grand-hallet"
-                usertype="students"
-                usertypeId="studentId" 
-                usertypefr="élèves ainsi qu'à leurs parents"/>
-      </Route>
+    <Route path="/grand-hallet/login/parent-eleve">
+    <MainNavigation schoolLink="grand-hallet"
+                    schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <Auth connexiontitle_1=""
+            connexiontitle_2=""
+            schoolname="grand-hallet"
+            usertype="students"
+            usertypeId="studentId" 
+            usertypefr="élèves ainsi qu'à leurs parents" />
+    </Route>
 
-      <Route path="/grand-hallet/login/prof">
-        <MainNavigation schoolLink="grand-hallet"
-          schoolLogo="img/Grand-Hallet_blanc.png" />
-          <Auth connexiontitle_1=""
-                connexiontitle_2=""
-                schoolname="grand-hallet"
-                usertype="teachers"
-                usertypeId="teacherId"
-                usertypefr="enseignants" />
-      </Route>
+    <Route path="/grand-hallet/login/prof">
+    <MainNavigation schoolLink="grand-hallet"
+      schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <Auth connexiontitle_1=""
+            connexiontitle_2=""
+            schoolname="grand-hallet"
+            usertype="teachers"
+            usertypeId="teacherId"
+            usertypefr="enseignants" />
+    </Route>
 
 
-      {/* Partie de l'école de Moxhe*/}
-      <Route path="/moxhe" exact>
-          <MainNavigation schoolLink="moxhe" 
-          actuLink="moxhe" 
-          schoolLogo="img/Moxhe_blanc.png" />
+    {/* Partie de l'école de Moxhe*/}
+    <Route path="/moxhe" exact>
+      <MainNavigation schoolLink="moxhe" 
+      actuLink="moxhe" 
+      schoolLogo="/img/Moxhe_blanc.png" />
 
-          <Home caroussel1="img/Moxhe-photo_1.jpg" 
-                caroussel2="img/Moxhe-photo_2.jpg" 
-                caroussel3="img/Moxhe-photo_3.jpg">
-          </Home>
+      <Home caroussel1="/img/Moxhe-photo_1.jpg" 
+            caroussel2="/img/Moxhe-photo_2.jpg" 
+            caroussel3="/img/Moxhe-photo_3.jpg" />
 
-          <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"></Footer>
-        </Route>
+      <Map lat={50.694356732800614} lng={5.038149998040227} />
+      <Footer title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+    </Route>
 
-        <Route  path="/moxhe/actu" exact>
-          <MainNavigation schoolLink="moxhe" 
-                          actuLink="moxhe" 
-                          schoolLogo="img/Moxhe_blanc.png" />
-          <News school="moxhe"/>
-          
-          <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
-          <Footer title="École Fondamentale de Moxhe" addresse="Rue Tombeu 7"></Footer>
-        </Route>
+    <Route  path="/moxhe/actu" exact>
+      <MainNavigation schoolLink="moxhe" 
+                      actuLink="moxhe" 
+                      schoolLogo="/img/Moxhe_blanc.png" />
+      <News school="moxhe"/>
+    
+      <Footer title="École Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
+    </Route>
 
-        <Route path="/moxhe/login/parent-eleve">
-            <MainNavigation schoolLink="moxhe"
-              schoolLogo="img/Moxhe_blanc.png" />
-              <Auth connexiontitle_1=""
-                    connexiontitle_2=""
-                    schoolname="moxhe"
-                    usertype="students"
-                    usertypefr="élèves ainsi qu'à leurs parents" />
-          </Route>
+    <Route path="/moxhe/login/parent-eleve">
+      <MainNavigation schoolLink="moxhe"
+        schoolLogo="/img/Moxhe_blanc.png" />
+        <Auth connexiontitle_1=""
+              connexiontitle_2=""
+              schoolname="moxhe"
+              usertype="students"
+              usertypefr="élèves ainsi qu'à leurs parents" />
+    </Route>
 
-          <Route path="/moxhe/login/prof">
-            <MainNavigation schoolLink="moxhe"
-                            schoolLogo="img/Moxhe_blanc.png" />
-              <Auth connexiontitle_1=""
-                    connexiontitle_2=""
-                    schoolname="moxhe"
-                    usertype="teachers"
-                    usertypefr="enseignants"/>
-          </Route>
+    <Route path="/moxhe/login/prof">
+      <MainNavigation schoolLink="moxhe"
+                      schoolLogo="/img/Moxhe_blanc.png" />
+        <Auth connexiontitle_1=""
+              connexiontitle_2=""
+              schoolname="moxhe"
+              usertype="teachers"
+              usertypefr="enseignants"/>
+  </Route>
 
 </Switch>
 

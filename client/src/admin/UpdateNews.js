@@ -92,7 +92,7 @@ const UpdateNews = props => {
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.schoolname + '/admin');
+			history.push('/' + props.schoolname + '/actu');
 		}
 		catch(err) {}
 	};
@@ -154,12 +154,13 @@ return (
 				initialValue={loadedNews.date}
 				initialValid={true}
 			/>
+			{/*
 			 <ImageUpload 
 					id="image" 
 					onInput={inputHandler}
 					errorText="Veillez entrer une image"
 					initialValid={true} />
-
+			*/}
 
 			<Button type="submit" disabled={!formState.isValid}>
 				Mettre à jour l'actualité

@@ -40,8 +40,14 @@ const News = props => {
 
     return (
         <React.Fragment>
-
+            
             <ErrorModal error={error} onClear={clearError} />
+
+            {auth.isLoggedIn && auth.role == "Admin" &&
+            <a href={`/${props.school}/admin/add-news`}>
+                <img className='red-plus-add-news' src='/svg/red-plus.svg'></img>
+            </a>}
+
             {isLoading && 
             <div className='center'>
                 <LoadingSpinner />

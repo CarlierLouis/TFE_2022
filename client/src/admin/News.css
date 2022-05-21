@@ -13,4 +13,14 @@
     text-align: center;
   }
 
- 
+ .red-plus-add-news {
+  width: 50px;
+  margin-left: 1%;
+  transition: transform 0.5s; 
+  margin-top: 0.4%;
+  position: fixed;
+ }
+
+ .red-plus-add-news:hover {
+    transform: scale(1.2);
+ }

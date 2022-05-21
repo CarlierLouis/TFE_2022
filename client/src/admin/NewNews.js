@@ -56,7 +56,7 @@ const NewNews = props => {
 				formData,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			history.push(`/${props.schoolname}`);
+			history.push(`/${props.schoolname}/actu`);
 		}
 		catch(err) {}
 	};

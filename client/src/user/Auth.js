@@ -66,11 +66,9 @@ const Auth = props => {
                 if (element._id == responseData.userId) {
                     if (element.role == "Default") {
                     auth.login(responseData.userId , responseData.token, "Default"); 
-                    console.log("c'est un prof");
                     }
                     else if (element.role == "Admin") {
                         auth.login(responseData.userId , responseData.token, "Admin"); 
-                        console.log("c'est un admin");
                     }
                 }
             });

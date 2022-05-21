@@ -108,10 +108,9 @@ const updateNews = async (req, res, next) => {
     news.title = title;
     news.description = description;
     news.date = date;
-    news.image = req.file.path;
 
     try {
-        await news.save();  
+        await news.save();
     }
     catch(err){
         const error = new HttpError(
