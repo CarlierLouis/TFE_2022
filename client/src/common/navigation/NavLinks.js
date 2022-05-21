@@ -38,9 +38,9 @@ const NavLinks = props => {
             <NavLink to={"/" + props.schoolLink + "/admin"} exact>Admin</NavLink>
         </li>}
 
-        {auth.isLoggedIn && auth.role == "Default" &&
+        {auth.isLoggedIn && auth.role == "Default" || auth.role == "Admin" &&
         <li>
-            <NavLink to={"/" + props.schoolLink + "/espace-prof"} exact>Espace personnel</NavLink>
+            <NavLink to={"/" + props.schoolLink + "/espace-prof"} exact>Espace prof</NavLink>
         </li>}
 
         {auth.isLoggedIn && auth.role == "Student" &&
