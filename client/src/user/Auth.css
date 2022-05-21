@@ -17,12 +17,11 @@
 }
 
 .question-auth {
-    width: 3%;
+    width: 50px;
     position: fixed;
     bottom: 0;
     transition: transform 0.5s; 
-    margin-left: 1%;
-    margin-left: 95%;
+    margin-left: 96%;
     margin-bottom: 0.5%;
 }
 
@@ -38,6 +37,6 @@
 
 @media (max-width: 820px) {
     .question-auth {
-        display: none;
+        margin-left: 85%;
     }
 }

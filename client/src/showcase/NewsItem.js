@@ -101,13 +101,13 @@ const closeMoreHandler = () => {
               <h3>{descriptionText}
                 <button className='seemore' style={seemore} onClick={openMoreHandler}>&nbsp; voir plus</button>
               </h3>
-              {auth.isLoggedIn && auth.role == "Admin" &&
+              {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
               <hr></hr>
               }
-              {auth.isLoggedIn && auth.role == "Admin" &&
+              {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
               <a href={`/${props.school}/admin/update-news/${props.id}`} className='update-news-link'>Mettre à jour</a>
               }
-              {auth.isLoggedIn && auth.role == "Admin" &&
+              {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
               <button onClick={showDeleteWarningHandler} className='delete-news-link'>Supprimer</button>
               }
             </div>

@@ -24,7 +24,9 @@
   padding: 0.5rem;
   transition: all 0.5s ease;
   padding-bottom: 16px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 
 .nav-links a:hover,
 .nav-links a:active,

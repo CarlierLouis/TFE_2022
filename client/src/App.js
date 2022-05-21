@@ -82,6 +82,8 @@ if (token && role === "Admin") {
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
       caroussel3="/img/Grand-Hallet-photo_1.jpg" />
+      
+      <News school="grand-hallet" numberofnews="3"/>
 
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
@@ -90,7 +92,7 @@ if (token && role === "Admin") {
     <Route path="/grand-hallet/actu" exact>
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-        <News school="grand-hallet"/>
+        <News school="grand-hallet" numberofnews="200"/>
         
         <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -118,6 +120,8 @@ if (token && role === "Admin") {
             caroussel2="/img/Moxhe-photo_2.jpg" 
             caroussel3="/img/Moxhe-photo_3.jpg" />
 
+      <News school="moxhe" numberofnews="3"/>
+
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -126,7 +130,7 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="moxhe" 
                       actuLink="moxhe" 
                       schoolLogo="/img/Moxhe_blanc.png" />
-      <News school="moxhe"/>
+      <News school="moxhe" numberofnews="200"/>
       
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
@@ -134,7 +138,6 @@ if (token && role === "Admin") {
     <Route path="/moxhe/admin/add-news">
       <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
-        <NewNews schoolname="moxhe" />
     </Route>
 
     <Route path="/moxhe/admin/update-news/:newsId">
@@ -171,6 +174,8 @@ else if (token && role === "Default") {
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
       caroussel3="/img/Grand-Hallet-photo_1.jpg" />
 
+    <News school="grand-hallet" numberofnews="3"/>
+
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -178,7 +183,7 @@ else if (token && role === "Default") {
     <Route path="/grand-hallet/actu" exact>
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-        <News school="grand-hallet"/>
+      <News school="grand-hallet" numberofnews="200"/>
         
         <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -200,6 +205,8 @@ else if (token && role === "Default") {
             caroussel2="/img/Moxhe-photo_2.jpg" 
             caroussel3="/img/Moxhe-photo_3.jpg" />
 
+      <News school="moxhe" numberofnews="3"/>
+
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -208,7 +215,7 @@ else if (token && role === "Default") {
       <MainNavigation schoolLink="moxhe" 
                       actuLink="moxhe" 
                       schoolLogo="/img/Moxhe_blanc.png" />
-      <News school="moxhe"/>
+      <News school="moxhe" numberofnews="200"/>
       
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
@@ -247,6 +254,8 @@ else if (token && role === "Student") {
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
       caroussel3="/img/Grand-Hallet-photo_1.jpg" />
 
+    <News school="grand-hallet" numberofnews="3"/>
+
       <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -254,7 +263,7 @@ else if (token && role === "Student") {
     <Route path="/grand-hallet/actu" exact>
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-        <News school="grand-hallet"/>
+        <News school="grand-hallet" numberofnews="200"/>
         
         <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -276,6 +285,8 @@ else if (token && role === "Student") {
             caroussel2="/img/Moxhe-photo_2.jpg" 
             caroussel3="/img/Moxhe-photo_3.jpg" />
 
+    <News school="moxhe" numberofnews="3"/>
+
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -284,7 +295,7 @@ else if (token && role === "Student") {
       <MainNavigation schoolLink="moxhe" 
                       actuLink="moxhe" 
                       schoolLogo="/img/Moxhe_blanc.png" />
-      <News school="moxhe"/>
+      <News school="moxhe" numberofnews="200"/>
       
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
@@ -319,6 +330,8 @@ else {
     caroussel2="/img/Grand-Hallet-photo_2.jpg" 
     caroussel3="/img/Grand-Hallet-photo_3.jpg" />
 
+    <News school="grand-hallet" numberofnews="3"/>
+
     <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
     <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -326,7 +339,7 @@ else {
     <Route path="/grand-hallet/actu" exact>
     <MainNavigation schoolLink="grand-hallet"
                     schoolLogo="/img/Grand-Hallet_blanc.png" />
-      <News school="grand-hallet"/>
+      <News school="grand-hallet"  numberofnews="200"/>
       
       <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -364,6 +377,8 @@ else {
             caroussel2="/img/Moxhe-photo_2.jpg" 
             caroussel3="/img/Moxhe-photo_3.jpg" />
 
+    <News school="moxhe"  numberofnews="3"/>
+
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
     </Route>
@@ -372,7 +387,7 @@ else {
       <MainNavigation schoolLink="moxhe" 
                       actuLink="moxhe" 
                       schoolLogo="/img/Moxhe_blanc.png" />
-      <News school="moxhe"/>
+      <News school="moxhe"  numberofnews="200"/>
 
       <Footer title="École Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
