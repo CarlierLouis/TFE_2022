@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import Card from '../common/UIElements/Card';
+import News from './News';
 
 import './Home.css';
 
@@ -57,7 +58,7 @@ Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt
 Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. 
 Curabitur eu amet. »</a></Card><br></br>
 
-
+<News school={props.school} numberofnews={props.numberofnews}/>
 
 </div>
 

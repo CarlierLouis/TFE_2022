@@ -81,9 +81,10 @@ if (token && role === "Admin") {
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
-      
-      <News school="grand-hallet" numberofnews="3"/>
+      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      school="grand-hallet"
+      numberofnews="3" />
+    
 
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
@@ -118,9 +119,8 @@ if (token && role === "Admin") {
 
       <Home caroussel1="/img/Moxhe-photo_1.jpg" 
             caroussel2="/img/Moxhe-photo_2.jpg" 
-            caroussel3="/img/Moxhe-photo_3.jpg" />
-
-      <News school="moxhe" numberofnews="3"/>
+            caroussel3="/img/Moxhe-photo_3.jpg"
+            school="moxhe" numberofnews="3" />
 
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
@@ -172,9 +172,8 @@ else if (token && role === "Default") {
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
-
-    <News school="grand-hallet" numberofnews="3"/>
+      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      school="grand-hallet" numberofnews="3" />
 
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
@@ -203,9 +202,8 @@ else if (token && role === "Default") {
 
       <Home caroussel1="/img/Moxhe-photo_1.jpg" 
             caroussel2="/img/Moxhe-photo_2.jpg" 
-            caroussel3="/img/Moxhe-photo_3.jpg" />
-
-      <News school="moxhe" numberofnews="3"/>
+            caroussel3="/img/Moxhe-photo_3.jpg"
+            school="moxhe" numberofnews="3" />
 
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
@@ -252,9 +250,8 @@ else if (token && role === "Student") {
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
       caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg" />
-
-    <News school="grand-hallet" numberofnews="3"/>
+      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      school="grand-hallet" numberofnews="3" />
 
       <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
       <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
@@ -283,9 +280,8 @@ else if (token && role === "Student") {
 
       <Home caroussel1="/img/Moxhe-photo_1.jpg" 
             caroussel2="/img/Moxhe-photo_2.jpg" 
-            caroussel3="/img/Moxhe-photo_3.jpg" />
-
-    <News school="moxhe" numberofnews="3"/>
+            caroussel3="/img/Moxhe-photo_3.jpg"
+            school="moxhe" numberofnews="3" />
 
       <Map lat={50.63151053045548} lng={5.081328142211933} />
       <Footer title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
@@ -328,9 +324,9 @@ else {
 
     <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
     caroussel2="/img/Grand-Hallet-photo_2.jpg" 
-    caroussel3="/img/Grand-Hallet-photo_3.jpg" />
+    caroussel3="/img/Grand-Hallet-photo_3.jpg"
+    school="grand-hallet" numberofnews="3" />
 
-    <News school="grand-hallet" numberofnews="3"/>
 
     <Map lat={50.694356732800614} lng={5.038149998040227} ></Map>
     <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
@@ -375,9 +371,8 @@ else {
 
       <Home caroussel1="/img/Moxhe-photo_1.jpg" 
             caroussel2="/img/Moxhe-photo_2.jpg" 
-            caroussel3="/img/Moxhe-photo_3.jpg" />
-
-    <News school="moxhe"  numberofnews="3"/>
+            caroussel3="/img/Moxhe-photo_3.jpg"
+            school="moxhe"  numberofnews="3" />
 
       <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
