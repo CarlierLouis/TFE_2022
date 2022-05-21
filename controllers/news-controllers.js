@@ -11,7 +11,7 @@ const getNews = async (req, res, next) => {
 
     let news;
     try {
-        news = await News.find({school: school}).sort({date: 'desc'});
+        news = await News.find({school: school})
     }
     catch(err) {
         const error = new HttpError(

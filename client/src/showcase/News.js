@@ -52,7 +52,9 @@ const News = props => {
             <div className='center'>
                 <LoadingSpinner />
             </div>}
-            {!isLoading && loadedNews && <NewsList items={loadedNews.slice(0,parseInt(props.numberofnews))} school={props.school} />}
+            {!isLoading && loadedNews && 
+            <NewsList items={loadedNews.reverse().slice(0,parseInt(props.numberofnews))} school={props.school} 
+            />}
         </React.Fragment>
     );
 }

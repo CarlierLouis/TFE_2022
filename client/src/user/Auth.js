@@ -69,17 +69,17 @@ const Auth = props => {
                 responseData2.teachers.forEach(element => {
                 if (element._id == responseData.userId) {
                     if (element.role == "Default") {
-                    auth.login(responseData.userId , responseData.token, "Default"); 
+                        auth.login(responseData.userId , responseData.token, "Default"); 
                     }
                     else if (element.role == "Admin") {
                         auth.login(responseData.userId , responseData.token, "Admin"); 
                     }
                 }
-            });
-        }
-        else {
-            auth.login(responseData.userId , responseData.token, "Student"); 
-        }   
+                });
+            }
+            else {
+                auth.login(responseData.userId , responseData.token, "Student"); 
+            }   
         }
 
         catch(err) {
