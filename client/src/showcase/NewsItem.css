@@ -85,6 +85,7 @@
 
 .update-news-link:hover {
   color: white;
+  padding: 1%
 }
 
 .delete-news-link {
@@ -98,6 +99,13 @@
 
 .delete-news-link:hover {
   color: white;
+  background-color: #628699;
+}
+
+.news-item__modal-actions {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
 }
 
 

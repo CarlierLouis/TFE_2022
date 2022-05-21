@@ -102,6 +102,8 @@ if (token && role === "Admin") {
     </Route>
 
     <Route path="/grand-hallet/admin/update-news/:newsId">
+    <MainNavigation schoolLink="grand-hallet"
+                        schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateNews schoolname="grand-hallet" />
     </Route>
 
@@ -133,6 +135,12 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
         <NewNews schoolname="moxhe" />
+    </Route>
+
+    <Route path="/moxhe/admin/update-news/:newsId">
+    <MainNavigation schoolLink="moxhe"
+                        schoolLogo="/img/Moxhe_blanc.png" />
+      <UpdateNews schoolname="moxhe" />
     </Route>
     
 </Switch>
@@ -366,7 +374,7 @@ else {
                       actuLink="moxhe" 
                       schoolLogo="/img/Moxhe_blanc.png" />
       <News school="moxhe"/>
-    
+
       <Footer title="École Fondamentale de Moxhe" addresse="Rue Tombeu 7" />
     </Route>
 

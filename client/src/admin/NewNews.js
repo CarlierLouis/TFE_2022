@@ -64,6 +64,7 @@ const NewNews = props => {
     return (
 		<React.Fragment>
 			<ErrorModal error={error} onClear={clearError} />
+			<br></br>
 			<form className="news-form" onSubmit={newsSubmitHandler}>
 				<h2 className='form-news-title'>Créer une nouvelle actualité</h2>
 				{isLoading && <LoadingSpinner asOverlay />}

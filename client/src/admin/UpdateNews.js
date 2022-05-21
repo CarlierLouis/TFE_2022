@@ -118,6 +118,7 @@ const UpdateNews = props => {
 return (
 	<React.Fragment>
 		<ErrorModal error={error} onClear={clearError} />
+		<br></br>
 		{!isLoading && loadedNews && 
 		<form 
 			className="news-form" 

@@ -1,15 +1,18 @@
 import React, { useState, useContext } from 'react';
 import Modal from '../common/UIElements/Modal';
 import Button from '../common/FormElements/Button';
-
 import Card from '../common/UIElements/Card';
 import { AuthContext } from '../common/context/auth-context';
+import { useHttpClient } from '../common/hooks/http-hook';
+import ErrorModal from '../common/UIElements/ErrorModal';
 
 import './NewsItem.css';
 
 const NewsItem = props => {
   const auth = useContext(AuthContext);
   const [showMore, setShowMore] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const {isLoading, error, sendRequest, clearError} = useHttpClient();
 
   const openMoreHandler = () => {
     setShowMore(true);
@@ -32,14 +35,62 @@ const closeMoreHandler = () => {
   }
 
 
+  const showDeleteWarningHandler = () => {
+		setShowConfirmModal(true);
+	};
+
+	const cancelDeleteHandler = () => {
+		setShowConfirmModal(false);
+	};
+
+  const confirmDeleteHandler = async () => {
+		setShowConfirmModal(false);
+		try {
+			await sendRequest(
+				process.env.REACT_APP_BACKEND_URL + `/api/news/${props.id}`,
+				'DELETE',
+				null,
+				{Authorization: 'Bearer ' + auth.token}
+			);
+			props.onDelete(props.id);
+		}
+		catch(err) {}
+    
+    if (!error) {
+    refreshPage();
+    }
+	};
+
+  const refreshPage = ()=>{
+    window.location.reload(true);
+ }
+  
   return (
     <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
       <Modal className='question-modal'
           show={showMore}
           onCancel={closeMoreHandler}
           footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-                      {props.description}
+          {props.description}
         </Modal>
+
+        <Modal 
+          show={showConfirmModal}
+          onCancel={cancelDeleteHandler}
+          header="Are you sure?" 
+          footerClass="news-item__modal-actions" 
+          footer={
+          <React.Fragment>
+            <Button inverse onClick={cancelDeleteHandler}>Annuler</Button>
+            <Button danger onClick={confirmDeleteHandler}>Supprimer</Button>
+          </React.Fragment>
+				  }>
+				<p>
+				Êtes-vous certain.e de vouloir supprimer cette actualité ?
+				Cett action entraînera la suppression irréversible de celle-ci !
+				</p>
+			</Modal>
 
       <li className="news-item">
         <Card className="news-item__content">
@@ -57,7 +108,7 @@ const closeMoreHandler = () => {
               <a href={`/${props.school}/admin/update-news/${props.id}`} className='update-news-link'>Mettre à jour</a>
               }
               {auth.isLoggedIn && auth.role == "Admin" &&
-              <a className='delete-news-link'>Supprimer</a>
+              <button onClick={showDeleteWarningHandler} className='delete-news-link'>Supprimer</button>
               }
             </div>
         </Card>
