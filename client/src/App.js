@@ -328,7 +328,6 @@ else {
                     schoolLogo="/img/Grand-Hallet_blanc.png" />
       <News school="grand-hallet"/>
       
-      <Map lat={50.694356732800614} lng={5.038149998040227} />
       <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
 

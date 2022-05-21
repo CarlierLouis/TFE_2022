@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import './NavLinks.css';
 
@@ -50,7 +50,7 @@ const NavLinks = props => {
 
         {auth.isLoggedIn &&
         <li>
-            <button onClick={auth.logout}>Se déconnecter</button>
+            <button onClick={auth.logout}><Link to={"/" + props.schoolLink} exact>Se déconnecter</Link></button>
         </li>}
     </ul>
 };

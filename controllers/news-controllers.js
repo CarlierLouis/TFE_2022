@@ -135,6 +135,8 @@ const deleteNews =  async (req, res, next) => {
         return next(error);
     }
 
+    const imagePath = news.image;
+
     try {
         await news.remove();
     } 
@@ -144,7 +146,11 @@ const deleteNews =  async (req, res, next) => {
         return next(error);
     }
 
-  res.status(200).json({ message: 'Actualité supprimée' });
+    fs.unlink(imagePath, err => {
+        console.log(err);
+    });
+
+    res.status(200).json({ message: 'Actualité supprimée' });
 }
 
 exports.getNews = getNews;

@@ -55,7 +55,7 @@ const closeMoreHandler = () => {
 			props.onDelete(props.id);
 		}
 		catch(err) {}
-    
+
     if (!error) {
     refreshPage();
     }
@@ -78,7 +78,7 @@ const closeMoreHandler = () => {
         <Modal 
           show={showConfirmModal}
           onCancel={cancelDeleteHandler}
-          header="Are you sure?" 
+          header="Êtes-vous sûr(e) ?" 
           footerClass="news-item__modal-actions" 
           footer={
           <React.Fragment>
@@ -87,8 +87,8 @@ const closeMoreHandler = () => {
           </React.Fragment>
 				  }>
 				<p>
-				Êtes-vous certain.e de vouloir supprimer cette actualité ?
-				Cett action entraînera la suppression irréversible de celle-ci !
+				Êtes-vous certain(e) de vouloir supprimer cette actualité ?
+				Cette action entraînera la suppression irréversible de celle-ci !
 				</p>
 			</Modal>
 
