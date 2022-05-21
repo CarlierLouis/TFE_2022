@@ -2,6 +2,8 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import Card from '../common/UIElements/Card';
 import News from './News';
+import Map from './Map';
+import Footer from './Footer';
 
 import './Home.css';
 
@@ -59,7 +61,13 @@ Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et u
 Curabitur eu amet. »</a></Card><br></br>
 
 <News school={props.school} numberofnews={props.numberofnews}/>
-
+<br></br>
+<div className='news-link'>
+  <a href={`/${props.school}/actu`}>Voir toutes les actualités</a>
+</div>
+<br></br><br></br>
+<Map lat={props.lat} lng={props.lng} />
+<Footer title={props.title} addresse={props.addresse}/>
 </div>
 
 

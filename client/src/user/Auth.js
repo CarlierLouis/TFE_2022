@@ -58,11 +58,15 @@ const Auth = props => {
                 );
 
 
-            const responseData2 = await sendRequest(`http://localhost:5000/api/${props.usertype}/${props.schoolname}`, 'GET', null,
-            {Authorization: 'Bearer ' + auth.token});
+                const responseData2 = await sendRequest( 
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.schoolname}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token});
+
+
             
             if (props.usertype == "teachers") {
-            responseData2.teachers.forEach(element => {
+                responseData2.teachers.forEach(element => {
                 if (element._id == responseData.userId) {
                     if (element.role == "Default") {
                     auth.login(responseData.userId , responseData.token, "Default"); 
