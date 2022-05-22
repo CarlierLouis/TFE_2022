@@ -58,7 +58,7 @@ const Auth = props => {
                     {'Content-Type': 'application/json'},
                 );
 
-
+                
                 const responseData2 = await sendRequest( 
                     process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.schoolname}`,
                     'GET', null,
@@ -69,16 +69,16 @@ const Auth = props => {
                 responseData2.teachers.forEach(element => {
                 if (element.id == responseData.userId) {
                     if (element.role == "Default") {
-                        auth.login(responseData.userId , responseData.token, "Default"); 
+                        auth.login(responseData.userId , responseData.token, "Default", props.schoolname); 
                     }
                     else if (element.role == "Admin") {
-                        auth.login(responseData.userId , responseData.token, "Admin"); 
+                        auth.login(responseData.userId , responseData.token, "Admin", props.schoolname); 
                     }
                 }
                 });
             }
             else {
-                auth.login(responseData.userId , responseData.token, "Student"); 
+                auth.login(responseData.userId , responseData.token, "Student", props.schoolname); 
             }   
         }
 

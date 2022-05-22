@@ -19,16 +19,18 @@ const [token, setToken] = useState(false);
 const [tokenExpirationDate, setTokenExpirationDate] = useState();
 const [userId, setUserId] = useState(false);
 const [role, setRole] = useState(false);
+const [school, setSchool] = useState(false);
 
 
-const login = useCallback((uid, token, role, expirationDate) => {
+const login = useCallback((uid, token, role, school, expirationDate) => {
     setToken(token);
     setUserId(uid);
     setRole(role);
+    setSchool(school);
     const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60); // 1hour
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem('userData', JSON.stringify(
-      {userId: uid, token: token, role: role, expiration: tokenExpirationDate.toISOString()}
+      {userId: uid, token: token, role: role, school: school, expiration: tokenExpirationDate.toISOString()}
       ));
 }, [])
   
@@ -37,6 +39,7 @@ const logout = useCallback(() => {
     setTokenExpirationDate(null);
     setUserId(null);
     setRole(null);
+    setSchool(null);
     localStorage.removeItem('userData');
 }, []);
 
@@ -55,7 +58,7 @@ useEffect(() => {
 useEffect(() => {
   const storedData = JSON.parse(localStorage.getItem('userData'));
   if (storedData && storedData.token && new Date(storedData.expiration > new Date())) {
-    login(storedData.userId, storedData.token, storedData.role);
+    login(storedData.userId, storedData.token, storedData.role, storedData.school);
   }
 }, [login]);
 
@@ -68,6 +71,13 @@ if (token && role === "Admin") {
   <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
   <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
+  {school == "grand-hallet" &&
+    <Redirect from="/moxhe" to="/grand-hallet" />
+  }
+
+  {school == "moxhe" &&
+    <Redirect from="/grand-hallet" to="/moxhe" />
+  }
 
   <Route path="/" exact>
           <Portal />
@@ -159,6 +169,14 @@ else if (token && role === "Default") {
   <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
   <Redirect from="/moxhe/login/prof" to="/moxhe" />
 
+  {school == "grand-hallet" &&
+    <Redirect from="/moxhe" to="/grand-hallet" />
+  }
+
+  {school == "moxhe" &&
+    <Redirect from="/grand-hallet" to="/moxhe" />
+  }
+
     <Route path="/" exact>
       <Portal />
     </Route>
@@ -235,6 +253,14 @@ else if (token && role === "Student") {
 
   <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
   <Redirect from="/moxhe/login/prof" to="/moxhe" />
+
+  {school == "grand-hallet" &&
+    <Redirect from="/moxhe" to="/grand-hallet" />
+  }
+
+  {school == "moxhe" &&
+    <Redirect from="/grand-hallet" to="/moxhe" />
+  }
 
   <Route path="/" exact>
     <Portal />
@@ -413,6 +439,7 @@ else {
       token: token,
       userId: userId,
       role: role,
+      school: school,
       login: login,
       logout: logout
     }}>
