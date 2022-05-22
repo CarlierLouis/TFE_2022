@@ -3,7 +3,7 @@ import { Carousel } from 'react-bootstrap';
 import Card from '../common/UIElements/Card';
 import News from './News';
 import Map from './Map';
-import Footer from './Footer';
+import Footer  from './Footer';
 
 import './Home.css';
 
@@ -59,6 +59,7 @@ Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Null
 Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. 
 Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. 
 Curabitur eu amet. »</a></Card><br></br>
+
 
 <News school={props.school} numberofnews={props.numberofnews}/>
 <br></br>

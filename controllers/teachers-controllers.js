@@ -85,7 +85,7 @@ const signup = async (req, res, next) => {
 
 // Teachers Login
 const login = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password, school } = req.body;
 
     let existingTeacher;
     try {
@@ -98,6 +98,12 @@ const login = async (req, res, next) => {
     }
 
     if (!existingTeacher) {
+        const error = new HttpError(
+            'Identifiants invalides, connexion impossible', 401)
+        return next(error);
+    };
+
+    if (existingTeacher.school != school) {
         const error = new HttpError(
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
@@ -118,6 +124,7 @@ const login = async (req, res, next) => {
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
     }
+
 
     let token;
     try {

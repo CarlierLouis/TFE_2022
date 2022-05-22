@@ -52,7 +52,8 @@ const Auth = props => {
                     'POST',
                     JSON.stringify({
                         email: formState.inputs.email.value,
-                        password: formState.inputs.password.value
+                        password: formState.inputs.password.value,
+                        school: props.schoolname
                     }),
                     {'Content-Type': 'application/json'},
                 );
@@ -64,10 +65,9 @@ const Auth = props => {
                     {Authorization: 'Bearer ' + auth.token});
 
 
-            
             if (props.usertype == "teachers") {
                 responseData2.teachers.forEach(element => {
-                if (element._id == responseData.userId) {
+                if (element.id == responseData.userId) {
                     if (element.role == "Default") {
                         auth.login(responseData.userId , responseData.token, "Default"); 
                     }

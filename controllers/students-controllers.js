@@ -84,7 +84,7 @@ const signup = async (req, res, next) => {
 
 // Students Login
 const login = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password, school } = req.body;
 
     let existingStudent;
     try {
@@ -97,6 +97,12 @@ const login = async (req, res, next) => {
     }
 
     if (!existingStudent) {
+        const error = new HttpError(
+            'Identifiants invalides, connexion impossible', 401)
+        return next(error);
+    };
+
+    if (existingStudent.school != school) {
         const error = new HttpError(
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
