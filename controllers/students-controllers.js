@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 
 const HttpError = require('../models/http-error');
 
+const nodemailer = require('../nodemailer/nodemailer.config');
+
 const Student = require('../models/student');
 const TrustedStudent = require('../models/trusted_student');
 
@@ -25,13 +27,13 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer', 500);
+            'Création du compte ratée, veillez réessayer.', 500);
         return next(error);
     }
 
     if (existingStudent) {
         const error = new HttpError(
-            'Email déjà utilisé, veillez réesser avec un autre email', 422);
+            'Email déjà utilisé, veillez réesser avec un autre email.', 422);
         return next(error);
     }
 
@@ -41,7 +43,7 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer', 500);
+            'Création du compte ratée, veillez réessayer.', 500);
         return next(error);
     }
 
@@ -53,7 +55,7 @@ const signup = async (req, res, next) => {
     
     if (existingTrustedStudent.school != school) {
         const error = new HttpError(
-            'Vous ne pouvez pas vous créer de compte dans cette école.', 401)
+            'Vous ne pouvez pas vous créer de compte dans cette école !', 401)
         return next(error);
     };
 
@@ -68,6 +70,13 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
+    // email conformation 
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let emailConfirmationToken = '';
+    for (let i = 0; i < 25; i++) {
+        emailConfirmationToken += characters[Math.floor(Math.random() * characters.length )];
+    }
+
 
     const createdStudent = new Student ({
         email, 
@@ -75,7 +84,8 @@ const signup = async (req, res, next) => {
         firstname,
         password: hashedPassword,
         school, 
-        classyear: existingTrustedStudent.classyear
+        classyear: existingTrustedStudent.classyear,
+        confirmationCode: emailConfirmationToken
     });
 
     try {
@@ -85,6 +95,13 @@ const signup = async (req, res, next) => {
         const error = new HttpError('Création du compte ratée, veillez réessayer plus tard.', 500);
         return next(error);
     } 
+
+    nodemailer.sendConfirmationEmail(
+        createdStudent.firstname,
+        createdStudent.email,
+        "students",
+        createdStudent.confirmationCode
+    );
 
     let token;
     try {
@@ -147,6 +164,12 @@ const login = async (req, res, next) => {
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
     }
+
+    if (existingStudent.status != "Active") {
+        const error = new HttpError(
+           'Création du compte en attente. Vérifiez vos emails !', 401)
+        return next(error);
+    };
 
     let token;
     try {
@@ -258,8 +281,42 @@ const deleteStudent = async (req, res, next) => {
     res.status(200).json({ message: 'Compte supprimé' })
 }
 
+const verifyEmail = async (req, res, next) => {
+    const confirmationCode = req.params.code;
+ 
+    let student;
+     try {
+         student = await Student.findOne({confirmationCode: confirmationCode});
+     }
+     catch(err) {
+         const error = new HttpError(
+             'Quelque chose ne s\'est pas passé comme prévu', 500);
+         return next(error);
+     }
+     if (!student) {
+         const error = new HttpError(
+             'utlisateur non trouvé !', 404);
+         return next(error);
+     }
+ 
+     student.status = "Active";
+ 
+     try {
+         await student.save();
+     }
+     catch(err){
+         const error = new HttpError(
+             'Quelque chose ne s\'est pas passé comme prévu', 500);
+         return next(error);
+     }
+ 
+     res.json({student: student.toObject({getters: true})})
+ 
+ };
+
 exports.signup = signup;
 exports.login = login;
 exports.getStudents = getStudents;
 exports.updateStudent = updateStudent;
 exports.deleteStudent = deleteStudent;
+exports.verifyEmail = verifyEmail;

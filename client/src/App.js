@@ -11,6 +11,9 @@ import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
 import NewNews from './admin/NewNews';
 import UpdateNews from './admin/UpdateNews';
+import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
+import WelcomeStudent from './email-confirmation/WelcomeStudent';
+import CheckEmail from './email-confirmation/CheckEmail';
 
 let logoutTimer;
 
@@ -381,6 +384,18 @@ else {
               usertypefr="enseignants" />
     </Route>
 
+    <Route path="/teachers/email-confirmation/:confirmationCode">
+      <WelcomeTeacher school="grand-hallet"/>
+    </Route>
+
+    <Route path="/students/email-confirmation/:confirmationCode">
+      <WelcomeStudent school="grand-hallet"/>
+    </Route>
+
+    <Route path="/grand-hallet/info-email">
+      <CheckEmail school="grand-hallet" />
+    </Route>
+
 
     {/* Partie de l'école de Moxhe*/}
     <Route path="/moxhe" exact>
@@ -425,6 +440,18 @@ else {
             usertype="teachers"
             usertypeId="teacherId"
             usertypefr="enseignants" />
+    </Route>
+
+    <Route path="/teachers/email-confirmation/:confirmationCode">
+      <WelcomeTeacher school="moxhe"/>
+    </Route>
+
+    <Route path="/students/email-confirmation/:confirmationCode">
+      <WelcomeStudent school="moxhet"/>
+    </Route>
+
+    <Route path="/moxhe/info-email">
+      <CheckEmail school="moxhe" />
     </Route>
 
 </Switch>

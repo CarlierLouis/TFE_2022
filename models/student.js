@@ -13,8 +13,8 @@ const studentSchema =  new Schema ({
     classyear: {type: String, required: true},
     address: {type: String},
     phonenumber: {type: String},
-    birdthdate: {type: Date}
-    //confirmationCode : { type: String, unique: true },
+    birdthdate: {type: Date},
+    confirmationCode : { type: String, unique: true },
 })
 
 module.exports = mongoose.model('Student', studentSchema);

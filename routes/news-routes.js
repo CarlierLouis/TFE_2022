@@ -10,9 +10,9 @@ const router = express.Router();
 
 router.get('/:school', newsControllers.getNews);
 
-router.use(checkAuthAdmin);
-
 router.get('/id/:nid', newsControllers.getNewsById);
+
+router.use(checkAuthAdmin);
 
 router.post('/',
 fileUpload.single('image'),

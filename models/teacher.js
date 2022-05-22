@@ -11,7 +11,7 @@ const teacherSchema =  new Schema ({
     status: { type: String, enum: ['Pending', 'Active'], default: 'Pending' },
     school: {type: String,enum: ['grand-hallet', 'moxhe'] , required: true},
     role: {type: String, enum: ['Admin', 'Default'], default: 'Default', require: true},
-    //confirmationCode : { type: String, unique: true },
+    confirmationCode: { type: String, unique: true },
 })
 
 module.exports = mongoose.model('Teacher', teacherSchema);

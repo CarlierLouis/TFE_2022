@@ -5,8 +5,10 @@ const teachersControllers = require('../controllers/teachers-controllers');
 
 const router = express.Router();
 
+router.patch('/login/email-confirmation/:code', teachersControllers.verifyEmail);
+
 router.post('/signup',
-[
+[   
     check('email').isEmail(),
     check('email').not().isEmpty(),
     check('name').not().isEmpty(),

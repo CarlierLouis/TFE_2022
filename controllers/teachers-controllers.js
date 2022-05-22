@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 
 const HttpError = require('../models/http-error');
 
+const nodemailer = require('../nodemailer/nodemailer.config');
+
 const Teacher = require('../models/teacher');
 const TrustedTeacher = require('../models/trusted_teacher');
-
 
 
 // Teachers Signup
@@ -26,13 +27,13 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer', 500);
+            'Création du compte ratée, veillez réessayer.', 500);
         return next(error);
     }
 
     if (existingTeacher) {
         const error = new HttpError(
-            'Email déjà utilisé, veillez réesser avec un autre email', 422);
+            'Email déjà utilisé, veillez réesser avec un autre email.', 422);
         return next(error);
     }
 
@@ -42,7 +43,7 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer', 500);
+            'Création du compte ratée, veillez réessayer.', 500);
         return next(error);
     }
 
@@ -54,7 +55,7 @@ const signup = async (req, res, next) => {
     
     if (existingTrustedTeacher.school != school) {
         const error = new HttpError(
-            'Vous ne pouvez pas vous créer de compte dans cette école.', 401)
+            'Vous ne pouvez pas vous créer de compte dans cette école !', 401)
         return next(error);
     };
 
@@ -68,13 +69,20 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
+    // email conformation 
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let emailConfirmationToken = '';
+    for (let i = 0; i < 25; i++) {
+        emailConfirmationToken += characters[Math.floor(Math.random() * characters.length )];
+    }
 
     const createdTeacher = new Teacher ({
         email,
         name,
         firstname, 
         password: hashedPassword,
-        school
+        school,
+        confirmationCode: emailConfirmationToken
     });
 
     try {
@@ -84,7 +92,15 @@ const signup = async (req, res, next) => {
         const error = new HttpError(
             'Création du compte ratée, veillez réessayer plus tard.', 500);
         return next(error);
-    } 
+    }
+
+    nodemailer.sendConfirmationEmail(
+        createdTeacher.firstname,
+        createdTeacher.email,
+        "teachers",
+        createdTeacher.confirmationCode
+    );
+
 
     let token;
     try {
@@ -148,6 +164,12 @@ const login = async (req, res, next) => {
             'Identifiants invalides, connexion impossible', 401)
         return next(error);
     }
+
+    if (existingTeacher.status != "Active") {
+        const error = new HttpError(
+           'Création du compte en attente. Vérifiez vos emails !', 401)
+        return next(error);
+    };
 
 
     let token;
@@ -265,8 +287,43 @@ const deleteTeacher = async (req, res, next) => {
     res.status(200).json({ message: 'Compte supprimé' })
 }
 
+
+const verifyEmail = async (req, res, next) => {
+   const confirmationCode = req.params.code;
+
+   let teacher;
+    try {
+        teacher = await Teacher.findOne({confirmationCode: confirmationCode});
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu', 500);
+        return next(error);
+    }
+    if (!teacher) {
+        const error = new HttpError(
+            'utlisateur non trouvé !', 404);
+        return next(error);
+    }
+
+    teacher.status = "Active";
+
+    try {
+        await teacher.save();
+    }
+    catch(err){
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu', 500);
+        return next(error);
+    }
+
+    res.json({teacher: teacher.toObject({getters: true})})
+
+};
+
 exports.signup = signup;
 exports.login = login;
 exports.getTeachers = getTeachers;
 exports.updateTeacher = updateTeacher;
 exports.deleteTeacher = deleteTeacher;
+exports.verifyEmail = verifyEmail;

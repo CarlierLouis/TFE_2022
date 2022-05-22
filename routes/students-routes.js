@@ -5,6 +5,8 @@ const studentsControllers = require('../controllers/students-controllers');
 
 const router = express.Router();
 
+router.patch('/login/email-confirmation/:code', studentsControllers.verifyEmail);
+
 router.post('/signup',
 [
     check('email').isEmail(),

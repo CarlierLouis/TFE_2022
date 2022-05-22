@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Card from '../common/UIElements/Card';
 import Button from '../common/FormElements/Button';
@@ -18,6 +19,7 @@ const Auth = props => {
     const auth = useContext(AuthContext);
     const [isLoginMode, setIsLoginMode] = useState(true);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
+    const history = useHistory();
 
     const [showQuestion, setShowQuestion] = useState(false);
 
@@ -111,9 +113,32 @@ const Auth = props => {
                     {'Content-Type': 'application/json'},
                 );
                 
-                auth.login(responseData.userId , responseData.token);
+                /*
+                const responseData2 = await sendRequest( 
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.schoolname}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token});
+                
+                if (props.usertype == "teachers") {
+                    responseData2.teachers.forEach(element => {
+                    if (element.id == responseData.userId) {
+                        if (element.role == "Default") {
+                            auth.login(responseData.userId , responseData.token, "Default", props.schoolname); 
+                        }
+                        else if (element.role == "Admin") {
+                            auth.login(responseData.userId , responseData.token, "Admin", props.schoolname); 
+                        }
+                    }
+                    });
+                }
+                else {
+                    auth.login(responseData.userId , responseData.token, "Student", props.schoolname); 
+                }*/
+                history.push('/' + props.schoolname + '/info-email');
+                
             }
             catch(err) {}
+
         }
     };
 
