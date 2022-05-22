@@ -12,7 +12,6 @@ router.post('/signup',
     check('name').not().isEmpty(),
     check('firstname').not().isEmpty(),
     check('password').not().isEmpty(),
-    check('classyear').not().isEmpty(),
     check('school').not().isEmpty(),
     check('school').isIn(['grand-hallet', 'moxhe']),
 ], studentsControllers.signup);

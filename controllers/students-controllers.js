@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const HttpError = require('../models/http-error');
 
 const Student = require('../models/student');
+const TrustedStudent = require('../models/trusted_student');
 
 
 // Students Signup
@@ -16,7 +17,7 @@ const signup = async (req, res, next) => {
         );
     }
 
-    const { email, name, firstname, password, school, classyear } = req.body;
+    const { email, name, firstname, password, school } = req.body;
 
     let existingStudent
     try {
@@ -33,6 +34,29 @@ const signup = async (req, res, next) => {
             'Email déjà utilisé, veillez réesser avec un autre email', 422);
         return next(error);
     }
+
+    let existingTrustedStudent
+    try {
+        existingTrustedStudent = await TrustedStudent.findOne({email: email})
+    }
+    catch(err) {
+        const error = new HttpError (
+            'Création du compte ratée, veillez réessayer', 500);
+        return next(error);
+    }
+
+    if (!existingTrustedStudent) {
+        const error = new HttpError(
+            'Vous ne pouvez pas créer de compte avec cette addresse email !', 422);
+        return next(error);
+    }
+    
+    if (existingTrustedStudent.school != school) {
+        const error = new HttpError(
+            'Vous ne pouvez pas vous créer de compte dans cette école.', 401)
+        return next(error);
+    };
+
 
 
     let hashedPassword;
@@ -51,7 +75,7 @@ const signup = async (req, res, next) => {
         firstname,
         password: hashedPassword,
         school, 
-        classyear
+        classyear: existingTrustedStudent.classyear
     });
 
     try {

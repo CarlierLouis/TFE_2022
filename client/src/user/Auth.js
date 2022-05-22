@@ -107,7 +107,6 @@ const Auth = props => {
                         firstname: formState.inputs.firstname.value,
                         password : formState.inputs.password.value,
                         school: props.schoolname,
-                        classyear: "4",
                     }),
                     {'Content-Type': 'application/json'},
                 );
