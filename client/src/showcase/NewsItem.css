@@ -24,7 +24,7 @@
 
 .news-item__image {
   width: 500px;
-  height: 350px;
+  height: 300px;
   transition: transform 0.5s;
   margin-bottom: 2%;
 }
@@ -36,7 +36,7 @@
 
 
 .news-item__info h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0 0 0.5rem 0;
   font-weight: bold;
   padding: 2%;
