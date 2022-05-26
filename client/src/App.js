@@ -14,6 +14,7 @@ import UpdateNews from './admin/UpdateNews';
 import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
 import WelcomeStudent from './email-confirmation/WelcomeStudent';
 import CheckEmail from './email-confirmation/CheckEmail';
+import Users from './admin/Users';
 
 let logoutTimer;
 
@@ -116,10 +117,17 @@ if (token && role === "Admin") {
     </Route>
 
     <Route path="/grand-hallet/admin/update-news/:newsId">
-    <MainNavigation schoolLink="grand-hallet"
-                        schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <MainNavigation schoolLink="grand-hallet"
+                          schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateNews schoolname="grand-hallet" />
     </Route>
+
+    <Route path="/grand-hallet/admin/utilisateurs">
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <Users />
+    </Route>
+
 
 
     {/* Partie de l'école de Moxhe*/}

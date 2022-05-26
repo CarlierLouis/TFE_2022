@@ -23,23 +23,12 @@
 }
 
 .news-link {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    font-size: 20px;
 }
 
-.news-link a {
-    border: solid 1px;
-    text-decoration: none;
-    color: black;
-    padding: 8px;
-}
-
-.news-link a:hover {
+.news-link :hover {
     color: white;
-    background-color: #628699;
 }
-
 
 
 @media (max-width: 728px) {

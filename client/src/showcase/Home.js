@@ -4,6 +4,7 @@ import Card from '../common/UIElements/Card';
 import News from './News';
 import Map from './Map';
 import Footer  from './Footer';
+import Button from '../common/FormElements/Button';
 
 import './Home.css';
 
@@ -64,7 +65,7 @@ Curabitur eu amet. »</a></Card><br></br>
 <News school={props.school} numberofnews={props.numberofnews}/>
 <br></br>
 <div className='news-link'>
-  <a href={`/${props.school}/actu`}>Voir toutes les actualités</a>
+  <Button href={`/${props.school}/actu`}>Voir toutes les actualités</Button>
 </div>
 <br></br><br></br>
 <Map lat={props.lat} lng={props.lng} />
