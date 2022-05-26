@@ -65,7 +65,7 @@ app.use((error, req, res, next) => {
 mongoose
 .connect(`mongodb+srv://louis:${process.env.DB_PASSWORD}@cluster0.kerju.mongodb.net/schoolsdb?retryWrites=true&w=majority`)
 .then(() => {
-    app.listen(5000);
+    app.listen(process.env.PORT);
 })
 .catch(err => {
     console.log(err);

@@ -31,10 +31,14 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
-    if (existingTeacher) {
+    if (existingTeacher && existingTeacher.status == "Active") {
         const error = new HttpError(
             'Email déjà utilisé, veillez réesser avec un autre email.', 422);
         return next(error);
+    }
+
+    if (existingTeacher && existingTeacher.status != "Active") {
+        existingTeacher.remove();
     }
 
     let existingTrustedTeacher
@@ -287,7 +291,7 @@ const deleteTeacher = async (req, res, next) => {
     res.status(200).json({ message: 'Compte supprimé' })
 }
 
-
+// verify email and patch status to activeate the account
 const verifyEmail = async (req, res, next) => {
    const confirmationCode = req.params.code;
 

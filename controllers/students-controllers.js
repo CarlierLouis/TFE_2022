@@ -31,10 +31,14 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
-    if (existingStudent) {
+    if (existingStudent && existingStudent.status == "Active") {
         const error = new HttpError(
             'Email déjà utilisé, veillez réesser avec un autre email.', 422);
         return next(error);
+    }
+
+    if (existingStudent && existingStudent.status != "Active") {
+        existingStudent.remove();
     }
 
     let existingTrustedStudent
