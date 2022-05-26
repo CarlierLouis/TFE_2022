@@ -125,7 +125,7 @@ if (token && role === "Admin") {
     <Route path="/grand-hallet/admin/utilisateurs">
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-      <Users />
+      <Users school="grand-hallet" />
     </Route>
 
 

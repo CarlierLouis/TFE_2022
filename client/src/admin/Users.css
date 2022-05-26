@@ -1,0 +1,9 @@
+.select-user {
+    text-align: center;
+}
+ 
+@media (max-width: 820px) {
+    .select-user Button {
+        margin-bottom: 20px
+    }
+}

@@ -90,7 +90,7 @@ const Auth = props => {
         }
         else {
             try {
-                // DONT WORK (nned to do with th JSON.stringify)
+                // DONT WORK (need to do with th JSON.stringify)
                 /*
                 const formData = new FormData();
                 formData.append('email', formState.inputs.email.value);
