@@ -20,13 +20,13 @@ const NewsList = props => {
     <ul className="news-list">
       {props.items.map(news => (
         <NewsItem
-          key={news.id}
-          id={news.id}
-          title={news.title}
-          date={news.date}
-          description={news.description}
-          image={news.image}
-          school={props.school}
+        key={news.id}
+        id={news.id}
+        title={news.title}
+        date={news.date}
+        description={news.description}
+        image={news.image}
+        school={props.school}
         />
       ))}
     </ul>
