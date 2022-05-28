@@ -110,24 +110,29 @@ if (token && role === "Admin") {
         <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
     
-    <Route path="/grand-hallet/admin/add-news">
+    <Route path="/grand-hallet/admin/ajout-actu">
       <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="/img/Grand-Hallet_blanc.png" />
         <NewNews schoolname="grand-hallet" />
     </Route>
 
-    <Route path="/grand-hallet/admin/update-news/:newsId">
+    <Route path="/grand-hallet/admin/maj-actu/:newsId">
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateNews schoolname="grand-hallet" />
     </Route>
 
-    <Route path="/grand-hallet/admin/utilisateurs">
+    <Route path="/grand-hallet/admin/utilisateurs" exact>
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-      <Users school="grand-hallet" />
+      <Users school="grand-hallet"/>
     </Route>
 
+    <Route path="/grand-hallet/admin/utilisateurs/:usertype">
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <Users school="grand-hallet"/>
+    </Route>
 
 
     {/* Partie de l'école de Moxhe*/}

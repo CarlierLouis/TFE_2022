@@ -3,7 +3,7 @@
 }
  
 @media (max-width: 820px) {
-    .select-user Button {
-        margin-bottom: 20px
+    .select-user a {
+        margin-bottom: 15px
     }
 }

@@ -33,9 +33,9 @@ app.use((req, res, next) => {
   
 app.use('/api/news', newsRoutes);
 
-app.use('/api/trusted/students', trustedStudentsRoutes);
+app.use('/api/trusted-students', trustedStudentsRoutes);
 
-app.use('/api/trusted/teachers', trustedTeachersRoutes);
+app.use('/api/trusted-teachers', trustedTeachersRoutes);
 
 app.use('/api/students', studentsRoutes);
 
