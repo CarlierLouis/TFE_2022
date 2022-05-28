@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../common/context/auth-context';
 import  { useHttpClient } from '../common/hooks/http-hook';
 import { useParams } from "react-router-dom";
-import Button from '../common/FormElements/Button';
 import UsersList from './UsersList';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import './Users.css';
@@ -14,7 +13,20 @@ const Users = props => {
     const [loadedUsers, setLoadedUsers] = useState();
     const {isLoading, sendRequest} = useHttpClient();
     const usertype = useParams().usertype;
-    
+
+    if (usertype == "teachers") {
+        var teachersButton = {backgroundColor: "#628699", border: "#628699"}
+    }
+    if (usertype == "students") {
+        var studentsButton = {backgroundColor: "#628699", border: "#628699"}
+    }
+    if (usertype == "trusted-teachers") {
+        var trustedteachersButton = {backgroundColor: "#628699", border: "#628699"}
+    }
+    if (usertype == "trusted-students") {
+        var trustedstudentsButton = {backgroundColor: "#628699", border: "#628699"}
+    }
+
     useEffect(() => {
         const fetchusers = async () => {
             if (usertype != undefined) {
@@ -24,7 +36,7 @@ const Users = props => {
                     {Authorization: 'Bearer ' + auth.token}
                 );
                 if (usertype == "teachers") {
-                setLoadedUsers(responseData.teachers);
+                    setLoadedUsers(responseData.teachers);
                 }
 
                 if (usertype == "students") {
@@ -46,13 +58,20 @@ const Users = props => {
         fetchusers();
     }, [sendRequest])
 
+
+
+
     return (
         <React.Fragment>
             <div className="select-user">
-                <Button href={"/" + props.school + "/admin/utilisateurs/trusted-teachers"}>White List Profs</Button>
-                <Button href={"/" + props.school + "/admin/utilisateurs/trusted-students"}>White List Élèves</Button>
-                <Button href={"/" + props.school + "/admin/utilisateurs/students"}>Comptes Élèves</Button>
-                <Button href={"/" + props.school + "/admin/utilisateurs/teachers"}>Comptes Profs</Button>
+                <a style={studentsButton} href={"/" + props.school + "/admin/utilisateurs/students"}>
+                Comptes Élèves</a>
+                <a style={teachersButton} href={"/" + props.school + "/admin/utilisateurs/teachers"}>
+                Comptes Profs</a>
+                <a style={trustedteachersButton} href={"/" + props.school + "/admin/utilisateurs/trusted-teachers"}>
+                White List Profs</a>
+                <a style={trustedstudentsButton} href={"/" + props.school + "/admin/utilisateurs/trusted-students"}>
+                White List Élèves</a>
             </div>
             <br></br>
             {isLoading && 

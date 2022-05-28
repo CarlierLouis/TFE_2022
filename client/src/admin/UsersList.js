@@ -6,11 +6,13 @@ import './UsersList.css';
 
 const UsersList = props => {
     if (props.items.length === 0) {
+      return (
         <div className="center">
         <Card>
           <h2>Aucun utilisateur trouvé</h2>
         </Card>
       </div>
+      );
     }
 
     return (

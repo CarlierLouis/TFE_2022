@@ -110,13 +110,13 @@ if (token && role === "Admin") {
         <Footer title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
     
-    <Route path="/grand-hallet/admin/ajout-actu">
+    <Route path="/grand-hallet/admin/add-news">
       <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="/img/Grand-Hallet_blanc.png" />
         <NewNews schoolname="grand-hallet" />
     </Route>
 
-    <Route path="/grand-hallet/admin/maj-actu/:newsId">
+    <Route path="/grand-hallet/admin/update-news/:newsId">
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateNews schoolname="grand-hallet" />
@@ -162,12 +162,25 @@ if (token && role === "Admin") {
     <Route path="/moxhe/admin/add-news">
       <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
+      <NewNews schoolname="moxhe" />
     </Route>
 
     <Route path="/moxhe/admin/update-news/:newsId">
     <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
       <UpdateNews schoolname="moxhe" />
+    </Route>
+
+    <Route path="/moxhe/admin/utilisateurs" exact>
+      <MainNavigation schoolLink="moxhe"
+                      schoolLogo="/img/Moxhe_blanc.png" />
+      <Users school="moxhe"/>
+    </Route>
+
+    <Route path="/moxhe/admin/utilisateurs/:usertype">
+      <MainNavigation schoolLink="moxhe"
+                      schoolLogo="/img/Moxhe_blanc.png" />
+      <Users school="moxhe"/>
     </Route>
     
 </Switch>
