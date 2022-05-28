@@ -2,6 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const studentsControllers = require('../controllers/students-controllers');
+const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const router = express.Router();
 
@@ -21,6 +22,8 @@ router.post('/signup',
 router.post('/login', studentsControllers.login);
 
 router.get('/:school', studentsControllers.getStudents);
+
+router.use(checkAuthAdmin);
 
 router.patch('/:sid', 
 [

@@ -2,10 +2,13 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const trustedStudentsControllers = require('../controllers/trusted_students-controllers');
+const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const router = express.Router();
 
 router.get('/:school', trustedStudentsControllers.getTrustedStudents);
+
+router.use(checkAuthAdmin);
 
 router.post('/',
 [
