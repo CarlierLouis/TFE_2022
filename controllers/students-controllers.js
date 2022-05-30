@@ -215,8 +215,32 @@ const getStudents = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ students: students.map(student => student.toObject({ getters: true})) });
+    res.json({ users: students.map(student => student.toObject({ getters: true})) });
 }
+
+// Get student by id
+const getStudentById = async (req, res, next) => {
+    const studentId = req.params.sid;
+
+    let student;
+    try {
+        student = await Student.findById(studentId);
+    }
+    catch(err) {
+        const error = new HttpError("L'utlisateur n'a pas pu être trouvé", 500);
+        return next(error);
+    }
+
+    if(!student) {
+        const error = new HttpError('Aucun utilisateur trouvé avec cet id', 404);
+        return next(error);
+    }
+
+    res.json({
+        user: student.toObject({getters: true})
+    });
+};
+
 
 // Update Student
 const updateStudent = async (req, res, next) => {
@@ -321,6 +345,7 @@ const verifyEmail = async (req, res, next) => {
 exports.signup = signup;
 exports.login = login;
 exports.getStudents = getStudents;
+exports.getStudentById = getStudentById;
 exports.updateStudent = updateStudent;
 exports.deleteStudent = deleteStudent;
 exports.verifyEmail = verifyEmail;

@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/:school', trustedTeachersControllers.getTrustedTeachers);
 
+router.get('/id/:ttid', trustedTeachersControllers.getTrustedTeacherById);
+
 router.use(checkAuthAdmin);
 
 router.post('/',
@@ -20,13 +22,13 @@ router.post('/',
     check('school').isIn(['grand-hallet', 'moxhe']),
 ], trustedTeachersControllers.createTrustedTeacher);
 
-router.patch('/:tsid',
+router.patch('/:ttid',
 [
     check('email').isEmail(),
     check('email').not().isEmpty(),
 ], trustedTeachersControllers.updateTrustedTeacher);
 
 
-router.delete('/:tsid', trustedTeachersControllers.deleteTrustedTeacher);
+router.delete('/:ttid', trustedTeachersControllers.deleteTrustedTeacher);
 
 module.exports = router;

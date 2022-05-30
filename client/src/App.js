@@ -15,6 +15,7 @@ import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
 import WelcomeStudent from './email-confirmation/WelcomeStudent';
 import CheckEmail from './email-confirmation/CheckEmail';
 import Users from './admin/Users';
+import UpdateUser from './admin/UpdateUser';
 
 let logoutTimer;
 
@@ -132,6 +133,12 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
       <Users school="grand-hallet"/>
+    </Route>
+
+    <Route path="/grand-hallet/admin/:usertype/update-user/:userId">
+      <MainNavigation schoolLink="grand-hallet"
+                          schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <UpdateUser school="grand-hallet" />
     </Route>
 
 

@@ -68,7 +68,7 @@ const Auth = props => {
 
 
             if (props.usertype == "teachers") {
-                responseData2.teachers.forEach(element => {
+                responseData2.users.forEach(element => {
                 if (element.id == responseData.userId) {
                     if (element.role == "Default") {
                         auth.login(responseData.userId , responseData.token, "Default", props.schoolname); 

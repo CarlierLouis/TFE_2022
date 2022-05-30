@@ -23,6 +23,8 @@ router.post('/login', teachersControllers.login);
 
 router.get('/:school', teachersControllers.getTeachers);
 
+router.get('/id/:tid', teachersControllers.getTeacherById);
+
 router.use(checkAuthAdmin);
 
 router.patch('/:tid',

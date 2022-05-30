@@ -22,8 +22,32 @@ const getTrustedStudents = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ trustedstudents: trustedstudents.map(trustedstudent => trustedstudent.toObject({ getters: true })) });
+    res.json({ users: trustedstudents.map(trustedstudent => trustedstudent.toObject({ getters: true })) });
 };
+
+// Get trusted student by id
+const getTrustedStudentById = async (req, res, next) => {
+    const trustedstudentId = req.params.tsid;
+
+    let trustedstudent;
+    try {
+        trustedstudent = await TrustedStudent.findById(trustedstudentId);
+    }
+    catch(err) {
+        const error = new HttpError("L'utlisateur n'a pas pu être trouvé", 500);
+        return next(error);
+    }
+
+    if(!trustedstudent) {
+        const error = new HttpError('Aucun utilisateur trouvé avec cet id', 404);
+        return next(error);
+    }
+
+    res.json({
+        user: trustedstudent.toObject({getters: true})
+    });
+};
+
 
 // Post Trusted Student
 const createTrustedStudent = async(req, res, next) => {
@@ -120,6 +144,7 @@ const deleteTrustedStudent = async (req, res, next) => {
 }
 
 exports.getTrustedStudents = getTrustedStudents;
+exports.getTrustedStudentById = getTrustedStudentById;
 exports.createTrustedStudent = createTrustedStudent;
 exports.updateTrustedStudent = updateTrustedStudent;
 exports.deleteTrustedStudent = deleteTrustedStudent;

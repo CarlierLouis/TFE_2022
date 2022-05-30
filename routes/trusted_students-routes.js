@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/:school', trustedStudentsControllers.getTrustedStudents);
 
+router.get('/id/:tsid', trustedStudentsControllers.getTrustedStudentById);
+
 router.use(checkAuthAdmin);
 
 router.post('/',

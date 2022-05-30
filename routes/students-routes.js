@@ -23,6 +23,8 @@ router.post('/login', studentsControllers.login);
 
 router.get('/:school', studentsControllers.getStudents);
 
+router.get('/id/:sid', studentsControllers.getStudentById);
+
 router.use(checkAuthAdmin);
 
 router.patch('/:sid', 

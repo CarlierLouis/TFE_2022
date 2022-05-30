@@ -68,13 +68,18 @@ const UserItem = props => {
 
             <div className="user-item center">
                 <Card className="user-item-card">
-                    <img className="user-modify" src="/svg/modify-red.svg"/>
+                    <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                    <img className="user-modify" src="/svg/modify-red.svg" />
+                    </a>
                     <p className="user-name">{props.name}</p>
                     <p className="user-firstname">{props.firstname}</p>
                     <p className="user-email">{props.email}</p>
                     <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
                     <p className="user-role">{props.role}</p>
                     <p className="user-classyear">{props.classyear}</p>
+                    <p className="user-classyear">{props.address}</p>
+                    <p className="user-classyear">{props.phonenumber}</p>
+                    <p className="user-classyear">{props.birdthdate}</p>
                 </Card>
             </div>
         </React.Fragment>

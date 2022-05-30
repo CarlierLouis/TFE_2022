@@ -22,8 +22,33 @@ const getTrustedTeachers = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ trustedteachers: trustedteachers.map(trustedeacher => trustedeacher.toObject({ getters: true })) });
+    res.json({ users: trustedteachers.map(trustedeacher => trustedeacher.toObject({ getters: true })) });
 };
+
+
+// Get trusted teacher by id
+const getTrustedTeacherById = async (req, res, next) => {
+    const trustedteacherId = req.params.ttid;
+
+    let trustedteacher;
+    try {
+        trustedteacher = await TrustedTeacher.findById(trustedteacherId);
+    }
+    catch(err) {
+        const error = new HttpError("L'utlisateur n'a pas pu être trouvé", 500);
+        return next(error);
+    }
+
+    if(!trustedteacher) {
+        const error = new HttpError('Aucun utilisateur trouvé avec cet id', 404);
+        return next(error);
+    }
+
+    res.json({
+        user: trustedteacher.toObject({getters: true})
+    });
+};
+
 
 // Post Trusted Teacher
 const createTrustedTeacher = async(req, res, next) => {
@@ -65,7 +90,7 @@ const updateTrustedTeacher = async (req, res, next) => {
     }
 
     const { email } =  req.body;
-    const trustedTeacherId = req.params.tsid;
+    const trustedTeacherId = req.params.ttid;
 
     let trustedteacher;
     try {
@@ -93,7 +118,7 @@ const updateTrustedTeacher = async (req, res, next) => {
 
 // Delete Trusted Teacher
 const deleteTrustedTeacher = async (req, res, next) => {
-    const trustedTeacherId = req.params.tsid;
+    const trustedTeacherId = req.params.ttid;
 
     let trustedteacher;
     try {
@@ -118,6 +143,7 @@ const deleteTrustedTeacher = async (req, res, next) => {
 }
 
 exports.getTrustedTeachers= getTrustedTeachers;
+exports.getTrustedTeacherById = getTrustedTeacherById;
 exports.createTrustedTeacher= createTrustedTeacher;
 exports.updateTrustedTeacher = updateTrustedTeacher;
 exports.deleteTrustedTeacher = deleteTrustedTeacher;

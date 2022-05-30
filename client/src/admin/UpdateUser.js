@@ -9,33 +9,44 @@ import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH} from '../co
 import { useForm } from '../common/hooks/form-hooks';
 import { useHttpClient } from '../common/hooks/http-hook';
 import {AuthContext} from '../common/context/auth-context';
-import ImageUpload from '../common/FormElements/ImageUpload';
 import Card from '../common/UIElements/Card';
 
-import './News.css';
+import './Users.css';
 
-const UpdateNews = props => {
+const UpdateUser = props => {
     const auth = useContext(AuthContext);
-    const newsId = useParams().newsId;
+    const userId = useParams().userId;
+    const usertype = useParams().usertype;
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
-    const [loadedNews, setLoadedNews] = useState();
+    const [loadedUser, setLoadedUser] = useState();
 	const history = useHistory();
 
     const [formState, inputHandler, setFormData] = useForm(
 		{
-		title: {
+        // common
+		email: {
 			value: '',
 			isValid: false
 		},
-		description: {
+        // teachers 
+		role: {
 			value: '',
 			isValid: false
 		},
-        date: {
+        // students
+        classyear: {
 			value: '',
 			isValid: false
 		},
-        image: {
+        address: {
+			value: null,
+			isValid: false
+		},
+        phonenumber: {
+			value: null,
+			isValid: false
+		},
+        birdthdate: {
 			value: null,
 			isValid: false
 		}
@@ -44,55 +55,66 @@ const UpdateNews = props => {
 	);
 
 	useEffect(() => {
-		const fetchNews = async () => {
+		const fetchUser = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/news/id/${newsId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/id/${userId}`
 				);
-				setLoadedNews(responseData.news);
+				setLoadedUser(responseData.user);
+
 				setFormData({
-					title: {
-					value: responseData.news.title,
+					email: {
+					value: responseData.news.email,
 					isValid: true
 					},
-					description: {
-					value: responseData.news.description,
+					role: {
+					value: responseData.news.role,
 					isValid: true
 					},
-					date: {
-					value: responseData.news.date,
+					classyear: {
+					value: responseData.news.classyear,
 					isValid: true
 					},
-					image: {
-					value: responseData.news.image,
+					address: {
+					value: responseData.news.address,
 					isValid: true
-					}
+					},
+                    phonenumber: {
+                    value: responseData.news.phonenumber,
+                    isValid: true
+                    },
+                    birdthdate: {
+                    value: responseData.news.birdthdate,
+                    isValid: true
+                    }
 				},true);
 			}
 			catch(err) {}
 		};
-		fetchNews();
+		fetchUser();
 	}, 
-	[sendRequest, newsId, setFormData]);
+	[sendRequest, userId, setFormData]);
 
-	const newsUpdateSubmitHandler = async event => {
+	const userUpdateSubmitHandler = async event => {
 		event.preventDefault();
 		try {
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + `/api/news/${newsId}`,
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${userId}`,
 				'PATCH',
 				JSON.stringify({
-					title: formState.inputs.title.value,
-					description: formState.inputs.description.value,
-					date: formState.inputs.date.value,
-					image: formState.inputs.image.value
+					email: formState.inputs.email.value,
+                    role: formState.inputs.role.value,
+                    classyear: formState.inputs.classyear.value,
+                    address: formState.inputs.address.value,
+                    phonenumber: formState.inputs.phonenumber.value,
+                    birdthdate: formState.inputs.birdthdate.value
 				}),
 				{
 					'Content-Type': 'application/json',
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.schoolname + '/actu');
+			history.push('/' + props.schoolname + '/utilisateurs');
 		}
 		catch(err) {}
 	};
@@ -105,11 +127,11 @@ const UpdateNews = props => {
 		);
 	}
 
-	if (!loadedNews && !error) {
+	if (!loadedUser && !error) {
 		return (
 		<div className="center">
 			<Card>
-			<h2>Aucune actualité trouvée !</h2>
+			<h2>Aucun utilisateur trouvé !</h2>
 			</Card>
 		</div>
 		);
@@ -119,49 +141,22 @@ return (
 	<React.Fragment>
 		<ErrorModal error={error} onClear={clearError} />
 		<br></br>
-		{!isLoading && loadedNews && 
+		{!isLoading && loadedUser && 
 		<form 
 			className="news-form" 
-			onSubmit={newsUpdateSubmitHandler}>
-			<h2 className='form-news-title'>Mettre à jour cette actualité</h2>
+			onSubmit={userUpdateSubmitHandler}>
+			<h2 className='form-news-title'>Mettre à jour cet utilisateur</h2>
 			<Input
-				id="title"
+				id="email"
 				element="input"
 				type="text"
-				label="Titre"
-				validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(20)]}
-				errorText="Veillez entrer un titre valide."
-				onInput={inputHandler}
-				initialValue={loadedNews.title}
-				initialValid={true}
-			/>
-			<Input
-				id="description"
-				element="textarea"
-				label="Description"
-				validators={[VALIDATOR_MINLENGTH(10)]}
-				errorText="Veillez entrer une description valide."
-				onInput={inputHandler}
-				initialValue={loadedNews.description}
-				initialValid={true}
-			/>
-			<Input
-				id="date"
-				element="input"
-				label="Date"
+				label="Email"
 				validators={[VALIDATOR_REQUIRE]}
-				errorText="Veillez entrer une date valide."
+				errorText="Veillez entrer une addresse email valide."
 				onInput={inputHandler}
-				initialValue={loadedNews.date}
+				initialValue={loadedUser.email}
 				initialValid={true}
 			/>
-			{/*
-			 <ImageUpload 
-					id="image" 
-					onInput={inputHandler}
-					errorText="Veillez entrer une image"
-					initialValid={true} />
-			*/}
 
 			<Button type="submit" disabled={!formState.isValid}>
 				Mettre à jour
@@ -171,4 +166,4 @@ return (
 );
 };
 
-export default UpdateNews;
+export default UpdateUser;

@@ -21,11 +21,15 @@ const UsersList = props => {
         <UserItem
         key={users.id}
         id={users.id}
+        school={props.school}
         name={users.name}
         firstname={users.firstname}
         email={users.email}
         role={users.role}
         classyear={users.classyear}
+        address={users.address}
+        phonenumber={props.phonenumber}
+        birdthdate={props.birdthdate}
         />
       ))}
     </ul>

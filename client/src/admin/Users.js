@@ -35,21 +35,8 @@ const Users = props => {
                     process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${props.school}`, 'GET', null,
                     {Authorization: 'Bearer ' + auth.token}
                 );
-                if (usertype == "teachers") {
-                    setLoadedUsers(responseData.teachers);
-                }
-
-                if (usertype == "students") {
-                    setLoadedUsers(responseData.students);
-                }
                 
-                if (usertype == "trusted-teachers") {
-                    setLoadedUsers(responseData.trustedteachers);
-                }
-                  
-                if (usertype == "trusted-students") {
-                    setLoadedUsers(responseData.trustedstudents);
-                }
+                setLoadedUsers(responseData.users);
                 
             }
             catch (err) {}
@@ -79,7 +66,7 @@ const Users = props => {
                 <LoadingSpinner />
             </div>}
             {!isLoading && loadedUsers &&
-            <UsersList items={loadedUsers.reverse()} />}
+            <UsersList items={loadedUsers.reverse()} school={props.school} />}
         </React.Fragment>
     );
 }
