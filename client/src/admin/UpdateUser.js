@@ -64,27 +64,27 @@ const UpdateUser = props => {
 
 				setFormData({
 					email: {
-					value: responseData.news.email,
+					value: responseData.user.email,
 					isValid: true
 					},
 					role: {
-					value: responseData.news.role,
+					value: responseData.user.role,
 					isValid: true
 					},
 					classyear: {
-					value: responseData.news.classyear,
+					value: responseData.user.classyear,
 					isValid: true
 					},
 					address: {
-					value: responseData.news.address,
+					value: responseData.user.address,
 					isValid: true
 					},
                     phonenumber: {
-                    value: responseData.news.phonenumber,
+                    value: responseData.user.phonenumber,
                     isValid: true
                     },
                     birdthdate: {
-                    value: responseData.news.birdthdate,
+                    value: responseData.user.birdthdate,
                     isValid: true
                     }
 				},true);
@@ -114,7 +114,7 @@ const UpdateUser = props => {
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.schoolname + '/utilisateurs');
+			history.push('/' + props.school + '/utilisateurs');
 		}
 		catch(err) {}
 	};
@@ -162,6 +162,13 @@ return (
 				Mettre à jour
 			</Button>
 		</form>}
+
+        <br></br>
+		<div className="back-button">
+		<Button href={'/' + props.school + '/admin/utilisateurs'}>
+			Retour
+		</Button>
+		</div>
 	</React.Fragment>
 );
 };

@@ -24,3 +24,11 @@
  .red-plus-add-news:hover {
     transform: scale(1.2);
  }
+
+ .back-button {
+   text-align: center;
+ }
+
+ .back-button :hover {
+  color: white;
+ }

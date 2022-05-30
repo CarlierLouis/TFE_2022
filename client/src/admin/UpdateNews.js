@@ -167,6 +167,13 @@ return (
 				Mettre à jour
 			</Button>
 		</form>}
+
+		<br></br>
+		<div className="back-button">
+		<Button href={'/' + props.schoolname + '/actu'}>
+			Retour
+		</Button>
+		</div>
 	</React.Fragment>
 );
 };
