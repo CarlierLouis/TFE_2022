@@ -45,6 +45,13 @@
     transform: scale(1.2);
 }
 
+.user-item__modal-actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+  }
+  
+
 @media (max-width: 820px) {
     .user-item {
         margin-left: 0%;

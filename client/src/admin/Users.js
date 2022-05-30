@@ -79,7 +79,7 @@ const Users = props => {
                 <LoadingSpinner />
             </div>}
             {!isLoading && loadedUsers &&
-            <UsersList items={loadedUsers} />}
+            <UsersList items={loadedUsers.reverse()} />}
         </React.Fragment>
     );
 }

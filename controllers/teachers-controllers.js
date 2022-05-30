@@ -110,7 +110,7 @@ const signup = async (req, res, next) => {
     try {
     token = jwt.sign({userId: createdTeacher.id, email: createdTeacher.email},
         process.env.TOKENKEY_TEACHER,
-        {expiresIn: '1h'}
+        {expiresIn: '24h'}
     );
     }
     catch(err) {
