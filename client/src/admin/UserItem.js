@@ -40,10 +40,17 @@ const UserItem = props => {
     }
 	};
 
-  const refreshPage = ()=>{
-    window.location.reload(true);
- }
+    const refreshPage = ()=>{
+        window.location.reload(true);
+    }
 
+
+    var role_background = {}
+    if (props.role == 'Admin') {
+        role_background = {
+            backgroundColor: '#F5B7B1'
+        }
+    }
 
     return (
         <React.Fragment>
@@ -67,7 +74,7 @@ const UserItem = props => {
 			</Modal>
 
             <div className="user-item center">
-                <Card className="user-item-card">
+                <Card style={role_background} className="user-item-card">
                     <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
                     <img className="user-modify" src="/svg/modify-red.svg" />
                     </a>
@@ -77,9 +84,9 @@ const UserItem = props => {
                     <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
                     <p className="user-role">{props.role}</p>
                     <p className="user-classyear">{props.classyear}</p>
-                    <p className="user-classyear">{props.address}</p>
-                    <p className="user-classyear">{props.phonenumber}</p>
-                    <p className="user-classyear">{props.birdthdate}</p>
+                    <p className="user-address">{props.address}</p>
+                    <p className="user-phonenumber">{props.phonenumber}</p>
+                    <p className="user-birdthdate">{props.birdthdate}</p>
                 </Card>
             </div>
         </React.Fragment>

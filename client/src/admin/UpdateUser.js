@@ -33,11 +33,12 @@ const UpdateUser = props => {
 			value: '',
 			isValid: false
 		},
-        // students
+        // students && trusted students
         classyear: {
 			value: '',
 			isValid: false
 		},
+		//students
         address: {
 			value: null,
 			isValid: false
@@ -107,14 +108,15 @@ const UpdateUser = props => {
                     classyear: formState.inputs.classyear.value,
                     address: formState.inputs.address.value,
                     phonenumber: formState.inputs.phonenumber.value,
-                    birdthdate: formState.inputs.birdthdate.value
+                    birdthdate: formState.inputs.birdthdate.value,
+					password: loadedUser.password
 				}),
 				{
 					'Content-Type': 'application/json',
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.school + '/utilisateurs');
+			history.push('/' + props.school + '/admin/utilisateurs/' + usertype);
 		}
 		catch(err) {}
 	};
@@ -157,6 +159,71 @@ return (
 				initialValue={loadedUser.email}
 				initialValid={true}
 			/>
+			{usertype == "teachers" &&
+			<Input
+				id="role"
+				element="input"
+				type="text"
+				label="Role"
+				validators={[VALIDATOR_REQUIRE]}
+				errorText="Veillez entrer un role valide."
+				onInput={inputHandler}
+				initialValue={loadedUser.role}
+				initialValid={true}
+			/>}
+
+			{(usertype == "students" || usertype == "trusted-students") &&
+			<Input
+				id="classyear"
+				element="input"
+				type="text"
+				label="Classe"
+				validators={[VALIDATOR_REQUIRE]}
+				errorText="Veillez entrer une classe valide."
+				onInput={inputHandler}
+				initialValue={loadedUser.classyear}
+				initialValid={true}
+			/>}
+
+			{usertype == "students" &&
+			<div>
+			<Input
+			id="address"
+			element="input"
+			type="text"
+			label="Adresse"
+			validators={[VALIDATOR_REQUIRE]}
+			errorText="Veillez entrer une adresse valide."
+			onInput={inputHandler}
+			initialValue={loadedUser.address}
+			initialValid={true}
+			/>
+			
+			<Input
+			id="phonenumber"
+			element="input"
+			type="text"
+			label="Gsm"
+			validators={[VALIDATOR_REQUIRE]}
+			errorText="Veillez entrer un numéro valide."
+			onInput={inputHandler}
+			initialValue={loadedUser.phonenumber}
+			initialValid={true}
+			/>
+			
+			<Input
+			id="birdthdate"
+			element="input"
+			type="text"
+			label="Date de naissance"
+			validators={[VALIDATOR_REQUIRE]}
+			errorText="Veillez entrer une date valide."
+			onInput={inputHandler}
+			initialValue={loadedUser.birdthdate}
+			initialValid={true}
+			/>
+			</div>}
+
 
 			<Button type="submit" disabled={!formState.isValid}>
 				Mettre à jour
@@ -165,7 +232,7 @@ return (
 
         <br></br>
 		<div className="back-button">
-		<Button href={'/' + props.school + '/admin/utilisateurs'}>
+		<Button href={'/' + props.school + '/admin/utilisateurs/' + usertype}>
 			Retour
 		</Button>
 		</div>

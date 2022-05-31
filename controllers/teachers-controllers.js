@@ -181,13 +181,13 @@ const login = async (req, res, next) => {
         if (existingTeacher.role == "Admin") {
             token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
                 process.env.TOKENKEY_ADMIN,
-                {expiresIn: '1h'}
+                {expiresIn: '24h'}
             ); 
         }
         else {
         token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
             process.env.TOKENKEY_TEACHER,
-            {expiresIn: '1h'}
+            {expiresIn: '24h'}
     );
         }
     }

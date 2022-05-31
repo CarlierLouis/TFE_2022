@@ -32,7 +32,7 @@ const login = useCallback((uid, token, role, school, expirationDate) => {
     setUserId(uid);
     setRole(role);
     setSchool(school);
-    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60); // 1hour
+    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60 * 24); // 1hour
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem('userData', JSON.stringify(
       {userId: uid, token: token, role: role, school: school, expiration: tokenExpirationDate.toISOString()}

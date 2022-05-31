@@ -179,7 +179,7 @@ const login = async (req, res, next) => {
     try {
     token = jwt.sign({userId: existingStudent.id, email: existingStudent.email},
         process.env.TOKENKEY_STUDENT,
-        {expiresIn: '1h'}
+        {expiresIn: '24h'}
     );
     }
     catch(err) {

@@ -46,8 +46,6 @@ const Users = props => {
     }, [sendRequest])
 
 
-
-
     return (
         <React.Fragment>
             <div className="select-user">
