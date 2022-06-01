@@ -28,8 +28,8 @@ const UsersList = props => {
         role={users.role}
         classyear={users.classyear}
         address={users.address}
-        phonenumber={props.phonenumber}
-        birdthdate={props.birdthdate}
+        phonenumber={users.phonenumber}
+        birdthdate={users.birdthdate}
         />
       ))}
     </ul>

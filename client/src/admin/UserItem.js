@@ -13,6 +13,7 @@ const UserItem = props => {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const {error, sendRequest, clearError} = useHttpClient();
     const usertype = useParams().usertype;
+    const [showMore, setShowMore] = useState(false);
 
     const showDeleteWarningHandler = () => {
 		setShowConfirmModal(true);
@@ -21,6 +22,14 @@ const UserItem = props => {
 	const cancelDeleteHandler = () => {
 		setShowConfirmModal(false);
 	};
+
+    const openMoreHandler = () => {
+        setShowMore(true);
+      };
+    
+    const closeMoreHandler = () => {
+      setShowMore(false);
+      };
 
     const confirmDeleteHandler = async () => {
 		setShowConfirmModal(false);
@@ -56,6 +65,20 @@ const UserItem = props => {
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
 
+            <Modal
+            show={showMore}
+            onCancel={closeMoreHandler}
+            footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+            {props.name}
+            {props.firstname}
+            {props.email}
+            {props.role}
+            {props.classyear}
+            {props.address}
+            {props.phonenumber}
+            {props.birdthdate}
+            </Modal>
+
             <Modal 
             show={showConfirmModal}
             onCancel={cancelDeleteHandler}
@@ -81,12 +104,10 @@ const UserItem = props => {
                     <p className="user-name">{props.name}</p>
                     <p className="user-firstname">{props.firstname}</p>
                     <p className="user-email">{props.email}</p>
-                    <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
                     <p className="user-role">{props.role}</p>
                     <p className="user-classyear">{props.classyear}</p>
-                    <p className="user-address">{props.address}</p>
-                    <p className="user-phonenumber">{props.phonenumber}</p>
-                    <p className="user-birdthdate">{props.birdthdate}</p>
+                    <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
+                    <button style={role_background} className='seemore' onClick={openMoreHandler}>&nbsp; voir tout</button>
                 </Card>
             </div>
         </React.Fragment>
