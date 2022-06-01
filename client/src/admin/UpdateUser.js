@@ -139,6 +139,44 @@ const UpdateUser = props => {
 		);
 	}
 
+	const changed_input = {
+		border: "solid #F5B7B1",
+		borderRadius: "4px",
+		padding: "1%",
+		margin: "1%"
+	}
+	var changed_email = {};
+	if (formState.inputs.email.value != loadedUser.email) {
+		changed_email = changed_input
+	}
+	
+	var changed_role = {};
+	if (formState.inputs.role.value != loadedUser.role) {
+		changed_role = changed_input
+	}
+
+	var changed_classyear = {};
+	if (formState.inputs.classyear.value != loadedUser.classyear) {
+		changed_classyear = changed_input
+	}
+
+	var changed_address = {};
+	if (formState.inputs.address.value != loadedUser.address) {
+		changed_address = changed_input
+	}
+
+	var changed_phonenumber = {};
+	if (formState.inputs.phonenumber.value != loadedUser.phonenumber) {
+		changed_phonenumber = changed_input
+	}
+
+	if (usertype == "students") {
+		var changed_birdthdate = {};
+		if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)) {
+			changed_birdthdate = changed_input
+		}
+	}
+
 return (
 	<React.Fragment>
 		<ErrorModal error={error} onClear={clearError} />
@@ -148,6 +186,7 @@ return (
 			className="news-form" 
 			onSubmit={userUpdateSubmitHandler}>
 			<h2 className='form-news-title'>Mettre à jour cet utilisateur</h2>
+			<div style={changed_email}>
 			<Input
 				id="email"
 				element="input"
@@ -159,7 +198,9 @@ return (
 				initialValue={loadedUser.email}
 				initialValid={true}
 			/>
+			</div>
 			{usertype == "teachers" &&
+			<div style={changed_role}>
 			<Input
 				id="role"
 				element="input"
@@ -170,9 +211,10 @@ return (
 				onInput={inputHandler}
 				initialValue={loadedUser.role}
 				initialValid={true}
-			/>}
+			/></div>}
 
 			{(usertype == "students" || usertype == "trusted-students") &&
+			<div style={changed_classyear}>
 			<Input
 				id="classyear"
 				element="input"
@@ -183,10 +225,11 @@ return (
 				onInput={inputHandler}
 				initialValue={loadedUser.classyear}
 				initialValid={true}
-			/>}
+			/></div>}
 
 			{usertype == "students" &&
 			<div>
+			<div style={changed_address}>
 			<Input
 			id="address"
 			element="input"
@@ -197,8 +240,9 @@ return (
 			onInput={inputHandler}
 			initialValue={loadedUser.address}
 			initialValid={true}
-			/>
+			/></div>
 			
+			<div style={changed_phonenumber}>
 			<Input
 			id="phonenumber"
 			element="input"
@@ -209,19 +253,20 @@ return (
 			onInput={inputHandler}
 			initialValue={loadedUser.phonenumber}
 			initialValid={true}
-			/>
+			/></div>
 			
+			<div style={changed_birdthdate}>
 			<Input
 			id="birdthdate"
 			element="input"
-			type="text"
+			type="date"
 			label="Date de naissance"
 			validators={[VALIDATOR_REQUIRE]}
 			errorText="Veillez entrer une date valide."
 			onInput={inputHandler}
-			initialValue={loadedUser.birdthdate}
+			initialValue={loadedUser.birdthdate.toString().substring(0, 10)}
 			initialValid={true}
-			/>
+			/></div>
 			</div>}
 
 
@@ -236,6 +281,7 @@ return (
 			Retour
 		</Button>
 		</div>
+		<br></br>
 	</React.Fragment>
 );
 };
