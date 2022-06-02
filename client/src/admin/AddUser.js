@@ -36,27 +36,28 @@ const AddUser = props => {
 			// trusted students
 			classyear: {
 				value: '',
-				isValid: false
+				isValid: true
 			}
 		},
 		false
 	);
-
+	
 
     const userSubmitHandler = async event => {
 		event.preventDefault();
 		try {
-			const formData = new FormData();
-			formData.append('email', formState.inputs.email.value);
-			formData.append('name', formState.inputs.name.value);
-			formData.append('firstname', formState.inputs.firstname.value);
-            formData.append('school', props.school);
-            formData.append('classyear', formState.inputs.classyear.value)
 			await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + `/api/${usertype}`,
 				'POST',
-				formData,
-				{Authorization: 'Bearer ' + auth.token}
+				JSON.stringify({
+					email: formState.inputs.email.value,
+					name: formState.inputs.name.value,
+					firstname: formState.inputs.firstname.value,
+					school: props.school,
+					classyear: formState.inputs.classyear.value
+				}),
+				{'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + auth.token}
 			);
 			history.push('/' + props.school + '/admin/utilisateurs/' + usertype);
 		}
