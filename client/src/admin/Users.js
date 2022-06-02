@@ -48,6 +48,11 @@ const Users = props => {
 
     return (
         <React.Fragment>
+            {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
+            <a href={`/${props.school}/admin/` + usertype + "/add-user"}>
+                <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
+            </a>}
+
             <div className="select-user">
                 <a style={studentsButton} href={"/" + props.school + "/admin/utilisateurs/students"}>
                 Comptes Élèves</a>
@@ -58,7 +63,9 @@ const Users = props => {
                 <a style={trustedstudentsButton} href={"/" + props.school + "/admin/utilisateurs/trusted-students"}>
                 White List Élèves</a>
             </div>
+
             <br></br>
+
             {isLoading && 
             <div className='center'>
                 <LoadingSpinner />

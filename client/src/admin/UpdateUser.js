@@ -5,7 +5,7 @@ import Input from '../common/FormElements/Input';
 import Button from '../common/FormElements/Button';
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
-import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH} from '../common/util/validators';
+import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL} from '../common/util/validators';
 import { useForm } from '../common/hooks/form-hooks';
 import { useHttpClient } from '../common/hooks/http-hook';
 import {AuthContext} from '../common/context/auth-context';
@@ -192,7 +192,7 @@ return (
 				element="input"
 				type="text"
 				label="Email"
-				validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(15)]}
+				validators={[VALIDATOR_REQUIRE, VALIDATOR_EMAIL()]}
 				errorText="Veillez entrer une addresse email valide."
 				onInput={inputHandler}
 				initialValue={loadedUser.email}

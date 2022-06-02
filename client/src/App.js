@@ -9,13 +9,14 @@ import Footer from './showcase/Footer';
 import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
-import NewNews from './admin/NewNews';
+import AddNews from './admin/AddNews';
 import UpdateNews from './admin/UpdateNews';
 import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
 import WelcomeStudent from './email-confirmation/WelcomeStudent';
 import CheckEmail from './email-confirmation/CheckEmail';
 import Users from './admin/Users';
 import UpdateUser from './admin/UpdateUser';
+import AddUser from './admin/AddUser';
 
 let logoutTimer;
 
@@ -114,7 +115,7 @@ if (token && role === "Admin") {
     <Route path="/grand-hallet/admin/add-news">
       <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="/img/Grand-Hallet_blanc.png" />
-        <NewNews schoolname="grand-hallet" />
+        <AddNews schoolname="grand-hallet" />
     </Route>
 
     <Route path="/grand-hallet/admin/update-news/:newsId">
@@ -139,6 +140,12 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateUser school="grand-hallet" />
+    </Route>
+
+    <Route path="/grand-hallet/admin/:usertype/add-user">
+      <MainNavigation schoolLink="grand-hallet"
+                          schoolLogo="/img/Grand-Hallet_blanc.png" />
+      <AddUser school="grand-hallet" />
     </Route>
 
 
@@ -169,7 +176,7 @@ if (token && role === "Admin") {
     <Route path="/moxhe/admin/add-news">
       <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
-      <NewNews schoolname="moxhe" />
+      <AddNews schoolname="moxhe" />
     </Route>
 
     <Route path="/moxhe/admin/update-news/:newsId">
@@ -188,6 +195,18 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="moxhe"
                       schoolLogo="/img/Moxhe_blanc.png" />
       <Users school="moxhe"/>
+    </Route>
+
+    <Route path="/moxhe/admin/utilisateurs/:usertype/update-user/:userId">
+      <MainNavigation schoolLink="moxhe"
+                          schoolLogo="/img/Moxhe_blanc.png" />
+      <UpdateUser school="moxhe" />
+    </Route>
+
+    <Route path="/moxhe/admin/:usertype/add-user">
+      <MainNavigation schoolLink="moxhe"
+                          schoolLogo="/img/Moxhe_blanc.png" />
+      <AddUser school="moxhe" />
     </Route>
     
 </Switch>
