@@ -65,19 +65,135 @@ const UserItem = props => {
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
 
+            {usertype == "students" && 
             <Modal
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-            {props.name}
-            {props.firstname}
-            {props.email}
-            {props.role}
-            {props.classyear}
-            {props.address}
-            {props.phonenumber}
-            {props.birdthdate}
-            </Modal>
+            
+            <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                <img className="user-modify" src="/svg/modify-red.svg" />
+            </a>
+            
+            <div className="full-info-user">
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Nom: &nbsp;</p>
+                    <p>{props.name}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Prénom: &nbsp;</p>
+                    <p>{props.firstname}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Email: &nbsp;</p>
+                    <p>{props.email}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Classe: &nbsp;</p>
+                    <p>{props.classyear}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Adresse: &nbsp;</p>
+                    <p>{props.address}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Gsm: &nbsp;</p>
+                    <p>{props.phonenumber}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Date de naissance: &nbsp;</p>
+                    <p>{props.birdthdate.toString().substring(0, 10)}</p>
+                </div>
+            </div>
+
+            
+            </Modal>}
+
+            {usertype == "teachers" && 
+            <Modal
+            show={showMore}
+            onCancel={closeMoreHandler}
+            footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                <img className="user-modify" src="/svg/modify-red.svg" />
+            </a>
+            
+            <div className="full-info-user">
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Nom: &nbsp;</p>
+                    <p>{props.name}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Prénom: &nbsp;</p>
+                    <p>{props.firstname}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Email: &nbsp;</p>
+                    <p>{props.email}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Role: &nbsp;</p>
+                    <p>{props.role}</p>
+                </div>
+            </div>
+            
+            </Modal>}
+
+            {usertype == "trusted-teachers" && 
+            <Modal
+            show={showMore}
+            onCancel={closeMoreHandler}
+            footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                <img className="user-modify" src="/svg/modify-red.svg" />
+            </a>
+            
+            <div className="full-info-user">
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Nom: &nbsp;</p>
+                    <p>{props.name}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Prénom: &nbsp;</p>
+                    <p>{props.firstname}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Email: &nbsp;</p>
+                    <p>{props.email}</p>
+                </div>
+            </div>
+
+            </Modal>}
+
+            {usertype == "trusted-students" && 
+            <Modal
+            show={showMore}
+            onCancel={closeMoreHandler}
+            footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                <img className="user-modify" src="/svg/modify-red.svg" />
+            </a>
+            
+            <div className="full-info-user">
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Nom: &nbsp;</p>
+                    <p>{props.name}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Prénom: &nbsp;</p>
+                    <p>{props.firstname}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Email: &nbsp;</p>
+                    <p>{props.email}</p>
+                </div>
+                <div className="full-info-user-elem">
+                    <p className="full-info-user-elem-title">Classe: &nbsp;</p>
+                    <p>{props.classyear}</p>
+                </div>
+            </div>
+
+            </Modal>}
 
             <Modal 
             show={showConfirmModal}

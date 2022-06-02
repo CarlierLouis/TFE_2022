@@ -102,6 +102,16 @@ const NewNews = props => {
 					Ajouter cette actualité
 				</Button>
 			</form>
+
+			<br></br>
+
+			<div className="back-button">
+				<Button href={'/' + props.schoolname + '/actu'}>
+					Retour
+				</Button>
+			</div>
+
+			<br></br>
 		</React.Fragment>
 	);
 };

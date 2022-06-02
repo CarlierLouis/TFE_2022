@@ -112,8 +112,8 @@ const UpdateUser = props => {
 					password: loadedUser.password
 				}),
 				{
-					'Content-Type': 'application/json',
-					Authorization: 'Bearer ' + auth.token
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + auth.token
 				}
 			);
 			history.push('/' + props.school + '/admin/utilisateurs/' + usertype);
@@ -192,7 +192,7 @@ return (
 				element="input"
 				type="text"
 				label="Email"
-				validators={[VALIDATOR_REQUIRE]}
+				validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(15)]}
 				errorText="Veillez entrer une addresse email valide."
 				onInput={inputHandler}
 				initialValue={loadedUser.email}
@@ -220,7 +220,7 @@ return (
 				element="input"
 				type="text"
 				label="Classe"
-				validators={[VALIDATOR_REQUIRE]}
+				validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(5)]}
 				errorText="Veillez entrer une classe valide."
 				onInput={inputHandler}
 				initialValue={loadedUser.classyear}
@@ -235,7 +235,7 @@ return (
 			element="input"
 			type="text"
 			label="Adresse"
-			validators={[VALIDATOR_REQUIRE]}
+			validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(30)]}
 			errorText="Veillez entrer une adresse valide."
 			onInput={inputHandler}
 			initialValue={loadedUser.address}
@@ -248,7 +248,7 @@ return (
 			element="input"
 			type="text"
 			label="Gsm"
-			validators={[VALIDATOR_REQUIRE]}
+			validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(15)]}
 			errorText="Veillez entrer un numéro valide."
 			onInput={inputHandler}
 			initialValue={loadedUser.phonenumber}
