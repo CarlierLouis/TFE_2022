@@ -103,7 +103,8 @@ const UserItem = props => {
                 </div>
                 <div className="full-info-user-elem">
                     <p className="full-info-user-elem-title">Date de naissance: &nbsp;</p>
-                    <p>{props.birdthdate.toString().substring(0, 10)}</p>
+                    {props.birdthdate != null &&
+                    <p>{props.birdthdate.toString().substring(0, 10)}</p>}
                 </div>
             </div>
 

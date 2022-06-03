@@ -172,8 +172,10 @@ const UpdateUser = props => {
 
 	if (usertype == "students") {
 		var changed_birdthdate = {};
-		if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)) {
-			changed_birdthdate = changed_input
+		if (loadedUser.birdthdate != null) {
+			if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)) {
+				changed_birdthdate = changed_input
+			}
 		}
 	}
 
@@ -234,7 +236,7 @@ return (
 			id="address"
 			element="input"
 			type="text"
-			label="Adresse"
+			label="Adresse (max 30 cara.)"
 			validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(30)]}
 			errorText="Veillez entrer une adresse valide."
 			onInput={inputHandler}
@@ -255,6 +257,7 @@ return (
 			initialValid={true}
 			/></div>
 			
+			{loadedUser.birdthdate != null &&
 			<div style={changed_birdthdate}>
 			<Input
 			id="birdthdate"
@@ -266,7 +269,22 @@ return (
 			onInput={inputHandler}
 			initialValue={loadedUser.birdthdate.toString().substring(0, 10)}
 			initialValid={true}
-			/></div>
+			/></div>}
+
+			{loadedUser.birdthdate == null &&
+			<div style={changed_birdthdate}>
+			<Input
+			id="birdthdate"
+			element="input"
+			type="date"
+			label="Date de naissance"
+			validators={[VALIDATOR_REQUIRE]}
+			errorText="Veillez entrer une date valide."
+			onInput={inputHandler}
+			initialValue={loadedUser.birdthdate}
+			initialValid={true}
+			/></div>}
+
 			</div>}
 
 

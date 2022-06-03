@@ -202,7 +202,7 @@ const getStudents = async (req, res, next) => {
 
     let students;
     try {
-        students =  await Student.find({school: school}, '-password')
+        students =  await Student.find({school: school}, '-password').where({status: "Active"})
     }
     catch(err) {
         const error = new HttpError(
@@ -214,7 +214,7 @@ const getStudents = async (req, res, next) => {
             'Impossible de trouver des élèves pour l\'école spécifiée', 404);
         return next(error);
     }
-
+    
     res.json({ users: students.map(student => student.toObject({ getters: true})) });
 }
 

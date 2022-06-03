@@ -211,7 +211,7 @@ const getTeachers = async (req, res, next) => {
 
     let teachers;
     try {
-        teachers =  await Teacher.find({school: school}, '-password')
+        teachers =  await Teacher.find({school: school}, '-password').where({status: "Active"})
     }
     catch(err) {
         const error = new HttpError(
