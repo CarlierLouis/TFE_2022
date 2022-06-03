@@ -55,14 +55,14 @@ const Auth = props => {
                     JSON.stringify({
                         email: formState.inputs.email.value,
                         password: formState.inputs.password.value,
-                        school: props.schoolname
+                        school: props.school
                     }),
                     {'Content-Type': 'application/json'},
                 );
 
                 
                 const responseData2 = await sendRequest( 
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.schoolname}`,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.school}`,
                     'GET', null,
                     {Authorization: 'Bearer ' + auth.token});
 
@@ -71,16 +71,16 @@ const Auth = props => {
                 responseData2.users.forEach(element => {
                 if (element.id == responseData.userId) {
                     if (element.role == "Default") {
-                        auth.login(responseData.userId , responseData.token, "Default", props.schoolname); 
+                        auth.login(responseData.userId , responseData.token, "Default", props.school); 
                     }
                     else if (element.role == "Admin") {
-                        auth.login(responseData.userId , responseData.token, "Admin", props.schoolname); 
+                        auth.login(responseData.userId , responseData.token, "Admin", props.school); 
                     }
                 }
                 });
             }
             else {
-                auth.login(responseData.userId , responseData.token, "Student", props.schoolname); 
+                auth.login(responseData.userId , responseData.token, "Student", props.school); 
             }   
         }
 
@@ -97,7 +97,7 @@ const Auth = props => {
                 formData.append('name', formState.inputs.name.value);
                 formData.append('firstname', formState.inputs.firstname.value);
                 formData.append('password ', formState.inputs.password.value);
-                formData.append('school', JSON.stringify(props.schoolname));
+                formData.append('school', JSON.stringify(props.school));
                 */
             
                 const responseData = await sendRequest(
@@ -108,14 +108,14 @@ const Auth = props => {
                         name: formState.inputs.name.value,
                         firstname: formState.inputs.firstname.value,
                         password : formState.inputs.password.value,
-                        school: props.schoolname,
+                        school: props.school,
                     }),
                     {'Content-Type': 'application/json'},
                 );
                 
                 /*
                 const responseData2 = await sendRequest( 
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.schoolname}`,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.school}`,
                     'GET', null,
                     {Authorization: 'Bearer ' + auth.token});
                 
@@ -123,18 +123,18 @@ const Auth = props => {
                     responseData2.teachers.forEach(element => {
                     if (element.id == responseData.userId) {
                         if (element.role == "Default") {
-                            auth.login(responseData.userId , responseData.token, "Default", props.schoolname); 
+                            auth.login(responseData.userId , responseData.token, "Default", props.school); 
                         }
                         else if (element.role == "Admin") {
-                            auth.login(responseData.userId , responseData.token, "Admin", props.schoolname); 
+                            auth.login(responseData.userId , responseData.token, "Admin", props.school); 
                         }
                     }
                     });
                 }
                 else {
-                    auth.login(responseData.userId , responseData.token, "Student", props.schoolname); 
+                    auth.login(responseData.userId , responseData.token, "Student", props.school); 
                 }*/
-                history.push('/' + props.schoolname + '/info-email');
+                history.push('/' + props.school + '/info-email');
                 
             }
             catch(err) {}

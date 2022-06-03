@@ -48,7 +48,7 @@ const NewNews = props => {
 			formData.append('title', formState.inputs.title.value);
 			formData.append('description', formState.inputs.description.value);
 			formData.append('date', formState.inputs.date.value);
-			formData.append('school', props.schoolname);
+			formData.append('school', props.school);
 			formData.append('image', formState.inputs.image.value);
 			await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + '/api/news',
@@ -56,7 +56,7 @@ const NewNews = props => {
 				formData,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			history.push(`/${props.schoolname}/actu`);
+			history.push(`/${props.school}/actu`);
 		}
 		catch(err) {}
 	};
@@ -106,7 +106,7 @@ const NewNews = props => {
 			<br></br>
 
 			<div className="back-button">
-				<Button href={'/' + props.schoolname + '/actu'}>
+				<Button href={'/' + props.school + '/actu'}>
 					Retour
 				</Button>
 			</div>

@@ -115,13 +115,13 @@ if (token && role === "Admin") {
     <Route path="/grand-hallet/admin/add-news">
       <MainNavigation schoolLink="grand-hallet"
                         schoolLogo="/img/Grand-Hallet_blanc.png" />
-        <AddNews schoolname="grand-hallet" />
+        <AddNews school="grand-hallet" />
     </Route>
 
     <Route path="/grand-hallet/admin/update-news/:newsId">
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
-      <UpdateNews schoolname="grand-hallet" />
+      <UpdateNews school="grand-hallet" />
     </Route>
 
     <Route path="/grand-hallet/admin/utilisateurs" exact>
@@ -176,13 +176,13 @@ if (token && role === "Admin") {
     <Route path="/moxhe/admin/add-news">
       <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
-      <AddNews schoolname="moxhe" />
+      <AddNews school="moxhe" />
     </Route>
 
     <Route path="/moxhe/admin/update-news/:newsId">
     <MainNavigation schoolLink="moxhe"
                         schoolLogo="/img/Moxhe_blanc.png" />
-      <UpdateNews schoolname="moxhe" />
+      <UpdateNews school="moxhe" />
     </Route>
 
     <Route path="/moxhe/admin/utilisateurs" exact>
@@ -419,7 +419,7 @@ else {
                     schoolLogo="/img/Grand-Hallet_blanc.png" />
       <Auth connexiontitle_1=""
             connexiontitle_2=""
-            schoolname="grand-hallet"
+            school="grand-hallet"
             usertype="students"
             usertypeId="studentId" 
             usertypefr="élèves ainsi qu'à leurs parents" />
@@ -430,7 +430,7 @@ else {
         schoolLogo="/img/Grand-Hallet_blanc.png" />
         <Auth connexiontitle_1=""
               connexiontitle_2=""
-              schoolname="grand-hallet"
+              school="grand-hallet"
               usertype="teachers"
               usertypeId="teacherId"
               usertypefr="enseignants" />
@@ -477,7 +477,7 @@ else {
         schoolLogo="/img/Moxhe_blanc.png" />
         <Auth connexiontitle_1=""
               connexiontitle_2=""
-              schoolname="moxhe"
+              school="moxhe"
               usertype="students"
               usertypeId="studentId"
               usertypefr="élèves ainsi qu'à leurs parents" />
@@ -488,7 +488,7 @@ else {
                       schoolLogo="/img/Moxhe_blanc.png" />
         <Auth connexiontitle_1=""
             connexiontitle_2=""
-            schoolname="moxhe"
+            school="moxhe"
             usertype="teachers"
             usertypeId="teacherId"
             usertypefr="enseignants" />

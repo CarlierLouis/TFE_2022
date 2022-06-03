@@ -92,7 +92,7 @@ const UpdateNews = props => {
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.schoolname + '/actu');
+			history.push('/' + props.school + '/actu');
 		}
 		catch(err) {}
 	};
@@ -170,7 +170,7 @@ return (
 
 		<br></br>
 		<div className="back-button">
-		<Button href={'/' + props.schoolname + '/actu'}>
+		<Button href={'/' + props.school + '/actu'}>
 			Retour
 		</Button>
 		</div>
