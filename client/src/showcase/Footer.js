@@ -22,7 +22,7 @@ const Footer = props => {
         </div>
         
     </footer>
-    <div style={{backgroundColor: '#628699', height: '20px', width: '100%'}}></div>
+    <div style={{backgroundColor: '#628699', height: '100px', width: '100%'}}></div>
     </div>
     
     

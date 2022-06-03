@@ -35,7 +35,7 @@ const Home  = props => {
 </Carousel.Item>
 </Carousel>
 
-<Card className='home-card-div'><a style={{maxWidth: '50%'}}>« Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+<Card className='home-card-div'><elem style={{maxWidth: '50%'}}>« Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. 
 Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. 
 Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. 
@@ -59,7 +59,17 @@ Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac eui
 Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. 
 Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. 
 Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. 
-Curabitur eu amet. »</a></Card><br></br>
+Curabitur eu amet. »</elem></Card><br></br>
+
+<div className='home-youtube-video-div'>
+    <iframe className='home-youtube-video'
+      src={props.homevideo} 
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      title="video"
+    />
+</div>
 
 
 <News school={props.school} numberofnews={props.numberofnews}/>

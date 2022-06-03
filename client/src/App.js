@@ -95,12 +95,13 @@ if (token && role === "Admin") {
       schoolLogo="/img/Grand-Hallet_blanc.png" />
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      caroussel2="/img/Grand-Hallet-photo_2.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_3.jpg"
       school="grand-hallet"
       numberofnews="3"
       lat={50.694356732800614} lng={5.038149998040227}
-      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"
+      homevideo="https://www.youtube.com/embed/hFOp3RCDSu8" />
 
     </Route>
 
@@ -160,7 +161,8 @@ if (token && role === "Admin") {
             caroussel3="/img/Moxhe-photo_3.jpg"
             school="moxhe" numberofnews="3"
             lat={50.63151053045548} lng={5.081328142211933}
-            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"   />
+            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"
+            homevideo="https://www.youtube.com/embed/WEo590nrLnY" />
 
     </Route>
 
@@ -242,11 +244,12 @@ else if (token && role === "Default") {
       schoolLogo="/img/Grand-Hallet_blanc.png" />
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      caroussel2="/img/Grand-Hallet-photo_2.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_3.jpg"
       school="grand-hallet" numberofnews="3"
       lat={50.694356732800614} lng={5.038149998040227}
-      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"
+      homevideo="https://www.youtube.com/embed/hFOp3RCDSu8" />
 
     </Route>
 
@@ -276,7 +279,8 @@ else if (token && role === "Default") {
             caroussel3="/img/Moxhe-photo_3.jpg"
             school="moxhe" numberofnews="3"
             lat={50.63151053045548} lng={5.081328142211933}
-            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"
+            homevideo="https://www.youtube.com/embed/WEo590nrLnY" />
     </Route>
 
     <Route  path="/moxhe/actu" exact>
@@ -327,11 +331,12 @@ else if (token && role === "Student") {
       schoolLogo="/img/Grand-Hallet_blanc.png" />
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel2="/img/Grand-Hallet-photo_1.jpg" 
-      caroussel3="/img/Grand-Hallet-photo_1.jpg"
+      caroussel2="/img/Grand-Hallet-photo_2.jpg" 
+      caroussel3="/img/Grand-Hallet-photo_3.jpg"
       school="grand-hallet" numberofnews="3"
       lat={50.694356732800614} lng={5.038149998040227}
-      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+      title="Ecole Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"
+      homevideo="https://www.youtube.com/embed/hFOp3RCDSu8" />
     </Route>
 
     <Route path="/grand-hallet/actu" exact>
@@ -360,7 +365,8 @@ else if (token && role === "Student") {
             caroussel3="/img/Moxhe-photo_3.jpg"
             school="moxhe" numberofnews="3"
             lat={50.63151053045548} lng={5.081328142211933}
-            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+            title="Ecole Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"
+            homevideo="https://www.youtube.com/embed/WEo590nrLnY" />
     </Route>
 
     <Route  path="/moxhe/actu" exact>
@@ -403,7 +409,8 @@ else {
             caroussel3="/img/Grand-Hallet-photo_3.jpg"
             school="grand-hallet" numberofnews="3"
             lat={50.694356732800614} lng={5.038149998040227}
-            title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
+            title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A"
+            homevideo="https://www.youtube.com/embed/hFOp3RCDSu8" />
     </Route>
 
     <Route path="/grand-hallet/actu" exact>
@@ -460,7 +467,8 @@ else {
             caroussel3="/img/Moxhe-photo_3.jpg"
             school="moxhe"  numberofnews="3"
             lat={50.694356732800614} lng={5.038149998040227}
-            title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A" />
+            title="École Fondamentale de Moxhe" addresse="Rue Mayeur J Debras 3A"
+            homevideo="https://www.youtube.com/embed/WEo590nrLnY" />
     </Route>
 
     <Route  path="/moxhe/actu" exact>

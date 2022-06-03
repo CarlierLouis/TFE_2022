@@ -30,6 +30,17 @@
     color: white;
 }
 
+.home-youtube-video {
+    width: 1000px;
+    height: 600px;
+    padding: 3%;
+}
+
+.home-youtube-video-div {
+    text-align: center;
+    background-color: #628699;
+}
+
 
 @media (max-width: 728px) {
 .caroussel-div {
@@ -45,6 +56,12 @@
     width: 91%;
     margin: 2%;
     height: 100%;
+}
+
+.home-youtube-video {
+    width: 95%;
+    height: 300px;
+    margin: 2%;
 }
 
 
