@@ -32,7 +32,7 @@
 .nav-links a:active,
 .nav-links a.active {
   border-bottom: solid 0.3rem;
-  color: #628699;
+  color: rgb(30, 30, 31);
 }
 
 @media (min-width: 1150px) {
