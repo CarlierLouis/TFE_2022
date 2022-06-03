@@ -49,7 +49,7 @@ const Users = props => {
     return (
         <React.Fragment>
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
-            <a href={`/${props.school}/admin/` + usertype + "/add-user"}>
+            <a href={`/${props.school}/admin/add-user/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
             </a>}
 

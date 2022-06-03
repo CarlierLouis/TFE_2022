@@ -72,7 +72,7 @@ const UserItem = props => {
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
             
-            <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+            <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -116,7 +116,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -146,7 +146,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -172,7 +172,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -216,7 +216,7 @@ const UserItem = props => {
 
             <div className="user-item center">
                 <Card style={role_background} className="user-item-card">
-                    <a href={`/${props.school}/admin/${usertype}/update-user/${props.id}`}>
+                    <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
                     <img className="user-modify" src="/svg/modify-red.svg" />
                     </a>
                     <p className="user-name">{props.name}</p>

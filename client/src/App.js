@@ -136,13 +136,13 @@ if (token && role === "Admin") {
       <Users school="grand-hallet"/>
     </Route>
 
-    <Route path="/grand-hallet/admin/:usertype/update-user/:userId">
+    <Route path="/grand-hallet/admin/update-user/:usertype/:userId">
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateUser school="grand-hallet" />
     </Route>
 
-    <Route path="/grand-hallet/admin/:usertype/add-user">
+    <Route path="/grand-hallet/admin/add-user/:usertype">
       <MainNavigation schoolLink="grand-hallet"
                           schoolLogo="/img/Grand-Hallet_blanc.png" />
       <AddUser school="grand-hallet" />
@@ -197,13 +197,13 @@ if (token && role === "Admin") {
       <Users school="moxhe"/>
     </Route>
 
-    <Route path="/moxhe/admin/:usertype/update-user/:userId">
+    <Route path="/moxhe/admin/update-user/:usertype/:userId">
       <MainNavigation schoolLink="moxhe"
                           schoolLogo="/img/Moxhe_blanc.png" />
       <UpdateUser school="moxhe" />
     </Route>
 
-    <Route path="/moxhe/admin/:usertype/add-user">
+    <Route path="/moxhe/admin/add-user/:usertype">
       <MainNavigation schoolLink="moxhe"
                           schoolLogo="/img/Moxhe_blanc.png" />
       <AddUser school="moxhe" />
