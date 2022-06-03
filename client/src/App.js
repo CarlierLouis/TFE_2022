@@ -197,7 +197,7 @@ if (token && role === "Admin") {
       <Users school="moxhe"/>
     </Route>
 
-    <Route path="/moxhe/admin/utilisateurs/:usertype/update-user/:userId">
+    <Route path="/moxhe/admin/:usertype/update-user/:userId">
       <MainNavigation schoolLink="moxhe"
                           schoolLogo="/img/Moxhe_blanc.png" />
       <UpdateUser school="moxhe" />

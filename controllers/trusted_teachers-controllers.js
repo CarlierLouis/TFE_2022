@@ -68,6 +68,24 @@ const createTrustedTeacher = async(req, res, next) => {
         school
     });
 
+    let existingTrustedTeacher
+    try {
+        existingTrustedTeacher = await TrustedTeacher.findOne({email: email})
+    }
+    catch(err) {
+        const error = new HttpError (
+            'Création du contact ratée, veillez réessayer.', 500);
+        return next(error);
+    }
+
+    if (existingTrustedTeacher 
+        && existingTrustedTeacher.name == createdTrustedTeacher.name 
+        && existingTrustedTeacher.firstname == createdTrustedTeacher.firstname) {
+        const error = new HttpError(
+            'Ce contact de confiance est déjà renseigné !', 422);
+        return next(error);
+    }
+
     try {
         await createdTrustedTeacher.save();
     }
