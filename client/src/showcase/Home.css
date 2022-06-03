@@ -30,6 +30,10 @@
     color: white;
 }
 
+.home-card-div {
+    background-color: #ECF0F7;
+}
+
 .home-youtube-video {
     width: 1000px;
     height: 600px;
