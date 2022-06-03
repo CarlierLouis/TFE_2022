@@ -161,23 +161,26 @@ const UpdateUser = props => {
 	}
 
 	var changed_address = {};
-	if (formState.inputs.address.value != loadedUser.address) {
+	if (formState.inputs.address.value != loadedUser.address 
+		&& loadedUser.address != null) {
 		changed_address = changed_input
 	}
 
 	var changed_phonenumber = {};
-	if (formState.inputs.phonenumber.value != loadedUser.phonenumber) {
+	if (formState.inputs.phonenumber.value != loadedUser.phonenumber
+		&& loadedUser.phonenumber != null) {
 		changed_phonenumber = changed_input
 	}
 
-	if (usertype == "students") {
-		var changed_birdthdate = {};
-		if (loadedUser.birdthdate != null) {
-			if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)) {
-				changed_birdthdate = changed_input
-			}
+	
+	var changed_birdthdate = {};
+	if (loadedUser.birdthdate != null && usertype == "students") {
+		if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)
+			&& loadedUser.birdthdate != null) {
+			changed_birdthdate = changed_input
 		}
 	}
+	
 
 return (
 	<React.Fragment>
