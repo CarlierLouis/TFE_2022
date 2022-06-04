@@ -5,6 +5,7 @@ import  { useHttpClient } from '../../common/hooks/http-hook';
 import { useParams } from "react-router-dom";
 import UsersList from './UsersList';
 import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
+import SearchBar from '../../common/UIElements/SearchBar';
 import './Users.css';
 
 
@@ -68,6 +69,13 @@ const Users = props => {
                 <a style={trustedstudentsButton} href={"/" + props.school + "/admin/utilisateurs/trusted-students"}>
                 White List Élèves</a>
             </div>
+
+            <br></br>
+
+            {usertype != null &&
+            <div className='search-bar-div'>
+                <SearchBar className='search-bar' filterField={(item) => item.classyear} list={loadedUsers} setList={setLoadedUsers} />
+            </div>}
 
             <br></br>
 
