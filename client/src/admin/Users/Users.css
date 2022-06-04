@@ -49,6 +49,19 @@
     transform: scale(1.2);
  }
 
+ .excel-logo {
+    width: 40px;
+    margin-left: 1%;
+    transition: transform 0.5s; 
+    margin-top: 0.4%;
+    position: fixed;
+    margin-top: 60px;
+ }
+
+ .excel-logo:hover {
+    transform: scale(1.2);
+ }
+
 .back-button {
     text-align: center;
   }
@@ -66,6 +79,6 @@
     }
 
     .select-user {
-        margin-left: 5%;
+        margin-left: 15%;
     }
 }

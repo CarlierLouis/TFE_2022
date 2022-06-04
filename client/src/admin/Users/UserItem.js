@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import { AuthContext } from '../common/context/auth-context';
-import { useHttpClient } from '../common/hooks/http-hook';
-import ErrorModal from "../common/UIElements/ErrorModal";
-import Card from "../common/UIElements/Card";
-import Modal from "../common/UIElements/Modal";
-import Button from "../common/FormElements/Button";
+import { AuthContext } from '../../common/context/auth-context';
+import { useHttpClient } from '../../common/hooks/http-hook';
+import ErrorModal from "../../common/UIElements/ErrorModal";
+import Card from "../../common/UIElements/Card";
+import Modal from "../../common/UIElements/Modal";
+import Button from "../../common/FormElements/Button";
 import { useParams } from "react-router-dom";
 import './UserItem.css';
 

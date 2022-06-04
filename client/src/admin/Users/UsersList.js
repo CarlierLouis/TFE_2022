@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from '../common/UIElements/Card';
+import Card from '../../common/UIElements/Card';
 import UserItem from "./UserItem";
 import './UsersList.css';
 

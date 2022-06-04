@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 
-import { AuthContext } from '../common/context/auth-context';
-import  { useHttpClient } from '../common/hooks/http-hook';
+import { AuthContext } from '../../common/context/auth-context';
+import  { useHttpClient } from '../../common/hooks/http-hook';
 import { useParams } from "react-router-dom";
 import UsersList from './UsersList';
-import LoadingSpinner from '../common/UIElements/LoadingSpinner';
+import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
 import './Users.css';
 
 
@@ -51,6 +51,11 @@ const Users = props => {
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
             <a href={`/${props.school}/admin/add-user/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
+            </a>}
+            
+            {usertype == "trusted-students" &&
+            <a href={`/${props.school}/admin/add-user/` + usertype}>
+                <img className='excel-logo' src='/svg/excel.svg'></img>
             </a>}
 
             <div className="select-user">

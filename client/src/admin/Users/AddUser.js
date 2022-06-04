@@ -1,15 +1,14 @@
 import React, {useContext, use} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 
-import Input from '../common/FormElements/Input';
-import Button from '../common/FormElements/Button';
-import ErrorModal from '../common/UIElements/ErrorModal';
-import LoadingSpinner from '../common/UIElements/LoadingSpinner';
-import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL} from '../common/util/validators';
-import { useForm } from '../common/hooks/form-hooks';
-import { useHttpClient } from '../common/hooks/http-hook';
-import {AuthContext} from '../common/context/auth-context';
-import ImageUpload from '../common/FormElements/ImageUpload';
+import Input from '../../common/FormElements/Input';
+import Button from '../../common/FormElements/Button';
+import ErrorModal from '../../common/UIElements/ErrorModal';
+import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
+import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL} from '../../common/util/validators';
+import { useForm } from '../../common/hooks/form-hooks';
+import { useHttpClient } from '../../common/hooks/http-hook';
+import {AuthContext} from '../../common/context/auth-context';
 
 import './Users.css';
 

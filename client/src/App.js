@@ -3,20 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import MainNavigation from './common/navigation/MainNavigation';
-import Home from './showcase/Home'
+import Home from './showcase/Home';
 import Portal from './portal/Portal';
 import Footer from './showcase/Footer';
 import Auth from './user/Auth';
 import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
-import AddNews from './admin/AddNews';
-import UpdateNews from './admin/UpdateNews';
+import AddNews from './admin/News/AddNews';
+import UpdateNews from './admin//News/UpdateNews';
 import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
 import WelcomeStudent from './email-confirmation/WelcomeStudent';
 import CheckEmail from './email-confirmation/CheckEmail';
-import Users from './admin/Users';
-import UpdateUser from './admin/UpdateUser';
-import AddUser from './admin/AddUser';
+import Users from './admin/Users/Users';
+import UpdateUser from './admin/Users/UpdateUser';
+import AddUser from './admin/Users/AddUser';
 
 let logoutTimer;
 

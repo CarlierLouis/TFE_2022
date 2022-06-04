@@ -56,7 +56,7 @@ Pellentesque rhoncus nunc et augue.
     src={props.homevideo} 
     frameborder="0"
     allow="autoplay; encrypted-media"
-    allowfullscreen
+    allowFullScreen
     title="video"
   />
 </div>
