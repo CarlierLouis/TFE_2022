@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = props => {
     return (
-        <div>
+    <div>
     <footer className='showcase_footer'>
         <div className="footer-Hannut__logo" > 
         <img src="/img/Hannut_logo_couleurs.png"
@@ -22,7 +22,13 @@ const Footer = props => {
         </div>
         
     </footer>
-    <div style={{backgroundColor: 'rgb(30, 30, 31)', height: '50px', width: '100%'}}></div>
+    <div className='legal-notice-div'>
+        <a className='legal-notice'>Mentions légales</a>
+    </div>
+
+    <div className='end-footer-div'>
+        <p>© 2022 - .... - Tous droits réservé</p>
+    </div>
     </div>
     
     

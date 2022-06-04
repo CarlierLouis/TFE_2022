@@ -63,6 +63,12 @@ const signup = async (req, res, next) => {
         return next(error);
     };
 
+    if (existingTrustedStudent && 
+        (existingTrustedStudent.name != name || existingTrustedStudent.firstname != firstname)) {
+        const error = new HttpError(
+            'Le nom et/ou le prénom introduit(s) semble(nt) incorrect(s)', 422);
+        return next(error);
+    }
 
 
     let hashedPassword;

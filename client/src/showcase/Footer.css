@@ -12,6 +12,7 @@
 
 .footer-Hannut__logo {
     margin: 2%;
+    margin-left: 11%;
 }
 
 .info-center {
@@ -24,6 +25,30 @@
 .rs-right {
     margin: 2%;
     text-align: center;
+}
+
+.legal-notice {
+    color: white;
+}
+
+.legal-notice-div {
+    background-color: rgb(30, 30, 31);
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 25px;
+    color: white;
+}
+
+.end-footer-div {
+    background-color: #ECF0F7;
+    height: 50px;
+    width: 100%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding: 15px;
 }
 
 @media (max-width: 820px) {
