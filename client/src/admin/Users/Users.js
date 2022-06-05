@@ -15,6 +15,7 @@ const Users = props => {
     const [loadedUsersSearch, setLoadedUsersSearch] = useState(loadedUsers);
     const {isLoading, sendRequest} = useHttpClient();
     const usertype = useParams().usertype;
+    const [selected, setSelected] = useState();
 
     if (usertype == "teachers") {
         var teachersButton = {backgroundColor: "#628699", border: "#628699"}
@@ -49,6 +50,10 @@ const Users = props => {
     }, [sendRequest])
 
 
+    const onChangedSelect = () => {
+        setSelected(document.getElementById('option-select').value);
+    }
+
 
     return (
         <React.Fragment>
@@ -77,8 +82,35 @@ const Users = props => {
 
             {usertype != null &&
             <div className='search-bar-div'>
+                <select name="option" id="option-select" onChange={onChangedSelect}>
+                    <option value="">--Option de recherche--</option>
+                    <option value="email">Email</option>
+                    <option value="name">Nom</option>
+                    <option value="firstname">Prénom</option>
+                    {(usertype == "students" || usertype == "trusted-students") &&
+                    <option value="classyear">Classe</option>}
+                 </select>
+
+                {(selected == ""  || selected == null) && 
                 <SearchBar className='search-bar' filterField={(item) => item.email}
-                 list={loadedUsers} setList={setLoadedUsersSearch} />
+                 list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Sélectionner une option de recherche..." disabled />}
+
+                {selected == "email" && 
+                <SearchBar className='search-bar' filterField={(item) => item.email}
+                 list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Rechercher..." />}
+
+                {selected == "name" && 
+                <SearchBar className='search-bar' filterField={(item) => item.name}
+                 list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Rechercher..." />}
+
+                {selected == "firstname" && 
+                <SearchBar className='search-bar' filterField={(item) => item.firstname}
+                 list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Rechercher..." />}
+
+                {selected == "classyear" && 
+                <SearchBar className='search-bar' filterField={(item) => item.classyear}
+                 list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Rechercher..." />}
+
             </div>}
 
             <br></br>
@@ -93,7 +125,7 @@ const Users = props => {
 
 
             {!isLoading && loadedUsersSearch &&
-            <UsersList items={loadedUsersSearch.reverse()} school={props.school} />}
+            <UsersList items={loadedUsersSearch} school={props.school} />}
 
         </React.Fragment>
     );
