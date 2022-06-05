@@ -27,10 +27,16 @@
   padding: 1rem 0.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 820px) {
   .modal {
     left: calc(50% - 20rem);
     width: 40rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .modalUIElem  {
+    top: 8vh
   }
 }
 

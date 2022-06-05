@@ -108,6 +108,15 @@
   border-top: 1px solid #ccc;
 }
 
+.modal-description-div {
+  word-wrap: break-word;
+}
+
+.modal-description {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.15rem;
+}
+
 
 @media (max-width: 820px) {
   .news-item {
@@ -116,5 +125,9 @@
   .news-item__image {
     height: 270px;
     width: 100%;
+  }
+
+  .modal-description {
+    font-size: 1rem;
   }
 }

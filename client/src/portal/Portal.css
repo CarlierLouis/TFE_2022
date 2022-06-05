@@ -9,6 +9,7 @@
     margin-right: 3%;
 }
 
+
 .school-title {
     color: white;
     font-size: 23px;
@@ -89,6 +90,7 @@
 .animated-portal-div:hover span {
   padding-right: 25px;
   display: flex;
+  opacity: 0.8;
 }
 
 .animated-portal-div:hover span:after {
