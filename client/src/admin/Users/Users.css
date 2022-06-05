@@ -78,6 +78,14 @@ color: white;
 .search-bar {
     width: 500px;
     margin: 1%;
+    border-radius: 6px;
+    border: solid 2px;
+    padding: 3px;
+    background-color: #ECF0F7;
+}
+
+#option-select{
+    background-color: #ECF0F7
 }
 
  
