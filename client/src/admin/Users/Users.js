@@ -12,6 +12,7 @@ import './Users.css';
 const Users = props => {
     const auth = useContext(AuthContext);
     const [loadedUsers, setLoadedUsers] = useState();
+    const [loadedUsersSearch, setLoadedUsersSearch] = useState(loadedUsers);
     const {isLoading, sendRequest} = useHttpClient();
     const usertype = useParams().usertype;
 
@@ -27,6 +28,7 @@ const Users = props => {
     if (usertype == "trusted-students") {
         var trustedstudentsButton = {backgroundColor: "#628699", border: "#628699"}
     }
+
 
     useEffect(() => {
         const fetchusers = async () => {
@@ -45,6 +47,7 @@ const Users = props => {
         };
         fetchusers();
     }, [sendRequest])
+
 
 
     return (
@@ -74,7 +77,8 @@ const Users = props => {
 
             {usertype != null &&
             <div className='search-bar-div'>
-                <SearchBar className='search-bar' filterField={(item) => item.classyear} list={loadedUsers} setList={setLoadedUsers} />
+                <SearchBar className='search-bar' filterField={(item) => item.email}
+                 list={loadedUsers} setList={setLoadedUsersSearch} />
             </div>}
 
             <br></br>
@@ -83,8 +87,14 @@ const Users = props => {
             <div className='center'>
                 <LoadingSpinner />
             </div>}
-            {!isLoading && loadedUsers &&
+
+            {!isLoading && loadedUsersSearch == null && loadedUsers &&
             <UsersList items={loadedUsers.reverse()} school={props.school} />}
+
+
+            {!isLoading && loadedUsersSearch &&
+            <UsersList items={loadedUsersSearch.reverse()} school={props.school} />}
+
         </React.Fragment>
     );
 }

@@ -101,7 +101,7 @@ const closeMoreHandler = () => {
               <h2 className="news-date">{props.date}</h2>
               <h2 className='news-title'>{props.title}</h2>
               <h3>{descriptionText}
-                <button className='seemore' style={seemore} onClick={openMoreHandler}>&nbsp; voir tout</button>
+                <button className='seemore' style={seemore} onClick={openMoreHandler}>&nbsp;voir tout</button>
               </h3>
               {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
               <hr></hr>
