@@ -19,8 +19,8 @@ const UsersList = props => {
 
     return (
 
-        <div class="table-wrapper">
-        <table class="fl-table">
+        <div className="table-wrapper">
+        <table className="fl-table">
             <thead>
             <tr>
                 <th>Email</th>
@@ -30,6 +30,12 @@ const UsersList = props => {
                 <th>Role</th>}
                 {(usertype == "students" || usertype == "trusted-students") &&
                 <th>Classe</th>}
+                {usertype == "students" &&
+                <th>Adresse</th>}
+                {usertype == "students" &&
+                <th>Gsm</th>}
+                {usertype == "students" &&
+                <th>Date de naissance</th>}
             </tr>
             </thead>
             <tbody>
@@ -42,6 +48,12 @@ const UsersList = props => {
                 <td>{users.role}</td>}
                 {(usertype == "students" || usertype == "trusted-students") &&
                 <td>{users.classyear}</td>}
+                {usertype == "students" &&
+                <td>{users.address}</td>}
+                {usertype == "students" &&
+                <td>{users.phonenumber}</td>}
+                {usertype == "students" && users.birdthdate != null &&
+                <td>{users.birdthdate.toString().substring(0, 10)}</td>}
             </tr>
             ))}
             </tbody>
