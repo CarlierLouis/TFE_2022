@@ -4,6 +4,10 @@
      display: block;
 }
 
+.home-title-img {
+    width: 550px;
+}
+
 
 .caroussel-div  img {
     height: 500px;
