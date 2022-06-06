@@ -5,6 +5,11 @@
 .user-item-card {
     width: 500px;  
     background-color: #ECF0F7; 
+    transition: transform 0.5s;
+}
+
+.user-item-card:hover {
+    transform: scale(1.01);
 }
 
 .user-item p {

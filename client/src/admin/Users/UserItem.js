@@ -14,6 +14,7 @@ const UserItem = props => {
     const {error, sendRequest, clearError} = useHttpClient();
     const usertype = useParams().usertype;
     const [showMore, setShowMore] = useState(false);
+    const [displayLogoHover, setDisplayLogoHover] = useState({display: 'none'});
 
     const showDeleteWarningHandler = () => {
 		setShowConfirmModal(true);
@@ -222,14 +223,30 @@ const UserItem = props => {
 				</p>
 			</Modal>
 
-            <div className="user-item center">
+            <div className="user-item center" 
+                onMouseEnter={e => {
+                    setDisplayLogoHover({display: 'block', marginLeft: '10px', opacity: '0.9' });
+                }}
+                onMouseLeave={e => {
+                    setDisplayLogoHover({display: 'none'})
+                }}>
                 <Card style={role_background} className="user-item-card">
+                    
+                    <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"
+                    style={displayLogoHover}/>
+
+                    <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}
+                    style={displayLogoHover}>
+                        <img className="user-modify" src="/svg/modify-red.svg" />
+                    </a>
+
                     <p className="user-name">{props.name}</p>
                     <p className="user-firstname">{props.firstname}</p>
                     <p className="user-email">{props.email}</p>
                     <p className="user-role">{props.role}</p>
                     <p className="user-classyear">{props.classyear}</p>
-                    <button style={role_background} className='seemore' onClick={openMoreHandler}>&nbsp; voir tout</button>
+                    <button style={role_background} className='seemore' 
+                    onClick={openMoreHandler}>&nbsp; voir tout</button>
                 </Card>
             </div>
         </React.Fragment>
