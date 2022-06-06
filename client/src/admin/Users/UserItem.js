@@ -225,10 +225,11 @@ const UserItem = props => {
 
             <div className="user-item center" 
                 onMouseEnter={e => {
-                    setDisplayLogoHover({display: 'block', marginLeft: '10px', opacity: '0.9' });
+                    setDisplayLogoHover({display: 'block', marginLeft: '10px', opacity: '0.9'});
                 }}
                 onMouseLeave={e => {
-                    setDisplayLogoHover({display: 'none'})
+                    setDisplayLogoHover({display: 'none', transition: '1s',
+                    opacity: '0'})
                 }}>
                 <Card style={role_background} className="user-item-card">
                     
