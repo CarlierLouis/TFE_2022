@@ -75,7 +75,7 @@ const Users = props => {
 
             {usertype != null && usertype != "" && table == true &&
             <a onClick={onClickList}>
-                <img className='table-logo' src='/svg/list.svg'></img>
+                <img className='list-logo' src='/svg/list.svg'></img>
             </a>}
 
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
@@ -101,7 +101,7 @@ const Users = props => {
 
             <br></br>
 
-            {usertype != null && table == false &&
+            {usertype != null && 
             <div className='search-bar-div'>
                 <select name="option" id="option-select" onChange={onChangedSelect}>
                     <option value="">--Option de recherche--</option>
@@ -142,14 +142,19 @@ const Users = props => {
             </div>}
 
             {!isLoading && loadedUsersSearch == null && loadedUsers && table == false &&
-            <UsersList items={loadedUsers}/>}
+            <UsersList items={loadedUsers} school={props.school}/>}
 
 
             {!isLoading && loadedUsersSearch && table == false &&
-            <UsersList items={loadedUsersSearch}/>}
+            <UsersList items={loadedUsersSearch} school={props.school}/>}
 
-            {!isLoading && loadedUsers && table == true &&
+
+
+            {!isLoading && loadedUsersSearch == null && loadedUsers && table == true &&
             <UsersTable items={loadedUsers}/>}
+
+            {!isLoading && loadedUsersSearch && table == true &&
+            <UsersTable items={loadedUsersSearch}/>}  
 
         </React.Fragment>
     );

@@ -106,6 +106,8 @@ const UserItem = props => {
                     {props.birdthdate != null &&
                     <p>{props.birdthdate.toString().substring(0, 10)}</p>}
                 </div>
+
+                <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
             </div>
 
             
@@ -137,6 +139,8 @@ const UserItem = props => {
                     <p className="full-info-user-elem-title">Role: &nbsp;</p>
                     <p>{props.role}</p>
                 </div>
+
+                <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
             </div>
             
             </Modal>}
@@ -163,6 +167,8 @@ const UserItem = props => {
                     <p className="full-info-user-elem-title">Email: &nbsp;</p>
                     <p>{props.email}</p>
                 </div>
+
+                <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
             </div>
 
             </Modal>}
@@ -193,6 +199,8 @@ const UserItem = props => {
                     <p className="full-info-user-elem-title">Classe: &nbsp;</p>
                     <p>{props.classyear}</p>
                 </div>
+
+                <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
             </div>
 
             </Modal>}
@@ -216,15 +224,11 @@ const UserItem = props => {
 
             <div className="user-item center">
                 <Card style={role_background} className="user-item-card">
-                    <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
-                    <img className="user-modify" src="/svg/modify-red.svg" />
-                    </a>
                     <p className="user-name">{props.name}</p>
                     <p className="user-firstname">{props.firstname}</p>
                     <p className="user-email">{props.email}</p>
                     <p className="user-role">{props.role}</p>
                     <p className="user-classyear">{props.classyear}</p>
-                    <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>
                     <button style={role_background} className='seemore' onClick={openMoreHandler}>&nbsp; voir tout</button>
                 </Card>
             </div>

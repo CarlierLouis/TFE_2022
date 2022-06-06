@@ -73,6 +73,20 @@
     transform: scale(1.2);
  }
 
+ .list-logo {
+    width: 35px;
+    margin-left: 1.1%;
+    transition: transform 0.5s; 
+    position: fixed;
+    margin-top: 115px;
+    margin-top: 0.4%;
+    z-index: 1;
+ }
+
+ .list-logo:hover {
+    transform: scale(1.2);
+ }
+
  .excel-logo:hover {
     transform: scale(1.2);
  }
