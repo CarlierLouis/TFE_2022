@@ -1,3 +1,10 @@
+.home-title-header {
+    background-color: rgb(31, 30, 30);
+     text-align: left;
+     display: block;
+}
+
+
 .caroussel-div  img {
     height: 500px;
 }
@@ -66,6 +73,10 @@
     width: 95%;
     height: 300px;
     margin: 2%;
+}
+
+.home-title-img {
+    width: 100%;
 }
 
 

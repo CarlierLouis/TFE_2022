@@ -11,6 +11,20 @@ import './Home.css';
 const Home  = props => {
     return(
 <div>
+
+<div className='home-title-header'>
+  <img src="img/portail-title.png" className='home-title-img'/>
+</div>
+
+<br></br>
+
+<News school={props.school} numberofnews={props.numberofnews}/>
+<br></br>
+<div className='news-link'>
+  <Button href={`/${props.school}/actu`}>Voir toutes les actualités</Button>
+</div>
+
+
 <Carousel variant="dark" className='caroussel-div'>
 <Carousel.Item>
   <img
@@ -62,12 +76,7 @@ Pellentesque rhoncus nunc et augue.
 </div>
 
 
-<News school={props.school} numberofnews={props.numberofnews}/>
-<br></br>
-<div className='news-link'>
-  <Button href={`/${props.school}/actu`}>Voir toutes les actualités</Button>
-</div>
-<br></br><br></br>
+
 <Map lat={props.lat} lng={props.lng} />
 <Footer title={props.title} addresse={props.addresse}/>
 </div>
