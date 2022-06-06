@@ -82,11 +82,22 @@ color: white;
     border: solid 2px;
     padding: 3px;
     background-color: #ECF0F7;
+    background-image: url(../../../public/svg/loupe.svg);
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: left;
+    padding-left: 30px;
 }
+
+.search-bar-default {
+    opacity: 0.5;
+}
+
 
 #option-select{
     background-color: #ECF0F7
 }
+
 
  
 @media (max-width: 820px) {

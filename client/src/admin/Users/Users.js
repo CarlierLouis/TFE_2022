@@ -54,7 +54,6 @@ const Users = props => {
         setSelected(document.getElementById('option-select').value);
     }
 
-
     return (
         <React.Fragment>
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
@@ -92,7 +91,7 @@ const Users = props => {
                  </select>
 
                 {(selected == ""  || selected == null) && 
-                <SearchBar className='search-bar' filterField={(item) => item.email}
+                <SearchBar className='search-bar search-bar-default' filterField={(item) => item.email}
                  list={loadedUsers} setList={setLoadedUsersSearch} placeholder="Sélectionner une option de recherche..." disabled />}
 
                 {selected == "email" && 
