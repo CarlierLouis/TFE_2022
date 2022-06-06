@@ -6,7 +6,9 @@ import { useParams } from "react-router-dom";
 import UsersList from './UsersList';
 import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
 import SearchBar from '../../common/UIElements/SearchBar';
+import UsersTable from './UsersTable';
 import './Users.css';
+import { render } from '@testing-library/react';
 
 
 const Users = props => {
@@ -16,6 +18,7 @@ const Users = props => {
     const {isLoading, sendRequest} = useHttpClient();
     const usertype = useParams().usertype;
     const [selected, setSelected] = useState();
+    const [table, setTable] = useState(false);
 
     if (usertype == "teachers") {
         var teachersButton = {backgroundColor: "#628699", border: "#628699"}
@@ -54,8 +57,27 @@ const Users = props => {
         setSelected(document.getElementById('option-select').value);
     }
 
+    const onClickTable = () => {
+        setTable(true)
+    }
+
+    const onClickList = () => {
+        setTable(false)
+    }
+
     return (
         <React.Fragment>
+            
+            {usertype != null && usertype != "" && table == false &&
+            <a onClick={onClickTable}>
+                <img className='table-logo' src='/svg/table.svg'></img>
+            </a>}
+
+            {usertype != null && usertype != "" && table == true &&
+            <a onClick={onClickList}>
+                <img className='table-logo' src='/svg/list.svg'></img>
+            </a>}
+
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
             <a href={`/${props.school}/admin/add-user/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
@@ -79,7 +101,7 @@ const Users = props => {
 
             <br></br>
 
-            {usertype != null &&
+            {usertype != null && table == false &&
             <div className='search-bar-div'>
                 <select name="option" id="option-select" onChange={onChangedSelect}>
                     <option value="">--Option de recherche--</option>
@@ -119,12 +141,15 @@ const Users = props => {
                 <LoadingSpinner />
             </div>}
 
-            {!isLoading && loadedUsersSearch == null && loadedUsers &&
-            <UsersList items={loadedUsers.reverse()} school={props.school} />}
+            {!isLoading && loadedUsersSearch == null && loadedUsers && table == false &&
+            <UsersList items={loadedUsers}/>}
 
 
-            {!isLoading && loadedUsersSearch &&
-            <UsersList items={loadedUsersSearch} school={props.school} />}
+            {!isLoading && loadedUsersSearch && table == false &&
+            <UsersList items={loadedUsersSearch}/>}
+
+            {!isLoading && loadedUsers && table == true &&
+            <UsersTable items={loadedUsers}/>}
 
         </React.Fragment>
     );

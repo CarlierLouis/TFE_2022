@@ -41,8 +41,9 @@
     width: 40px;
     margin-left: 1%;
     transition: transform 0.5s; 
-    margin-top: 0.4%;
+    margin-top: 60px;
     position: fixed;
+    z-index: 1;
  }
 
  .red-plus-add-user:hover {
@@ -53,9 +54,23 @@
     width: 40px;
     margin-left: 1%;
     transition: transform 0.5s; 
-    margin-top: 0.4%;
     position: fixed;
-    margin-top: 60px;
+    margin-top: 115px;
+    z-index: 1;
+ }
+
+ .table-logo {
+    width: 40px;
+    margin-left: 1%;
+    transition: transform 0.5s; 
+    position: fixed;
+    margin-top: 115px;
+    margin-top: 0.4%;
+    z-index: 1;
+ }
+
+ .table-logo:hover {
+    transform: scale(1.2);
  }
 
  .excel-logo:hover {

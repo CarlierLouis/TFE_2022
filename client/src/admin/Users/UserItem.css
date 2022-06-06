@@ -63,6 +63,19 @@
 .full-info-user-elem-title {
     font-weight: bold;
 }
+
+.seemore {
+    color: #628699;
+    text-decoration: none;
+    font-style: italic;
+    border: none;
+    background-color: #ECF0F7;
+  }
+  
+  .seemore:hover {
+    color: black;
+  }
+  
   
 
 @media (max-width: 820px) {

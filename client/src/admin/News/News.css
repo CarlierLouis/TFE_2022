@@ -19,6 +19,7 @@
   transition: transform 0.5s; 
   margin-top: 0.4%;
   position: fixed;
+  z-index: 1;
  }
 
  .red-plus-add-news:hover {

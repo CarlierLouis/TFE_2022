@@ -121,7 +121,7 @@ if (token && role === "Admin") {
 
     <Route path="/grand-hallet/admin/update-news/:newsId">
       <MainNavigation schoolLink="grand-hallet"
-                          schoolLogo="/img/Grand-Hallet_blanc.png" />
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateNews school="grand-hallet" />
     </Route>
 
@@ -139,13 +139,13 @@ if (token && role === "Admin") {
 
     <Route path="/grand-hallet/admin/update-user/:usertype/:userId">
       <MainNavigation schoolLink="grand-hallet"
-                          schoolLogo="/img/Grand-Hallet_blanc.png" />
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
       <UpdateUser school="grand-hallet" />
     </Route>
 
     <Route path="/grand-hallet/admin/add-user/:usertype">
       <MainNavigation schoolLink="grand-hallet"
-                          schoolLogo="/img/Grand-Hallet_blanc.png" />
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
       <AddUser school="grand-hallet" />
     </Route>
 

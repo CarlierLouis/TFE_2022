@@ -58,7 +58,8 @@
   color: #628699;
   text-decoration: none;
   font-style: italic;
-  border: none
+  border: none;
+  background-color: #ECF0F7;
 }
 
 .seemore:hover {
