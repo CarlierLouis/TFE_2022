@@ -12,11 +12,22 @@
     text-align: left;
 }
 
+
+
+/*  Affichage les uns après les autres  */
+/*
 .center {
     margin: auto;
     width: 50%;
     padding: 10px;
 }
+*/
+
+.center {
+    margin: 1px;
+    padding: 10px;
+}
+
 
 .user-name {
     font-weight: bold;
@@ -87,5 +98,6 @@
         margin: 0;
         width: 92%;
         padding: auto;
+        margin-right: 8%;
     }
 }
