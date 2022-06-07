@@ -149,6 +149,12 @@ if (token && role === "Admin") {
       <AddUser school="grand-hallet" />
     </Route>
 
+    <Route path="/grand-hallet/admin/add-excel">
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/img/Grand-Hallet_blanc.png" />
+      
+    </Route>
+
 
     {/* Partie de l'école de Moxhe*/}
     <Route path="/moxhe" exact>
@@ -209,6 +215,12 @@ if (token && role === "Admin") {
       <MainNavigation schoolLink="moxhe"
                           schoolLogo="/img/Moxhe_blanc.png" />
       <AddUser school="moxhe" />
+    </Route>
+
+    <Route path="/moxhe/admin/add-excel">
+      <MainNavigation schoolLink="moxhe"
+                          schoolLogo="/img/Moxhe_blanc.png" />
+     
     </Route>
     
 </Switch>

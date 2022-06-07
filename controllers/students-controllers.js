@@ -177,7 +177,7 @@ const login = async (req, res, next) => {
 
     if (existingStudent.status != "Active") {
         const error = new HttpError(
-           'Création du compte en attente. Vérifiez vos emails !', 401)
+           'Création du compte en attente. Vérifiez vos emails et vos spams !', 401)
         return next(error);
     };
 

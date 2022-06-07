@@ -4,7 +4,7 @@ const user = process.env.EMAIL;
 const pass = process.env.PASS;
 
 const transport = nodemailer.createTransport({
-  service: "Gmail",
+  service: "Outlook365",
   auth: {
     user: user,
     pass: pass,
@@ -21,15 +21,7 @@ sendConfirmationEmail = (firstname, email, usertype, confirmationCode) => {
           <h2>Bonjour ${firstname}</h2>
           <p>Merci pour votre inscription. Veuillez confirmer votre email en cliquant sur le lien suivant</p>
           <a href=${process.env.REACT_APP_FRONTEND_URL}/${usertype}/email-confirmation/${confirmationCode}> Cliquez ici</a>
-          <br></br><br><br>
-
-          <img src="cid:email-img" alt="schools imgage" style="width: 400px"/>
-          </div>`,
-      attachments: [{
-        filename: 'email-img.png',
-        href:  `${process.env.REACT_APP_BACKEND_URL}/uploads/images/email-img.png`,
-        cid: 'email-img' 
-    }]
+          </div>`
     }).catch(err => console.log(err));
   };
 
