@@ -173,16 +173,17 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
         return next(error);
     }
 
+    const { school } = req.body;
     
     const jsonData = xlsx.getXLSXData();
 
     jsonData.forEach(element => {
         const createdTrustedStudent =  new TrustedStudent ({
-            email: element[0],
-            name: element[1],
-            firstname: element[2],
-            classyear: element[3],
-            school: "grand-hallet"
+            email: element.Email,
+            name: element.Nom,
+            firstname: element.Prenom,
+            classyear: element.Classe,
+            school
         });
 
         console.log(createTrustedStudent)

@@ -1,7 +1,8 @@
 const XLSX = require('xlsx');
 
+const file = XLSX.readFile("./uploads/xlsx/trustedStudents.xlsx");
+
 getXLSXData = () => {
-    const file = XLSX.readFile("../uploads/xlsx/trustedStudents.xlsx");
 
     // For the first sheet of the xlsx file
     const SheetName = file.SheetNames[0];
