@@ -182,11 +182,9 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             email: element.Email,
             name: element.Nom,
             firstname: element.Prenom,
-            classyear: element.Classe,
+            classyear: 'p4',
             school
         });
-
-        console.log(createTrustedStudent)
 
         try {
             createdTrustedStudent.save();
@@ -196,9 +194,10 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
                 'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
             return next(error);
         }
-        
-        res.status(201).json({ trustedstudent: createdTrustedStudent });
-    });
+            
+        });
+
+    res.status(201).json({ message: "liste de contacts de confiance bien ajoutées"});
 };
 
 

@@ -6,11 +6,11 @@ const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const router = express.Router();
 
-router.post('/add-xlsx', trustedStudentsControllers.createTrustedStudentsWithXLSX);
-
 router.get('/:school', trustedStudentsControllers.getTrustedStudents);
 
 router.get('/id/:tsid', trustedStudentsControllers.getTrustedStudentById);
+
+router.post('/add-xlsx', trustedStudentsControllers.createTrustedStudentsWithXLSX);
 
 router.use(checkAuthAdmin);
 

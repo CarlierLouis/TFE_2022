@@ -4,16 +4,22 @@ const file = XLSX.readFile("./uploads/xlsx/trustedStudents.xlsx");
 
 getXLSXData = () => {
 
-    // For the first sheet of the xlsx file
-    const SheetName = file.SheetNames[0];
-    const SheetNameContent = file.Sheets[SheetName];
-    const json = XLSX.utils.sheet_to_json(SheetNameContent);
+    const sheetLength = file.SheetNames.length;
+    var globalContent = [];
 
-    console.log(json);
-    console.log(json.length)
+    for (i = 0; i < sheetLength; i++) {
+        const SheetName = file.SheetNames[i];
+        const SheetNameContent = file.Sheets[SheetName];
+        const json = XLSX.utils.sheet_to_json(SheetNameContent);
+        
+        json.forEach (element =>  {
+            globalContent.push(element);
+        })
+    }
 
-    return json;
+    return globalContent;
 }
+
 
 
 module.exports.getXLSXData = getXLSXData;
