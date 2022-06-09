@@ -6,7 +6,6 @@
   margin-left: 1%;
 }
 
-
 .news-item a:hover,
 .news-item a:active {
   background: #628699;
@@ -27,6 +26,7 @@
   height: 300px;
   transition: transform 0.5s;
   margin-bottom: 2%;
+  object-fit: cover;
 }
 
 .news-item__image:hover {

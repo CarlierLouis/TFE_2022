@@ -71,6 +71,8 @@ const createNews = async(req, res, next) => {
         image: req.file.path,
     });
 
+    console.log(req.file.path)
+
     try {
         await createdNews.save();
     } 
@@ -108,7 +110,8 @@ const updateNews = async (req, res, next) => {
     news.title = title;
     news.description = description;
     news.date = date;
-    news.image = req.file.path;
+    //news.image = req.file.path;
+
 
     try {
         await news.save();
