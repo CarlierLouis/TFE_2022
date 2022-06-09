@@ -161,7 +161,6 @@ return (
 				onInput={inputHandler}
 				errorText="Veillez entrer une image"
 				updatePreview={process.env.REACT_APP_BACKEND_URL + `/${loadedNews.image}`}
-				initialValid={true} 
 			/>
 			
 

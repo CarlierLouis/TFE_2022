@@ -71,7 +71,6 @@ const createNews = async(req, res, next) => {
         image: req.file.path,
     });
 
-    console.log(req.file.path)
 
     try {
         await createdNews.save();
@@ -106,6 +105,7 @@ const updateNews = async (req, res, next) => {
             'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible', 500);
         return next(error);
     }
+
 
     news.title = title;
     news.description = description;
