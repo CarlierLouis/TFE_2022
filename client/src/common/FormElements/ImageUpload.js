@@ -49,11 +49,19 @@ const ImageUpload = props => {
                 style={{display: 'none'}} 
                 type="file" 
                 accept=".jpg, .png, .jpeg"
-                onChange={pickedHandler} />
+                onChange={pickedHandler}
+            />
             <div className={`image-upload ${props.center && 'center'}`}>
                 <div className="image-upload__preview">
-                    {previewUrl && <img src={previewUrl} alt="Preview" />}
-                    {!previewUrl && <p>Image</p>}
+                    {previewUrl &&
+                    <img src={previewUrl} alt="Preview" />}
+
+                    {!previewUrl && !props.updatePreview &&
+                    <p>Image</p>}
+
+                    {!previewUrl && props.updatePreview &&
+                    <img src={props.updatePreview} alt="Preview" /> }
+                    
                 </div>
                 <Button type="button" onClick={pickImageHandler}>Ajouter une image</Button>
             </div>

@@ -84,7 +84,7 @@ const Users = props => {
             </a>}
             
             {usertype == "trusted-students" &&
-            <a href={`/${props.school}/admin/add-excel/`}>
+            <a href={`/${props.school}/admin/add-excel`}>
                 <img className='excel-logo' src='/svg/excel.svg'></img>
             </a>}
 

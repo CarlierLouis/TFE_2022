@@ -155,13 +155,15 @@ return (
 				initialValue={loadedNews.date}
 				initialValid={true}
 			/>
-			{/*
-			 <ImageUpload 
-					id="image" 
-					onInput={inputHandler}
-					errorText="Veillez entrer une image"
-					initialValid={true} />
-			*/}
+			
+			<ImageUpload 
+				id="image" 
+				onInput={inputHandler}
+				errorText="Veillez entrer une image"
+				updatePreview={process.env.REACT_APP_BACKEND_URL + `/${loadedNews.image}`}
+				initialValid={true} 
+			/>
+			
 
 			<Button type="submit" disabled={!formState.isValid}>
 				Mettre à jour
@@ -173,6 +175,7 @@ return (
 		<Button href={'/' + props.school + '/actu'}>
 			Retour
 		</Button>
+		<br></br><br></br>
 		</div>
 	</React.Fragment>
 );
