@@ -70,10 +70,10 @@ const AddUser = props => {
 			<br></br>
 			<form className="user-form" onSubmit={userSubmitHandler}>
                 {usertype == "trusted-students" &&
-				<h2 className='form-user-title'>Ajouter un nouvel élève de confiance</h2>}
+				<h3 className='form-user-title'>Ajouter un nouvel élève de confiance</h3>}
                 
                 {usertype == "trusted-teachers" &&
-				<h2 className='form-user-title'>Ajouter un nouveau professeur de confiance</h2>}
+				<h3 className='form-user-title'>Ajouter un nouveau professeur de confiance</h3>}
 
 				{isLoading && <LoadingSpinner asOverlay />}
 				<Input

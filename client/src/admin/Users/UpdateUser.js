@@ -190,7 +190,7 @@ return (
 		<form 
 			className="news-form" 
 			onSubmit={userUpdateSubmitHandler}>
-			<h2 className='form-news-title'>Mettre à jour cet utilisateur</h2>
+			<h3 className='form-news-title'>Mettre à jour cet utilisateur</h3>
 			<div style={changed_email}>
 			<Input
 				id="email"

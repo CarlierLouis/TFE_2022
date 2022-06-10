@@ -17,6 +17,7 @@ import CheckEmail from './email-confirmation/CheckEmail';
 import Users from './admin/Users/Users';
 import UpdateUser from './admin/Users/UpdateUser';
 import AddUser from './admin/Users/AddUser';
+import AddExcel from './admin/Users/Excel/AddExcel';
 
 let logoutTimer;
 
@@ -149,10 +150,10 @@ if (token && role === "Admin") {
       <AddUser school="grand-hallet" />
     </Route>
 
-    <Route path="/grand-hallet/admin/add-excel">
+    <Route path="/grand-hallet/admin/add-excel/trusted-students">
       <MainNavigation schoolLink="grand-hallet"
                       schoolLogo="/img/Grand-Hallet_blanc.png" />
-      
+      <AddExcel school="grand-hallet" />
     </Route>
 
 

@@ -123,7 +123,7 @@ return (
 		<form 
 			className="news-form" 
 			onSubmit={newsUpdateSubmitHandler}>
-			<h2 className='form-news-title'>Mettre à jour cette actualité</h2>
+			<h3 className='form-news-title'>Mettre à jour cette actualité</h3>
 			<Input
 				id="title"
 				element="input"

@@ -21,5 +21,4 @@ getXLSXData = () => {
 }
 
 
-
 module.exports.getXLSXData = getXLSXData;
