@@ -3,8 +3,8 @@
     width: 100%;
 }
 
-.portal-img {
-    width: 100%;
+.portal-img-div img {
+    width: 550px;
     top: 0;
     margin-right: 3%;
 }
@@ -100,10 +100,6 @@
 
 
 @media (min-width: 820px) {
-    .portal-img {
-        width: 700px;
-    }
-
     .portal-img-div {
         height: 0px;
     }
@@ -124,6 +120,11 @@
 
     .portal-img {
         width: 100%;
+    }
+
+    .portal-img-div img {
+        width: 100%;
+        margin-bottom: 5%;
     }
 }
 

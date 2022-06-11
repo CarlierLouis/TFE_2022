@@ -13,7 +13,7 @@ const Home  = props => {
 <div>
 
 <div className='home-title-header'>
-  <img src="img/portail-title.png" className='home-title-img'/>
+  <img src="/svg/portail-title.svg" className='home-title-img'/>
 </div>
 
 <br></br>

@@ -7,7 +7,7 @@ import './Portal.css';
 const Portal  = () => {
     return (
   <CardGroup className="portal">
-  <div className='portal-img-div'><img className='portal-img' src="img/portail-title.png"></img></div>
+  <div className='portal-img-div'><img className='portal-img' src="svg/portail-title.svg"></img></div>
 
     <Card className="portal-GH border-0" style={{ backgroundColor: 'rgb(31, 30, 30)'}}>
     <h1 className='school-title'>École de Grand-Hallet</h1>
