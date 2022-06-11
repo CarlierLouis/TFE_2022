@@ -7,11 +7,11 @@ const containerStyle = {
 };
 
 
-class MapGH extends Component {
+class Map extends Component {
   render() {
     return (
       <LoadScript
-        googleMapsApiKey="AIzaSyCcvgi-SicUc3IGhIpqj_kr7Aw_r-6pDR4"
+        //googleMapsApiKey="AIzaSyDBGhr6oZpKR2O7Kk8pdWg6zbMEtFFAif0"
       >
         <GoogleMap
           mapContainerStyle={containerStyle}  
@@ -26,4 +26,4 @@ class MapGH extends Component {
   }
 }
 
-export default MapGH;
+export default Map;

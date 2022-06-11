@@ -38,7 +38,11 @@
 .main-navigation__logo {
   width: 300px;
   float: left;
-  margin-top: 1%;
+  margin-top: 2.5%;
+}
+
+.h2-navbar {
+  width: 50px;
 }
 
 
@@ -56,5 +60,7 @@
 @media (max-width: 1150px) {
   .main-navigation__logo {
     float: right;
+    margin-top: 4%;
+    width: 100%;
   }
 }

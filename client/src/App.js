@@ -414,8 +414,8 @@ else {
 
     {/* Partie de l'école de Grand-Hallet */}
     <Route path="/grand-hallet" exact>
-    <MainNavigation schoolLink="grand-hallet"
-    schoolLogo="/svg/Grand-Hallet_blanc.svg" />
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/svg/Grand-Hallet_blanc.svg" />
 
       <Home caroussel1="/img/Grand-Hallet-photo_1.jpg" 
             caroussel2="/img/Grand-Hallet-photo_2.jpg" 
@@ -427,16 +427,16 @@ else {
     </Route>
 
     <Route path="/grand-hallet/actu" exact>
-    <MainNavigation schoolLink="grand-hallet"
-                    schoolLogo="/svg/Grand-Hallet_blanc.svg" />
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/svg/Grand-Hallet_blanc.svg" />
       <News school="grand-hallet"  numberofnews="200"/>
       
       <Footer title="École Fondamentale de Grand-Hallet" addresse="Rue Mayeur J Debras 3A" />
     </Route>
 
     <Route path="/grand-hallet/login/parent-eleve">
-    <MainNavigation schoolLink="grand-hallet"
-                    schoolLogo="/svg/Grand-Hallet_blanc.svg" />
+      <MainNavigation schoolLink="grand-hallet"
+                      schoolLogo="/svg/Grand-Hallet_blanc.svg" />
       <Auth connexiontitle_1=""
             connexiontitle_2=""
             school="grand-hallet"
@@ -472,8 +472,7 @@ else {
     {/* Partie de l'école de Moxhe*/}
     <Route path="/moxhe" exact>
       <MainNavigation schoolLink="moxhe" 
-      actuLink="moxhe" 
-      schoolLogo="/svg/Moxhe_blanc.svg" />
+                      schoolLogo="/svg/Moxhe_blanc.svg" />
 
       <Home caroussel1="/img/Moxhe-photo_1.jpg" 
             caroussel2="/img/Moxhe-photo_2.jpg" 
