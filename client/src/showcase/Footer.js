@@ -27,7 +27,7 @@ const Footer = props => {
     </div>
 
     <div className='end-footer-div'>
-        <p>© 2022 - .... - Tous droits réservé</p>
+        <p>© 2022 - .... - Tous droits réservés</p>
     </div>
     </div>
     

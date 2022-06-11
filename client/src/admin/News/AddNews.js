@@ -94,7 +94,7 @@ const NewNews = props => {
 					onInput={inputHandler}
 				/>
                 <ImageUpload 
-					id="image" 
+					id="image"
 					onInput={inputHandler}
 					errorText="Veillez entrer une image" />
 					

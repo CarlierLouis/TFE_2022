@@ -34,6 +34,7 @@ const MainNavigation = props => {
             <span />
             <span />
         </button>
+
         <h1>
             <Link to={"/" + props.schoolLink}><img className='main-navigation__logo' src={props.schoolLogo}
                 /></Link>
