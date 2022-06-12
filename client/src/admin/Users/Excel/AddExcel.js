@@ -35,7 +35,7 @@ const AddExcel = props => {
             </form>
             <br></br>
             <div className="back-button">
-                    <Button href={'/' + school + '/admin/utilisateurs/trusted-students'}>
+                    <Button href={'/' + school + '/admin/utilisateurs/white-list-eleves'}>
                         Retour
                     </Button>
                     <br></br><br></br>

@@ -16,6 +16,19 @@ const UserItem = props => {
     const [showMore, setShowMore] = useState(false);
     const [displayLogoHover, setDisplayLogoHover] = useState({display: 'none'});
 
+    if (usertype == "profs") {
+        var usertyperequest = "teachers";
+    }
+    if (usertype == "eleves") {
+        var usertyperequest = "students";
+    }
+    if (usertype == "white-list-profs") {
+        var usertyperequest = "trusted-teachers";
+    }
+    if (usertype == "white-list-eleves") {
+        var usertyperequest = "trusted-students";
+    }
+
     const showDeleteWarningHandler = () => {
 		setShowConfirmModal(true);
 	};
@@ -36,7 +49,7 @@ const UserItem = props => {
 		setShowConfirmModal(false);
 		try {
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${props.id}`,
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${props.id}`,
 				'DELETE',
 				null,
 				{Authorization: 'Bearer ' + auth.token}
@@ -67,13 +80,13 @@ const UserItem = props => {
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
 
-            {usertype == "students" && 
+            {usertype == "eleves" && 
             <Modal
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
             
-            <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
+            <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -114,12 +127,12 @@ const UserItem = props => {
             
             </Modal>}
 
-            {usertype == "teachers" && 
+            {usertype == "profs" && 
             <Modal
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -146,12 +159,12 @@ const UserItem = props => {
             
             </Modal>}
 
-            {usertype == "trusted-teachers" && 
+            {usertype == "white-list-profs" && 
             <Modal
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -174,12 +187,12 @@ const UserItem = props => {
 
             </Modal>}
 
-            {usertype == "trusted-students" && 
+            {usertype == "white-list-eleves" && 
             <Modal
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -237,7 +250,7 @@ const UserItem = props => {
                     <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"
                     style={displayLogoHover}/>
 
-                    <a href={`/${props.school}/admin/update-user/${usertype}/${props.id}`}
+                    <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}
                     style={displayLogoHover}>
                         <img className="user-modify" src="/svg/modify-red.svg" />
                     </a>

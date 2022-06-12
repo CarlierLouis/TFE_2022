@@ -107,7 +107,7 @@ const closeMoreHandler = () => {
               <hr></hr>
               }
               {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
-              <a href={`/${props.school}/admin/update-news/${props.id}`} className='update-news-link'>Mettre à jour</a>
+              <a href={`/${props.school}/admin/maj-actualite/${props.id}`} className='update-news-link'>Mettre à jour</a>
               }
               {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname !=`/${props.school}` &&
               <button onClick={showDeleteWarningHandler} className='delete-news-link'>Supprimer</button>

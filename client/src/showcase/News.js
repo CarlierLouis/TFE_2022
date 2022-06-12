@@ -54,7 +54,7 @@ const News = props => {
             <ErrorModal error={error} onClear={clearError} />
 
             {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname != `/${school}` &&
-            <a href={`/${school}/admin/add-news`}>
+            <a href={`/${school}/admin/ajouter-actualite`}>
                 <img className='red-plus-add-news' src='/svg/red-plus.svg'></img>
             </a>}
 

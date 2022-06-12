@@ -33,7 +33,7 @@ const Home  = props => {
   <News numberofnews={props.numberofnews}/>
   <br></br>
   <div className='news-link'>
-    <Button href={`/${school}/actu`}>Voir toutes les actualités</Button>
+    <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
   </div>
 
   {school == "grand-hallet" &&
@@ -133,6 +133,7 @@ const Home  = props => {
   <Map lat={50.63151053045548} lng={5.081328142211933} />}
 
   <Footer />
+
 </div>
 
 

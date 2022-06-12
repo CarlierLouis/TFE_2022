@@ -94,7 +94,7 @@ const UpdateNews = props => {
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + school + '/actu');
+			history.push('/' + school + '/actualites');
 		}
 		catch(err) {}
 	};

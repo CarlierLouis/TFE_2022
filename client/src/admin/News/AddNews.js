@@ -58,7 +58,7 @@ const NewNews = props => {
 				formData,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			history.push(`/${school}/actu`);
+			history.push(`/${school}/actualites`);
 		}
 		catch(err) {}
 	};
@@ -116,7 +116,7 @@ const NewNews = props => {
 			<br></br>
 
 			<div className="back-button">
-				<Button href={'/' + school + '/actu'}>
+				<Button href={'/' + school + '/actualites'}>
 					Retour
 				</Button>
 			</div>

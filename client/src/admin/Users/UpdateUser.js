@@ -23,6 +23,19 @@ const UpdateUser = props => {
 	const history = useHistory();
 	const school = useParams().school;
 
+	if (usertype == "profs") {
+        var usertyperequest = "teachers";
+    }
+    if (usertype == "eleves") {
+        var usertyperequest = "students";
+    }
+    if (usertype == "white-list-profs") {
+        var usertyperequest = "trusted-teachers";
+    }
+    if (usertype == "white-list-eleves") {
+        var usertyperequest = "trusted-students";
+    }
+
     const [formState, inputHandler, setFormData] = useForm(
 		{
         // common
@@ -61,7 +74,7 @@ const UpdateUser = props => {
 		const fetchUser = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/id/${userId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/id/${userId}`
 				);
 				setLoadedUser(responseData.user);
 
@@ -102,7 +115,7 @@ const UpdateUser = props => {
 		event.preventDefault();
 		try {
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${userId}`,
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${userId}`,
 				'PATCH',
 				JSON.stringify({
 					email: formState.inputs.email.value,
@@ -176,7 +189,7 @@ const UpdateUser = props => {
 
 	
 	var changed_birdthdate = {};
-	if (loadedUser.birdthdate != null && usertype == "students") {
+	if (loadedUser.birdthdate != null && usertype == "eleves") {
 		if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)
 			&& loadedUser.birdthdate != null) {
 			changed_birdthdate = changed_input
@@ -214,7 +227,7 @@ return (
 				initialValid={true}
 			/>
 			</div>
-			{usertype == "teachers" &&
+			{usertype == "profs" &&
 			<div style={changed_role}>
 			<Input
 				id="role"
@@ -228,7 +241,7 @@ return (
 				initialValid={true}
 			/></div>}
 
-			{(usertype == "students" || usertype == "trusted-students") &&
+			{(usertype == "eleves" || usertype == "white-list-eleves") &&
 			<div style={changed_classyear}>
 			<Input
 				id="classyear"
@@ -242,7 +255,7 @@ return (
 				initialValid={true}
 			/></div>}
 
-			{usertype == "students" &&
+			{usertype == "eleves" &&
 			<div>
 			<div style={changed_address}>
 			<Input

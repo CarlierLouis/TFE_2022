@@ -21,17 +21,21 @@ const Users = props => {
     const [table, setTable] = useState(false);
     const school = useParams().school;
 
-    if (usertype == "teachers") {
+    if (usertype == "profs") {
         var teachersButton = {backgroundColor: "#628699", border: "#628699"}
+        var usertyperequest = "teachers";
     }
-    if (usertype == "students") {
+    if (usertype == "eleves") {
         var studentsButton = {backgroundColor: "#628699", border: "#628699"}
+        var usertyperequest = "students";
     }
-    if (usertype == "trusted-teachers") {
+    if (usertype == "white-list-profs") {
         var trustedteachersButton = {backgroundColor: "#628699", border: "#628699"}
+        var usertyperequest = "trusted-teachers";
     }
-    if (usertype == "trusted-students") {
+    if (usertype == "white-list-eleves") {
         var trustedstudentsButton = {backgroundColor: "#628699", border: "#628699"}
+        var usertyperequest = "trusted-students";
     }
 
 
@@ -40,7 +44,7 @@ const Users = props => {
             if (usertype != undefined) {
             try {
                 const responseData =  await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${school}`, 'GET', null,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${school}`, 'GET', null,
                     {Authorization: 'Bearer ' + auth.token}
                 );
                 
@@ -66,17 +70,18 @@ const Users = props => {
         setTable(false)
     }
 
+
     return (
         <React.Fragment>
 
-{school == "grand-hallet" && 
-    <MainNavigation schoolLink="grand-hallet"
-                    schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
+            {school == "grand-hallet" && 
+                <MainNavigation schoolLink="grand-hallet"
+                                schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
 
-    {school == "moxhe" && 
-    <MainNavigation schoolLink="moxhe"
-                    schoolLogo="/svg/Moxhe_blanc.svg" />}
-            
+            {school == "moxhe" && 
+            <MainNavigation schoolLink="moxhe"
+                            schoolLogo="/svg/Moxhe_blanc.svg" />}
+                    
             {usertype != null && usertype != "" && table == false &&
             <a onClick={onClickTable}>
                 <img className='table-logo' src='/svg/table.svg'></img>
@@ -87,24 +92,24 @@ const Users = props => {
                 <img className='list-logo' src='/svg/list.svg'></img>
             </a>}
 
-            {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
-            <a href={`/${school}/admin/add-user/` + usertype}>
+            {(usertype == "white-list-eleves" || usertype == "white-list-profs") &&
+            <a href={`/${school}/admin/ajouter-utilisateur/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
             </a>}
             
-            {usertype == "trusted-students" &&
-            <a href={`/${school}/admin/add-excel/trusted-students`}>
+            {usertype == "white-list-eleves" &&
+            <a href={`/${school}/admin/ajouter-excel/white-list-eleves`}>
                 <img className='excel-logo' src='/svg/excel.svg'></img>
             </a>}
 
             <div className="select-user">
-                <a style={studentsButton} href={"/" + school + "/admin/utilisateurs/students"}>
+                <a style={studentsButton} href={"/" + school + "/admin/utilisateurs/eleves"}>
                 Comptes Élèves</a>
-                <a style={teachersButton} href={"/" + school + "/admin/utilisateurs/teachers"}>
+                <a style={teachersButton} href={"/" + school + "/admin/utilisateurs/profs"}>
                 Comptes Profs</a>
-                <a style={trustedteachersButton} href={"/" + school + "/admin/utilisateurs/trusted-teachers"}>
+                <a style={trustedteachersButton} href={"/" + school + "/admin/utilisateurs/white-list-profs"}>
                 White List Profs</a>
-                <a style={trustedstudentsButton} href={"/" + school + "/admin/utilisateurs/trusted-students"}>
+                <a style={trustedstudentsButton} href={"/" + school + "/admin/utilisateurs/white-list-eleves"}>
                 White List Élèves</a>
             </div>
 
@@ -117,7 +122,7 @@ const Users = props => {
                     <option value="email">Email</option>
                     <option value="name">Nom</option>
                     <option value="firstname">Prénom</option>
-                    {(usertype == "students" || usertype == "trusted-students") &&
+                    {(usertype == "eleves" || usertype == "white-list-eleves") &&
                     <option value="classyear">Classe</option>}
                  </select>
 
@@ -160,10 +165,10 @@ const Users = props => {
 
 
             {!isLoading && loadedUsersSearch == null && loadedUsers && table == true &&
-            <UsersTable items={loadedUsers}/>}
+            <UsersTable items={loadedUsers} school={school}/>}
 
             {!isLoading && loadedUsersSearch && table == true &&
-            <UsersTable items={loadedUsersSearch}/>}  
+            <UsersTable items={loadedUsersSearch} school={school}/>}  
 
         </React.Fragment>
     );

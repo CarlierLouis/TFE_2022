@@ -20,6 +20,13 @@ const AddUser = props => {
     const usertype = useParams().usertype;
 	const school = useParams().school;
 
+    if (usertype == "white-list-profs") {
+        var usertyperequest = "trusted-teachers";
+    }
+    if (usertype == "white-list-eleves") {
+        var usertyperequest = "trusted-students";
+    }
+
     const [formState, inputHandler] = useForm(
 		{
 			email: {
@@ -48,7 +55,7 @@ const AddUser = props => {
 		event.preventDefault();
 		try {
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + `/api/${usertype}`,
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}`,
 				'POST',
 				JSON.stringify({
 					email: formState.inputs.email.value,
@@ -79,10 +86,10 @@ const AddUser = props => {
 			<ErrorModal error={error} onClear={clearError} />
 			<br></br>
 			<form className="user-form" onSubmit={userSubmitHandler}>
-                {usertype == "trusted-students" &&
+                {usertype == "white-list-eleves" &&
 				<h3 className='form-user-title'>Ajouter un nouvel élève de confiance</h3>}
                 
-                {usertype == "trusted-teachers" &&
+                {usertype == "white-list-profs" &&
 				<h3 className='form-user-title'>Ajouter un nouveau professeur de confiance</h3>}
 
 				{isLoading && <LoadingSpinner asOverlay />}
@@ -116,7 +123,7 @@ const AddUser = props => {
 					onInput={inputHandler}
 				/>
 
-                {usertype == "trusted-students" &&
+                {usertype == "white-list-eleves" &&
                 <Input
 					id="classyear"
 					element="input"

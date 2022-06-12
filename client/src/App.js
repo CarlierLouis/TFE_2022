@@ -75,9 +75,9 @@ if (token && role === "Admin") {
   routes = (
     
 <Switch>
-  
-  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-  <Redirect from="/moxhe/login/prof" to="/moxhe" />
+
+  <Redirect from="/grand-hallet/connexion/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/connexion/prof" to="/moxhe" />
 
   {school === "grand-hallet" &&
     <Redirect from="/moxhe" to="/grand-hallet" />
@@ -95,37 +95,37 @@ if (token && role === "Admin") {
     <Home numberofnews="3" />
   </Route>
 
-  <Route path="/:school/actu" exact>
+  <Route path="/:school/actualites" exact>
       <News numberofnews="200"/>
       <Footer />
   </Route>
   
-  <Route path="/:school/admin/add-news">
+  <Route path="/:school/admin/ajouter-actualite">
       <AddNews />
   </Route>
 
-  <Route path="/:school/admin/update-news/:newsId">
-    <UpdateNews school="grand-hallet" />
+  <Route path="/:school/admin/maj-actualite/:newsId">
+    <UpdateNews />
   </Route>
 
   <Route path="/:school/admin/utilisateurs" exact>
-    <Users school="grand-hallet"/>
+    <Users />
   </Route>
 
   <Route path="/:school/admin/utilisateurs/:usertype">
-    <Users school="grand-hallet"/>
+    <Users />
   </Route>
 
-  <Route path="/:school/admin/update-user/:usertype/:userId">
-    <UpdateUser school="grand-hallet" />
+  <Route path="/:school/admin/ajouter-utilisateur/:usertype">
+    <AddUser />
   </Route>
 
-  <Route path="/:school/admin/add-user/:usertype">
-    <AddUser school=":school" />
+  <Route path="/:school/admin/maj-utilisateur/:usertype/:userId">
+    <UpdateUser />
   </Route>
 
-  <Route path="/:school/admin/add-excel/trusted-students">
-    <AddExcel school="grand-hallet" />
+  <Route path="/:school/admin/ajouter-excel/white-list-eleves">
+    <AddExcel />
   </Route>
 
 </Switch>
@@ -138,11 +138,11 @@ else if (token && role === "Default") {
     
 <Switch>
 
-  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-  <Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/connexion/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/connexion/prof" to="/moxhe" />
 
-  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-  <Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/connexion/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/connexion/prof" to="/moxhe" />
 
   {school === "grand-hallet" &&
     <Redirect from="/moxhe" to="/grand-hallet" />
@@ -161,7 +161,7 @@ else if (token && role === "Default") {
 
   </Route>
 
-  <Route path="/:school/actu" exact>
+  <Route path="/:school/actualites" exact>
     <News numberofnews="200"/>
     <Footer />
   </Route>
@@ -176,11 +176,11 @@ else if (token && role === "Student") {
     
 <Switch>
 
-  <Redirect from="/grand-hallet/login/parent-eleve" to="/grand-hallet" />
-  <Redirect from="/moxhe/login/parent-eleve" to="/moxhe" />
+  <Redirect from="/grand-hallet/connexion/parent-eleve" to="/grand-hallet" />
+  <Redirect from="/moxhe/connexion/parent-eleve" to="/moxhe" />
 
-  <Redirect from="/grand-hallet/login/prof" to="/grand-hallet" />
-  <Redirect from="/moxhe/login/prof" to="/moxhe" />
+  <Redirect from="/grand-hallet/connexion/prof" to="/grand-hallet" />
+  <Redirect from="/moxhe/connexion/prof" to="/moxhe" />
 
   {school === "grand-hallet" &&
     <Redirect from="/moxhe" to="/grand-hallet" />
@@ -198,7 +198,7 @@ else if (token && role === "Student") {
     <Home numberofnews="3" />
   </Route>
 
-  <Route path="/:school/actu" exact>
+  <Route path="/:school/actualites" exact>
       <News numberofnews="200"/>
       <Footer />
   </Route>
@@ -222,12 +222,12 @@ else {
     <Home numberofnews="3" />
   </Route>
 
-  <Route path="/:school/actu" exact>
+  <Route path="/:school/actualites" exact>
     <News numberofnews="200"/>
     <Footer  />
   </Route>
 
-  <Route path="/:school/login/:usertype">
+  <Route path="/:school/connexion/:usertype">
       <Auth />
   </Route>
 

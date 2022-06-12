@@ -26,15 +26,15 @@ const UsersList = props => {
                 <th>Email</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                {usertype == "teachers" &&
+                {usertype == "profs" &&
                 <th>Role</th>}
-                {(usertype == "students" || usertype == "trusted-students") &&
+                {(usertype == "eleves" || usertype == "white-list-eleves") &&
                 <th>Classe</th>}
-                {usertype == "students" &&
+                {usertype == "eleves" &&
                 <th>Adresse</th>}
-                {usertype == "students" &&
+                {usertype == "eleves" &&
                 <th>Gsm</th>}
-                {usertype == "students" &&
+                {usertype == "eleves" &&
                 <th>Date de naissance</th>}
             </tr>
             </thead>
@@ -44,15 +44,15 @@ const UsersList = props => {
                 <td>{users.email}</td>
                 <td>{users.name}</td>
                 <td>{users.firstname}</td>
-                {usertype == "teachers" &&
+                {usertype == "profs" &&
                 <td>{users.role}</td>}
-                {(usertype == "students" || usertype == "trusted-students") &&
+                {(usertype == "eleves" || usertype == "white-list-eleves") &&
                 <td>{users.classyear}</td>}
-                {usertype == "students" &&
+                {usertype == "eleves" &&
                 <td>{users.address}</td>}
-                {usertype == "students" &&
+                {usertype == "eleves" &&
                 <td>{users.phonenumber}</td>}
-                {usertype == "students" && users.birdthdate != null &&
+                {usertype == "eleves" && users.birdthdate != null &&
                 <td>{users.birdthdate.toString().substring(0, 10)}</td>}
             </tr>
             ))}
