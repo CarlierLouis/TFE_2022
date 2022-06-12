@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import Input from '../../common/FormElements/Input';
 import Button from '../../common/FormElements/Button';
@@ -10,12 +10,14 @@ import { useForm } from '../../common/hooks/form-hooks';
 import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
 import ImageUpload from '../../common/FormElements/ImageUpload';
+import MainNavigation from '../../common/navigation/MainNavigation';
 
 import './News.css';
 
 const NewNews = props => {
 	const auth = useContext(AuthContext);
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
+	const school = useParams().school;
 
     const [formState, inputHandler] = useForm(
 		{
@@ -48,7 +50,7 @@ const NewNews = props => {
 			formData.append('title', formState.inputs.title.value);
 			formData.append('description', formState.inputs.description.value);
 			formData.append('date', formState.inputs.date.value);
-			formData.append('school', props.school);
+			formData.append('school', school);
 			formData.append('image', formState.inputs.image.value);
 			await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + '/api/news',
@@ -56,13 +58,21 @@ const NewNews = props => {
 				formData,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			history.push(`/${props.school}/actu`);
+			history.push(`/${school}/actu`);
 		}
 		catch(err) {}
 	};
 
     return (
 		<React.Fragment>
+			 {school == "grand-hallet" && 
+			<MainNavigation schoolLink="grand-hallet"
+							schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
+
+			{school == "moxhe" && 
+			<MainNavigation schoolLink="moxhe"
+							schoolLogo="/svg/Moxhe_blanc.svg" />}
+
 			<ErrorModal error={error} onClear={clearError} />
 			<br></br>
 			<form className="news-form" onSubmit={newsSubmitHandler}>
@@ -106,7 +116,7 @@ const NewNews = props => {
 			<br></br>
 
 			<div className="back-button">
-				<Button href={'/' + props.school + '/actu'}>
+				<Button href={'/' + school + '/actu'}>
 					Retour
 				</Button>
 			</div>

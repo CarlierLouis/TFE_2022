@@ -34,7 +34,7 @@ useEffect(() => {
           <p>Vous pouvez à présent vous connectez à votre compte</p>
         </h3>
       </header>
-      <Link to={`/${props.school}`}>
+      <Link to={`/`}>
         Continuer
       </Link>
     </div>

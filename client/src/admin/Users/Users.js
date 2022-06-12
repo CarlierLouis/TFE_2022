@@ -8,7 +8,7 @@ import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
 import SearchBar from '../../common/UIElements/SearchBar';
 import UsersTable from './UsersTable';
 import './Users.css';
-import { render } from '@testing-library/react';
+import MainNavigation from '../../common/navigation/MainNavigation';
 
 
 const Users = props => {
@@ -19,6 +19,7 @@ const Users = props => {
     const usertype = useParams().usertype;
     const [selected, setSelected] = useState();
     const [table, setTable] = useState(false);
+    const school = useParams().school;
 
     if (usertype == "teachers") {
         var teachersButton = {backgroundColor: "#628699", border: "#628699"}
@@ -39,7 +40,7 @@ const Users = props => {
             if (usertype != undefined) {
             try {
                 const responseData =  await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${props.school}`, 'GET', null,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/${school}`, 'GET', null,
                     {Authorization: 'Bearer ' + auth.token}
                 );
                 
@@ -67,6 +68,14 @@ const Users = props => {
 
     return (
         <React.Fragment>
+
+{school == "grand-hallet" && 
+    <MainNavigation schoolLink="grand-hallet"
+                    schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
+
+    {school == "moxhe" && 
+    <MainNavigation schoolLink="moxhe"
+                    schoolLogo="/svg/Moxhe_blanc.svg" />}
             
             {usertype != null && usertype != "" && table == false &&
             <a onClick={onClickTable}>
@@ -79,23 +88,23 @@ const Users = props => {
             </a>}
 
             {(usertype == "trusted-students" || usertype == "trusted-teachers") &&
-            <a href={`/${props.school}/admin/add-user/` + usertype}>
+            <a href={`/${school}/admin/add-user/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
             </a>}
             
             {usertype == "trusted-students" &&
-            <a href={`/${props.school}/admin/add-excel/trusted-students`}>
+            <a href={`/${school}/admin/add-excel/trusted-students`}>
                 <img className='excel-logo' src='/svg/excel.svg'></img>
             </a>}
 
             <div className="select-user">
-                <a style={studentsButton} href={"/" + props.school + "/admin/utilisateurs/students"}>
+                <a style={studentsButton} href={"/" + school + "/admin/utilisateurs/students"}>
                 Comptes Élèves</a>
-                <a style={teachersButton} href={"/" + props.school + "/admin/utilisateurs/teachers"}>
+                <a style={teachersButton} href={"/" + school + "/admin/utilisateurs/teachers"}>
                 Comptes Profs</a>
-                <a style={trustedteachersButton} href={"/" + props.school + "/admin/utilisateurs/trusted-teachers"}>
+                <a style={trustedteachersButton} href={"/" + school + "/admin/utilisateurs/trusted-teachers"}>
                 White List Profs</a>
-                <a style={trustedstudentsButton} href={"/" + props.school + "/admin/utilisateurs/trusted-students"}>
+                <a style={trustedstudentsButton} href={"/" + school + "/admin/utilisateurs/trusted-students"}>
                 White List Élèves</a>
             </div>
 
@@ -142,11 +151,11 @@ const Users = props => {
             </div>}
 
             {!isLoading && loadedUsersSearch == null && loadedUsers && table == false &&
-            <UsersList items={loadedUsers} school={props.school}/>}
+            <UsersList items={loadedUsers} school={school}/>}
 
 
             {!isLoading && loadedUsersSearch && table == false &&
-            <UsersList items={loadedUsersSearch} school={props.school}/>}
+            <UsersList items={loadedUsersSearch} school={school}/>}
 
 
 

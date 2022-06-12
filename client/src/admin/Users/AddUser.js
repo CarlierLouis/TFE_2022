@@ -1,6 +1,6 @@
 import React, {useContext, use} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
 
+import {useHistory, useParams} from 'react-router-dom';
 import Input from '../../common/FormElements/Input';
 import Button from '../../common/FormElements/Button';
 import ErrorModal from '../../common/UIElements/ErrorModal';
@@ -9,6 +9,7 @@ import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_E
 import { useForm } from '../../common/hooks/form-hooks';
 import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
+import MainNavigation from '../../common/navigation/MainNavigation';
 
 import './Users.css';
 
@@ -17,6 +18,7 @@ const AddUser = props => {
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const history = useHistory();
     const usertype = useParams().usertype;
+	const school = useParams().school;
 
     const [formState, inputHandler] = useForm(
 		{
@@ -52,13 +54,13 @@ const AddUser = props => {
 					email: formState.inputs.email.value,
 					name: formState.inputs.name.value,
 					firstname: formState.inputs.firstname.value,
-					school: props.school,
+					school: school,
 					classyear: formState.inputs.classyear.value
 				}),
 				{'Content-Type': 'application/json',
 				Authorization: 'Bearer ' + auth.token}
 			);
-			history.push('/' + props.school + '/admin/utilisateurs/' + usertype);
+			history.push('/' + school + '/admin/utilisateurs/' + usertype);
 		}
 		catch(err) {}
 	};
@@ -66,6 +68,14 @@ const AddUser = props => {
 
     return (
 		<React.Fragment>
+			{school == "grand-hallet" && 
+			<MainNavigation schoolLink="grand-hallet"
+							schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
+
+			{school == "moxhe" && 
+			<MainNavigation schoolLink="moxhe"
+							schoolLogo="/svg/Moxhe_blanc.svg" />}
+
 			<ErrorModal error={error} onClear={clearError} />
 			<br></br>
 			<form className="user-form" onSubmit={userSubmitHandler}>
@@ -125,7 +135,7 @@ const AddUser = props => {
 			<br></br>
 
 			<div className="back-button">
-				<Button href={'/' + props.school + '/admin/utilisateurs/' + usertype}>
+				<Button href={'/' + school + '/admin/utilisateurs/' + usertype}>
 					Retour
 				</Button>
 			</div>

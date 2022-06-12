@@ -48,7 +48,7 @@
     color: white;
     text-decoration: none;
   }
-  
+    
 }
 
 @media (max-width: 1150px) {
@@ -59,6 +59,7 @@
 
   .nav-links a:hover {
     border: none;
+    color: #628699;
   }
 
   .nav-links a {

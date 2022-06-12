@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const CheckEmail = props => {
+  const school = useParams().school;
+
   return (
     <div style={{textAlign: 'center'}}>
       <header>
@@ -10,7 +12,7 @@ const CheckEmail = props => {
           <p>Vérifiez vos emails pour finaliser votre inscription</p>
         </h3>
       </header>
-      <Link to={`/${props.school}`}>
+      <Link to={`/${school}`}>
         Retour
       </Link>
     </div>

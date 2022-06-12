@@ -11,6 +11,7 @@ import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
 import ImageUpload from '../../common/FormElements/ImageUpload';
 import Card from '../../common/UIElements/Card';
+import MainNavigation from '../../common/navigation/MainNavigation';
 
 import './News.css';
 
@@ -20,6 +21,7 @@ const UpdateNews = props => {
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [loadedNews, setLoadedNews] = useState();
 	const history = useHistory();
+	const school = useParams().school;
 
     const [formState, inputHandler, setFormData] = useForm(
 		{
@@ -92,7 +94,7 @@ const UpdateNews = props => {
 					Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push('/' + props.school + '/actu');
+			history.push('/' + school + '/actu');
 		}
 		catch(err) {}
 	};
@@ -117,6 +119,14 @@ const UpdateNews = props => {
 
 return (
 	<React.Fragment>
+		{school == "grand-hallet" && 
+		<MainNavigation schoolLink="grand-hallet"
+						schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
+
+		{school == "moxhe" && 
+		<MainNavigation schoolLink="moxhe"
+						schoolLogo="/svg/Moxhe_blanc.svg" />}
+
 		<ErrorModal error={error} onClear={clearError} />
 		<br></br>
 		{!isLoading && loadedNews && 
@@ -171,7 +181,7 @@ return (
 
 		<br></br>
 		<div className="back-button">
-		<Button href={'/' + props.school + '/actu'}>
+		<Button href={'/' + school + '/actu'}>
 			Retour
 		</Button>
 		<br></br><br></br>

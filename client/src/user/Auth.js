@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
+import { useHistory, useParams } from 'react-router-dom';
 import Card from '../common/UIElements/Card';
 import Button from '../common/FormElements/Button';
 import Input from '../common/FormElements/Input';
@@ -11,6 +11,7 @@ import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import { useHttpClient } from '../common/hooks/http-hook';
 import Modal from '../common/UIElements/Modal';
+import MainNavigation from '../common/navigation/MainNavigation';
 
 import './Auth.css';
 
@@ -20,6 +21,8 @@ const Auth = props => {
     const [isLoginMode, setIsLoginMode] = useState(true);
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const history = useHistory();
+    const usertype = useParams().usertype;
+    const school = useParams().school;
 
     const [showQuestion, setShowQuestion] = useState(false);
 
@@ -43,6 +46,16 @@ const Auth = props => {
         }
      }, false);
 
+    
+    var usertyperequest;
+    if (usertype == "prof") {
+        var usertyperequest = "teachers";
+    }
+
+    if (usertype == "parent-eleve") {
+        var usertyperequest = "students";
+    }
+
 
      const authSubmitHandler = async event => {
         event.preventDefault();
@@ -50,37 +63,37 @@ const Auth = props => {
         if (isLoginMode) {
             try {
                 const responseData = await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/login`, 
+                    process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/login`, 
                     'POST',
                     JSON.stringify({
                         email: formState.inputs.email.value,
                         password: formState.inputs.password.value,
-                        school: props.school
+                        school: school
                     }),
                     {'Content-Type': 'application/json'},
                 );
 
                 
                 const responseData2 = await sendRequest( 
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.school}`,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${school}`,
                     'GET', null,
                     {Authorization: 'Bearer ' + auth.token});
 
 
-            if (props.usertype == "teachers") {
+            if (usertyperequest == "teachers") {
                 responseData2.users.forEach(element => {
                 if (element.id == responseData.userId) {
                     if (element.role == "Default") {
-                        auth.login(responseData.userId , responseData.token, "Default", props.school); 
+                        auth.login(responseData.userId , responseData.token, "Default", school); 
                     }
                     else if (element.role == "Admin") {
-                        auth.login(responseData.userId , responseData.token, "Admin", props.school); 
+                        auth.login(responseData.userId , responseData.token, "Admin", school); 
                     }
                 }
                 });
             }
             else {
-                auth.login(responseData.userId , responseData.token, "Student", props.school); 
+                auth.login(responseData.userId , responseData.token, "Student", school); 
             }   
         }
 
@@ -90,51 +103,20 @@ const Auth = props => {
         }
         else {
             try {
-                // DONT WORK (need to do with th JSON.stringify)
-                /*
-                const formData = new FormData();
-                formData.append('email', formState.inputs.email.value);
-                formData.append('name', formState.inputs.name.value);
-                formData.append('firstname', formState.inputs.firstname.value);
-                formData.append('password ', formState.inputs.password.value);
-                formData.append('school', JSON.stringify(props.school));
-                */
-            
                 const responseData = await sendRequest(
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/signup`,
+                    process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/signup`,
                     'POST',
                     JSON.stringify({
                         email: formState.inputs.email.value,
                         name: formState.inputs.name.value,
                         firstname: formState.inputs.firstname.value,
                         password : formState.inputs.password.value,
-                        school: props.school,
+                        school: school,
                     }),
                     {'Content-Type': 'application/json'},
                 );
-                
-                /*
-                const responseData2 = await sendRequest( 
-                    process.env.REACT_APP_BACKEND_URL + `/api/${props.usertype}/${props.school}`,
-                    'GET', null,
-                    {Authorization: 'Bearer ' + auth.token});
-                
-                if (props.usertype == "teachers") {
-                    responseData2.teachers.forEach(element => {
-                    if (element.id == responseData.userId) {
-                        if (element.role == "Default") {
-                            auth.login(responseData.userId , responseData.token, "Default", props.school); 
-                        }
-                        else if (element.role == "Admin") {
-                            auth.login(responseData.userId , responseData.token, "Admin", props.school); 
-                        }
-                    }
-                    });
-                }
-                else {
-                    auth.login(responseData.userId , responseData.token, "Student", props.school); 
-                }*/
-                history.push('/' + props.school + '/info-email');
+
+                history.push('/' + school + '/info-email');
                 
             }
             catch(err) {}
@@ -172,24 +154,39 @@ const Auth = props => {
 
 return (
 <React.Fragment>
+    {school == "grand-hallet" && 
+    <MainNavigation schoolLink="grand-hallet"
+                    schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
 
-<img className='question-auth' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
-<Modal className='question-modal'
-    show={showQuestion}
-    onCancel={closeQuestionHandler}
-    footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>
-        <a>Vous devez vous connecter ou créer un compte afin d'accéder aux fonctionnalités dédiées 
-            aux {props.usertypefr}.
-        </a>
-        <br></br><br></br>
-        <a style={{fontStyle: 'italic', fontSize: '18px'}}>
-            * La création de compte est dédée au élèves inscits ainsi qu'aux membres du personnel enseignant.
-        </a>
-</Modal>
+    {school == "moxhe" && 
+    <MainNavigation schoolLink="moxhe"
+                    schoolLogo="/svg/Moxhe_blanc.svg" />}
+
+    <img className='question-auth' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
+    <Modal className='question-modal'
+        show={showQuestion}
+        onCancel={closeQuestionHandler}
+        footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>
+            {usertype == "prof" && 
+            <a>Vous devez vous connecter ou créer un compte afin d'accéder aux fonctionnalités dédiées 
+                aux enseignants.
+            </a>}
+
+            {usertype == "parent-eleve" && 
+            <a>Vous devez vous connecter ou créer un compte afin d'accéder aux fonctionnalités dédiées 
+                aux élèves ainsi qu'à leurs parents.
+            </a>}
 
 
-<ErrorModal error={error} onClear={clearError}/>    
-<h4 className='auth-title'>{props.connexiontitle_1}<br></br>{props.connexiontitle_2}</h4>
+            <br></br><br></br>
+            <a style={{fontStyle: 'italic', fontSize: '18px'}}>
+                * La création de compte est dédée au élèves inscrits ainsi qu'aux membres du personnel enseignant.
+            </a>
+    </Modal>
+
+
+    <ErrorModal error={error} onClear={clearError}/>    
+    <br></br><br></br><br></br>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}
         <h2>{isLoginMode ? 'Se connecter': 'S\'inscrire'}</h2>
