@@ -11,7 +11,7 @@ class Map extends Component {
   render() {
     return (
       <LoadScript
-        //googleMapsApiKey="AIzaSyDBGhr6oZpKR2O7Kk8pdWg6zbMEtFFAif0"
+        //googleMapsApiKey="
       >
         <GoogleMap
           mapContainerStyle={containerStyle}  
