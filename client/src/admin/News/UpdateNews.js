@@ -80,19 +80,16 @@ const UpdateNews = props => {
 	const newsUpdateSubmitHandler = async event => {
 		event.preventDefault();
 		try {
+			const formData = new FormData();
+			formData.append('title', formState.inputs.title.value);
+			formData.append('description', formState.inputs.description.value);
+			formData.append('date', formState.inputs.date.value);
+			formData.append('image', formState.inputs.image.value);
 			await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + `/api/news/${newsId}`,
 				'PATCH',
-				JSON.stringify({
-					title: formState.inputs.title.value,
-					description: formState.inputs.description.value,
-					date: formState.inputs.date.value,
-					image: formState.inputs.image.value
-				}),
-				{
-					'Content-Type': 'application/json',
-					Authorization: 'Bearer ' + auth.token
-				}
+				formData,
+				{Authorization: 'Bearer ' + auth.token}
 			);
 			history.push('/' + school + '/actualites');
 		}
@@ -170,6 +167,8 @@ return (
 				id="image" 
 				onInput={inputHandler}
 				errorText="Veillez entrer une image"
+				initialValue={loadedNews.image}
+				initialValid={true}
 				updatePreview={process.env.REACT_APP_BACKEND_URL + `/${loadedNews.image}`}
 			/>
 			
@@ -181,7 +180,7 @@ return (
 
 		<br></br>
 		<div className="back-button">
-		<Button href={'/' + school + '/actu'}>
+		<Button href={'/' + school + '/actualites'}>
 			Retour
 		</Button>
 		<br></br><br></br>

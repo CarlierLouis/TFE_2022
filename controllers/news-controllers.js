@@ -106,15 +106,26 @@ const updateNews = async (req, res, next) => {
         return next(error);
     }
 
+    const oldImagePath = news.image;
 
     news.title = title;
     news.description = description;
     news.date = date;
-    //news.image = req.file.path;
+
+    if (req.file != undefined) {
+        news.image = req.file.path;
+    }
 
 
     try {
         await news.save();
+
+        if (req.file != undefined) {
+            fs.unlink(oldImagePath, err => {
+                console.log(err);
+        });
+    }
+
     }
     catch(err){
         const error = new HttpError(
