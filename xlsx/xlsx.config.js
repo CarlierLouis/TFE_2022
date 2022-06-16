@@ -1,8 +1,8 @@
 const XLSX = require('xlsx');
 
-const file = XLSX.readFile("./uploads/xlsx/trustedStudents.xlsx");
+getXLSXData = (path) => {
 
-getXLSXData = () => {
+    const file = XLSX.readFile(path);
 
     const sheetLength = file.SheetNames.length;
     var globalContent = [];

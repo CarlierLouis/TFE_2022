@@ -1,5 +1,7 @@
 const { validationResult } = require('express-validator');
 
+const fs = require('fs');
+
 const HttpError = require('../models/http-error');
 const TrustedStudent = require('../models/trusted_student');
 
@@ -174,8 +176,8 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
     }
 
     const { school } = req.body;
-    
-    const jsonData = xlsx.getXLSXData();
+
+    const jsonData = xlsx.getXLSXData("./uploads/xlsx/trustedStudents.xlsx");
 
     jsonData.forEach(element => {
         const createdTrustedStudent =  new TrustedStudent ({

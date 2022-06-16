@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import {AuthContext} from '../../../common/context/auth-context';
 import { useHttpClient } from '../../../common/hooks/http-hook';
 import { useForm } from '../../../common/hooks/form-hooks';
@@ -26,6 +26,25 @@ const AddExcel = props => {
 		},
 		false
 	);
+    
+    const history = useHistory();
+
+    const xlsxSubmitHandler = async event => {
+		event.preventDefault();
+		try {
+			const formData = new FormData();
+			formData.append('school', school);
+            formData.append('xlsx', formState.inputs.xlsx.value);
+			await sendRequest(
+				process.env.REACT_APP_BACKEND_URL + '/api/trusted-students/add-xlsx',
+				'POST',
+				formData,
+				{Authorization: 'Bearer ' + auth.token}
+			);
+			history.push(`/${school}/admin/utilisateurs/white-list-eleves`);
+		}
+		catch(err) {}
+	};
 
     return (
         <React.Fragment>
@@ -39,7 +58,7 @@ const AddExcel = props => {
 
             <ErrorModal error={error} onClear={clearError} />
 			<br></br>
-            <form className="excel-form">
+            <form className="excel-form" onSubmit={xlsxSubmitHandler}>
                 <h4 className='form-excel-title'>Ajouter des élèves de confiances via un fichier excel (.xlsx)</h4>
                 {isLoading && <LoadingSpinner asOverlay />}
                 <XLSXUpload

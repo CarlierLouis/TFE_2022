@@ -4,13 +4,20 @@ const { check } = require('express-validator');
 const trustedStudentsControllers = require('../controllers/trusted_students-controllers');
 const checkAuthAdmin = require('../middleware/check-auth-admin');
 
+const xlsxUpload = require('../middleware/xlsx-upload')
+
 const router = express.Router();
 
 router.get('/:school', trustedStudentsControllers.getTrustedStudents);
 
 router.get('/id/:tsid', trustedStudentsControllers.getTrustedStudentById);
 
-router.post('/add-xlsx', trustedStudentsControllers.createTrustedStudentsWithXLSX);
+router.post('/add-xlsx',
+xlsxUpload.single('xlsx'),
+[
+    check('school').not().isEmpty(),
+    check('school').isIn(['grand-hallet', 'moxhe'])
+], trustedStudentsControllers.createTrustedStudentsWithXLSX);
 
 router.use(checkAuthAdmin);
 

@@ -4,13 +4,16 @@ const MIME_TYPE_MAP = {
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx'
 };
 
-const fileUpload = multer({
+const xlsxUpload = multer({
     limits: 500000,
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, 'uploads/xlsx');
+            cb(null, './uploads/xlsx');
         },
-        filename: "trustedStudents.xlsx"
+        filename: (req, file, cb) => {
+            const ext = MIME_TYPE_MAP[file.mimetype];
+            cb(null, "trustedStudents." + ext);
+        }
     }),
     fileFilter: (req, file, cb) => {
         const isValid = !!MIME_TYPE_MAP[file.mimetype];
@@ -19,4 +22,4 @@ const fileUpload = multer({
     }
 });
 
-module.exports = fileUpload;
+module.exports = xlsxUpload;
