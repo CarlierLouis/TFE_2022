@@ -12,13 +12,6 @@ router.get('/:school', trustedStudentsControllers.getTrustedStudents);
 
 router.get('/id/:tsid', trustedStudentsControllers.getTrustedStudentById);
 
-router.post('/add-xlsx',
-xlsxUpload.single('xlsx'),
-[
-    check('school').not().isEmpty(),
-    check('school').isIn(['grand-hallet', 'moxhe'])
-], trustedStudentsControllers.createTrustedStudentsWithXLSX);
-
 router.use(checkAuthAdmin);
 
 router.post('/',
@@ -38,6 +31,14 @@ router.patch('/:tsid',
     check('email').not().isEmpty(),
     check('classyear').not().isEmpty(),
 ], trustedStudentsControllers.updateTrustedStudent);
+
+router.post('/add-xlsx',
+xlsxUpload.single('xlsx'),
+[
+    check('school').not().isEmpty(),
+    check('school').isIn(['grand-hallet', 'moxhe'])
+], trustedStudentsControllers.createTrustedStudentsWithXLSX);
+
 
 
 router.delete('/:tsid', trustedStudentsControllers.deleteTrustedStudent);

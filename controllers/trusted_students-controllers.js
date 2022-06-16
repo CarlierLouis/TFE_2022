@@ -75,7 +75,7 @@ const createTrustedStudent = async(req, res, next) => {
     let existingTrustedStudent
     try {
         existingTrustedStudent = await TrustedStudent.findOne({email: email})
-        .where({name: createdTrustedStudent.name}).where({firstname: createdTrustedStudent.firstname})
+        .where({name: name}).where({firstname: firstname})
     }
     catch(err) {
         const error = new HttpError (
@@ -179,25 +179,34 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
     const jsonData = xlsx.getXLSXData("./uploads/xlsx/trustedStudents.xlsx");
 
-    jsonData.forEach(element => {
-        const createdTrustedStudent =  new TrustedStudent ({
-            email: element.Email,
-            name: element.Nom,
-            firstname: element.Prenom,
-            classyear: element.Classe,
-            school
-        });
 
-        try {
-            createdTrustedStudent.save();
+    let existingTrustedStudent;
+
+
+    jsonData.forEach(async element => {
+
+        existingTrustedStudent = await TrustedStudent.findOne({email: element.Email})
+        .where({name: element.Nom}).where({firstname: element.Prenom});
+
+        if (!existingTrustedStudent) {
+            const createdTrustedStudent =  new TrustedStudent ({
+                email: element.Email,
+                name: element.Nom,
+                firstname: element.Prenom,
+                classyear: element.Classe,
+                school
+            });
+
+            try {
+                createdTrustedStudent.save();
+            }
+            catch(err) {
+                const error = new HttpError(
+                    'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                return next(error);
+            }
         }
-        catch(err) {
-            const error = new HttpError(
-                'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
-            return next(error);
-        }
-            
-        });
+    });
 
     res.status(201).json({ message: "liste de contacts de confiance bien ajoutées"});
 };
