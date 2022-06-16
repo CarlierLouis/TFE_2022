@@ -11,6 +11,10 @@ getXLSXData = () => {
         const SheetName = file.SheetNames[i];
         const SheetNameContent = file.Sheets[SheetName];
         const json = XLSX.utils.sheet_to_json(SheetNameContent);
+
+        json.map((entry) => {
+            entry.Classe = SheetName;
+        });
         
         json.forEach (element =>  {
             globalContent.push(element);

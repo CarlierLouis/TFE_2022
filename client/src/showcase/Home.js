@@ -24,6 +24,8 @@ const Home  = props => {
   <MainNavigation schoolLink="moxhe"
                   schoolLogo="/svg/Moxhe_blanc.svg" />}
 
+  <div className='home-header-div-img'></div>
+
   <div className='home-title-header'>
     <img src="/svg/portail-title.svg" className='home-title-img'/>
   </div>

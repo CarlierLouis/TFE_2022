@@ -59,7 +59,7 @@ const XLSXUpload = props => {
                     
                 </div>
             <div className={`image-upload ${props.center && 'center'}`}>
-                <Button type="button" onClick={pickXLSXHandler}>Ajouter</Button>
+                <Button type="button" onClick={pickXLSXHandler}>Ajouter un fichier</Button>
             </div>
             {!isValid && <p>{props.errorText}</p>}
         </div>

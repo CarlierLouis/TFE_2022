@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/http-error');
 const TrustedStudent = require('../models/trusted_student');
 
-const xlsx =  require('../xlsx/xlsx');
+const xlsx =  require('../xlsx/xlsx.config');
 
 // Get all trusted students by school
 const getTrustedStudents = async (req, res, next) => {
@@ -182,7 +182,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             email: element.Email,
             name: element.Nom,
             firstname: element.Prenom,
-            classyear: 'p4',
+            classyear: element.Classe,
             school
         });
 

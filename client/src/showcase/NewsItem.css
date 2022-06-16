@@ -1,7 +1,7 @@
 .news-item {
   margin: 1rem;
-  width: calc(30%);
-  min-width: 17.5rem;
+  width: calc(28%);
+  min-width: 22.5rem;
   margin-right: 1%;
   margin-left: 1%;
 }
@@ -23,7 +23,7 @@
 
 .news-item__image {
   width: 500px;
-  height: 300px;
+  height: 275px;
   transition: transform 0.5s;
   margin-bottom: 2%;
   object-fit: cover;
