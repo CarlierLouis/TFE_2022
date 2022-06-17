@@ -28,7 +28,7 @@ router.post('/',
 router.patch('/:tsid',
 [
     check('email').isEmail(),
-    check('email').not().isEmpty(),
+    check('email').not().isEmpty(), 
     check('classyear').not().isEmpty(),
 ], trustedStudentsControllers.updateTrustedStudent);
 

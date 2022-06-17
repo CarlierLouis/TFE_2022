@@ -11,8 +11,7 @@ import { AuthContext } from './common/context/auth-context';
 import News from './showcase/News';
 import AddNews from './admin/News/AddNews';
 import UpdateNews from './admin//News/UpdateNews';
-import WelcomeTeacher from './email-confirmation/WelcomeTeacher';
-import WelcomeStudent from './email-confirmation/WelcomeStudent';
+import WelcomeUser from './email-confirmation/WelcomeUser';
 import CheckEmail from './email-confirmation/CheckEmail';
 import Users from './admin/Users/Users';
 import UpdateUser from './admin/Users/UpdateUser';
@@ -231,12 +230,8 @@ else {
       <Auth />
   </Route>
 
-  <Route path="/teachers/email-confirmation/:confirmationCode">
-    <WelcomeTeacher />
-  </Route>
-
-  <Route path="/students/email-confirmation/:confirmationCode">
-    <WelcomeStudent />
+  <Route path="/:usertype/email-confirmation/:confirmationCode">
+    <WelcomeUser />
   </Route>
 
   <Route path="/:school/info-email">

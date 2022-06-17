@@ -16,6 +16,7 @@ const AddExcel = props => {
     const auth = useContext(AuthContext);
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const school = useParams().school;
+    const history = useHistory();
 
     const [formState, inputHandler] = useForm(
 		{
@@ -26,8 +27,6 @@ const AddExcel = props => {
 		},
 		false
 	);
-    
-    const history = useHistory();
 
     const xlsxSubmitHandler = async event => {
 		event.preventDefault();

@@ -3,17 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import { useHttpClient } from '../common/hooks/http-hook';
 import { AuthContext } from '../common/context/auth-context';
 
-const WelcomeStudent = props => {
+const WelcomeUser = props => {
 const confirmationCode = useParams().confirmationCode;
 const {sendRequest} = useHttpClient();
 const auth = useContext(AuthContext);
+const usertype = useParams().usertype;
 
 useEffect(() => {
 
   const verifyEmail = async () => {
     try {
     await sendRequest( 
-        process.env.REACT_APP_BACKEND_URL + `/api/students/login/email-confirmation/` + confirmationCode, 
+        process.env.REACT_APP_BACKEND_URL + `/api/${usertype}/login/email-confirmation/` + confirmationCode, 
         'PATCH',
         null,
         {Authorization: 'Bearer ' + auth.token}
@@ -41,4 +42,4 @@ useEffect(() => {
   );
 };
 
-export default WelcomeStudent;
+export default WelcomeUser;
