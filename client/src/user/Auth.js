@@ -163,7 +163,7 @@ return (
                     schoolLogo="/svg/Moxhe_blanc.svg" />}
 
     <img className='question-auth' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
-    <Modal className='question-modal'
+    <Modal className='question-modal-auth'
         show={showQuestion}
         onCancel={closeQuestionHandler}
         footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>

@@ -2,6 +2,8 @@ import React, {useRef, useState, useEffect} from 'react';
 
 import Button from './Button';
 
+import './XLSXUpload.css';
+
 const XLSXUpload = props => {
     const [file, setFile] = useState();
     const [previewUrl, setPreviewUrl] = useState();
@@ -52,15 +54,18 @@ const XLSXUpload = props => {
             />
             <div className="image-upload__preview">
                     {previewUrl &&
-                    <p>{previewUrl}</p>}
+                    <div className='xlsx-upload-preview-div' >
+                        <p>Fichier ajouté !</p>
+                    </div>}
 
                     {!previewUrl && !props.updatePreview &&
-                    <p>Fichier xlsx</p>}
+                    <Button type="button" onClick={pickXLSXHandler}>Ajouter un fichier</Button>}
                     
-                </div>
-            <div className={`image-upload ${props.center && 'center'}`}>
-                <Button type="button" onClick={pickXLSXHandler}>Ajouter un fichier</Button>
             </div>
+
+            {previewUrl && 
+            <Button type="button" onClick={pickXLSXHandler}>Choisir un autre fichier</Button>}
+
             {!isValid && <p>{props.errorText}</p>}
         </div>
     );

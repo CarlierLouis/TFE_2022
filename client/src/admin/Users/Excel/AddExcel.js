@@ -1,12 +1,13 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState } from 'react';
 
 import { useParams, useHistory } from 'react-router-dom';
-import {AuthContext} from '../../../common/context/auth-context';
+import { AuthContext } from '../../../common/context/auth-context';
 import { useHttpClient } from '../../../common/hooks/http-hook';
 import { useForm } from '../../../common/hooks/form-hooks';
 import XLSXUpload from '../../../common/FormElements/XLSXUpload';
 import Button from '../../../common/FormElements/Button';
 import ErrorModal from '../../../common/UIElements/ErrorModal';
+import Modal from '../../../common/UIElements/Modal';
 import LoadingSpinner from '../../../common/UIElements/LoadingSpinner';
 import MainNavigation from '../../../common/navigation/MainNavigation';
 
@@ -17,6 +18,17 @@ const AddExcel = props => {
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const school = useParams().school;
     const history = useHistory();
+
+    const [showQuestion, setShowQuestion] = useState(false);
+
+    const openQuestionHandler = () => {
+		setShowQuestion(true);
+	};
+
+	const closeQuestionHandler = () => {
+		setShowQuestion(false);
+	};
+
 
     const [formState, inputHandler] = useForm(
 		{
@@ -55,10 +67,28 @@ const AddExcel = props => {
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
 
+            <img className='question-excel' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
+            <Modal className='question-modal-excel'
+                show={showQuestion}
+                onCancel={closeQuestionHandler}
+                footer={<Button onClick={closeQuestionHandler}>Fermer</Button>}>
+
+                <h5>Sur cette page vous pouvez sélectionner un fichier excel afin d'ajouter
+                toute une liste d'élèves de confiance simultanément.</h5>
+
+                <br></br>
+                
+                <p className='italic'>Merci de suivre la structure de l'exemple suivant:</p>
+
+                <img src='/img/excel.png'/>
+                
+            </Modal>
+
             <ErrorModal error={error} onClear={clearError} />
 			<br></br>
             <form className="excel-form" onSubmit={xlsxSubmitHandler}>
-                <h4 className='form-excel-title'>Ajouter des élèves de confiances via un fichier excel (.xlsx)</h4>
+                <h4 className='form-excel-title'>Ajouter des élèves de confiances</h4>
+                <h6 className='form-excel-title italic'>Type de fichier accepté: XLSX</h6>
                 {isLoading && <LoadingSpinner asOverlay />}
                 <XLSXUpload
                 id="xlsx"

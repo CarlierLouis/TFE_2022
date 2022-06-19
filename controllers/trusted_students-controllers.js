@@ -180,9 +180,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
     const jsonData = xlsx.getXLSXData("./uploads/xlsx/trustedStudents.xlsx");
 
-
     let existingTrustedStudent;
-
 
     jsonData.forEach(async element => {
 
@@ -208,6 +206,8 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             }
         }
     });
+
+    
 
     res.status(201).json({ message: "liste de contacts de confiance bien ajoutées"});
 };

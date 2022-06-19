@@ -11,6 +11,11 @@
 
 .form-excel-title {
     text-align: center;
+    margin-bottom: 3%;
+}
+
+.italic {
+    font-style: italic;
 }
 
 .back-button {
@@ -27,4 +32,42 @@
 
 .excel-card {
     width: 60%;
+}
+
+.question-excel {
+    width: 50px;
+    position: fixed;
+    bottom: 0;
+    transition: transform 0.5s; 
+    margin-left: 96%;
+    margin-bottom: 0.5%;
+}
+
+.question-excel:hover {
+    transform: scale(1.2);
+}
+
+.question-modal-excel {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.1rem;
+    top: 5vh;
+    text-align: center;
+}
+
+.question-modal-excel h5 {
+    font-weight: bold;
+}
+
+.question-modal-excel img {
+    width: 600px;
+}
+
+@media (max-width: 820px) {
+    .question-modal-excel img {
+        width: 100%;
+    }
+
+    .question-excel {
+        margin-left: 85%;
+    }
 }
