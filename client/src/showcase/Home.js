@@ -31,6 +31,7 @@ const Home  = props => {
   </div>
 
   <br></br>
+  
 
   <News numberofnews={props.numberofnews}/>
   <br></br>

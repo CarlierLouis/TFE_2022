@@ -78,19 +78,39 @@
   transition: 0.5s;
 }
 
-.animated-portal-div span:after {
-  content: '▀▀';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+.animated-portal-div-GH span:after {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    content: 'Grand-Hallet  ';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 
+
+.animated-portal-div-Moxhe span:after {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    content: 'Moxhe  ';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+/*
 .animated-portal-div:hover span {
   padding-right: 25px;
   display: flex;
   opacity: 0.8;
+}*/
+
+.animated-portal-div:hover span {
+    opacity: 0.8;
+    display: flex;
 }
 
 .animated-portal-div:hover span:after {
@@ -125,6 +145,16 @@
     .portal-img-div img {
         width: 100%;
         margin-bottom: 5%;
+    }
+
+    .animated-portal-div-Moxhe span:after {
+        opacity: 1;
+        content: 'Moxhe    ';
+    }
+
+    .animated-portal-div-GH span:after {
+        opacity: 1;
+        content: 'Grand-Hallet    ';
     }
 }
 

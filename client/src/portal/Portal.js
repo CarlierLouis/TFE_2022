@@ -10,9 +10,9 @@ const Portal  = () => {
   <div className='portal-img-div'><img className='portal-img' src="svg/portail-title.svg"></img></div>
 
     <Card className="portal-GH border-0" style={{ backgroundColor: 'rgb(31, 30, 30)'}}>
-    <h1 className='school-title'>École de Grand-Hallet</h1>
+    
       <Link to="/grand-hallet">
-    <div className="animated-portal-div">
+    <div className="animated-portal-div animated-portal-div-GH">
       <span>
         <Card.Img variant="top" src="img/Grand-Hallet-photo_1.jpg" />
         
@@ -23,9 +23,9 @@ const Portal  = () => {
     </Card>
 
     <Card className="portal-Moxhe border-0" style={{ backgroundColor: 'rgb(31, 30, 30)'}} >
-    <h1 className='school-title'>École de Moxhe</h1>
+    
       <Link to="/moxhe">
-    <div className="animated-portal-div">
+    <div className="animated-portal-div animated-portal-div-Moxhe">
       <span>
       <Card.Img variant="top" src="img/Moxhe-photo_1.jpg" />
         

@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const HttpError = require('../models/http-error');
 const TrustedStudent = require('../models/trusted_student');
+const Student = require('../models/student')
 
 const xlsx =  require('../xlsx/xlsx.config');
 
