@@ -17,6 +17,7 @@ import Users from './admin/Users/Users';
 import UpdateUser from './admin/Users/UpdateUser';
 import AddUser from './admin/Users/AddUser';
 import AddExcel from './admin/Users/Excel/AddExcel';
+import PersonalSpace from './user/PersonalSpace';
 
 let logoutTimer;
 
@@ -127,6 +128,15 @@ if (token && role === "Admin") {
     <AddExcel />
   </Route>
 
+  <Route path="/:school/espace-prof" exact>
+      <PersonalSpace />
+  </Route>
+
+  <Route path="/:school/espace-prof/:section">
+      <PersonalSpace />
+  </Route>
+
+
 </Switch>
 
   );
@@ -157,12 +167,19 @@ else if (token && role === "Default") {
 
   <Route path="/:school" exact>
     <Home numberofnews="3" />
-
   </Route>
 
   <Route path="/:school/actualites" exact>
     <News numberofnews="200"/>
     <Footer />
+  </Route>
+
+  <Route path="/:school/espace-prof" exact>
+      <PersonalSpace />
+  </Route>
+
+  <Route path="/:school/espace-prof/:section">
+      <PersonalSpace />
   </Route>
 
 </Switch>
@@ -200,6 +217,14 @@ else if (token && role === "Student") {
   <Route path="/:school/actualites" exact>
       <News numberofnews="200"/>
       <Footer />
+  </Route>
+
+  <Route path="/:school/espace-personnel" exact>
+      <PersonalSpace />
+  </Route>
+
+  <Route path="/:school/espace-personnel/:section">
+      <PersonalSpace />
   </Route>
 
 </Switch>
