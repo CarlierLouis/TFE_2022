@@ -15,7 +15,15 @@ const NavLinks = props => {
         </li>
         
         <li>
-            <NavLink to={"/"+ props.schoolLink +"/actualites"} >Actualités</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/actualites"} >Actualités</NavLink>
+        </li>
+
+        <li>
+            <NavLink to={"/"+ props.schoolLink + "/aaaa"} >Agenda</NavLink>
+        </li>
+
+        <li>
+            <NavLink to={"/"+ props.schoolLink + "/aaaa"} >Projets et règlements</NavLink>
         </li>
 
         {!auth.isLoggedIn && 
@@ -27,6 +35,7 @@ const NavLinks = props => {
         <li>
             <NavLink to={"/"+ props.schoolLink + "/connexion/prof"}>Espace Prof</NavLink>
         </li>}
+        
 
         {!auth.isLoggedIn &&
         <li>
