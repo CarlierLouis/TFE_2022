@@ -1,3 +1,8 @@
+.home-title-div {
+    width: 100%;
+}
+
+/*
 .home-title-header {
     background-color: rgb(31, 30, 30);
      text-align: left;
@@ -6,7 +11,7 @@
 
 .home-title-img {
     width: 550px;
-}
+}*/
 
 .h2-title {
     width: 100px;
@@ -61,6 +66,15 @@
     background-color: #ECF0F7;
 }
 
+.news-home-title {
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 2%;
+    padding: 2%;
+    background-color: #ECF0F7;
+    font-style: italic;
+}
+
 /*
 .home-header-div-img {
     background-image: url("../../public/img/Grand-Hallet-photo_1.jpg");
@@ -98,6 +112,10 @@
 
 .home-title-img {
     width: 100%;
+}
+
+.home-title-div {
+    margin-bottom: 5%;
 }
 
 

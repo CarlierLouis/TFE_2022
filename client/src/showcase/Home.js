@@ -24,20 +24,14 @@ const Home  = props => {
   <MainNavigation schoolLink="moxhe"
                   schoolLogo="/svg/Moxhe_blanc.svg" />}
 
-  <div className='home-header-div-img'></div>
-
-  <div className='home-title-header'>
-    <img src="/svg/portail-title.svg" className='home-title-img'/>
-  </div>
+      
+  <img className='home-title-div' src="/svg/Banner-Hannut2.svg" />
 
   <br></br>
-  
 
-  <News numberofnews={props.numberofnews}/>
-  <br></br>
-  <div className='news-link'>
-    <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
-  </div>
+  <h4 className='news-home-title'>
+  Notre école
+  </h4>
 
   {school == "grand-hallet" &&
   <Carousel variant="dark" className='caroussel-div'>
@@ -105,7 +99,23 @@ const Home  = props => {
     Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. 
     Pellentesque rhoncus nunc et augue. 
   </elem></Card><br></br>
+      
+  <h4 className='news-home-title'>
+  Restez informé sur toute l'actualité de notre école ainsi que sur les divers événements organisés
+  </h4>
+
+      
+  <News numberofnews={props.numberofnews}/>
+  <br></br>
+  <div className='news-link'>
+    <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
+  </div>
+
+  <br></br><br></br>
   
+  <div style={{width: '100%', height: '80px', backgroundColor: 'rgb(31, 30, 30)'}} >
+  </div>
+
   {school == "grand-hallet" &&
   <div className='home-youtube-video-div'>
     <iframe className='home-youtube-video'

@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import MainNavigation from './common/navigation/MainNavigation';
 import Home from './showcase/Home';
 import Portal from './portal/Portal';
 import Footer from './showcase/Footer';
@@ -34,7 +33,7 @@ const login = useCallback((uid, token, role, school, expirationDate) => {
     setUserId(uid);
     setRole(role);
     setSchool(school);
-    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60 * 24); // 1hour
+    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60 * 24); // 1 day
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem('userData', JSON.stringify(
       {userId: uid, token: token, role: role, school: school, expiration: tokenExpirationDate.toISOString()}
