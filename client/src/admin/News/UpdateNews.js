@@ -135,7 +135,7 @@ return (
 				id="title"
 				element="input"
 				type="text"
-				label="Titre"
+				label="Titre (20 caractères max)"
 				validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(20)]}
 				errorText="Veillez entrer un titre valide."
 				onInput={inputHandler}
@@ -155,8 +155,8 @@ return (
 			<Input
 				id="date"
 				element="input"
-				label="Date"
-				validators={[VALIDATOR_REQUIRE]}
+				label="Date (15 caractères max)"
+				validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(15)]}
 				errorText="Veillez entrer une date valide."
 				onInput={inputHandler}
 				initialValue={loadedNews.date}

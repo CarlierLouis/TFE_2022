@@ -98,8 +98,8 @@ const NewNews = props => {
 				<Input
 					id="date"
 					element="input"
-					label="Date"
-					validators={[VALIDATOR_REQUIRE()]}
+					label="Date (15 caractères max)"
+					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(15)]}
 					errorText="Veillez entrer une date valide."
 					onInput={inputHandler}
 				/>

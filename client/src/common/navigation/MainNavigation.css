@@ -42,7 +42,7 @@
 }
 
 
-@media (min-width: 1150px) {
+@media (min-width: 1300px) {
   .main-navigation__menu-btn {
     display: none;
   }
@@ -53,10 +53,8 @@
   
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1300px) {
   .main-navigation__logo {
-    float: right;
-    margin-top: 4%;
     width: 100%;
   }
 }

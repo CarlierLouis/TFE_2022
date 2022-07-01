@@ -1,6 +1,7 @@
 .news-item {
   margin: 1rem;
   width: calc(28%);
+  max-width: 500px;
   min-width: 22.5rem;
   margin-right: 1%;
   margin-left: 1%;
@@ -21,9 +22,16 @@
   padding: 0px;
 }
 
-.news-item__image {
+.news-item-box__image {
   width: 500px;
   height: 275px;
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+.news-item__image {
+  width: 100%;
+  height: 100%;
   transition: transform 0.5s;
   margin-bottom: 2%;
   object-fit: cover;
@@ -32,7 +40,6 @@
 .news-item__image:hover {
   transform: scale(1.03);
 }
-
 
 
 .news-item__info h2 {

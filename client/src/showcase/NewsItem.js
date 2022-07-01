@@ -65,6 +65,7 @@ const closeMoreHandler = () => {
     window.location.reload(true);
  }
   
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -97,7 +98,9 @@ const closeMoreHandler = () => {
       <li className="news-item">
         <Card className="news-item__content">
             <div className="news-item__info">
-            <img className='news-item__image' src={process.env.REACT_APP_BACKEND_URL + `/${props.image}`} />
+              <div className='news-item-box__image'>
+                <img className='news-item__image' src={process.env.REACT_APP_BACKEND_URL + `/${props.image}`} />
+              </div>
               <h2 className="news-date">{props.date}</h2>
               <h2 className='news-title'>{props.title}</h2>
               <h3>{descriptionText}

@@ -31,8 +31,8 @@ const Footer = props => {
         </div>
 
         <div className="rs-right">
-            <img src="/svg/phone.svg" width={"5%"}></img>&nbsp;<a>0495/77.71.45<br></br>
-            <img src="/svg/mail.svg" width={"5%"}></img>&nbsp;jacqueline.delathuy@hannut.be</a>
+            <img src="/svg/phone.svg" width={"20px"}></img>&nbsp;<a>0495/77.71.45<br></br>
+            <img src="/svg/mail.svg" width={"25px"}></img>&nbsp;jacqueline.delathuy@hannut.be</a>
         </div>
         
     </footer>

@@ -113,8 +113,6 @@ const Home  = props => {
 
   <br></br><br></br>
   
-  <div style={{width: '100%', height: '80px', backgroundColor: 'rgb(31, 30, 30)'}} >
-  </div>
 
   {school == "grand-hallet" &&
   <div className='home-youtube-video-div'>
@@ -137,6 +135,8 @@ const Home  = props => {
       title="video"
     />
   </div>}
+
+  <br></br><br></br>
 
 
   {school == "grand-hallet" && 
