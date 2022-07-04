@@ -53,7 +53,7 @@ const signup = async (req, res, next) => {
 
     if (!existingTrustedStudent) {
         const error = new HttpError(
-            'Vous ne pouvez pas créer de compte avec cette addresse email !', 422);
+            'Vous ne pouvez pas créer de compte avec cette adresse email !', 422);
         return next(error);
     }
     

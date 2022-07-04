@@ -19,11 +19,11 @@ const NavLinks = props => {
         </li>
 
         <li>
-            <NavLink to={"/"+ props.schoolLink + "/aaaa"} >Agenda</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/agenda"} >Agenda</NavLink>
         </li>
 
         <li>
-            <NavLink to={"/"+ props.schoolLink + "/aaaa"} >Projets et règlements</NavLink>
+            <NavLink to={"/"+ props.schoolLink + "/projets-et-reglements"} >Projets et règlements</NavLink>
         </li>
 
         {!auth.isLoggedIn && 

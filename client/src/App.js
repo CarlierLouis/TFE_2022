@@ -17,6 +17,8 @@ import UpdateUser from './admin/Users/UpdateUser';
 import AddUser from './admin/Users/AddUser';
 import AddExcel from './admin/Users/Excel/AddExcel';
 import PersonalSpace from './user/PersonalSpace';
+import GlobalCalendar from './showcase/GlobalCalendar';
+import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
 
 let logoutTimer;
 
@@ -98,6 +100,16 @@ if (token && role === "Admin") {
       <News numberofnews="200"/>
       <Footer />
   </Route>
+
+  <Route path="/:school/agenda">
+    <GlobalCalendar />
+    <Footer />
+  </Route>
+
+  <Route path="/:school/projets-et-reglements">
+    <ProjectsAndRegulations />
+    <Footer />
+  </Route>
   
   <Route path="/:school/admin/ajouter-actualite">
       <AddNews />
@@ -173,6 +185,16 @@ else if (token && role === "Default") {
     <Footer />
   </Route>
 
+  <Route path="/:school/agenda">
+    <GlobalCalendar />
+    <Footer />
+  </Route>
+
+  <Route path="/:school/projets-et-reglements">
+    <ProjectsAndRegulations />
+    <Footer />
+  </Route>
+
   <Route path="/:school/espace-prof" exact>
       <PersonalSpace />
   </Route>
@@ -218,6 +240,16 @@ else if (token && role === "Student") {
       <Footer />
   </Route>
 
+  <Route path="/:school/agenda">
+    <GlobalCalendar />
+    <Footer />
+  </Route>
+
+  <Route path="/:school/projets-et-reglements">
+    <ProjectsAndRegulations />
+    <Footer />
+  </Route>
+
   <Route path="/:school/espace-personnel" exact>
       <PersonalSpace />
   </Route>
@@ -247,7 +279,17 @@ else {
 
   <Route path="/:school/actualites" exact>
     <News numberofnews="200"/>
-    <Footer  />
+    <Footer />
+  </Route>
+
+  <Route path="/:school/agenda">
+    <GlobalCalendar />
+    <Footer />
+  </Route>
+
+  <Route path="/:school/projets-et-reglements">
+    <ProjectsAndRegulations />
+    <Footer />
   </Route>
 
   <Route path="/:school/connexion/:usertype">
