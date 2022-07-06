@@ -189,7 +189,7 @@ return (
     <br></br><br></br><br></br>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}
-        <h2>{isLoginMode ? 'Se connecter': 'S\'inscrire'}</h2>
+        <h2 className='auth-title'>{isLoginMode ? 'Se connecter': 'S\'inscrire'}</h2>
         <hr />
         <form className='auth-card' onSubmit={authSubmitHandler}>
 

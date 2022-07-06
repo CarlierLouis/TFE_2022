@@ -7,6 +7,7 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import fr from "date-fns/locale/fr";
+import Card from "../common/UIElements/Card";
 
 import './GlobalCalendar.css';
 
@@ -45,31 +46,34 @@ const GlobalCalendar = props => {
             {school == "moxhe" && 
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
-            
+           
 
-            <Calendar 
-                localizer={localizer}
-                events={events}
-                startAccessor="start"
-                endAccessor="end" 
-                defaultView="month"
-                style={{height: 500, margin: "50px"}}
-                messages={{
-                    next: "Suivant",
-                    previous: "Précédent",
-                    today: "Aujourd'hui",
-                    month: "Mois",
-                    week: "Semaine",
-                    day: "Jour",
-                    time: "Heure",
-                    event: "Événement",
-                    allDay: "  -  "
-                  }}
-                toolbar={true}
-                culture='fr'
-            />
+            <Card className="global-calendar-Card-div">
 
-            <br></br>
+                <h2 className="global-agenda-title">Agenda général</h2>
+                
+                <Calendar 
+                    localizer={localizer}
+                    events={events}
+                    startAccessor="start"
+                    endAccessor="end" 
+                    defaultView="month"
+                    style={{height: 550, margin: "50px"}}
+                    messages={{
+                        next: "Suivant",
+                        previous: "Précédent",
+                        today: "Aujourd'hui",
+                        month: "Mois",
+                        week: "Semaine",
+                        day: "Jour",
+                        time: "Heure",
+                        event: "Événement",
+                        allDay: "  -  "
+                    }}
+                    toolbar={true}
+                    culture='fr'
+                />
+            </Card>
 
         </React.Fragment>
     )

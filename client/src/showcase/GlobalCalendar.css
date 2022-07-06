@@ -1,3 +1,9 @@
-.global-calendar-div {
+.global-calendar-Card-div {
     text-align: center;
+    margin: 6% 2% 2% 2%;
+}
+
+.global-agenda-title {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px;
 }
