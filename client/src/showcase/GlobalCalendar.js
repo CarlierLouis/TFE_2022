@@ -4,17 +4,14 @@ import MainNavigation from '../common/navigation/MainNavigation';
 import { useParams } from "react-router-dom";
 
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import format from "date-fns/format";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import getDay from "date-fns/getDay";
-import DatePicker from 'react-datepicker'
+import { format, parse, startOfWeek, getDay } from "date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import fr from "date-fns/locale/fr";
 
 import './GlobalCalendar.css';
 
 const locales = {
-    "fr": require("date-fns/locale/fr")
+    "fr": fr
 }
 
 const localizer = dateFnsLocalizer({
@@ -22,15 +19,16 @@ const localizer = dateFnsLocalizer({
     parse,
     startOfWeek,
     getDay,
-    locales
+    locales,
 })
+
 
 const events = [
     {
-        title: "Grandes Vacances",
         allDay: true,
-        start: new Date(2022,6,20),
-        end: new Date(2022,6,25)
+        title: "Fancy Fair",
+        start: new Date(2022,6,6),
+        end: new Date(2022,6,6)
     }
 ]
 
@@ -47,15 +45,28 @@ const GlobalCalendar = props => {
             {school == "moxhe" && 
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
-
-            <h1>Agenda</h1>
+            
 
             <Calendar 
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end" 
-                style={{height: 500, margin: "50px"}} 
+                defaultView="month"
+                style={{height: 500, margin: "50px"}}
+                messages={{
+                    next: "Suivant",
+                    previous: "Précédent",
+                    today: "Aujourd'hui",
+                    month: "Mois",
+                    week: "Semaine",
+                    day: "Jour",
+                    time: "Heure",
+                    event: "Événement",
+                    allDay: "  -  "
+                  }}
+                toolbar={true}
+                culture='fr'
             />
 
             <br></br>
