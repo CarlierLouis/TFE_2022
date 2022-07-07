@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import MainNavigation from '../common/navigation/MainNavigation';
 import { useParams } from "react-router-dom";
@@ -8,6 +8,10 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import fr from "date-fns/locale/fr";
 import Card from "../common/UIElements/Card";
+import  { useHttpClient } from '../common/hooks/http-hook';
+import { AuthContext } from '../common/context/auth-context';
+import ErrorModal from '../common/UIElements/ErrorModal';
+import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 
 import './GlobalCalendar.css';
 
@@ -24,18 +28,26 @@ const localizer = dateFnsLocalizer({
 })
 
 
-const events = [
-    {
-        allDay: true,
-        title: "Fancy Fair",
-        start: new Date(2022,6,6),
-        end: new Date(2022,6,6)
-    }
-]
-
-
 const GlobalCalendar = props => {
+    const auth = useContext(AuthContext);
+    const [loadedCalendar, setLoadedCalendar] = useState();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const school = useParams().school;
+
+    
+    useEffect(() => {
+        const fetchcalendar = async () => {
+            try {
+            const responseData = await sendRequest(
+                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}`, 'GET', null,
+            {Authorization: 'Bearer ' + auth.token});
+            setLoadedCalendar(responseData.events);
+            }
+            catch(err) {}
+        };
+        fetchcalendar();
+    }, [sendRequest]);
+
 
     return(
         <React.Fragment>
@@ -47,14 +59,21 @@ const GlobalCalendar = props => {
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
            
+            <ErrorModal error={error} onClear={clearError} />
 
             <Card className="global-calendar-Card-div">
 
                 <h2 className="global-agenda-title">Agenda général</h2>
                 
+                {isLoading && 
+                <div className='center'>
+                    <LoadingSpinner />
+                </div>}
+                
+                {!isLoading && 
                 <Calendar 
                     localizer={localizer}
-                    events={events}
+                    events={loadedCalendar}
                     startAccessor="start"
                     endAccessor="end" 
                     defaultView="month"
@@ -72,7 +91,8 @@ const GlobalCalendar = props => {
                     }}
                     toolbar={true}
                     culture='fr'
-                />
+                />}
+
             </Card>
 
         </React.Fragment>

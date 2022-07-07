@@ -3,6 +3,7 @@ const fs = require('fs');
 const { validationResult } = require('express-validator');
 
 const HttpError = require('../models/http-error');
+
 const News = require('../models/news');
 
 // Get all News by school

@@ -14,6 +14,7 @@ const trustedStudentsRoutes = require('./routes/trusted_students-routes');
 const trustedTeachersRoutes = require('./routes/trusted_teachers-routes');
 const studentsRoutes = require('./routes/students-routes');
 const teachersRoutes = require('./routes/teachers-routes');
+const calendarRoutes = require('./routes/calendar-routes');
 
 const HttpError = require('./models/http-error');
 
@@ -42,6 +43,8 @@ app.use('/api/trusted-teachers', trustedTeachersRoutes);
 app.use('/api/students', studentsRoutes);
 
 app.use('/api/teachers', teachersRoutes);
+
+app.use('/api/calendar', calendarRoutes)
 
 
 app.use((req , res, next ) => {
