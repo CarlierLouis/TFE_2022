@@ -87,7 +87,7 @@ const GlobalCalendar = props => {
                         day: "Jour",
                         time: "Heure",
                         event: "Événement",
-                        allDay: "  -  "
+                        allDay: "  -  ",
                     }}
                     toolbar={true}
                     culture='fr'
