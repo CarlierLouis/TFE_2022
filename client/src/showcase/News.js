@@ -33,7 +33,7 @@ const News = props => {
                   console.log("ok");
                 }
             });*/
-        }
+            }
             catch(err) {}
         };
         fetchnews();

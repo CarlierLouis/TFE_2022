@@ -10,7 +10,7 @@ const getEvents = async (req, res, next) => {
 
     let events;
     try {
-        events = await CalendarEvent.find({school: school})
+        events = await CalendarEvent.find({school: school}).where({type: "global"})
     }
     catch(err) {
         const error = new HttpError(
@@ -20,13 +20,135 @@ const getEvents = async (req, res, next) => {
 
     if(!events) {
         const error = new HttpError(
-            'Impossible de trouver des actualités pour l\'école spécifiée', 404);
+            'Impossible de trouver des événements pour l\'école spécifiée', 404);
         return next(error);
     }
 
     res.json({ events: events.map(events => events.toObject({ getters: true })) });
 }
 
+// Get Event by id
+const getEventById = async (req, res, next) => {
+    const eventId = req.params.eid;
+
+    let event;
+    try {
+        event = await CalendarEvent.findById(eventId);
+    }
+    catch(err) {
+        const error = new HttpError("L'événement n'a pas pu être trouvée", 500);
+        return next(error);
+    }
+
+    if(!event) {
+        const error = new HttpError('Aucun événement trouvée avec cet id', 404);
+        return next(error);
+    }
+
+    res.json({
+        event: event.toObject({getters: true})
+    });
+}
+
+// Post Event for calendar
+const createEvent =  async(req, res, next) => {
+    const errors =  validationResult(req);
+    if (!errors.isEmpty()) {
+        const error = new HttpError(
+            'Entrées non valides, vérifiez vos données', 422);
+        return next(error);
+    }
+
+    const { title, start, end, school, type }  = req.body;
+
+    const createEvent = new CalendarEvent ({
+        title,   
+        start,
+        end,
+        school,
+        type
+    });
+
+    try {
+        await createEvent.save();
+    } 
+    catch(err) {
+        const error = HttpError(
+            'Création du nouvel événement pour le calendrier raté, veillez réessayer', 500);
+        return next(error);
+    }
+
+    res.status(201).json({event: createEvent});
+}
+
+// Update Event
+const updateEvent = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        const error = new HttpError(
+            'Entrées non valides, vérifiez vos données', 422);
+        return next(error);
+    }
+
+    const { title, start, end }  = req.body;
+    const eventId = req.params.eid;
+
+    let event;
+    try {
+        event = await CalendarEvent.findById(eventId);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'événement du calendrier impossible', 500);
+        return next(error);
+    }
+
+    event.title = title;
+    event.start = start;
+    event.end = end;
+
+    try {
+        await event.save();
+    }
+    catch(err){
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'événement du calendrier impossible', 500);
+        return next(error);
+    }
+
+    res.json({event: event.toObject({getters: true})});
+}
+
+// Delete Event
+const deleteEvent =  async (req, res, next) => {
+    const eventId = req.params.eid;
+
+    let event;
+    try {
+        event = await CalendarEvent.findById(eventId);
+    }
+    catch (err) {
+        const error = new HttpError(
+        'Quelque chose ne s\'est pas passé comme prévu, suppression de l\'événement impossible', 500);
+        return next(error);
+    }
+
+    try {
+        await event.remove();
+    } 
+    catch (err) {
+        const error = new HttpError(
+        'Quelque chose ne s\'est pas passé comme prévu, suppression de l\'événement impossible', 500);
+        return next(error);
+    }
+
+    res.status(200).json({ message: 'Événement supprimé' });
+}
+
 exports.getEvents = getEvents;
+exports.getEventById = getEventById;
+exports.createEvent = createEvent;
+exports.updateEvent = updateEvent;
+exports.deleteEvent = deleteEvent;
 
 

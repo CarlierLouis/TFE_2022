@@ -94,7 +94,7 @@ const createTrustedTeacher = async(req, res, next) => {
         return next(error);
     }
     
-    res.status(201).json({trustedteachers: createdTrustedTeacher});
+    res.status(201).json({trustedteacher: createdTrustedTeacher});
 };
 
 // Update Trusted Teacher
