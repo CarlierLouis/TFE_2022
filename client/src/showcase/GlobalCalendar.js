@@ -14,6 +14,7 @@ import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 
 import './GlobalCalendar.css';
+import '../admin/GlobalCalendar/GlobalCalendar.css';
 
 const locales = {
     "fr": fr
@@ -60,6 +61,11 @@ const GlobalCalendar = props => {
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
            
             <ErrorModal error={error} onClear={clearError} />
+
+            {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname != `/${school}` &&
+            <a href={`/${school}/admin/ajouter-evenement-calendrier`}>
+                <img className='red-plus-add-event' src='/svg/red-plus.svg'></img>
+            </a>}
 
             <Card className="global-calendar-Card-div">
 

@@ -44,7 +44,7 @@ app.use('/api/students', studentsRoutes);
 
 app.use('/api/teachers', teachersRoutes);
 
-app.use('/api/calendar', calendarRoutes)
+app.use('/api/calendar', calendarRoutes);
 
 
 app.use((req , res, next ) => {

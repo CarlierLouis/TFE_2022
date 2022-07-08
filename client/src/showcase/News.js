@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import MainNavigation from '../common/navigation/MainNavigation';
 
 import './News.css';
+import '../admin/News/News.css';
 
 const News = props => {
     const auth = useContext(AuthContext);

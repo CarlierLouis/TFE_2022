@@ -55,15 +55,15 @@ const UpdateUser = props => {
 		},
 		//students
         address: {
-			value: null,
+			value: '',
 			isValid: false
 		},
         phonenumber: {
-			value: null,
+			value: '',
 			isValid: false
 		},
         birdthdate: {
-			value: null,
+			value: '',
 			isValid: false
 		}
 		},

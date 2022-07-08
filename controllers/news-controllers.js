@@ -55,7 +55,7 @@ const getNewsById = async (req, res, next) => {
 // Post News
 const createNews = async(req, res, next) => {
     // express-validator
-    const errors =  validationResult(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const error = new HttpError(
             'Entrées non valides, vérifiez vos données', 422);
@@ -77,7 +77,7 @@ const createNews = async(req, res, next) => {
         await createdNews.save();
     } 
     catch(err) {
-        const error = HttpError(
+        const error = new HttpError(
             'Création de la nouvelle actualité raté, veillez réessayer', 500);
         return next(error);
     }

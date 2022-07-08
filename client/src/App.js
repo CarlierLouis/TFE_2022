@@ -18,6 +18,7 @@ import AddUser from './admin/Users/AddUser';
 import AddExcel from './admin/Users/Excel/AddExcel';
 import PersonalSpace from './user/PersonalSpace';
 import GlobalCalendar from './showcase/GlobalCalendar';
+import AddEvent from './admin/GlobalCalendar/AddEvent';
 import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
 
 let logoutTimer;
@@ -104,6 +105,10 @@ if (token && role === "Admin") {
   <Route path="/:school/agenda">
     <GlobalCalendar />
     <Footer />
+  </Route>
+
+  <Route path="/:school/admin/ajouter-evenement-calendrier">
+    <AddEvent />
   </Route>
 
   <Route path="/:school/projets-et-reglements">

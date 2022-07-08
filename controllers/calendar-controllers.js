@@ -10,7 +10,7 @@ const getEvents = async (req, res, next) => {
 
     let events;
     try {
-        events = await CalendarEvent.find({school: school}).where({type: "global"})
+        events = await CalendarEvent.find({school: school}).where({target: "global"})
     }
     catch(err) {
         const error = new HttpError(
@@ -51,34 +51,34 @@ const getEventById = async (req, res, next) => {
 }
 
 // Post Event for calendar
-const createEvent =  async(req, res, next) => {
-    const errors =  validationResult(req);
+const createEvent = async(req, res, next) => {
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const error = new HttpError(
             'Entrées non valides, vérifiez vos données', 422);
         return next(error);
     }
 
-    const { title, start, end, school, type }  = req.body;
+    const { title, start, end, school, target } = req.body;
 
-    const createEvent = new CalendarEvent ({
+    const createdEvent = new CalendarEvent ({
         title,   
         start,
         end,
         school,
-        type
+        target
     });
 
     try {
-        await createEvent.save();
+        await createdEvent.save();
     } 
     catch(err) {
-        const error = HttpError(
+        const error = new HttpError(
             'Création du nouvel événement pour le calendrier raté, veillez réessayer', 500);
         return next(error);
     }
 
-    res.status(201).json({event: createEvent});
+    res.status(201).json({event: createdEvent});
 }
 
 // Update Event
