@@ -28,8 +28,6 @@ const localizer = dateFnsLocalizer({
     locales,
 })
 
-const events = []
-
 
 const GlobalCalendar = props => {
     const auth = useContext(AuthContext);
@@ -39,6 +37,7 @@ const GlobalCalendar = props => {
 
     useEffect(() => {
         const fetchcalendar = async () => {
+            const events = []
             try {
             const responseData = await sendRequest(
                 process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}`, 'GET', null,
@@ -62,8 +61,6 @@ const GlobalCalendar = props => {
         };
         fetchcalendar();
     }, [sendRequest]);
-
-    console.log(loadedCalendar)
 
 
     return(
@@ -95,7 +92,7 @@ const GlobalCalendar = props => {
                 {!isLoading && 
                 <Calendar 
                     localizer={localizer}
-                    events={events}
+                    events={loadedCalendar}
                     startAccessor="start"
                     endAccessor="end" 
                     defaultView="month"
@@ -118,7 +115,8 @@ const GlobalCalendar = props => {
                         start,
                         end,
                         isSelected,
-                        style: { backgroundColor: start == end ? "#4FC3A1": "#324960"}
+                        style: { backgroundColor: start == end ? "#4FC3A1": "#324960",
+                         color: "white"}
                     })}
                 />}
 
