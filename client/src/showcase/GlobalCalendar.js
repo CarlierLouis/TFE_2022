@@ -28,6 +28,8 @@ const localizer = dateFnsLocalizer({
     locales,
 })
 
+const events = []
+
 
 const GlobalCalendar = props => {
     const auth = useContext(AuthContext);
@@ -35,19 +37,33 @@ const GlobalCalendar = props => {
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const school = useParams().school;
 
-    
     useEffect(() => {
         const fetchcalendar = async () => {
             try {
             const responseData = await sendRequest(
                 process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}`, 'GET', null,
             {Authorization: 'Bearer ' + auth.token});
-            setLoadedCalendar(responseData.events);
+
+            responseData.events.forEach(element => {
+                const event = {
+                    allDay: true,
+                    title: element.title,
+                    start: element.start,
+                    end: element.end
+                }
+
+                events.push(event)
+            });
+
+            setLoadedCalendar(events);
+
             }
             catch(err) {}
         };
         fetchcalendar();
     }, [sendRequest]);
+
+    console.log(loadedCalendar)
 
 
     return(
@@ -79,7 +95,7 @@ const GlobalCalendar = props => {
                 {!isLoading && 
                 <Calendar 
                     localizer={localizer}
-                    events={loadedCalendar}
+                    events={events}
                     startAccessor="start"
                     endAccessor="end" 
                     defaultView="month"
@@ -97,6 +113,13 @@ const GlobalCalendar = props => {
                     }}
                     toolbar={true}
                     culture='fr'
+                    eventPropGetter={(event, start, end, isSelected) => ({
+                        event,
+                        start,
+                        end,
+                        isSelected,
+                        style: { backgroundColor: start == end ? "#4FC3A1": "#324960"}
+                    })}
                 />}
 
             </Card>
