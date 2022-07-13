@@ -233,7 +233,7 @@ const UserItem = props => {
 				<p>
 				Êtes-vous certain(e) de vouloir supprimer cet utilisateur ?
 				Cette action entraînera la suppression irréversible de celui-ci !
-				</p>
+				</p><br></br><br></br><br></br>
 			</Modal>
 
             <div className="user-item center" 

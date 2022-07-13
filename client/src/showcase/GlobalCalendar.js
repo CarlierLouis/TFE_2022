@@ -39,7 +39,10 @@ const GlobalCalendar = props => {
     const school = useParams().school;
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [showMore, setShowMore] = useState(false);
-    const [loadedEvent, setLoadedEvent] = useState();
+    const [loadedEventTitle, setLoadedEventTitle] = useState();
+    const [loadedEventStart, setLoadedEventStart] = useState();
+    const [loadedEventEnd, setLoadedEventEnd] = useState();
+    const [loadedEventId, setLoadedEventId] = useState();
 
     useEffect(() => {
         const fetchcalendar = async () => {
@@ -88,12 +91,11 @@ const GlobalCalendar = props => {
 		setShowConfirmModal(false);
 		try {
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + `/api/calendar/${props.id}`,
+				process.env.REACT_APP_BACKEND_URL + `/api/calendar/${loadedEventId}`,
 				'DELETE',
 				null,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			props.onDelete(props.id);
 		}
 		catch(err) {}
 
@@ -110,7 +112,10 @@ const GlobalCalendar = props => {
 
     const onSelectEvent = useCallback((calEvent) => {
         setShowMore(true);
-        setLoadedEvent(calEvent.title);
+        setLoadedEventId(calEvent.id);
+        setLoadedEventTitle(calEvent.title);
+        setLoadedEventStart(calEvent.start.toString().substring(0, 10));
+        setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
       })
 
 
@@ -131,9 +136,47 @@ const GlobalCalendar = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+
+            <a href={`/${school}/admin/maj-evenement-calendrier/${loadedEventId}`}>
+                <img className="event-modify" src="/svg/modify-red.svg" />
+            </a>
             
-            {loadedEvent}
+            <div className="full-info-event">
+                <div className="full-info-event-elem">
+                <p className="full-info-event-elem-title">Titre: &nbsp;</p>
+                <p>{loadedEventTitle}</p>
+                </div>
+
+                <div className="full-info-event-elem">
+                <p className="full-info-event-elem-title">Début: &nbsp;</p>
+                <p>{loadedEventStart}</p>
+                </div>
+
+                <div className="full-info-event-elem"> 
+                <p className="full-info-event-elem-title">Fin: &nbsp;</p>
+                <p>{loadedEventEnd}</p>
+                </div>
+
+                <img onClick={showDeleteWarningHandler} className="event-delete" src="/svg/delete-red.svg"/>
+            </div>
             </Modal>
+
+            <Modal 
+            show={showConfirmModal}
+            onCancel={cancelDeleteHandler}
+            header="Êtes-vous sûr(e) ?" 
+            footerClass="event-item__modal-actions" 
+            footer={
+                <React.Fragment>
+                    <Button inverse onClick={cancelDeleteHandler}>Annuler</Button>
+                    <Button danger onClick={confirmDeleteHandler}>Supprimer</Button>
+                </React.Fragment>
+				  }>
+				<p>
+				Êtes-vous certain(e) de vouloir supprimer cet événement de l'agenda ?
+				Cette action entraînera la suppression irréversible de celui-ci !
+				</p><br></br><br></br>
+			</Modal>
 
             
 
@@ -147,12 +190,11 @@ const GlobalCalendar = props => {
                 <LoadingSpinner />
             </div>}
 
+            {!isLoading && loadedCalendar &&
             <Card className="global-calendar-Card-div">
 
                 <h2 className="global-agenda-title">Agenda général</h2>
 
-                
-                {!isLoading && loadedCalendar &&
                 <Calendar 
                     localizer={localizer}
                     events={loadedCalendar}
@@ -182,9 +224,9 @@ const GlobalCalendar = props => {
                          color: "white"}
                     })}
                     onSelectEvent={onSelectEvent}
-                />}
+                />
 
-            </Card>
+            </Card>}
 
         </React.Fragment>
     )

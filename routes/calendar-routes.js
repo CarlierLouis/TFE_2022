@@ -10,7 +10,7 @@ router.get('/:school', calendarControllers.getEvents);
 
 router.get('/id/:eid', calendarControllers.getEventById);
 
-
+router.use(checkAuthAdmin);
 
 router.post('/',
 [
@@ -29,6 +29,6 @@ router.patch('/:eid',
     check('end').not().isEmpty(),
 ], calendarControllers.updateEvent);
 
-router.delete('/:nid', calendarControllers.deleteEvent);
+router.delete('/:eid', calendarControllers.deleteEvent);
 
 module.exports = router;
