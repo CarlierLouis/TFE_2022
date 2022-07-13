@@ -109,7 +109,7 @@ const GlobalCalendar = props => {
         window.location.reload(true);
     }
 
-
+    
     const onSelectEvent = useCallback((calEvent) => {
         setShowMore(true);
         setLoadedEventId(calEvent.id);
@@ -117,6 +117,7 @@ const GlobalCalendar = props => {
         setLoadedEventStart(calEvent.start.toString().substring(0, 10));
         setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
       })
+    
 
 
     return(
@@ -180,7 +181,7 @@ const GlobalCalendar = props => {
 
             
 
-            {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname != `/${school}` &&
+            {auth.isLoggedIn && auth.role == "Admin" &&
             <a href={`/${school}/admin/ajouter-evenement-calendrier`}>
                 <img className='red-plus-add-event' src='/svg/red-plus.svg'></img>
             </a>}
