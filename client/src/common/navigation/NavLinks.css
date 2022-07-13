@@ -35,7 +35,7 @@
   color: rgb(30, 30, 31);
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1300px) {
   .nav-links {
     flex-direction: row;
   }
@@ -51,7 +51,7 @@
     
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1300px) {
   .nav-links a.active {
     border: none;
     color: #628699;

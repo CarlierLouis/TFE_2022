@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 
 import MainNavigation from '../common/navigation/MainNavigation';
 import { useParams } from "react-router-dom";
@@ -17,6 +17,7 @@ import Button from "../common/FormElements/Button";
 
 import './GlobalCalendar.css';
 import '../admin/GlobalCalendar/GlobalCalendar.css';
+
 
 const locales = {
     "fr": fr
@@ -38,7 +39,7 @@ const GlobalCalendar = props => {
     const school = useParams().school;
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [showMore, setShowMore] = useState(false);
-    const [loadedEvents, setLoadedEvents] = useState();
+    const [loadedEvent, setLoadedEvent] = useState();
 
     useEffect(() => {
         const fetchcalendar = async () => {
@@ -50,6 +51,7 @@ const GlobalCalendar = props => {
 
             responseData.events.forEach(element => {
                 const event = {
+                    id: element.id,
                     allDay: true,
                     title: element.title,
                     start: element.start,
@@ -58,7 +60,6 @@ const GlobalCalendar = props => {
 
                 events.push(event);
 
-                setLoadedEvents(responseData.events);
             });
 
             setLoadedCalendar(events);
@@ -78,9 +79,6 @@ const GlobalCalendar = props => {
 		setShowConfirmModal(false);
 	};
 
-    const openMoreHandler = () => {
-        setShowMore(true);
-      };
     
     const closeMoreHandler = () => {
       setShowMore(false);
@@ -104,9 +102,16 @@ const GlobalCalendar = props => {
     }
 	};
 
+
     const refreshPage = () =>{
         window.location.reload(true);
     }
+
+
+    const onSelectEvent = useCallback((calEvent) => {
+        setShowMore(true);
+        setLoadedEvent(calEvent.title);
+      })
 
 
     return(
@@ -127,8 +132,7 @@ const GlobalCalendar = props => {
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
             
-            {loadedCalendar != undefined && 
-            <h1>{loadedEvents[1].id}</h1>}
+            {loadedEvent}
             </Modal>
 
             
@@ -177,7 +181,7 @@ const GlobalCalendar = props => {
                         style: { backgroundColor: start == end ? "#4FC3A1": "#324960",
                          color: "white"}
                     })}
-                    onSelectEvent={openMoreHandler}
+                    onSelectEvent={onSelectEvent}
                 />}
 
             </Card>
