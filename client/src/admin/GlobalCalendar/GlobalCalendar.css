@@ -13,11 +13,11 @@
 
 .back-button {
     text-align: center;
-  }
+}
  
 .back-button :hover {
    color: white;
-  }
+}
 
 .event-form {
 list-style: none;
@@ -31,5 +31,6 @@ background: white;
 }
 
 .form-event-title {
-text-align: center;
+  text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

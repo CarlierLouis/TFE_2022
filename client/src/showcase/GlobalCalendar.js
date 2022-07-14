@@ -111,14 +111,15 @@ const GlobalCalendar = props => {
 
     
     const onSelectEvent = useCallback((calEvent) => {
+        if (auth.isLoggedIn && auth.role == "Admin") {
         setShowMore(true);
         setLoadedEventId(calEvent.id);
         setLoadedEventTitle(calEvent.title);
         setLoadedEventStart(calEvent.start.toString().substring(0, 10));
         setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
+        }
       })
     
-
 
     return(
         <React.Fragment>

@@ -149,10 +149,17 @@ const UpdateUser = props => {
 		<div className="center">
 			<Card>
 			<h2>Aucun utilisateur trouvé !</h2>
+
+			<div className="back-button">
+				<Button href={'/' + school + '/admin/utilisateurs/' + usertype}>
+                    Retour
+                </Button>
+		    </div>
 			</Card>
 		</div>
 		);
 	}
+
 
 	const changed_input = {
 		border: "solid #F5B7B1",
@@ -161,38 +168,41 @@ const UpdateUser = props => {
 		margin: "1%"
 	}
 	var changed_email = {};
-	if (formState.inputs.email.value != loadedUser.email) {
-		changed_email = changed_input
-	}
-	
-	var changed_role = {};
-	if (formState.inputs.role.value != loadedUser.role) {
-		changed_role = changed_input
-	}
 
-	var changed_classyear = {};
-	if (formState.inputs.classyear.value != loadedUser.classyear) {
-		changed_classyear = changed_input
-	}
+	if (loadedUser) {
+		if (formState.inputs.email.value != loadedUser.email) {
+			changed_email = changed_input
+		}
+		
+		var changed_role = {};
+		if (formState.inputs.role.value != loadedUser.role) {
+			changed_role = changed_input
+		}
 
-	var changed_address = {};
-	if (formState.inputs.address.value != loadedUser.address 
-		&& loadedUser.address != null) {
-		changed_address = changed_input
-	}
+		var changed_classyear = {};
+		if (formState.inputs.classyear.value != loadedUser.classyear) {
+			changed_classyear = changed_input
+		}
 
-	var changed_phonenumber = {};
-	if (formState.inputs.phonenumber.value != loadedUser.phonenumber
-		&& loadedUser.phonenumber != null) {
-		changed_phonenumber = changed_input
-	}
+		var changed_address = {};
+		if (formState.inputs.address.value != loadedUser.address 
+			&& loadedUser.address != null) {
+			changed_address = changed_input
+		}
 
-	
-	var changed_birdthdate = {};
-	if (loadedUser.birdthdate != null && usertype == "eleves") {
-		if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)
-			&& loadedUser.birdthdate != null) {
-			changed_birdthdate = changed_input
+		var changed_phonenumber = {};
+		if (formState.inputs.phonenumber.value != loadedUser.phonenumber
+			&& loadedUser.phonenumber != null) {
+			changed_phonenumber = changed_input
+		}
+
+		
+		var changed_birdthdate = {};
+		if (loadedUser.birdthdate != null && usertype == "eleves") {
+			if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)
+				&& loadedUser.birdthdate != null) {
+				changed_birdthdate = changed_input
+			}
 		}
 	}
 	
