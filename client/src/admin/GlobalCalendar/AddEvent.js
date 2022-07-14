@@ -125,7 +125,8 @@ const NewEvent = props => {
                     onInput={inputHandler}
                 />
 					
-				<Button type="submit" disabled={!formState.isValid}>
+				<Button type="submit" disabled={!formState.isValid 
+												|| (formState.inputs.start.value > formState.inputs.end.value)}>
 					Ajouter cet événement
 				</Button>
 			</form>
