@@ -7,12 +7,13 @@
 .project-main-title {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 .project-div {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-left: 2%;
+    margin-right: 2%;
     margin-bottom: 2%;
     color: #628699;
 }

@@ -23,6 +23,9 @@ const ProjectsAndRegulations = props => {
                 <h2 className="project-main-title">Projets et règlements</h2>
 
                 <div className="project-div">
+
+                    <hr></hr>
+
                     <h4>Projet d'établissement de Hannut II</h4>
 
                     <p className="project-description">blabla</p>
