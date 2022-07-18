@@ -173,7 +173,7 @@ const updateEvent = props => {
 			
 
 			<Button type="submit" disabled={!formState.isValid 
-                                            || (formState.inputs.start.value > formState.inputs.end.value)}>
+            || (formState.inputs.start.value > formState.inputs.end.value)}>
 				Mettre à jour
 			</Button>
 		</form>}

@@ -111,13 +111,11 @@ const GlobalCalendar = props => {
 
     
     const onSelectEvent = useCallback((calEvent) => {
-        if (auth.isLoggedIn && auth.role == "Admin") {
         setShowMore(true);
         setLoadedEventId(calEvent.id);
         setLoadedEventTitle(calEvent.title);
         setLoadedEventStart(calEvent.start.toString().substring(0, 10));
         setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
-        }
       })
     
 
@@ -138,10 +136,11 @@ const GlobalCalendar = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-
+            
+            {auth.isLoggedIn && auth.role == "Admin" &&
             <a href={`/${school}/admin/maj-evenement-calendrier/${loadedEventId}`}>
                 <img className="event-modify" src="/svg/modify-red.svg" />
-            </a>
+            </a>}
             
             <div className="full-info-event">
                 <div className="full-info-event-elem">
@@ -158,8 +157,9 @@ const GlobalCalendar = props => {
                 <p className="full-info-event-elem-title">Fin: &nbsp;</p>
                 <p>{loadedEventEnd}</p>
                 </div>
-
-                <img onClick={showDeleteWarningHandler} className="event-delete" src="/svg/delete-red.svg"/>
+                
+                {auth.isLoggedIn && auth.role == "Admin" &&
+                <img onClick={showDeleteWarningHandler} className="event-delete" src="/svg/delete-red.svg"/>}
             </div>
             </Modal>
 

@@ -17,6 +17,7 @@ const NewEvent = props => {
     const auth = useContext(AuthContext);
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
 	const school = useParams().school;
+	const history = useHistory();
 
     const [formState, inputHandler] = useForm(
 		{
@@ -36,7 +37,6 @@ const NewEvent = props => {
 		false
 	);
 
-    const history = useHistory();
 
     const eventSubmitHandler = async event => {
 		event.preventDefault();
@@ -126,7 +126,7 @@ const NewEvent = props => {
                 />
 					
 				<Button type="submit" disabled={!formState.isValid 
-												|| (formState.inputs.start.value > formState.inputs.end.value)}>
+				|| (formState.inputs.start.value > formState.inputs.end.value)}>
 					Ajouter cet événement
 				</Button>
 			</form>
