@@ -195,7 +195,7 @@ const GlobalCalendar = props => {
             {!isLoading && loadedCalendar &&
             <Card className="global-calendar-Card-div">
 
-                <h2 className="global-agenda-title">Agenda général</h2>
+                <h4 className="global-agenda-title">Agenda général</h4>
 
                 <Calendar 
                     localizer={localizer}

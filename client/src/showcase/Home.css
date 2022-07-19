@@ -72,8 +72,9 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 2%;
     padding: 2%;
-    background-color: #ECF0F7;
+    background-color: rgb(31, 30, 30);
     font-style: italic;
+    color: #ECF0F7;
 }
 
 /*

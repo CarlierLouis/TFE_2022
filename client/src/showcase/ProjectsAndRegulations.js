@@ -20,7 +20,7 @@ const ProjectsAndRegulations = props => {
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
             <div className="project-main-div">
 
-                <h2 className="project-main-title">Projets et règlements</h2>
+                <h4 className="project-main-title">Projets et règlements</h4>
 
                 <div className="project-div">
 

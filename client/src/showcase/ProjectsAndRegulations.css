@@ -5,9 +5,12 @@
 }
 
 .project-main-title {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    margin-bottom: 2%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 2%;
+    background-color: rgb(31, 30, 30);
+    font-style: italic;
+    color: #ECF0F7;
 }
 
 .project-div {
