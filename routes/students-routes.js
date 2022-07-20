@@ -3,6 +3,7 @@ const { check } = require('express-validator');
 
 const studentsControllers = require('../controllers/students-controllers');
 const checkAuthAdmin = require('../middleware/check-auth-admin');
+const checkAuthStudent = require('../middleware/check-auth-student');
 
 const router = express.Router();
 

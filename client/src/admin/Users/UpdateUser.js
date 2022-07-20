@@ -221,9 +221,9 @@ return (
 		<br></br>
 		{!isLoading && loadedUser && 
 		<form 
-			className="news-form" 
+			className="user-form" 
 			onSubmit={userUpdateSubmitHandler}>
-			<h3 className='form-news-title'>Mettre à jour cet utilisateur</h3>
+			<h3 className='form-user-title'>Mettre à jour cet utilisateur</h3>
 			<div style={changed_email}>
 			<Input
 				id="email"

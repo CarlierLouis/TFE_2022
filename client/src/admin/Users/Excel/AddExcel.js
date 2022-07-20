@@ -53,6 +53,7 @@ const AddExcel = props => {
 				{Authorization: 'Bearer ' + auth.token}
 			);
 			history.push(`/${school}/admin/utilisateurs/white-list-eleves`);
+            window.location.reload(true)
 		}
 		catch(err) {}
 	};

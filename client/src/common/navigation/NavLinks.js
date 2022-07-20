@@ -54,7 +54,7 @@ const NavLinks = props => {
 
         {auth.isLoggedIn && auth.role == "Student" &&
         <li>
-            <NavLink to={"/" + props.schoolLink + "/espace-personnel"} exact>Espace personnel</NavLink>
+            <NavLink to={"/" + props.schoolLink + "/espace-personnel"}>Espace personnel</NavLink>
         </li>}
 
         {auth.isLoggedIn &&

@@ -180,7 +180,7 @@ return (
 
             <br></br><br></br>
             <a style={{fontStyle: 'italic', fontSize: '18px'}}>
-                * La création de compte est dédée au élèves inscrits ainsi qu'aux membres du personnel enseignant.
+                * La création de compte est dédiée au élèves inscrits ainsi qu'aux membres du personnel enseignant.
             </a>
     </Modal>
 
