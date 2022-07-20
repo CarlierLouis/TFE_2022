@@ -177,7 +177,7 @@ const PersonalData = props => {
                     onSubmit={userUpdateSubmitHandler}>
                     <h3 className='form-user-title'>Données personnelles</h3>
 
-                    <div>
+                    <div style={{opacity: "0.7"}} >
                     <Input
                         id="name"
                         element="input"
@@ -192,8 +192,8 @@ const PersonalData = props => {
                     />
                     </div>
 
-                    <div>
-                    <Input
+                    <div style={{opacity: "0.7"}} >
+                    <Input 
                         id="firstname"
                         element="input"
                         type="text"
@@ -207,7 +207,7 @@ const PersonalData = props => {
                     />
                     </div>
 
-                    <div>
+                    <div style={{opacity: "0.7"}} >
                     <Input
                         id="email"
                         element="input"
@@ -224,7 +224,7 @@ const PersonalData = props => {
 
                     {usertype == "Student" &&
                     <div>
-                    <div>
+                    <div style={{opacity: "0.7"}} >
                     <Input
                         id="classyear"
                         element="input"
