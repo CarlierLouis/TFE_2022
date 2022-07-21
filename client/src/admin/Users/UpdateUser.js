@@ -224,8 +224,7 @@ return (
 			className="user-form" 
 			onSubmit={userUpdateSubmitHandler}>
 			<h3 className='form-user-title'>Mettre à jour l'utilisateur: 
-				<b>&nbsp;{loadedUser.name} {loadedUser.firstname}</b>
-			</h3>
+				<b>&nbsp;{loadedUser.name} {loadedUser.firstname}</b></h3>
 			<div style={changed_email}>
 			<Input
 				id="email"

@@ -22,6 +22,8 @@ import AddEvent from './admin/GlobalCalendar/AddEvent';
 import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
 import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
 
+import ScrollToTop from './common/navigation/ScrollToTop';
+
 let logoutTimer;
 
 const App = () => {
@@ -331,6 +333,7 @@ else {
       logout: logout
     }}>
     <Router>
+      <ScrollToTop />
       <main>
       {routes}
       </main>
