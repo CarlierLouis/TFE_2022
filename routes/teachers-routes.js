@@ -34,7 +34,6 @@ router.patch('/:tid',
     check('role').isIn(['Default', 'Admin']),
 ], teachersControllers.updateTeacher);
 
-router.use(checkAuthAdmin);
 
 router.delete('/:tid', teachersControllers.deleteTeacher);
 

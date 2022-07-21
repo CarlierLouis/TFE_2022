@@ -26,7 +26,6 @@ router.get('/:school', studentsControllers.getStudents);
 
 router.get('/id/:sid', studentsControllers.getStudentById);
 
-
 router.patch('/:sid', 
 [
     check('email').isEmail(),
@@ -35,7 +34,6 @@ router.patch('/:sid',
     check('classyear').not().isEmpty(),
 ], studentsControllers.updateStudent);
 
-router.use(checkAuthAdmin);
 
 router.delete('/:sid', studentsControllers.deleteStudent);
 
