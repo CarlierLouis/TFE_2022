@@ -30,7 +30,7 @@ const PersonalData = props => {
         var usertypeSpace = "espace-personnel"
     }
 
-    if (usertype == "Teacher" || usertype == "Admin") {
+    if (usertype == "Default" || usertype == "Admin") {
         var usertyperequest = "teachers";
     }
     if (usertype == "Student") {

@@ -26,7 +26,6 @@ router.get('/:school', studentsControllers.getStudents);
 
 router.get('/id/:sid', studentsControllers.getStudentById);
 
-router.use(checkAuthAdmin && checkAuthStudent);
 
 router.patch('/:sid', 
 [
@@ -35,6 +34,8 @@ router.patch('/:sid',
     check('password').not().isEmpty(),
     check('classyear').not().isEmpty(),
 ], studentsControllers.updateStudent);
+
+router.use(checkAuthAdmin);
 
 router.delete('/:sid', studentsControllers.deleteStudent);
 
