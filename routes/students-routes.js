@@ -26,7 +26,7 @@ router.get('/:school', studentsControllers.getStudents);
 
 router.get('/id/:sid', studentsControllers.getStudentById);
 
-router.use(checkAuthAdmin);
+router.use(checkAuthAdmin && checkAuthStudent);
 
 router.patch('/:sid', 
 [
