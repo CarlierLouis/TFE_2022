@@ -155,21 +155,23 @@ const Users = props => {
                 <LoadingSpinner />
             </div>}
 
-            {!isLoading && loadedUsersSearch == null && loadedUsers && table == false &&
+            {!isLoading && loadedUsersSearch == null && loadedUsers && table == false && usertype != null &&
             <UsersList items={loadedUsers} school={school}/>}
 
 
-            {!isLoading && loadedUsersSearch && table == false &&
+            {!isLoading && loadedUsersSearch && table == false && usertype != null &&
             <UsersList items={loadedUsersSearch} school={school}/>}
 
 
 
-            {!isLoading && loadedUsersSearch == null && loadedUsers && table == true &&
+            {!isLoading && loadedUsersSearch == null && loadedUsers && table == true && usertype != null &&
             <UsersTable items={loadedUsers} school={school}/>}
 
-            {!isLoading && loadedUsersSearch && table == true &&
-            <UsersTable items={loadedUsersSearch} school={school}/>}  
+            {!isLoading && loadedUsersSearch && table == true && usertype != null &&
+            <UsersTable items={loadedUsersSearch} school={school}/>} 
 
+
+            
         </React.Fragment>
     );
 }
