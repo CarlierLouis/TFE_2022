@@ -22,6 +22,11 @@ const PersonalSpace = props => {
     const school = useParams().school;
     const section = useParams().section;
     const auth = useContext(AuthContext);
+    const [selected, setSelected] = useState();
+    const [loadedUser, setLoadedUser] = useState();
+    const usertype = auth.role;
+    const userId = auth.userId;
+    const {sendRequest} = useHttpClient();
 
 
     if (auth.isLoggedIn && (auth.role == "Admin" || auth.role == "Default")){
@@ -30,6 +35,29 @@ const PersonalSpace = props => {
     if (auth.isLoggedIn && auth.role == "Student"){
         var usertypeSpace = "espace-personnel"
     }
+
+    if (usertype == "Default" || usertype == "Admin") {
+        var usertyperequest = "teachers";
+    }
+    if (usertype == "Student") {
+        var usertyperequest = "students";
+    }
+
+    useEffect(() => {
+		const fetchUser = async () => {
+			try {
+				const responseData = await sendRequest(
+					process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/id/${userId}`
+				);
+				setLoadedUser(responseData.user);
+			}
+			catch(err) {}
+		};
+		fetchUser();
+    }, 
+	[sendRequest, userId]);
+
+
 
     if(section == "annonces") {
         var AnnouncementsButton = {backgroundColor: "#628699", border: "#628699"}
@@ -46,6 +74,10 @@ const PersonalSpace = props => {
     if(section == "sorties-scolaires") {
         var SchoolOutingsButton = {backgroundColor: "#628699", border: "#628699"}
     }
+
+    const onChangedSelect = () => {
+        setSelected(document.getElementById('option-select').value);
+    };
 
 
     return (
@@ -76,8 +108,30 @@ const PersonalSpace = props => {
             {section == "donnees-personnelles" &&
             <PersonalData />}
 
-            {section == "horaires" &&
-            <PersonnalCalendar />}
+            {(auth.role == "Default" || auth.role == "Admin") 
+            && section == "horaires" && !selected &&
+            <div className='center'>
+                <h4>Veillez sélectionner une classe</h4>
+                <select name="option" id="option-select" onChange={onChangedSelect}>
+                    <option value="">--Classes--</option>
+                    <option value="m0">m0</option>
+                    <option value="m1">m1</option>
+                    <option value="m2">m2</option>
+                    <option value="m3">m3</option>
+                    <option value="p1">p1</option>
+                    <option value="p2">p2</option>
+                    <option value="p3">p3</option>
+                    <option value="p4">p4</option>
+                    <option value="p5">p5</option>
+                    <option value="p6">p6</option>
+                    </select>
+                </div>}
+
+            {section == "horaires" && selected &&
+            <PersonnalCalendar class={selected} />}
+
+            {section == "horaires" && auth.role == "Student" && loadedUser &&
+            <PersonnalCalendar class={loadedUser.classyear} />}
         </React.Fragment>
     ); 
 }

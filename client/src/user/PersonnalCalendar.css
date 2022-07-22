@@ -1,0 +1,37 @@
+.personnal-calendar-Card-div {
+    text-align: center;
+    margin: 0% 2% 2% 2%;
+}
+
+.full-info-event {
+    display: inline;
+}
+
+.full-info-event-elem {
+    display: flex;
+}
+
+.full-info-event-elem-title {
+    font-weight: bold;
+}
+
+.calendar-class-title {
+    color: red;
+    text-align: left;
+}
+
+.calendar-change-class {
+    text-align: left;
+    color: #628699;
+}
+
+.calendar-change-class a {
+    color: #628699;
+    text-decoration: underline;
+}
+
+.calendar-change-class a:hover {
+    color: #628699;
+    opacity: 0.7;
+}
+

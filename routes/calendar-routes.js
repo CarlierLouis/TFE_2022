@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/:school', calendarControllers.getGlobalEvents);
 
-router.get('/:school/:target', calendarControllers.getEventsByTarget);
+router.get('/:school/target/:target', calendarControllers.getEventsByTarget);
 
 router.get('/id/:eid', calendarControllers.getEventById);
 

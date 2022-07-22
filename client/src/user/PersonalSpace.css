@@ -21,6 +21,10 @@
     color: white;
 }
 
+.center {
+    text-align: center;
+    display: block;
+}
 
 @media (max-width: 820px) {
     .personal-space-select a {
