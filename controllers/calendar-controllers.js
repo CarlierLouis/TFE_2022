@@ -5,7 +5,7 @@ const HttpError = require('../models/http-error');
 const CalendarEvent =  require('../models/calendar-event');
 
 // Get all events from global calendar by school
-const getEvents = async (req, res, next) => {
+const getGlobalEvents = async (req, res, next) => {
     const school =  req.params.school;
 
     let events;
@@ -26,6 +26,36 @@ const getEvents = async (req, res, next) => {
 
     res.json({ events: events.map(events => events.toObject({ getters: true })) });
 }
+
+
+// Get events by school and by class (target => global + specific class)
+const getEventsByTarget = async (req, res, next) => {
+    const school = req.params.school;
+    const target = req.params.target;
+
+    let events;
+    let globalEvents;
+    let targetEvents;
+    try {
+        globalEvents = await CalendarEvent.find({school: school}).where({target: "global"});
+        targetEvents =  await CalendarEvent.find({school: school}).where({target: target});
+        events = globalEvents.concat(targetEvents);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Echec de la récupération du calendrier, veillez réessayer', 500);
+        return next(error);
+    }
+
+    if(!events) {
+        const error = new HttpError(
+            'Impossible de trouver des événements pour l\'école spécifiée', 404);
+        return next(error);
+    }
+
+    res.json({ events: events.map(events => events.toObject({ getters: true })) });
+}
+
 
 // Get Event by id
 const getEventById = async (req, res, next) => {
@@ -49,6 +79,7 @@ const getEventById = async (req, res, next) => {
         event: event.toObject({getters: true})
     });
 }
+
 
 // Post Event for calendar
 const createEvent = async(req, res, next) => {
@@ -145,7 +176,8 @@ const deleteEvent =  async (req, res, next) => {
     res.status(200).json({ message: 'Événement supprimé' });
 }
 
-exports.getEvents = getEvents;
+exports.getGlobalEvents = getGlobalEvents;
+exports.getEventsByTarget = getEventsByTarget;
 exports.getEventById = getEventById;
 exports.createEvent = createEvent;
 exports.updateEvent = updateEvent;

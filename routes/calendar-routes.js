@@ -6,7 +6,9 @@ const checkAuthAdmin = require('../middleware/check-auth-admin');
 
 const router = express.Router();
 
-router.get('/:school', calendarControllers.getEvents);
+router.get('/:school', calendarControllers.getGlobalEvents);
+
+router.get('/:school/:target', calendarControllers.getEventsByTarget);
 
 router.get('/id/:eid', calendarControllers.getEventById);
 

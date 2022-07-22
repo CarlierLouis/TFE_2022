@@ -12,6 +12,9 @@ import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import MainNavigation from '../common/navigation/MainNavigation';
 import PersonalData from './PersonalData';
+import PersonnalCalendar from './PersonnalCalendar';
+import Announcements from './Announcements';
+import Documents from './Documents';
 
 import './PersonalSpace.css';
 
@@ -72,6 +75,9 @@ const PersonalSpace = props => {
             <br></br>
             {section == "donnees-personnelles" &&
             <PersonalData />}
+
+            {section == "horaires" &&
+            <PersonnalCalendar />}
         </React.Fragment>
     ); 
 }
