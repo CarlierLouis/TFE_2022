@@ -1,6 +1,9 @@
 .personnal-calendar-Card-div {
-    text-align: center;
     margin: 0% 2% 2% 2%;
+}
+
+.personnal-calendar-div {
+    text-align: center;
 }
 
 .full-info-event {
@@ -33,5 +36,16 @@
 .calendar-change-class a:hover {
     color: #628699;
     opacity: 0.7;
+}
+
+.red-plus-add-targeted-event {
+    width: 40px;
+    transition: transform 0.5s; 
+    z-index: 1;
+    float: right;
+}
+  
+.red-plus-add-targeted-event:hover {
+    transform: scale(1.2);
 }
 

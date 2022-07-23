@@ -119,6 +119,11 @@ const PersonnalCalendar = props => {
 
             {!isLoading && loadedCalendar &&
             <Card className="personnal-calendar-Card-div">
+
+                {(auth.role == "Default" || auth.role == "Admin") &&
+                <a href={`/${school}/espace-prof/horaires/ajouter-evenement-calendrier`}>
+                    <img className='red-plus-add-targeted-event' src='/svg/red-plus.svg'></img>
+                </a>}
                 
                 {(auth.role == "Default" || auth.role == "Admin") &&
                 <div>
@@ -129,37 +134,40 @@ const PersonnalCalendar = props => {
                    
                 </div>}
 
-                <Calendar 
-                    localizer={localizer}
-                    events={loadedCalendar}
-                    startAccessor="start"
-                    endAccessor="end" 
-                    defaultView="agenda"
-                    style={{height: 550, margin: "50px"}}
-                    messages={{
-                        next: "Suivant",
-                        previous: "Précédent",
-                        today: "Aujourd'hui",
-                        month: "Mois",
-                        week: "Semaine",
-                        day: "Jour",
-                        time: "Heure",
-                        event: "Événement",
-                        allDay: "  -  ",
-                        noEventsInRange: "Pas d'événement prévu durant cette période"
-                    }}
-                    toolbar={true}
-                    culture='fr'
-                    eventPropGetter={(event, start, end, isSelected) => ({
-                        event,
-                        start,
-                        end,
-                        isSelected,
-                        style: { backgroundColor: start == end ? "#4FC3A1": "#324960",
-                         color: "white"}
-                    })}
-                    onSelectEvent={onSelectEvent}
-                />
+                
+                <div className="personnal-calendar-div">
+                    <Calendar 
+                        localizer={localizer}
+                        events={loadedCalendar}
+                        startAccessor="start"
+                        endAccessor="end" 
+                        defaultView="agenda"
+                        style={{height: 550, margin: "50px"}}
+                        messages={{
+                            next: "Suivant",
+                            previous: "Précédent",
+                            today: "Aujourd'hui",
+                            month: "Mois",
+                            week: "Semaine",
+                            day: "Jour",
+                            time: "Heure",
+                            event: "Événement",
+                            allDay: "  -  ",
+                            noEventsInRange: "Pas d'événement prévu durant cette période"
+                        }}
+                        toolbar={true}
+                        culture='fr'
+                        eventPropGetter={(event, start, end, isSelected) => ({
+                            event,
+                            start,
+                            end,
+                            isSelected,
+                            style: { backgroundColor: start == end ? "#4FC3A1": "#324960",
+                            color: "white"}
+                        })}
+                        onSelectEvent={onSelectEvent}
+                    />
+                </div>
 
             </Card>}
 

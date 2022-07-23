@@ -26,7 +26,7 @@ const getNews = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({ news: news.map(news => news.toObject({ getters: true })) });
+    res.json({ news: news.map(news => news.toObject({ getters: true })).reverse() });
 };
 
 // Get News by id

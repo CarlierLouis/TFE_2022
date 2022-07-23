@@ -21,6 +21,8 @@ import GlobalCalendar from './showcase/GlobalCalendar';
 import AddEvent from './admin/GlobalCalendar/AddEvent';
 import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
 import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
+import AddTargetedEvent from './teachers/PersonnalCalendar/AddEvent';
+import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateEvent';
 
 import ScrollToTop from './common/navigation/ScrollToTop';
 
@@ -105,16 +107,16 @@ if (token && role === "Admin") {
       <Footer />
   </Route>
 
-  <Route path="/:school/agenda">
+  <Route path="/:school/agenda" exact>
     <GlobalCalendar />
     <Footer />
   </Route>
 
-  <Route path="/:school/admin/ajouter-evenement-calendrier">
+  <Route path="/:school/agenda/admin/ajouter-evenement-calendrier">
     <AddEvent />
   </Route>
 
-  <Route path="/:school/admin/maj-evenement-calendrier/:eventId">
+  <Route path="/:school/agenda/admin/maj-evenement-calendrier/:eventId">
     <UpdateEvent />
   </Route>
 
@@ -123,11 +125,11 @@ if (token && role === "Admin") {
     <Footer />
   </Route>
   
-  <Route path="/:school/admin/ajouter-actualite">
+  <Route path="/:school/actualites/admin/ajouter-actualite">
       <AddNews />
   </Route>
 
-  <Route path="/:school/admin/maj-actualite/:newsId">
+  <Route path="/:school/actualites/admin/maj-actualite/:newsId">
     <UpdateNews />
   </Route>
 
@@ -135,19 +137,19 @@ if (token && role === "Admin") {
     <Users />
   </Route>
 
-  <Route path="/:school/admin/utilisateurs/:usertype">
+  <Route path="/:school/admin/utilisateurs/:usertype" exact>
     <Users />
   </Route>
 
-  <Route path="/:school/admin/ajouter-utilisateur/:usertype">
+  <Route path="/:school/admin/utilisateurs/ajouter-utilisateur/:usertype">
     <AddUser />
   </Route>
 
-  <Route path="/:school/admin/maj-utilisateur/:usertype/:userId">
+  <Route path="/:school/admin/utilisateurs/maj-utilisateur/:usertype/:userId">
     <UpdateUser />
   </Route>
 
-  <Route path="/:school/admin/ajouter-excel/white-list-eleves">
+  <Route path="/:school/admin/utilisateurs/ajouter-excel/white-list-eleves">
     <AddExcel />
   </Route>
 
@@ -155,8 +157,16 @@ if (token && role === "Admin") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-prof/:section">
+  <Route path="/:school/espace-prof/:section" exact>
       <PersonalSpace />
+  </Route>
+
+  <Route path="/:school/espace-prof/horaires/ajouter-evenement-calendrier">
+    <AddTargetedEvent />
+  </Route>
+
+  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId">
+    <UpdateTargetedEvent />
   </Route>
 
 

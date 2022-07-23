@@ -138,7 +138,7 @@ const GlobalCalendar = props => {
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
             
             {auth.isLoggedIn && auth.role == "Admin" &&
-            <a href={`/${school}/admin/maj-evenement-calendrier/${loadedEventId}`}>
+            <a href={`/${school}/agenda/admin/maj-evenement-calendrier/${loadedEventId}`}>
                 <img className="event-modify" src="/svg/modify-red.svg" />
             </a>}
             
@@ -183,7 +183,7 @@ const GlobalCalendar = props => {
             
 
             {auth.isLoggedIn && auth.role == "Admin" &&
-            <a href={`/${school}/admin/ajouter-evenement-calendrier`}>
+            <a href={`/${school}/agenda/admin/ajouter-evenement-calendrier`}>
                 <img className='red-plus-add-event' src='/svg/red-plus.svg'></img>
             </a>}
 

@@ -55,7 +55,7 @@ const News = props => {
             <ErrorModal error={error} onClear={clearError} />
 
             {auth.isLoggedIn && auth.role == "Admin" && window.location.pathname != `/${school}` &&
-            <a href={`/${school}/admin/ajouter-actualite`}>
+            <a href={`/${school}/actualites/admin/ajouter-actualite`}>
                 <img className='red-plus-add-news' src='/svg/red-plus.svg'></img>
             </a>}
 
@@ -64,7 +64,7 @@ const News = props => {
                 <LoadingSpinner />
             </div>}
             {!isLoading && loadedNews && 
-            <NewsList items={loadedNews.reverse().slice(0,parseInt(props.numberofnews))} school={school} 
+            <NewsList items={loadedNews.slice(0,parseInt(props.numberofnews))} school={school} 
             />}
         </React.Fragment>
     );

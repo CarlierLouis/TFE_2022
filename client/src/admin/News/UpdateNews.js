@@ -109,6 +109,12 @@ const UpdateNews = props => {
 		<div className="center">
 			<Card>
 			<h2>Aucune actualité trouvée !</h2>
+
+			<div className="back-button">
+				<Button href={'/' + school + '/actualites'}>
+                    Retour
+                </Button>
+		    </div>
 			</Card>
 		</div>
 		);

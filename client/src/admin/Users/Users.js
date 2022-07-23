@@ -93,12 +93,12 @@ const Users = props => {
             </a>}
 
             {(usertype == "white-list-eleves" || usertype == "white-list-profs") &&
-            <a href={`/${school}/admin/ajouter-utilisateur/` + usertype}>
+            <a href={`/${school}/admin/utilisateurs/ajouter-utilisateur/` + usertype}>
                 <img className='red-plus-add-user' src='/svg/red-plus.svg'></img>
             </a>}
             
             {usertype == "white-list-eleves" &&
-            <a href={`/${school}/admin/ajouter-excel/white-list-eleves`}>
+            <a href={`/${school}/admin/utilisateurs/ajouter-excel/white-list-eleves`}>
                 <img className='excel-logo' src='/svg/excel.svg'></img>
             </a>}
 

@@ -1,16 +1,3 @@
-.red-plus-add-event {
-    width: 40px;
-    margin-left: 3.2%;
-    transition: transform 0.5s; 
-    margin-top: 1.2%;
-    position: absolute;
-    z-index: 1;
-}
-  
-.red-plus-add-event:hover {
-    transform: scale(1.2);
-}
-
 .back-button {
     text-align: center;
 }

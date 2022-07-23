@@ -86,7 +86,7 @@ const UserItem = props => {
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
             
-            <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
+            <a href={`/${props.school}/admin/utilisateurs/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -132,7 +132,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/utilisateurs/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -164,7 +164,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/utilisateurs/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -192,7 +192,7 @@ const UserItem = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
-             <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}>
+             <a href={`/${props.school}/admin/utilisateurs/maj-utilisateur/${usertype}/${props.id}`}>
                 <img className="user-modify" src="/svg/modify-red.svg" />
             </a>
             
@@ -250,7 +250,7 @@ const UserItem = props => {
                     <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"
                     style={displayLogoHover}/>
 
-                    <a href={`/${props.school}/admin/maj-utilisateur/${usertype}/${props.id}`}
+                    <a href={`/${props.school}/admin/utilisateurs/maj-utilisateur/${usertype}/${props.id}`}
                     style={displayLogoHover}>
                         <img className="user-modify" src="/svg/modify-red.svg" />
                     </a>
