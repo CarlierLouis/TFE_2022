@@ -104,7 +104,7 @@ const PersonnalCalendar = props => {
       };
   
   
-      const refreshPage = () =>{
+      const refreshPage = () => {
           window.location.reload(true);
       }
 
@@ -116,6 +116,7 @@ const PersonnalCalendar = props => {
         setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
         setLoadedEventTarget(calEvent.target);
       });
+
 
     return (
         <React.Fragment>

@@ -2,14 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {useHistory, useParams} from 'react-router-dom';
 import { AuthContext } from '../common/context/auth-context';
-import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL} from '../common/util/validators';
-import { useForm } from '../common/hooks/form-hooks';
 import { useHttpClient } from '../common/hooks/http-hook';
-import Input from '../common/FormElements/Input';
-import Button from '../common/FormElements/Button';
-import Card from '../common/UIElements/Card';
-import ErrorModal from '../common/UIElements/ErrorModal';
-import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import MainNavigation from '../common/navigation/MainNavigation';
 import PersonalData from './PersonalData';
 import PersonnalCalendar from './PersonnalCalendar';
@@ -80,6 +73,7 @@ const PersonalSpace = props => {
     };
 
 
+
     return (
         <React.Fragment>
              {school == "grand-hallet" && 
@@ -127,8 +121,9 @@ const PersonalSpace = props => {
                     </select>
                 </div>}
 
-            {section == "horaires" && selected &&
+            {section == "horaires" && selected && (auth.role == "Default" || auth.role == "Admin") &&
             <PersonnalCalendar classyear={selected} />}
+
 
             {section == "horaires" && auth.role == "Student" && loadedUser &&
             <PersonnalCalendar class={loadedUser.classyear} />}

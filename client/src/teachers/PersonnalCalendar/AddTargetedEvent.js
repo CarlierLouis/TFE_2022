@@ -77,7 +77,7 @@ const AddTargetedEvent = props => {
 			<br></br>
 
             <form className="targeted-event-form" onSubmit={targetedeventSubmitHandler}>
-				<h3 className='form-targeted-event-title'>Ajouter un nouvel événement à l'agenda des <b>{classname}</b></h3>
+				<h3 className='form-targeted-event-title'>Ajouter un nouvel événement à l'horaire des <b>{classname}</b></h3>
 				{isLoading && <LoadingSpinner asOverlay />}
 				<Input
 					id="title"
