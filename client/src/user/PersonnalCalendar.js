@@ -14,6 +14,7 @@ import Modal from "../common/UIElements/Modal";
 import Button from "../common/FormElements/Button";
 
 import './PersonnalCalendar.css';
+import '../teachers/PersonnalCalendar/PersonnalCalendar.css';
 
 const locales = {
     "fr": fr
@@ -38,6 +39,7 @@ const PersonnalCalendar = props => {
     const [loadedEventStart, setLoadedEventStart] = useState();
     const [loadedEventEnd, setLoadedEventEnd] = useState();
     const [loadedEventId, setLoadedEventId] = useState();
+    const [loadedEventTarget, setLoadedEventTarget] = useState();
 
 
     useEffect(() => {
@@ -45,7 +47,7 @@ const PersonnalCalendar = props => {
             const events = [];
             try {
             const responseData = await sendRequest(
-                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}/target/${props.class}`, 'GET', null,
+                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}/target/${props.classyear}`, 'GET', null,
             {Authorization: 'Bearer ' + auth.token});
 
             responseData.events.forEach(element => {
@@ -75,12 +77,44 @@ const PersonnalCalendar = props => {
         setShowMore(false);
     };
 
+    const showDeleteWarningHandler = () => {
+		setShowConfirmModal(true);
+	};
+
+	const cancelDeleteHandler = () => {
+		setShowConfirmModal(false);
+	};
+
+  
+    const confirmDeleteHandler = async () => {
+        setShowConfirmModal(false);
+        try {
+            await sendRequest(
+                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${loadedEventId}`,
+                'DELETE',
+                null,
+                {Authorization: 'Bearer ' + auth.token}
+            );
+        }
+        catch(err) {}
+  
+      if (!error) {
+      refreshPage();
+      }
+      };
+  
+  
+      const refreshPage = () =>{
+          window.location.reload(true);
+      }
+
     const onSelectEvent = useCallback((calEvent) => {
         setShowMore(true);
         setLoadedEventId(calEvent.id);
         setLoadedEventTitle(calEvent.title);
         setLoadedEventStart(calEvent.start.toString().substring(0, 10));
         setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
+        setLoadedEventTarget(calEvent.target);
       });
 
     return (
@@ -92,6 +126,11 @@ const PersonnalCalendar = props => {
             show={showMore}
             onCancel={closeMoreHandler}
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
+
+            {(auth.role == "Default" || auth.role == "Admin") && loadedEventTarget != "global" && 
+            <a href={`/${school}/espace-prof/horaires/maj-evenement-calendrier`}>
+                <img className="event-modify" src="/svg/modify-red.svg" />
+            </a>}
 
             <div className="full-info-event">
                         <div className="full-info-event-elem">
@@ -109,7 +148,28 @@ const PersonnalCalendar = props => {
                         <p>{loadedEventEnd}</p>
                         </div>
                     </div>
+
+                {(auth.role == "Default" || auth.role == "Admin") && loadedEventTarget != "global" && 
+                <img onClick={showDeleteWarningHandler} className="event-delete" src="/svg/delete-red.svg"/>}
             </Modal>
+
+            <Modal 
+            show={showConfirmModal}
+            onCancel={cancelDeleteHandler}
+            header="Êtes-vous sûr(e) ?" 
+            footerClass="event-item__modal-actions" 
+            footer={
+                <React.Fragment>
+                    <Button inverse onClick={cancelDeleteHandler}>Annuler</Button>
+                    <Button danger onClick={confirmDeleteHandler}>Supprimer</Button>
+                </React.Fragment>
+				  }>
+				<p>
+				Êtes-vous certain(e) de vouloir supprimer cet événement de l'agenda des <b>{props.classyear}</b> ?
+				Cette action entraînera la suppression irréversible de celui-ci !
+				</p><br></br><br></br>
+			</Modal>
+
 
             {isLoading && 
             <div className='center'>
@@ -121,13 +181,13 @@ const PersonnalCalendar = props => {
             <Card className="personnal-calendar-Card-div">
 
                 {(auth.role == "Default" || auth.role == "Admin") &&
-                <a href={`/${school}/espace-prof/horaires/ajouter-evenement-calendrier`}>
+                <a href={`/${school}/espace-prof/horaires/${props.classyear}/ajouter-evenement-calendrier`}>
                     <img className='red-plus-add-targeted-event' src='/svg/red-plus.svg'></img>
                 </a>}
                 
                 {(auth.role == "Default" || auth.role == "Admin") &&
                 <div>
-                    <h4 className="calendar-class-title">Classe: {props.class}</h4>
+                    <h4 className="calendar-class-title">Classe: {props.classyear}</h4>
                     <h5 className="calendar-change-class">
                         <a href={"/" + school + "/espace-prof" + "/horaires"}>Changer de classe</a>
                     </h5>

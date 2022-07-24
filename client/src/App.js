@@ -21,8 +21,8 @@ import GlobalCalendar from './showcase/GlobalCalendar';
 import AddEvent from './admin/GlobalCalendar/AddEvent';
 import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
 import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
-import AddTargetedEvent from './teachers/PersonnalCalendar/AddEvent';
-import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateEvent';
+import AddTargetedEvent from './teachers/PersonnalCalendar/AddTargetedEvent';
+import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateTargetedEvent';
 
 import ScrollToTop from './common/navigation/ScrollToTop';
 
@@ -161,7 +161,7 @@ if (token && role === "Admin") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-prof/horaires/ajouter-evenement-calendrier">
+  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier">
     <AddTargetedEvent />
   </Route>
 
@@ -223,6 +223,14 @@ else if (token && role === "Default") {
 
   <Route path="/:school/espace-prof/:section">
       <PersonalSpace />
+  </Route>
+
+  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier">
+    <AddTargetedEvent />
+  </Route>
+
+  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId">
+    <UpdateTargetedEvent />
   </Route>
 
 </Switch>

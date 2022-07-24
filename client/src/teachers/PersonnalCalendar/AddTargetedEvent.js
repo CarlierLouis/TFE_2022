@@ -11,13 +11,14 @@ import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
 import MainNavigation from '../../common/navigation/MainNavigation';
 
-import './GlobalCalendar.css';
+import './PersonnalCalendar.css';
 
-const AddEvent = props => {
+const AddTargetedEvent = props => {
     const auth = useContext(AuthContext);
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
 	const school = useParams().school;
 	const history = useHistory();
+    const classname = useParams().classname;
 
     const [formState, inputHandler] = useForm(
 		{
@@ -38,25 +39,8 @@ const AddEvent = props => {
 	);
 
 
-    const eventSubmitHandler = async event => {
-		event.preventDefault();
-        /*
-		try {
-			const formData = new FormData();
-			formData.append('title', formState.inputs.title.value);
-			formData.append('start', formState.inputs.start.value);
-			formData.append('end', formState.inputs.end.value);
-			formData.append('school', school);
-            formData.append('target', "global");
-			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + '/api/calendar',
-				'POST',
-				formData,
-				{Authorization: 'Bearer ' + auth.token}
-			);
-			history.push(`/${school}/agenda`);
-		}*/
-        
+    const targetedeventSubmitHandler = async event => {
+		event.preventDefault();        
         try {
 			await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + `/api/calendar`,
@@ -66,14 +50,14 @@ const AddEvent = props => {
                     start: formState.inputs.start.value,
                     end: formState.inputs.end.value,
                     school: school,
-                    target: "global",
+                    target: classname,
 				}),
 				{
 				'Content-Type': 'application/json',
 				Authorization: 'Bearer ' + auth.token
 				}
 			);
-			history.push(`/${school}/agenda`);
+			history.push(`/${school}/espace-prof/horaires`);
 		}
         
 		catch(err) {}
@@ -92,8 +76,8 @@ const AddEvent = props => {
             <ErrorModal error={error} onClear={clearError} />
 			<br></br>
 
-            <form className="event-form" onSubmit={eventSubmitHandler}>
-				<h3 className='form-event-title'>Ajouter un nouvel événement à l'agenda</h3>
+            <form className="targeted-event-form" onSubmit={targetedeventSubmitHandler}>
+				<h3 className='form-targeted-event-title'>Ajouter un nouvel événement à l'agenda des <b>{classname}</b></h3>
 				{isLoading && <LoadingSpinner asOverlay />}
 				<Input
 					id="title"
@@ -134,15 +118,15 @@ const AddEvent = props => {
 			<br></br>
 
             <div className="back-button">
-				<Button href={'/' + school + '/agenda'}>
+				<Button href={'/' + school + '/espace-prof/horaires'}>
 					Retour
 				</Button>
 			</div>
 
 			<br></br>
+
         </React.Fragment>
     )
-
 }
 
-export default AddEvent;
+export default AddTargetedEvent;

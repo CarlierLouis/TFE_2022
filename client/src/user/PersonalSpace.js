@@ -128,7 +128,7 @@ const PersonalSpace = props => {
                 </div>}
 
             {section == "horaires" && selected &&
-            <PersonnalCalendar class={selected} />}
+            <PersonnalCalendar classyear={selected} />}
 
             {section == "horaires" && auth.role == "Student" && loadedUser &&
             <PersonnalCalendar class={loadedUser.classyear} />}
