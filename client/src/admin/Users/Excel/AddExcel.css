@@ -35,12 +35,11 @@
 }
 
 .question-excel {
-    width: 50px;
-    position: fixed;
-    bottom: 0;
+    width: 30px;
     transition: transform 0.5s; 
-    margin-left: 96%;
-    margin-bottom: 0.5%;
+    float: right;
+    margin-right: 1%;
+    margin-top: 1.2%;
 }
 
 .question-excel:hover {
@@ -65,9 +64,5 @@
 @media (max-width: 820px) {
     .question-modal-excel img {
         width: 100%;
-    }
-
-    .question-excel {
-        margin-left: 85%;
     }
 }

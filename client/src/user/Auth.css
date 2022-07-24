@@ -13,15 +13,13 @@
 .auth-title {
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 10%;
 }
 
 .question-auth {
-    width: 50px;
-    position: fixed;
-    bottom: 0;
+    width: 30px;
     transition: transform 0.5s; 
-    margin-left: 96%;
-    margin-bottom: 0.5%;
+    float: right;
 }
 
 .question-auth:hover {
@@ -34,8 +32,3 @@
 }
 
 
-@media (max-width: 820px) {
-    .question-auth {
-        margin-left: 85%;
-    }
-}

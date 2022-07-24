@@ -96,7 +96,7 @@
   }
  
 .back-button :hover {
-color: white;
+    color: white;
 }
 
 .search-bar-div {
@@ -127,6 +127,22 @@ color: white;
     background-color: #ECF0F7
 }
 
+.info-role {
+    width: 30px;
+    transition: transform 0.5s; 
+    float: right;
+    margin-right: 1%;
+    margin-top: 1.2%;
+}
+
+.info-role:hover {
+    transform: scale(1.2);
+}
+
+.info-role-modal-auth {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+}
 
  
 @media (max-width: 820px) {

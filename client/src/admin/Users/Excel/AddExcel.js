@@ -68,7 +68,7 @@ const AddExcel = props => {
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
 
-            <img className='question-excel' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
+
             <Modal className='question-modal-excel'
                 show={showQuestion}
                 onCancel={closeQuestionHandler}
@@ -95,6 +95,8 @@ const AddExcel = props => {
                 id="xlsx"
                 onInput={inputHandler}
                 errorText="Veillez sélectionner un fichier valide"/>
+
+                <img className='question-excel' src='/svg/info.svg' onClick={openQuestionHandler} ></img>
 
                 <Button type="submit" disabled={!formState.isValid}>
 					Soumettre

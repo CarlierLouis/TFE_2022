@@ -4,6 +4,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import Input from '../../common/FormElements/Input';
 import Button from '../../common/FormElements/Button';
 import ErrorModal from '../../common/UIElements/ErrorModal';
+import Modal from '../../common/UIElements/Modal';
 import LoadingSpinner from '../../common/UIElements/LoadingSpinner';
 import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL} from '../../common/util/validators';
 import { useForm } from '../../common/hooks/form-hooks';
@@ -22,6 +23,15 @@ const UpdateUser = props => {
     const [loadedUser, setLoadedUser] = useState();
 	const history = useHistory();
 	const school = useParams().school;
+	const [showInfoRole, setShowInfoRole] = useState(false);
+
+    const openInfoRoleHandler = () => {
+		setShowInfoRole(true);
+	};
+
+	const closeInfoRoleHandler = () => {
+		setShowInfoRole(false);
+	};
 
 	if (usertype == "profs") {
         var usertyperequest = "teachers";
@@ -217,6 +227,18 @@ return (
 		<MainNavigation schoolLink="moxhe"
 						schoolLogo="/svg/Moxhe_blanc.svg" />}
 
+		<Modal className='info-role-modal-auth'
+				show={showInfoRole}
+				onCancel={closeInfoRoleHandler}
+				footer={<Button onClick={closeInfoRoleHandler}>Fermer</Button>}>
+
+				<a>Afin de modifier le rôle d'un compte prof et de faire passer celui-ci en "mode administrateur",
+					veillez renseigner "Admin" dans le champ dédié au rôle.<br></br><br></br>
+					Dans le cas contraire, si vous voulez supprimer l'accès administrateur d'un compte prof, veillez renseigner 
+					"Default" dans ce même champ.
+				</a>
+			</Modal>
+
 		<ErrorModal error={error} onClear={clearError} />
 		<br></br>
 		{!isLoading && loadedUser && 
@@ -244,13 +266,15 @@ return (
 				id="role"
 				element="input"
 				type="text"
-				label="Role"
+				label="Rôle"
 				validators={[VALIDATOR_REQUIRE]}
 				errorText="Veillez entrer un role valide."
 				onInput={inputHandler}
 				initialValue={loadedUser.role}
 				initialValid={true}
-			/></div>}
+			/>
+			<img className="info-role" src="/svg/info.svg" onClick={openInfoRoleHandler}></img>
+			</div>}
 
 			{(usertype == "eleves" || usertype == "white-list-eleves") &&
 			<div style={changed_classyear}>

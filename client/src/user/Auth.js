@@ -162,7 +162,7 @@ return (
     <MainNavigation schoolLink="moxhe"
                     schoolLogo="/svg/Moxhe_blanc.svg" />}
 
-    <img className='question-auth' src='/svg/question.svg'onClick={openQuestionHandler} ></img>
+
     <Modal className='question-modal-auth'
         show={showQuestion}
         onCancel={closeQuestionHandler}
@@ -189,6 +189,7 @@ return (
     <br></br><br></br><br></br>
     <Card className="auth-card">
         {isLoading && <LoadingSpinner asOverlay/>}
+        <img className='question-auth' src='/svg/info.svg' onClick={openQuestionHandler} ></img>
         <h2 className='auth-title'>{isLoginMode ? 'Se connecter': 'S\'inscrire'}</h2>
         <hr />
         <form className='auth-card' onSubmit={authSubmitHandler}>
@@ -237,9 +238,11 @@ return (
         onInput={inputHandler} 
         />
 
+
         <Button type="submit" disabled={!formState.isValid}>
             {isLoginMode ? 'Se connnecter': 'Créer un compte'}
         </Button>
+        
         
         </form>
 
