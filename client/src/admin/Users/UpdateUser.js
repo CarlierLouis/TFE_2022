@@ -282,7 +282,7 @@ return (
 				id="classyear"
 				element="input"
 				type="text"
-				label="Classe"
+				label="Classe (ex: m1, p5, etc.)"
 				validators={[VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH(5)]}
 				errorText="Veillez entrer une classe valide."
 				onInput={inputHandler}

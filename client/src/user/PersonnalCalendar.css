@@ -18,34 +18,4 @@
     font-weight: bold;
 }
 
-.calendar-class-title {
-    color: red;
-    text-align: left;
-}
-
-.calendar-change-class {
-    text-align: left;
-    color: #628699;
-}
-
-.calendar-change-class a {
-    color: #628699;
-    text-decoration: underline;
-}
-
-.calendar-change-class a:hover {
-    color: #628699;
-    opacity: 0.7;
-}
-
-.red-plus-add-targeted-event {
-    width: 40px;
-    transition: transform 0.5s; 
-    z-index: 1;
-    float: right;
-}
-  
-.red-plus-add-targeted-event:hover {
-    transform: scale(1.2);
-}
 

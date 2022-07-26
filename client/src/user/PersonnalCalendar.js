@@ -129,7 +129,7 @@ const PersonnalCalendar = props => {
             footer={<Button onClick={closeMoreHandler}>Fermer</Button>}>
 
             {(auth.role == "Default" || auth.role == "Admin") && loadedEventTarget != "global" && 
-            <a href={`/${school}/espace-prof/horaires/maj-evenement-calendrier`}>
+            <a href={`/${school}/espace-prof/horaires/maj-evenement-calendrier/${loadedEventId}`}>
                 <img className="event-modify" src="/svg/modify-red.svg" />
             </a>}
 

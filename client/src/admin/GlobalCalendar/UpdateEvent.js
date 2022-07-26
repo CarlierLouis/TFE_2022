@@ -14,7 +14,7 @@ import MainNavigation from '../../common/navigation/MainNavigation';
 
 import './GlobalCalendar.css';
 
-const updateEvent = props => {
+const UpdateEvent = props => {
     const auth = useContext(AuthContext);
     const eventId = useParams().eventId;
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
@@ -189,4 +189,4 @@ const updateEvent = props => {
     )
 }
 
-export default updateEvent;
+export default UpdateEvent;

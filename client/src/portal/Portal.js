@@ -9,6 +9,7 @@ const Portal  = () => {
   <CardGroup className="portal">
   <div className='portal-img-div'><img className='portal-img' src="svg/portail-title.svg"></img></div>
 
+
     <Card className="portal-GH border-0" style={{ backgroundColor: 'rgb(31, 30, 30)'}}>
     
       <Link to="/grand-hallet">
