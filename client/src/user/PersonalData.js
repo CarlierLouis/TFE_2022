@@ -43,6 +43,10 @@ const PersonalData = props => {
 			value: '',
 			isValid: false
 		},
+        defaultclassyear: {
+            value: '',
+            isValid: false
+        },
         phonenumber: {
 			value: '',
 			isValid: false
@@ -68,6 +72,10 @@ const PersonalData = props => {
 					value: responseData.user.address,
 					isValid: true
 					},
+                    defaultclassyear:{
+                    value: responseData.user.defaultclassyear,
+                    isValid: true
+                    },
                     phonenumber: {
                     value: responseData.user.phonenumber,
                     isValid: true
@@ -94,6 +102,7 @@ const PersonalData = props => {
 					email: loadedUser.email,
                     role: loadedUser.role,
                     classyear: loadedUser.classyear,
+                    defaultclassyear: formState.inputs.defaultclassyear.value,
                     address: formState.inputs.address.value,
                     phonenumber: formState.inputs.phonenumber.value,
                     birdthdate: formState.inputs.birdthdate.value,
@@ -152,6 +161,12 @@ const PersonalData = props => {
 		if (formState.inputs.phonenumber.value != loadedUser.phonenumber
 			&& loadedUser.phonenumber != null) {
 			changed_phonenumber = changed_input
+		}
+
+        var changed_defaultclassyear = {};
+		if (formState.inputs.defaultclassyear.value != loadedUser.defaultclassyear
+			&& loadedUser.defaultclassyear != null) {
+                changed_defaultclassyear = changed_input
 		}
 
 		
@@ -221,6 +236,21 @@ const PersonalData = props => {
                         disabled={true}
                     />
                     </div>
+
+                    {(usertype == "Admin" || usertype == "Default") &&
+                    <div style={changed_defaultclassyear}>
+                    <Input
+                        id="defaultclassyear"
+                        element="input"
+                        type="text"
+                        label="Classe principale (ex: m1, p5, etc.)"
+                        validators={[VALIDATOR_REQUIRE]}
+                        errorText="Veillez entrer une classe valide."
+                        onInput={inputHandler}
+                        initialValue={loadedUser.defaultclassyear}
+                        initialValid={true}
+                    />
+                    </div>}
 
                     {usertype == "Student" &&
                     <div>

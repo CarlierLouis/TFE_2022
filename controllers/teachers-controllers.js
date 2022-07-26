@@ -267,7 +267,7 @@ const updateTeacher = async (req, res, next) => {
         return next(error);
     }
 
-    const { email, password, role} =  req.body;
+    const { email, password, role, defaultclassyear} =  req.body;
     const teacherId = req.params.tid;
 
     let teacher;
@@ -283,6 +283,7 @@ const updateTeacher = async (req, res, next) => {
     teacher.email = email;
     teacher.password = password;
     teacher.role = role;
+    teacher.defaultclassyear = defaultclassyear;
 
     try {
         await teacher.save();
