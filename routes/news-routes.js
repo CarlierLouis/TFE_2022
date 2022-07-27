@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const newsControllers = require('../controllers/news-controllers');
 const checkAuthAdmin = require('../middleware/check-auth-admin');
 
-const fileUpload = require('../middleware/file-upload');
+const imageUpload = require('../middleware/image-upload');
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.get('/id/:nid', newsControllers.getNewsById);
 router.use(checkAuthAdmin);
 
 router.post('/',
-fileUpload.single('image'),
+imageUpload.single('image'),
 [
     check('title').not().isEmpty(),
     check('description').not().isEmpty(),
@@ -25,7 +25,7 @@ fileUpload.single('image'),
 ], newsControllers.createNews);
 
 router.patch('/:nid', 
-fileUpload.single('image'),
+imageUpload.single('image'),
 [
     check('title').not().isEmpty(),
     check('description').not().isEmpty(),
