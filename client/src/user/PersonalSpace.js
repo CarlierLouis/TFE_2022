@@ -110,7 +110,7 @@ const PersonalSpace = props => {
 
             {(auth.role == "Default" || auth.role == "Admin") 
             && section == "horaires" && !selected &&
-            <div className='center'>
+            <div className='center-class-selection'>
                 {loadedUser && loadedUser.defaultclassyear && 
                 <div>
                 <h4 className="main-class">
