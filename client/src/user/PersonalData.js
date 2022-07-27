@@ -30,10 +30,10 @@ const PersonalData = props => {
         var usertypeSpace = "espace-personnel"
     }
 
-    if (usertype == "Default" || usertype == "Admin") {
+    if (auth.role == "Default" || auth.role == "Admin") {
         var usertyperequest = "teachers";
     }
-    if (usertype == "Student") {
+    if (auth.role == "Student") {
         var usertyperequest = "students";
     }
 
@@ -171,7 +171,7 @@ const PersonalData = props => {
 
 		
 		var changed_birdthdate = {};
-		if (loadedUser.birdthdate != null && usertype == "Student") {
+		if (loadedUser.birdthdate != null && auth.role == "Student") {
 			if (formState.inputs.birdthdate.value != loadedUser.birdthdate.toString().substring(0, 10)
 				&& loadedUser.birdthdate != null) {
 				changed_birdthdate = changed_input
@@ -237,7 +237,7 @@ const PersonalData = props => {
                     />
                     </div>
 
-                    {(usertype == "Admin" || usertype == "Default") &&
+                    {(auth.role == "Admin" || auth.role == "Default") &&
                     <div style={changed_defaultclassyear}>
                     <Input
                         id="defaultclassyear"
@@ -252,7 +252,7 @@ const PersonalData = props => {
                     />
                     </div>}
 
-                    {usertype == "Student" &&
+                    {auth.role == "Student" &&
                     <div>
                     <div style={{opacity: "0.7"}} >
                     <Input

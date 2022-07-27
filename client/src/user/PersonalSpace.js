@@ -11,12 +11,13 @@ import Documents from './Documents';
 
 import './PersonalSpace.css';
 
+
 const PersonalSpace = props => {
     const school = useParams().school;
     const section = useParams().section;
     const auth = useContext(AuthContext);
-    const [selected, setSelected] = useState();
     const [loadedUser, setLoadedUser] = useState();
+    const [selected, setSelected] = useState();
     const usertype = auth.role;
     const userId = auth.userId;
     const {sendRequest} = useHttpClient();
@@ -29,10 +30,10 @@ const PersonalSpace = props => {
         var usertypeSpace = "espace-personnel"
     }
 
-    if (usertype == "Default" || usertype == "Admin") {
+    if (auth.role  == "Default" || auth.role  == "Admin") {
         var usertyperequest = "teachers";
     }
-    if (usertype == "Student") {
+    if (auth.role  == "Student") {
         var usertyperequest = "students";
     }
 
@@ -72,6 +73,10 @@ const PersonalSpace = props => {
         setSelected(document.getElementById('option-select').value);
     };
 
+    const mainClassOnClick = () => {
+        setSelected(loadedUser.defaultclassyear)
+    }
+
 
 
     return (
@@ -101,11 +106,21 @@ const PersonalSpace = props => {
             <br></br>
             {section == "donnees-personnelles" &&
             <PersonalData />}
+            
 
             {(auth.role == "Default" || auth.role == "Admin") 
             && section == "horaires" && !selected &&
             <div className='center'>
-                <h4>Veillez sélectionner une classe</h4>
+                {loadedUser && loadedUser.defaultclassyear && 
+                <div>
+                <h4 className="main-class">
+                    <button onClick={mainClassOnClick}>Ma classe principale</button>
+                </h4>
+                <h4>ou</h4>
+                </div>
+                }
+                <h4>Sélectionnez une classe</h4>
+                
                 <select name="option" id="option-select" onChange={onChangedSelect}>
                     <option value="">--Classes--</option>
                     <option value="m0">m0</option>
@@ -119,7 +134,9 @@ const PersonalSpace = props => {
                     <option value="p5">p5</option>
                     <option value="p6">p6</option>
                     </select>
-                </div>}
+
+            </div>}
+                
 
             {section == "horaires" && selected && (auth.role == "Default" || auth.role == "Admin") &&
             <PersonnalCalendar classyear={selected} />}
