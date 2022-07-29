@@ -10,7 +10,6 @@ import Button from '../common/FormElements/Button';
 import Card from '../common/UIElements/Card';
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
-import MainNavigation from '../common/navigation/MainNavigation';
 
 import './PersonalData.css';
 

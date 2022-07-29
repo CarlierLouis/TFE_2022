@@ -144,6 +144,8 @@ const PersonalSpace = props => {
 
             {section == "horaires" && auth.role == "Student" && loadedUser &&
             <PersonnalCalendar classyear={loadedUser.classyear} />}
+
+            
         </React.Fragment>
     ); 
 }
