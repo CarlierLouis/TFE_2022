@@ -69,7 +69,7 @@ const createNews = async(req, res, next) => {
         description,
         date,
         school,
-        image: req.file.path,
+        image: req.file.path
     });
 
 
@@ -94,7 +94,7 @@ const updateNews = async (req, res, next) => {
         return next(error);
     }
     
-    const {title, description, date} = req.body;
+    const { title, description, date } = req.body;
     const newsId = req.params.nid;
 
     let news;

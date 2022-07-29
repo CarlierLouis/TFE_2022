@@ -11,7 +11,7 @@ const teacherSchema =  new Schema ({
     status: { type: String, enum: ['Pending', 'Active'], default: 'Pending' },
     school: {type: String,enum: ['grand-hallet', 'moxhe'] , required: true},
     role: {type: String, enum: ['Admin', 'Default'], default: 'Default', require: true},
-    defaultclassyear: {type: String, enum: ['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6' ]},
+    defaultclassyear: {type: String, enum: ['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6' ]},
     confirmationCode: { type: String, unique: true },
 })
 

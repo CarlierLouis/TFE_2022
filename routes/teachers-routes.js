@@ -32,6 +32,7 @@ router.patch('/:tid',
     check('email').not().isEmpty(),
     check('password').not().isEmpty(),
     check('role').isIn(['Default', 'Admin']),
+    check('defaultclassyear').isIn(['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'])
 ], teachersControllers.updateTeacher);
 
 

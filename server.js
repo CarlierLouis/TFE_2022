@@ -15,6 +15,7 @@ const trustedTeachersRoutes = require('./routes/trusted_teachers-routes');
 const studentsRoutes = require('./routes/students-routes');
 const teachersRoutes = require('./routes/teachers-routes');
 const calendarRoutes = require('./routes/calendar-routes');
+const documentsRoutes = require('./routes/documents-routes');
 
 const HttpError = require('./models/http-error');
 
@@ -25,6 +26,8 @@ app.use(bodyParser.json());
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 app.use('/uploads/xlsx', express.static(path.join('uploads', 'xlsx')));
+
+app.use('/uploads/files', express.static(path.join('uploads', 'files')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -45,6 +48,8 @@ app.use('/api/students', studentsRoutes);
 app.use('/api/teachers', teachersRoutes);
 
 app.use('/api/calendar', calendarRoutes);
+
+app.use('/api/documents', documentsRoutes);
 
 
 app.use((req , res, next ) => {

@@ -18,6 +18,8 @@ router.post('/signup',
     check('password').not().isEmpty(),
     check('school').not().isEmpty(),
     check('school').isIn(['grand-hallet', 'moxhe']),
+    check('classyear').not().isEmpty(),
+    check('classyear').isIn(['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'])
 ], studentsControllers.signup);
 
 router.post('/login', studentsControllers.login);
@@ -32,6 +34,7 @@ router.patch('/:sid',
     check('email').not().isEmpty(),
     check('password').not().isEmpty(),
     check('classyear').not().isEmpty(),
+    check('classyear').isIn(['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'])
 ], studentsControllers.updateStudent);
 
 

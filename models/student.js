@@ -11,7 +11,7 @@ const studentSchema =  new Schema ({
     status: { type: String, enum: ['Pending', 'Active'], default: 'Pending' },
     school: {type: String,enum: ['grand-hallet', 'moxhe'] , required: true},
     classyear: {type: String,
-    enum: ['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6' ], required: true},
+    enum: ['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6' ], required: true},
     address: {type: String},
     phonenumber: {type: String},
     birdthdate: {type: Date},
