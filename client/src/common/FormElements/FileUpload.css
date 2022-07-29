@@ -1,0 +1,10 @@
+.file-upload-preview-div {
+    width: 100%;
+    height: 100%;
+    background-color: #ECF0F7;
+}
+
+.file-upload-preview-div p {
+    margin-top: 28%;
+    font-style: italic;
+}
