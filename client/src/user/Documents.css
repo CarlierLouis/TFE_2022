@@ -15,6 +15,15 @@
     text-align: center;
 }
 
+.back-button {
+    text-align: center;
+}
+ 
+.back-button :hover {
+   color: white;
+}
+
+
 
 @media (max-width: 820px) {
     .documents-card {

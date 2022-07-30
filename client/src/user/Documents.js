@@ -18,18 +18,11 @@ const Documents = props => {
     const [loadedDocuments, setLoadedDocuments] = useState();
 
 
-    if (auth.isLoggedIn && (auth.role == "Admin" || auth.role == "Default")){
-        var usertypeSpace = "espace-prof"
-    }
-    if (auth.isLoggedIn && auth.role == "Student"){
-        var usertypeSpace = "espace-personnel"
-    }
-
     useEffect(() => {
 		const fetchDocuments = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/documents/${school}/${props.classyear}`
+					process.env.REACT_APP_BACKEND_URL + `/api/documents/${school}/target/${props.classyear}`
 				);
 				setLoadedDocuments(responseData.documents);
 			}
@@ -91,7 +84,7 @@ const Documents = props => {
                 </a>
 
                 {(auth.role == "Default" || auth.role == "Admin") &&
-                <a href={`/${props.school}/${usertypeSpace}/documents/maj-document/${documents.id}`}>
+                <a href={`/${school}/espace-prof/documents/maj-document/${documents.id}`}>
                 <img className="document-modify" src="/svg/modify-red.svg" />
                 </a>}
                

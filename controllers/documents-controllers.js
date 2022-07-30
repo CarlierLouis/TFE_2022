@@ -125,7 +125,7 @@ const updateDocument = async (req, res, next) => {
     }
     catch(err){
         const error = new HttpError(
-            'Quelque chose ne s\'est pas passé comme prévu, mise à jour de l\'actualité impossible', 500);
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour du document impossible', 500);
         return next(error);
     }
 

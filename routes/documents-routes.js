@@ -8,7 +8,7 @@ const fileUpload = require('../middleware/file-upload');
 
 const router = express.Router();
 
-router.get('/:school/:target', documentsControllers.getDocumentsByTarget);
+router.get('/:school/target/:target', documentsControllers.getDocumentsByTarget);
 
 router.get('/id/:did', documentsControllers.getDocumentsById);
 

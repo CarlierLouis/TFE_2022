@@ -58,8 +58,11 @@ const FileUpload = props => {
                         <p>Fichier ajouté !</p>
                     </div>}
 
-                    {!previewUrl && !props.updatePreview &&
+                    {!previewUrl && !props.updatePreview && !window.location.href.includes("maj-document") &&
                     <Button type="button" onClick={pickFileHandler}>Ajouter un fichier</Button>}
+
+                    {!previewUrl && !props.updatePreview && window.location.href.includes("maj-document") &&
+                    <Button type="button" onClick={pickFileHandler}>Changer de fichier</Button>}
                     
             </div>
 
