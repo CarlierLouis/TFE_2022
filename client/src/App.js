@@ -175,7 +175,7 @@ if (token && role === "Admin") {
     <AddDocument />
   </Route>
 
-  <Route path="/:school/espace-prof/documents/maj-document">
+  <Route path="/:school/espace-prof/documents/maj-document/:documentId">
     <UpdateDocument />
   </Route>
   

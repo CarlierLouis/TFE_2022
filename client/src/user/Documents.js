@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useHttpClient } from '../common/hooks/http-hook';
 import Card from '../common/UIElements/Card';
 import Button from '../common/FormElements/Button';
+import Modal from '../common/UIElements/Modal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 
 import './Documents.css';
@@ -16,13 +17,13 @@ const Documents = props => {
     const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [loadedDocuments, setLoadedDocuments] = useState();
 
+
     if (auth.isLoggedIn && (auth.role == "Admin" || auth.role == "Default")){
         var usertypeSpace = "espace-prof"
     }
     if (auth.isLoggedIn && auth.role == "Student"){
         var usertypeSpace = "espace-personnel"
     }
-
 
     useEffect(() => {
 		const fetchDocuments = async () => {
@@ -38,8 +39,12 @@ const Documents = props => {
 	}, 
 	[sendRequest]);
 
+
+
+
     return (
         <React.Fragment>
+
             <Card className="documents-card">
 
             <h2 style={{textAlign: 'center'}}>Documents utiles et/ou importants</h2><br></br>
@@ -82,7 +87,15 @@ const Documents = props => {
                     <img className="document-img" src="/svg/pdf.svg" />
                     &nbsp;&nbsp;{documents.title}
                 </Button>
-                </a><br></br><br></br>
+
+                </a>
+
+                {(auth.role == "Default" || auth.role == "Admin") &&
+                <a href={`/${props.school}/${usertypeSpace}/documents/maj-document/${documents.id}`}>
+                <img className="document-modify" src="/svg/modify-red.svg" />
+                </a>}
+               
+                <br></br><br></br>
                 </li>
             ))}
             </ul>}

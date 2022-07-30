@@ -52,3 +52,18 @@ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans
     color: #628699;
     opacity: 0.7;
 }
+
+.document-modify {
+    width: 25px;
+    transition: transform 0.5s;
+}
+
+.document-modify:hover {
+    transform: scale(1.2);
+}
+
+.document-item__modal-actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
