@@ -77,7 +77,9 @@ const NewNews = props => {
 			<br></br>
 			<form className="news-form" onSubmit={newsSubmitHandler}>
 				<h3 className='form-news-title'>Créer une nouvelle actualité</h3>
+				
 				{isLoading && <LoadingSpinner asOverlay />}
+				
 				<Input
 					id="title"
 					element="input"

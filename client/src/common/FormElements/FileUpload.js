@@ -59,7 +59,7 @@ const FileUpload = props => {
                     </div>}
 
                     {!previewUrl && !props.updatePreview &&
-                    <Button type="button" onClick={pickXLSXHandler}>Ajouter un fichier</Button>}
+                    <Button type="button" onClick={pickFileHandler}>Ajouter un fichier</Button>}
                     
             </div>
 

@@ -23,6 +23,8 @@ import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
 import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
 import AddTargetedEvent from './teachers/PersonnalCalendar/AddTargetedEvent';
 import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateTargetedEvent';
+import AddDocument from './teachers/Documents/AddDocument';
+import UpdateDocument from './teachers/Documents/UpdateDocument';
 
 import ScrollToTop from './common/navigation/ScrollToTop';
 
@@ -169,6 +171,14 @@ if (token && role === "Admin") {
     <UpdateTargetedEvent />
   </Route>
 
+  <Route path="/:school/espace-prof/documents/:classname/ajouter-document">
+    <AddDocument />
+  </Route>
+
+  <Route path="/:school/espace-prof/documents/maj-document">
+    <UpdateDocument />
+  </Route>
+  
 
 </Switch>
 
@@ -231,6 +241,14 @@ else if (token && role === "Default") {
 
   <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId">
     <UpdateTargetedEvent />
+  </Route>
+
+  <Route path="/:school/espace-prof/documents/:classname/ajouter-document">
+    <AddDocument />
+  </Route>
+
+  <Route path="/:school/espace-prof/documents/maj-document">
+    <UpdateDocument />
   </Route>
 
 </Switch>

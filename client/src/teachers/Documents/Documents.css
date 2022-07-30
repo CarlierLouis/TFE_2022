@@ -1,0 +1,34 @@
+.red-plus-add-document {
+    width: 40px;
+    transition: transform 0.5s; 
+    z-index: 1;
+    float: right;
+}
+  
+.red-plus-add-document:hover {
+    transform: scale(1.2);
+}
+
+.back-button {
+    text-align: center;
+}
+ 
+.back-button :hover {
+color: white;
+}
+
+.document-form {
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: white;
+  }
+
+  .form-document-title {
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }

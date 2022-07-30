@@ -1,5 +1,5 @@
 const multer = require('multer');
-const { v1: uuidv1 } = require
+const { v1: uuidv1 } = require('uuid');
 
 const MIME_TYPE_MAP =  {
     'application/pdf': 'pdf',
