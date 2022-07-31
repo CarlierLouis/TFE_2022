@@ -152,7 +152,7 @@ const UpdateTargetedEvent = props => {
 				type="text"
 				label="Classe"
 				validators={[VALIDATOR_REQUIRE]}
-				errorText="Veillez entrer un événement valide."
+				errorText="Veillez entrer une classe valide."
 				onInput={inputHandler}
 				initialValue={loadedEvent.target}
 				initialValid={true}

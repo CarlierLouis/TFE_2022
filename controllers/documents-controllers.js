@@ -12,8 +12,17 @@ const getDocumentsByTarget = async (req, res, next) => {
     const target = req.params.target;
 
     let documents;
+    let targettedDocuments;
+    let globalDocuments;
     try {
-        documents = await Document.find({school: school}).where({target: target});
+        if (target != "global") {
+        targettedDocuments = await Document.find({school: school}).where({target: target});
+        globalDocuments = await Document.find({school: school}).where({target: "global"});
+        documents = globalDocuments.concat(targettedDocuments)};
+
+        if (target == "global") {
+            documents = await Document.find({school: school}).where({target: "global"});
+        }
     }
     catch(err) {
         const error = new HttpError(

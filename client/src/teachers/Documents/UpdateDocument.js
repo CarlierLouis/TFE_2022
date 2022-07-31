@@ -179,6 +179,21 @@ const UpdateDocument = props => {
                     initialValid={true}
                 />
 
+            <div  style={{opacity: "0.7"}}>
+            <Input 
+				id="target"
+				element="input"
+				type="text"
+				label="Classe"
+				validators={[VALIDATOR_REQUIRE]}
+				errorText="Veillez entrer une classe valide."
+				onInput={inputHandler}
+				initialValue={loadedDocument.target}
+				initialValid={true}
+                disabled={true}
+			/>
+            </div>
+
                 <FileUpload 
                     id="file"
                     onInput={inputHandler}

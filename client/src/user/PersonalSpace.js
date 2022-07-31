@@ -153,6 +153,10 @@ const PersonalSpace = props => {
                 
                 <select name="option" id="option-select" onChange={onChangedSelect}>
                     <option value="">--Classes--</option>
+
+                    {auth.role == "Admin" &&
+                    <option value="global">Toutes</option>}
+                    
                     <option value="m0">m0</option>
                     <option value="m1">m1</option>
                     <option value="m2">m2</option>

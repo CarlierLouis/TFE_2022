@@ -54,7 +54,12 @@ const Documents = props => {
 
             {(auth.role == "Default" || auth.role == "Admin") &&
                 <div>
-                    <h4 className="documents-class-title">Classe: {props.classyear}</h4>
+                    {props.classyear != "global" && 
+                    <h4 className="documents-class-title">Classe: {props.classyear}</h4>}
+
+                    {props.classyear == "global" && 
+                     <h4 className="documents-class-title">Classe: Toutes</h4>
+                     }
                     <h5 className="documents-change-class">
                         <a href={"/" + school + "/espace-prof" + "/documents"}>Changer de classe</a>
                     </h5>
@@ -83,7 +88,12 @@ const Documents = props => {
 
                 </a>
 
-                {(auth.role == "Default" || auth.role == "Admin") &&
+                {auth.role == "Default" && documents.target != "global" &&
+                <a href={`/${school}/espace-prof/documents/maj-document/${documents.id}`}>
+                <img className="document-modify" src="/svg/modify-red.svg" />
+                </a>}
+
+                {auth.role == "Admin" &&
                 <a href={`/${school}/espace-prof/documents/maj-document/${documents.id}`}>
                 <img className="document-modify" src="/svg/modify-red.svg" />
                 </a>}

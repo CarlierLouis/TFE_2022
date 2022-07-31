@@ -231,7 +231,7 @@ else if (token && role === "Default") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-prof/:section">
+  <Route path="/:school/espace-prof/:section" exact>
       <PersonalSpace />
   </Route>
 

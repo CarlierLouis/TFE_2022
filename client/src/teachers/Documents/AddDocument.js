@@ -70,7 +70,12 @@ const AddDocument = props => {
 			<br></br>
 
             <form className="document-form" onSubmit={documentSubmitHandler}>
-				<h3 className='form-document-title'>Ajouter un nouveau document pour les <b>{classname}</b></h3>
+
+				{classname != "global" &&
+				<h3 className='form-document-title'>Ajouter un nouveau document pour les <b>{classname}</b></h3>}
+
+				{classname == "global" &&
+				<h3 className='form-document-title'>Ajouter un nouveau document pour toutes les classes</h3>}
 
 				{isLoading && <LoadingSpinner asOverlay />}
 				
