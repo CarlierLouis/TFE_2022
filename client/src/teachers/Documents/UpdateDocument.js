@@ -10,6 +10,7 @@ import { useForm } from '../../common/hooks/form-hooks';
 import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
 import Card from '../../common/UIElements/Card';
+import Modal from '../../common/UIElements/Modal';
 import MainNavigation from '../../common/navigation/MainNavigation';
 
 import './Documents.css';
@@ -22,6 +23,8 @@ const UpdateDocument = props => {
     const [loadedDocument, setLoadedDocument] = useState();
 	const history = useHistory();
     const school = useParams().school;
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
 
     const [formState, inputHandler, setFormData] = useForm(
 		{
@@ -104,6 +107,31 @@ const UpdateDocument = props => {
 		);
 	}
 
+
+    const showDeleteWarningHandler = () => {
+		setShowConfirmModal(true);
+	};
+
+	const cancelDeleteHandler = () => {
+		setShowConfirmModal(false);
+	};
+
+    const confirmDeleteHandler = async () => {
+		setShowConfirmModal(false);
+		try {
+			await sendRequest(
+				process.env.REACT_APP_BACKEND_URL + `/api/documents/${documentId}`,
+				'DELETE',
+				null,
+				{Authorization: 'Bearer ' + auth.token}
+			);
+			history.push('/' + school + '/espace-prof/documents');
+		}
+		catch(err) {}
+	};
+
+
+
     return (
         <React.Fragment>
             {school == "grand-hallet" && 
@@ -116,6 +144,23 @@ const UpdateDocument = props => {
 
             <ErrorModal error={error} onClear={clearError} />
             <br></br>
+
+            <Modal 
+            show={showConfirmModal}
+            onCancel={cancelDeleteHandler}
+            header="Êtes-vous sûr(e) ?" 
+            footerClass="document-item__modal-actions" 
+            footer={
+                <React.Fragment>
+                    <Button inverse onClick={cancelDeleteHandler}>Annuler</Button>
+                    <Button danger onClick={confirmDeleteHandler}>Supprimer</Button>
+                </React.Fragment>
+                }>
+                <p>
+                Êtes-vous certain(e) de vouloir supprimer ce document ?
+                Cette action entraînera la suppression irréversible de celui-ci!
+                </p>
+			  </Modal>
             
             {!isLoading && loadedDocument && 
             <form 
@@ -144,13 +189,15 @@ const UpdateDocument = props => {
                 <Button type="submit" disabled={!formState.isValid}>
                     Mettre à jour
                 </Button>
+
+                <img onClick={showDeleteWarningHandler} className="document-delete" src="/svg/delete-red.svg"/>
             </form>}
 
             <br></br>
             <div className="back-button">
             <Button href={'/' + school + '/espace-prof/documents'}>
                 Retour
-            </Button>
+            </Button>    
             <br></br><br></br>
             </div>
         </React.Fragment>

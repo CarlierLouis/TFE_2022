@@ -62,6 +62,18 @@ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans
     transform: scale(1.2);
 }
 
+.document-delete {
+    width: 25px;
+    transition: transform 0.5s;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.document-delete:hover {
+    transform: scale(1.2);
+}
+
 .document-item__modal-actions {
     padding: 1rem;
     text-align: center;

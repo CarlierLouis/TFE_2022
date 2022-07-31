@@ -113,14 +113,18 @@ const updateDocument = async (req, res, next) => {
         document.file = req.file.path;
     }
 
+
+
     try {
         await document.save();
 
+        /*
         if (req.file != undefined) {
             fs.unlink(oldFilePath, err => {
                 console.log(err);
         });
     }
+    */
 
     }
     catch(err){
@@ -157,9 +161,16 @@ const deleteDocument = async (req, res, next) => {
             return next(error);
     }
 
+
+    /*
+    
     fs.unlink(filePath, err => {
         console.log(err);
     });
+
+    */
+    
+
 
     res.status(200).json({ message: 'Document supprimée' });
 }
