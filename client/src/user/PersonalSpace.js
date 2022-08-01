@@ -8,6 +8,7 @@ import PersonalData from './PersonalData';
 import PersonnalCalendar from './PersonnalCalendar';
 import Announcements from './Announcements';
 import Documents from './Documents';
+import SchoolOutings from './SchoolOutings';
 
 import './PersonalSpace.css';
 
@@ -170,6 +171,35 @@ const PersonalSpace = props => {
                     </select>
 
             </div>}
+
+            {(auth.role == "Default" || auth.role == "Admin") 
+            && section == "sorties-scolaires" && !selected &&
+            <div className='center-class-selection'>
+                {loadedUser && loadedUser.defaultclassyear && 
+                <div>
+                <h4 className="main-class">
+                    <button onClick={mainClassOnClick}>Ma classe principale</button>
+                </h4>
+                <h4>ou</h4>
+                </div>
+                }
+                <h4>Sélectionnez une classe</h4>
+                
+                <select name="option" id="option-select" onChange={onChangedSelect}>
+                    <option value="">--Classes--</option>
+                    <option value="m0">m0</option>
+                    <option value="m1">m1</option>
+                    <option value="m2">m2</option>
+                    <option value="m3">m3</option>
+                    <option value="p1">p1</option>
+                    <option value="p2">p2</option>
+                    <option value="p3">p3</option>
+                    <option value="p4">p4</option>
+                    <option value="p5">p5</option>
+                    <option value="p6">p6</option>
+                    </select>
+
+            </div>}
                 
 
             {section == "horaires" && selected && (auth.role == "Default" || auth.role == "Admin") &&
@@ -185,6 +215,15 @@ const PersonalSpace = props => {
 
             {section == "documents" && auth.role == "Student" && loadedUser &&
             <Documents classyear={loadedUser.classyear} />}
+
+
+            
+            {section == "sorties-scolaires" && selected && (auth.role == "Default" || auth.role == "Admin") &&
+            <SchoolOutings classyear={selected} />}
+
+            {section == "sorties-scolaires" && auth.role == "Student" && loadedUser &&
+            <SchoolOutings classyear={loadedUser.classyear} />}
+
 
         </React.Fragment>
     ); 

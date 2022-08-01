@@ -1,0 +1,97 @@
+.red-plus-add-outing {
+    width: 40px;
+    transition: transform 0.5s; 
+    z-index: 1;
+    float: right;
+}
+  
+.red-plus-add-outing:hover {
+    transform: scale(1.2);
+}
+
+.back-button {
+    text-align: center;
+}
+ 
+.back-button :hover {
+color: white;
+}
+
+.outing-form {
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: white;
+  }
+
+.form-outing-title {
+text-align: center;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.outings-class-title {
+    color: red;
+    text-align: left;
+}
+
+.outings-change-class {
+    text-align: left;
+    color: #628699;
+}
+
+.outings-change-class a {
+    color: #628699;
+    text-decoration: underline;
+}
+
+.outings-change-class a:hover {
+    color: #628699;
+    opacity: 0.7;
+}
+
+.outing-modify {
+    width: 25px;
+    transition: transform 0.5s;
+}
+
+.outing-modify:hover {
+    transform: scale(1.2);
+}
+
+.outing-delete {
+    width: 25px;
+    transition: transform 0.5s;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.outing-delete:hover {
+    transform: scale(1.2);
+}
+
+.outing-item__modal-actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.outing-form {
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: white;
+  }
+
+  .form-outing-title {
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
