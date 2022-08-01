@@ -83,8 +83,8 @@ const AddDocument = props => {
 					id="title"
 					element="input"
 					type="text"
-					label="Titre"
-					validators={[VALIDATOR_REQUIRE()]}
+					label="Titre Titre (26 caractères max)"
+					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
 					errorText="Veillez entrer un titre valide."
 					onInput={inputHandler}
 				/>

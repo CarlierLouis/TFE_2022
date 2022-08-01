@@ -35,21 +35,21 @@ const Home  = props => {
 
   {school == "grand-hallet" &&
   <Carousel variant="dark" className='caroussel-div'>
-    <Carousel.Item>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="/img/Grand-Hallet-photo_1.jpg"
         alt="First slide"
       />
     </Carousel.Item>
-    <Carousel.Item>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="/img/Grand-Hallet-photo_2.jpg" 
         alt="Second slide"
       />
     </Carousel.Item>
-    <Carousel.Item>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="/img/Grand-Hallet-photo_3.jpg"
@@ -60,21 +60,21 @@ const Home  = props => {
 
   {school == "moxhe" && 
    <Carousel variant="dark" className='caroussel-div'>
-   <Carousel.Item>
+   <Carousel.Item interval={2000}>
      <img
        className="d-block w-100"
        src="/img/Moxhe-photo_1.jpg" 
        alt="First slide"
      />
    </Carousel.Item>
-   <Carousel.Item>
+   <Carousel.Item interval={2000}>
      <img
        className="d-block w-100"
        src="/img/Moxhe-photo_2.jpg" 
        alt="Second slide"
      />
    </Carousel.Item>
-   <Carousel.Item>
+   <Carousel.Item interval={2000}>
      <img
        className="d-block w-100"
        src="/img/Moxhe-photo_3.jpg"

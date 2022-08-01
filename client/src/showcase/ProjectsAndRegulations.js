@@ -28,7 +28,7 @@ const ProjectsAndRegulations = props => {
 
                     <h4>Projet d'établissement de Hannut II</h4>
 
-                    <p className="project-description">blabla</p>
+                    <p className="project-description"></p>
 
                     <a href="/doc/projet-d-etablissement.pdf" target="_blank">
                     <Button>
@@ -41,7 +41,7 @@ const ProjectsAndRegulations = props => {
 
                     <h4 className="project-title">Projet pédagogique de Hannut II</h4>
 
-                    <p className="project-description">blabla</p>
+                    <p className="project-description"></p>
 
                     <a href="/doc/projet-pedagogique.pdf" target="_blank">
                     <Button>
@@ -54,7 +54,7 @@ const ProjectsAndRegulations = props => {
 
                     <h4 className="project-title">Projet éducatif et pédagogique du CECP</h4>
 
-                    <p className="project-description">blabla</p>
+                    <p className="project-description"></p>
 
                     <a href="/doc/projets-educatif-et-pedagogique-du-cecp.pdf" target="_blank">
                     <Button>

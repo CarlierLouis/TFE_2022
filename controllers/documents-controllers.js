@@ -85,7 +85,7 @@ const createDocument = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Création du nouveau document raté, veillez réessayer', 500);
+            'Création du nouveau document ratée, veillez réessayer', 500);
         return next(error);
     }
 
