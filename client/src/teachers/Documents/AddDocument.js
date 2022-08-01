@@ -83,7 +83,7 @@ const AddDocument = props => {
 					id="title"
 					element="input"
 					type="text"
-					label="Titre Titre (26 caractères max)"
+					label="Titre (26 caractères max)"
 					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
 					errorText="Veillez entrer un titre valide."
 					onInput={inputHandler}
@@ -92,7 +92,7 @@ const AddDocument = props => {
                 <FileUpload 
                     id="file"
                     onInput={inputHandler}
-					errorText="Veillez entrer un document valide" 
+					errorText="Veillez entrer un fichier valide" 
                 />
 					
 				<Button type="submit" disabled={!formState.isValid}>

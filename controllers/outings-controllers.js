@@ -74,7 +74,7 @@ const createOuting = async (req, res, next) => {
     });
 
     try {
-        await createOuting.save();
+        await createdOuting.save();
     }
     catch (err) {
         const error = new HttpError(

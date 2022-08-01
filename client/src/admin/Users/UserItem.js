@@ -118,7 +118,7 @@ const UserItem = props => {
                 <div className="full-info-user-elem">
                     <p className="full-info-user-elem-title">Date de naissance: &nbsp;</p>
                     {props.birdthdate != null &&
-                    <p>{props.birdthdate.toString().substring(0, 10)}</p>}
+                    <p>{props.birdthdate.toString().substring(8, 10)}/{props.birdthdate.toString().substring(5, 7)}/{props.birdthdate.toString().substring(0, 4)}</p>}
                 </div>
 
                 <img onClick={showDeleteWarningHandler} className="user-delete" src="/svg/delete-red.svg"/>

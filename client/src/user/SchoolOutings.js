@@ -72,25 +72,34 @@ const SchoolOutings = props => {
             <ul className="outings-list">
             {loadedOutings.map(outings => (
                 <li>
+
+                <h4>{outings.title}</h4>
+                <div className='outings-date-div'>
+
+                {outings.start == outings.end &&
+                <h5>{outings.start.toString().substring(8, 10)}/{outings.start.toString().substring(5, 7)}/{outings.start.toString().substring(0, 4)}</h5>
+                }
+
+                {outings.start != outings.end &&
+                <h5>Du {outings.start.toString().substring(8, 10)}/{outings.start.toString().substring(5, 7)}/{outings.start.toString().substring(0, 4)}
+                &nbsp;au {outings.end.toString().substring(8, 10)}/{outings.end.toString().substring(5, 7)}/{outings.end.toString().substring(0, 4)}</h5>
+                }               
+                </div>
                 <a href={process.env.REACT_APP_BACKEND_URL + `/${outings.file}`} target="_blank">
                 <Button>
                     <img className="outing-img" src="/svg/pdf.svg" />
-                    &nbsp;&nbsp;{outings.title}
+                    &nbsp;&nbsp;Document
                 </Button>
 
                 </a>
 
-                {auth.role == "Default" &&
+                {(auth.role == "Default" || auth.role == "Admin") &&
                 <a href={`/${school}/espace-prof/sorties-scolaires/maj-sortie-scolaire/${outings.id}`}>
                 <img className="outing-modify" src="/svg/modify-red.svg" />
                 </a>}
 
-                {auth.role == "Admin" &&
-                <a href={`/${school}/espace-prof/sorties-scolaires/maj-sortie-scolaire/${outings.id}`}>
-                <img className="outing-modify" src="/svg/modify-red.svg" />
-                </a>}
             
-                <br></br><br></br>
+                <br></br><br></br><br></br>
                 </li>
             ))}
             </ul>}

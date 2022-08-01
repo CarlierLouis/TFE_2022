@@ -112,8 +112,8 @@ const PersonnalCalendar = props => {
         setShowMore(true);
         setLoadedEventId(calEvent.id);
         setLoadedEventTitle(calEvent.title);
-        setLoadedEventStart(calEvent.start.toString().substring(0, 10));
-        setLoadedEventEnd(calEvent.end.toString().substring(0, 10));
+        setLoadedEventStart(`${calEvent.start.toString().substring(8, 10)}/${calEvent.start.toString().substring(5, 7)}/${calEvent.start.toString().substring(0, 4)}`);
+        setLoadedEventEnd(`${calEvent.end.toString().substring(8, 10)}/${calEvent.end.toString().substring(5, 7)}/${calEvent.end.toString().substring(0, 4)}`);
         setLoadedEventTarget(calEvent.target);
       });
 

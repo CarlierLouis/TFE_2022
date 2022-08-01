@@ -53,7 +53,7 @@ const UsersList = props => {
                 {usertype == "eleves" &&
                 <td>{users.phonenumber}</td>}
                 {usertype == "eleves" && users.birdthdate != null &&
-                <td>{users.birdthdate.toString().substring(0, 10)}</td>}
+                <td>{users.birdthdate.toString().substring(8, 10)}/{users.birdthdate.toString().substring(5, 7)}/{users.birdthdate.toString().substring(0, 4)}</td>}
             </tr>
             ))}
             </tbody>
