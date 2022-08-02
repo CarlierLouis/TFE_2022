@@ -30,7 +30,7 @@ fileUpload.single('file'),
     check('title').not().isEmpty(),
     check('start').not().isEmpty(),
     check('end').not().isEmpty(),
-]),
+], outingsControllers.updateOuting),
 
 router.delete('/:oid', outingsControllers.deleteOuting);
 

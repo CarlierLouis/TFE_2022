@@ -12,9 +12,9 @@ import {AuthContext} from '../../common/context/auth-context';
 import Card from '../../common/UIElements/Card';
 import Modal from '../../common/UIElements/Modal';
 import MainNavigation from '../../common/navigation/MainNavigation';
+import FileUpload from '../../common/FormElements/FileUpload';
 
 import './Documents.css';
-import FileUpload from '../../common/FormElements/FileUpload';
 
 const UpdateDocument = props => {
     const auth = useContext(AuthContext);
@@ -158,7 +158,7 @@ const UpdateDocument = props => {
                 }>
                 <p>
                 Êtes-vous certain(e) de vouloir supprimer ce document ?
-                Cette action entraînera la suppression irréversible de celui-ci!
+                Cette action entraînera la suppression irréversible de celui-ci !
                 </p>
 			  </Modal>
             
@@ -197,7 +197,7 @@ const UpdateDocument = props => {
                 <FileUpload 
                     id="file"
                     onInput={inputHandler}
-					errorText="Veillez entrer un document valide" 
+					errorText="Veillez entrer un fichier valide" 
                     initialValue={loadedDocument.file}
                 />
 

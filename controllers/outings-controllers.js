@@ -36,7 +36,7 @@ const getOutingById = async (req, res, next) => {
 
     let outing;
     try {
-        outing = Outing.findById(outingId);
+        outing = await Outing.findById(outingId);
     }
     catch(err) {
         const error = new HttpError("La sortie scolaire n'a pas pu être trouvée", 500);
