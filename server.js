@@ -17,6 +17,7 @@ const teachersRoutes = require('./routes/teachers-routes');
 const calendarRoutes = require('./routes/calendar-routes');
 const documentsRoutes = require('./routes/documents-routes');
 const outingsRoutes = require('./routes/outings-routes');
+const annnoucementsRoutes = require('./routes/announcements-routes');
 
 const HttpError = require('./models/http-error');
 
@@ -53,6 +54,8 @@ app.use('/api/calendar', calendarRoutes);
 app.use('/api/documents', documentsRoutes);
 
 app.use('/api/outings', outingsRoutes);
+
+app.use('/api/announcements', annnoucementsRoutes);
 
 
 app.use((req , res, next ) => {

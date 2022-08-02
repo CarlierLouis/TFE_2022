@@ -36,7 +36,7 @@ const SchoolOutings = props => {
 
             <Card className="outings-card">
 
-            <h2 style={{textAlign: 'center'}}>Sorties scolaires programmées</h2><br></br>
+            <h2 className='outings-title'>Sorties scolaires programmées</h2><br></br>
 
             {(auth.role == "Default" || auth.role == "Admin") && 
             <a href={`/${school}/espace-prof/sorties-scolaires/${props.classyear}/ajouter-sortie-scolaire`}>

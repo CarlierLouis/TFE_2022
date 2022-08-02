@@ -188,8 +188,8 @@ const UpdateOuting = props => {
                     id="title"
                     element="input"
                     type="text"
-                    label="Titre (26 caractères max)"
-                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
+                    label="Titre (30 caractères max)"
+                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(30)]}
                     errorText="Veillez entrer un titre valide."
                     onInput={inputHandler}
                     initialValue={loadedOuting.title}
@@ -242,7 +242,8 @@ const UpdateOuting = props => {
                     initialValue={loadedOuting.file}
                 />
 
-                <Button type="submit" disabled={!formState.isValid}>
+                <Button type="submit" disabled={!formState.isValid
+                || (formState.inputs.start.value > formState.inputs.end.value)}>
                     Mettre à jour
                 </Button>
 

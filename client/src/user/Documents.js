@@ -40,7 +40,7 @@ const Documents = props => {
 
             <Card className="documents-card">
 
-            <h2 style={{textAlign: 'center'}}>Documents utiles et/ou importants</h2><br></br>
+            <h2 className='documents-title '>Documents utiles et/ou importants</h2><br></br>
 
             {(auth.role == "Default" || auth.role == "Admin") && 
             <a href={`/${school}/espace-prof/documents/${props.classyear}/ajouter-document`}>
