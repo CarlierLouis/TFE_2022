@@ -9,66 +9,60 @@ import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH} from '../..
 import { useForm } from '../../common/hooks/form-hooks';
 import { useHttpClient } from '../../common/hooks/http-hook';
 import {AuthContext} from '../../common/context/auth-context';
-import FileUpload from '../../common/FormElements/FileUpload';
 import MainNavigation from '../../common/navigation/MainNavigation';
 
-import './SchoolOutings.css';
+import './Announcements.css';
 
-const AddOuting = props => {
+const AddAnnouncement = props => {
     const auth = useContext(AuthContext);
 	const {isLoading, error, sendRequest, clearError} = useHttpClient();
 	const school = useParams().school;
     const classname = useParams().classname;
 
-    
+
     const [formState, inputHandler] = useForm(
 		{
 			title: {
 				value: '',
 				isValid: false
 			},
-            start: {
+            description: {
 				value: '',
-				isValid: false
-			},
-            end: {
-				value: '',
-				isValid: false
-			},
-			file: {
-				value: null,
 				isValid: false
 			}
 		},
 		false
 	);
 
+
     const history = useHistory();
 
-    const outingSubmitHandler = async event => {
+    const today = new Date();
+
+
+    const AnnouncementSubmitHandler = async event => {
 		event.preventDefault();
 		try {
 			const formData = new FormData();
 			formData.append('title', formState.inputs.title.value);
-            formData.append('start', formState.inputs.start.value);
-            formData.append('end', formState.inputs.end.value);
+            formData.append('description', formState.inputs.description.value);
 			formData.append('school', school);
             formData.append('target', classname);
-			formData.append('file', formState.inputs.file.value);
+            formData.append('posteddate', today)
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + '/api/outings',
+				process.env.REACT_APP_BACKEND_URL + '/api/announcements',
 				'POST',
 				formData,
 				{Authorization: 'Bearer ' + auth.token}
 			);
-			history.push(`/${school}/espace-prof/sorties-scolaires`);
+			history.push(`/${school}/espace-prof/annonces`);
 		}
 		catch(err) {}
 	};
 
     return (
         <React.Fragment>
-             {school == "grand-hallet" && 
+              {school == "grand-hallet" && 
 			<MainNavigation schoolLink="grand-hallet"
 							schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
 
@@ -79,9 +73,14 @@ const AddOuting = props => {
             <ErrorModal error={error} onClear={clearError} />
 			<br></br>
 
-            <form className="outing-form" onSubmit={outingSubmitHandler}>
+            <form className="announcement-form" onSubmit={AnnouncementSubmitHandler}>
 
-				<h3 className='form-outing-title'>Ajouter une nouvelle sortie scolaire pour les <b>{classname}</b></h3>
+			{classname != "global" &&
+				<h3 className='form-document-title'>Ajouter une nouvelle annonce pour les <b>{classname}</b></h3>}
+
+				{classname == "global" &&
+				<h3 className='form-document-title'>Ajouter une nouvelle annonce pour toutes les classes</h3>}
+
 			
 				{isLoading && <LoadingSpinner asOverlay />}
 				
@@ -89,48 +88,32 @@ const AddOuting = props => {
 					id="title"
 					element="input"
 					type="text"
-					label="Titre (26 caractères max)"
+					label="Titre Titre (26 caractères max)"
 					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
 					errorText="Veillez entrer un titre valide."
 					onInput={inputHandler}
 				/>
 
                 <Input
-					id="start"
+					id="description"
 					element="input"
-					type="Date"
-					label="Début"
-					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
-					errorText="Veillez entrer une date valide."
+					type="text"
+					label="Description"
+					validators={[VALIDATOR_REQUIRE()]}
+					errorText="Veillez entrer une description valide."
 					onInput={inputHandler}
 				/>
-
-                <Input
-					id="end"
-					element="input"
-					type="Date"
-					label="Fin"
-					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
-					errorText="Veillez entrer une date valide."
-					onInput={inputHandler}
-				/>
-
-                <FileUpload 
-                    id="file"
-                    onInput={inputHandler}
-					errorText="Veillez entrer un fichier valide" 
-                />
+                
 					
-				<Button type="submit" disabled={!formState.isValid
-                || (formState.inputs.start.value > formState.inputs.end.value)}>
-					Ajouter cette sortie scolaire
+				<Button type="submit" disabled={!formState.isValid}>
+					Ajouter cette annnonce
 				</Button>
 			</form>
 
             <br></br>
 
 			<div className="back-button">
-				<Button href={'/' + school + '/espace-prof/sorties-scolaires'}>
+				<Button href={'/' + school + '/espace-prof/annonces'}>
 					Retour
 				</Button>
 			</div>
@@ -139,6 +122,7 @@ const AddOuting = props => {
 
         </React.Fragment>
     )
+
 }
 
-export default AddOuting;
+export default AddAnnouncement;

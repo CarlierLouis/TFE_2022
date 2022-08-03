@@ -27,9 +27,20 @@ const Home  = props => {
       
   <img className='home-title-div' src="/svg/Banner-Hannut2.svg" />
 
+  <h4 className='home-title'>
+  Restez informé sur toute l'actualité de notre école ainsi que sur les divers événements organisés
+  </h4>
+
+      
+  <News numberofnews={props.numberofnews}/>
+  <br></br>
+  <div className='news-link'>
+    <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
+  </div>
+
   <br></br>
 
-  <h4 className='news-home-title'>
+  <h4 className='home-title'>
   Notre école
   </h4>
 
@@ -53,6 +64,20 @@ const Home  = props => {
       <img
         className="d-block w-100"
         src="/img/Grand-Hallet-photo_3.jpg"
+        alt="Third slide"
+      />
+    </Carousel.Item>
+    <Carousel.Item interval={2000}>
+      <img
+        className="d-block w-100"
+        src="/img/Grand-Hallet-photo_4.jpg"
+        alt="Third slide"
+      />
+    </Carousel.Item>
+    <Carousel.Item interval={2000}>
+      <img
+        className="d-block w-100"
+        src="/img/Grand-Hallet-photo_5.jpg"
         alt="Third slide"
       />
     </Carousel.Item>
@@ -81,37 +106,103 @@ const Home  = props => {
        alt="Third slide"
      />
    </Carousel.Item>
+   <Carousel.Item interval={2000}>
+     <img
+       className="d-block w-100"
+       src="/img/Moxhe-photo_4.jpg"
+       alt="Third slide"
+     />
+   </Carousel.Item>
+   <Carousel.Item interval={2000}>
+     <img
+       className="d-block w-100"
+       src="/img/Moxhe-photo_5.jpg"
+       alt="Third slide"
+     />
+   </Carousel.Item>
  </Carousel>}
 
-  <Card className='home-card-div'><elem style={{maxWidth: '50%'}}>
-    <h1>Présentation de notre école.</h1>
-    Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. 
-    Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. 
-    Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. 
-    Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. 
-    Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. 
-    Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. 
-    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. 
-    Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-    Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. 
-    Aenean ut orci vel massa suscipit pulvinar. 
-    Nulla sollicitudin. 
-    Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. 
-    Pellentesque rhoncus nunc et augue. 
-  </elem></Card><br></br>
-      
-  <h4 className='news-home-title'>
-  Restez informé sur toute l'actualité de notre école ainsi que sur les divers événements organisés
-  </h4>
 
-      
-  <News numberofnews={props.numberofnews}/>
+  <Card className='home-card-div'>
+    {school == "moxhe" &&
+    <elem style={{maxWidth: '50%'}}>
+      Dans un cadre rénové et verdoyant, les enfants seront accueillis par une
+  équipe attentive à l’évolution de chaque enfant, et ouverte au dialogue
+  et à la communication. Soucieuse de l’environnement, du milieu,
+  ...nous participons régulièrement à des activités sportives, culturelles,
+  économiques et sociales. Nous avons le souci d’intégrer chaque enfant
+  afin d’œuvrer à son bien-être physique et intellectuel. Dans ce but,
+  nous organisons régulièrement des concertations afin que chaque
+  enfant soit pris en compte. De plus, nous nous remettons constamment
+  en question sur la qualité de l’approche pédagogique.<br></br><br></br>
+  Dans le cadre d’un projet sur l’alimentation « saine », différentes
+  activités verront le jour au bénéfice de vos enfants.<br></br><br></br>
+  L’espace aux abords de l’établissement scolaire et la motivation de
+  l’équipe pédagogique permettront aux élèves de mettre en place un
+  petit projet axé sur la pratique du sport et de ses bienfaits sur notre
+  bien-être!<br></br><br></br>
+
+
+  La langue néerlandaise est dispensée dès la 1
+
+  ère primaire à raison d’une
+
+  période par semaine. De plus, dès la 1
+
+  ère maternelle et ce jusqu’à la 3
+  ème
+  ,
+  les enfants bénéficieront de deux périodes de psychomotricité par
+  semaine.<br></br><br></br>
+  L’organisation d’une école de devoirs est proposée chaque jour à vos
+  enfants. Le mode de fonctionnement de l’école est adapté et axé sur les
+  enfants qui présentent des difficultés d’apprentissage.<br></br><br></br>
+  Une garderie animée est organisée chaque jour dès 7heure du matin et
+  jusque 18heure. Le mercredi après-midi, la garderie est décentralisée à
+  Hannut centre (Saline).
+
+    </elem>}
+
+    {school == "grand-hallet" &&
+    <elem style={{maxWidth: '50%'}}>
+     Les enfants seront accueillis par une équipe
+dynamique et soudée dans une nouvelle
+implantation. La continuité du parcours
+scolaire de chaque élève sera mise en exergue
+grâce aux nombreux échanges et concertations.<br></br><br></br>
+Le mode de fonctionnement de l’école est adapté et axé sur les enfants
+qui présentent des difficultés d’apprentissage.<br></br><br></br>
+Dans le cadre d’un projet sur l’alimentation « saine », différentes
+activités verront le jour au bénéfice de vos enfants.<br></br><br></br>
+L’espace aux abords de l’établissement scolaire et la motivation de
+l’équipe pédagogique permettront aux élèves de mettre en place un
+petit projet axé sur la pratique du sport et de ses bienfaits sur notre
+bien-être!<br></br><br></br>
+La langue néerlandaise est dispensée dès la 1
+
+ère primaire à raison d’une
+
+période par semaine. De plus, dès la 1
+
+ère maternelle et ce jusqu’à la 3
+ème
+,
+les enfants bénéficieront de deux périodes de psychomotricité par
+semaine.<br></br><br></br>
+L’organisation d’une école de devoirs est proposée chaque jour à vos
+enfants.<br></br><br></br>
+
+Une garderie animée est organisée chaque jour dès 7heure du matin et
+jusque 18heure. Le mercredi après-midi la garderie est décentralisée à
+Hannut centre (Saline).
+
+    </elem>}
+    
+  
+  </Card><br></br>
+
+
   <br></br>
-  <div className='news-link'>
-    <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
-  </div>
-
-  <br></br><br></br>
   
 
   {school == "grand-hallet" &&
@@ -135,6 +226,16 @@ const Home  = props => {
       title="video"
     />
   </div>}
+
+
+  
+  <div className='home-team-objectives'>
+    <h4>Notre équipe éducative traduit dans ses pratiques et par des actions concrètes les
+  objectifs d’éducation que les enfants qui lui sont confiés méritent au quotidien.</h4>
+  </div>
+  
+
+ 
 
   <br></br><br></br>
 

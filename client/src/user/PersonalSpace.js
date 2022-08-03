@@ -200,6 +200,40 @@ const PersonalSpace = props => {
                     </select>
 
             </div>}
+
+
+            {(auth.role == "Default" || auth.role == "Admin") 
+            && section == "annonces" && !selected &&
+            <div className='center-class-selection'>
+                {loadedUser && loadedUser.defaultclassyear && 
+                <div>
+                <h4 className="main-class">
+                    <button onClick={mainClassOnClick}>Ma classe principale</button>
+                </h4>
+                <h4>ou</h4>
+                </div>
+                }
+                <h4>Sélectionnez une classe</h4>
+                
+                <select name="option" id="option-select" onChange={onChangedSelect}>
+                    <option value="">--Classes--</option>
+
+                    {auth.role == "Admin" &&
+                    <option value="global">Toutes</option>}
+                    
+                    <option value="m0">m0</option>
+                    <option value="m1">m1</option>
+                    <option value="m2">m2</option>
+                    <option value="m3">m3</option>
+                    <option value="p1">p1</option>
+                    <option value="p2">p2</option>
+                    <option value="p3">p3</option>
+                    <option value="p4">p4</option>
+                    <option value="p5">p5</option>
+                    <option value="p6">p6</option>
+                    </select>
+
+            </div>}
                 
 
             {section == "horaires" && selected && (auth.role == "Default" || auth.role == "Admin") &&
@@ -223,6 +257,14 @@ const PersonalSpace = props => {
 
             {section == "sorties-scolaires" && auth.role == "Student" && loadedUser &&
             <SchoolOutings classyear={loadedUser.classyear} />}
+
+
+
+            {section == "annonces" && selected && (auth.role == "Default" || auth.role == "Admin") &&
+            <Announcements classyear={selected} />}
+
+            {section == "annonces" && auth.role == "Student" && loadedUser &&
+            <Announcements classyear={loadedUser.classyear} />}
 
 
         </React.Fragment>

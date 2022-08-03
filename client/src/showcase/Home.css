@@ -19,13 +19,13 @@
 }
 
 
-.caroussel-div  img {
+.caroussel-div img {
     height: 500px;
     object-fit: cover;
 }
 
 .caroussel-div {
-    width: 50%;
+    width: 51%;
     padding: 3%;
     display: inline-block;
 }
@@ -54,7 +54,10 @@
 
 .home-card-div {
     background-color: #ECF0F7;
+    font-size: 19px;
+    text-align: center;
 }
+
 
 .home-youtube-video {
     width: 800px;
@@ -67,7 +70,7 @@
    
 }
 
-.news-home-title {
+.home-title {
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 2%;
@@ -88,6 +91,14 @@
     -o-background-size: cover;
     background-size: cover;
 }*/
+
+.home-team-objectives {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 2%;
+    padding: 2%;;
+    background-color: #ECF0F7;
+    text-align: center;
+}
 
 
 @media (max-width: 728px) {

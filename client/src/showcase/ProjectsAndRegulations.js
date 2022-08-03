@@ -18,13 +18,16 @@ const ProjectsAndRegulations = props => {
             {school == "moxhe" && 
             <MainNavigation schoolLink="moxhe"
                             schoolLogo="/svg/Moxhe_blanc.svg" />}
+
+            <div>
+
             <div className="project-main-div">
 
-                <h4 className="project-main-title">Projets et règlements</h4>
+                <h4 className="project-main-title">Projets</h4>
 
                 <div className="project-div">
 
-                    <hr></hr>
+                    <br></br>
 
                     <h4>Projet d'établissement de Hannut II</h4>
 
@@ -63,8 +66,64 @@ const ProjectsAndRegulations = props => {
                     </Button>
                     </a>
 
-                    <br></br><br></br><hr></hr>
+                    <br></br><br></br>
+
                 </div>
+
+            </div>
+
+
+            <div className="project-main-div">
+
+                <h4 className="project-main-title">Règlements</h4>
+
+                <div className="project-div">
+
+                    <br></br>
+
+                    <h4>Règlement d'ordre intérieur</h4>
+
+                    <p className="project-description"></p>
+
+                    <a href="/doc/" target="_blank">
+                    <Button>
+                        <img className="project-pdf-img" src="/svg/pdf.svg" />
+                        &nbsp;&nbsp;Document
+                    </Button>
+                    </a>
+
+                    <br></br><br></br><hr></hr>
+
+                    <h4 className="project-title">Règlement des études</h4>
+
+                    <p className="project-description"></p>
+
+                    <a href="/doc/" target="_blank">
+                    <Button>
+                        <img className="project-pdf-img" src="/svg/pdf.svg" />
+                        &nbsp;&nbsp;Document
+                    </Button>
+                    </a>
+
+                    <br></br><br></br><hr></hr>
+
+                    <h4 className="project-title">Fréquentation scolaire</h4>
+
+                    <p className="project-description"></p>
+
+                    <a href="/doc/" target="_blank">
+                    <Button>
+                        <img className="project-pdf-img" src="/svg/pdf.svg" />
+                        &nbsp;&nbsp;Document
+                    </Button>
+                    </a>
+
+                    <br></br><br></br>
+
+                </div>
+
+            </div>
+
 
             </div>
 

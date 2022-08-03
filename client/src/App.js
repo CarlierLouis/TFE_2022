@@ -27,6 +27,8 @@ import AddDocument from './teachers/Documents/AddDocument';
 import UpdateDocument from './teachers/Documents/UpdateDocument';
 import AddOuting from './teachers/SchoolOutings/AddOuting';
 import UpdateOuting from './teachers/SchoolOutings/UpdateOuting';
+import AddAnnouncement from './teachers/Announcements/AddAnnouncement';
+import UpdateAnnounement from './teachers/Announcements/UpdateAnnouncement';
 
 import ScrollToTop from './common/navigation/ScrollToTop';
 
@@ -188,6 +190,14 @@ if (token && role === "Admin") {
   <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId">
     <UpdateOuting />
   </Route>
+
+  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce">
+    <AddAnnouncement />
+  </Route>
+
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announceId">
+    <UpdateAnnounement />
+  </Route>
   
 
 </Switch>
@@ -268,6 +278,14 @@ else if (token && role === "Default") {
 
   <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId">
     <UpdateOuting />
+  </Route>
+
+  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce">
+    <AddAnnouncement />
+  </Route>
+
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announceId">
+    <UpdateAnnounement />
   </Route>
 
 </Switch>

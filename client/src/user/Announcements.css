@@ -1,0 +1,35 @@
+.announcements-title {
+    text-align: center;
+    padding: 1%;
+    background-color: #ECF0F7;
+}
+
+.announcements-list {
+   
+}
+
+.announcements-card {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.center {
+    text-align: center;
+}
+
+.back-button {
+    text-align: center;
+}
+ 
+.back-button :hover {
+   color: white;
+}
+
+
+
+@media (max-width: 820px) {
+    .announcements-card {
+        width: 100%;
+        margin-left: 0%;
+    }
+}
