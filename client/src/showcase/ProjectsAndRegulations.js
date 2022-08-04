@@ -85,7 +85,7 @@ const ProjectsAndRegulations = props => {
 
                     <p className="project-description"></p>
 
-                    <a href="/doc/" target="_blank">
+                    <a href="/doc/reglement-d-ordre-interieur.pdf" target="_blank">
                     <Button>
                         <img className="project-pdf-img" src="/svg/pdf.svg" />
                         &nbsp;&nbsp;Document
@@ -98,7 +98,7 @@ const ProjectsAndRegulations = props => {
 
                     <p className="project-description"></p>
 
-                    <a href="/doc/" target="_blank">
+                    <a href="/doc/reglement-des-etudes.pdf" target="_blank">
                     <Button>
                         <img className="project-pdf-img" src="/svg/pdf.svg" />
                         &nbsp;&nbsp;Document
@@ -111,7 +111,7 @@ const ProjectsAndRegulations = props => {
 
                     <p className="project-description"></p>
 
-                    <a href="/doc/" target="_blank">
+                    <a href="/doc/frequentation-scolaire.pdf" target="_blank">
                     <Button>
                         <img className="project-pdf-img" src="/svg/pdf.svg" />
                         &nbsp;&nbsp;Document
