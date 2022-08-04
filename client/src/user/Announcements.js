@@ -71,7 +71,7 @@ const Announcement = props => {
                 <ul className="announcements-list">
                     {loadedAnnouncements.map(announcements => (
                     <li>
-                        <Card>
+                        <Card className="announcement-item-card">
 
                         <h6>Posté le: {announcements.posteddate.toString().substring(8, 10)}/{announcements.posteddate.toString().substring(5, 7)}/{announcements.posteddate.toString().substring(0, 4)}</h6>
                         <br></br>

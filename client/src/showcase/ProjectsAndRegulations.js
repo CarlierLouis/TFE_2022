@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import MainNavigation from "../common/navigation/MainNavigation";
 import Button from "../common/FormElements/Button";
+import Card from "../common/UIElements/Card";
 
 import './ProjectsAndRegulations.css';
 
@@ -21,13 +22,14 @@ const ProjectsAndRegulations = props => {
 
             <div>
 
-            <div className="project-main-div">
+            <Card className="project-main-div-1">
 
-                <h4 className="project-main-title">Projets</h4>
+                <h2 className="project-main-title">Projets</h2>
 
                 <div className="project-div">
 
                     <br></br>
+                    <Card>
 
                     <h4>Projet d'établissement de Hannut II</h4>
 
@@ -39,9 +41,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br><hr></hr>
+                    <br></br><br></br>
 
+                    <Card>
                     <h4 className="project-title">Projet pédagogique de Hannut II</h4>
 
                     <p className="project-description"></p>
@@ -52,9 +56,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br><hr></hr>
+                    <br></br><br></br>
 
+                    <Card>
                     <h4 className="project-title">Projet éducatif et pédagogique du CECP</h4>
 
                     <p className="project-description"></p>
@@ -65,22 +71,24 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br>
+                    <br></br>
 
                 </div>
 
-            </div>
+            </Card>
 
 
-            <div className="project-main-div">
+            <Card className="project-main-div-2">
 
-                <h4 className="project-main-title">Règlements</h4>
+                <h2 className="project-main-title">Règlements</h2>
 
                 <div className="project-div">
 
                     <br></br>
 
+                    <Card>
                     <h4>Règlement d'ordre intérieur</h4>
 
                     <p className="project-description"></p>
@@ -91,9 +99,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br><hr></hr>
+                    <br></br><br></br>
 
+                    <Card>
                     <h4 className="project-title">Règlement des études</h4>
 
                     <p className="project-description"></p>
@@ -104,9 +114,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br><hr></hr>
+                    <br></br><br></br>
 
+                    <Card>
                     <h4 className="project-title">Fréquentation scolaire</h4>
 
                     <p className="project-description"></p>
@@ -117,12 +129,13 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
+                    </Card>
 
-                    <br></br><br></br>
+                    <br></br>
 
                 </div>
 
-            </div>
+            </Card>
 
 
             </div>
