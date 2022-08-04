@@ -5,7 +5,8 @@
 }
 
 .announcements-list {
-   
+    list-style-type: none;
+    margin-right: 4%;
 }
 
 .announcements-card {
@@ -25,11 +26,24 @@
    color: white;
 }
 
+.announcements-list h6 {
+    float: right;
+    color: #628699;
+}
+
+
+.announcements-list h4 {
+    white-space: nowrap;
+}
 
 
 @media (max-width: 820px) {
     .announcements-card {
         width: 100%;
         margin-left: 0%;
+    }
+
+    .announcements-list {
+        margin-right: 8%;
     }
 }

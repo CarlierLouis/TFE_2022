@@ -104,6 +104,7 @@ const Documents = props => {
             </ul>}
                 
             </Card>
+            <br></br>
         </React.Fragment>
     )
 }

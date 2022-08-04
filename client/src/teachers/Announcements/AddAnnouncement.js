@@ -43,22 +43,28 @@ const AddAnnouncement = props => {
     const AnnouncementSubmitHandler = async event => {
 		event.preventDefault();
 		try {
-			const formData = new FormData();
-			formData.append('title', formState.inputs.title.value);
-            formData.append('description', formState.inputs.description.value);
-			formData.append('school', school);
-            formData.append('target', classname);
-            formData.append('posteddate', today)
 			await sendRequest(
-				process.env.REACT_APP_BACKEND_URL + '/api/announcements',
+				process.env.REACT_APP_BACKEND_URL + `/api/announcements`,
 				'POST',
-				formData,
-				{Authorization: 'Bearer ' + auth.token}
+				JSON.stringify({
+					title: formState.inputs.title.value,
+                    description: formState.inputs.description.value,
+                    posteddate: today,
+                    school: school,
+                    target: classname,
+				}),
+				{
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + auth.token
+				}
 			);
 			history.push(`/${school}/espace-prof/annonces`);
 		}
+        
 		catch(err) {}
 	};
+    
+
 
     return (
         <React.Fragment>
@@ -76,10 +82,10 @@ const AddAnnouncement = props => {
             <form className="announcement-form" onSubmit={AnnouncementSubmitHandler}>
 
 			{classname != "global" &&
-				<h3 className='form-document-title'>Ajouter une nouvelle annonce pour les <b>{classname}</b></h3>}
+				<h3 className='form-announcement-title'>Ajouter une nouvelle annonce pour les <b>{classname}</b></h3>}
 
 				{classname == "global" &&
-				<h3 className='form-document-title'>Ajouter une nouvelle annonce pour toutes les classes</h3>}
+				<h3 className='form-announcement-title'>Ajouter une nouvelle annonce pour toutes les classes</h3>}
 
 			
 				{isLoading && <LoadingSpinner asOverlay />}
@@ -88,7 +94,7 @@ const AddAnnouncement = props => {
 					id="title"
 					element="input"
 					type="text"
-					label="Titre Titre (26 caractères max)"
+					label="Titre (26 caractères max)"
 					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(26)]}
 					errorText="Veillez entrer un titre valide."
 					onInput={inputHandler}
@@ -96,10 +102,9 @@ const AddAnnouncement = props => {
 
                 <Input
 					id="description"
-					element="input"
-					type="text"
+					type="textarea"
 					label="Description"
-					validators={[VALIDATOR_REQUIRE()]}
+					validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(645)]}
 					errorText="Veillez entrer une description valide."
 					onInput={inputHandler}
 				/>
@@ -119,7 +124,6 @@ const AddAnnouncement = props => {
 			</div>
 
 			<br></br>
-
         </React.Fragment>
     )
 

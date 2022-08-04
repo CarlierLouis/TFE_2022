@@ -18,7 +18,8 @@ const getDocumentsByTarget = async (req, res, next) => {
         if (target != "global") {
         targettedDocuments = await Document.find({school: school}).where({target: target});
         globalDocuments = await Document.find({school: school}).where({target: "global"});
-        documents = globalDocuments.concat(targettedDocuments)};
+        documents = globalDocuments.concat(targettedDocuments)
+        };
 
         if (target == "global") {
             documents = await Document.find({school: school}).where({target: "global"});

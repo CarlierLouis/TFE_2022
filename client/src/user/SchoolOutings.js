@@ -105,6 +105,7 @@ const SchoolOutings = props => {
             </ul>}
                 
             </Card>
+            <br></br>
 
         </React.Fragment>
     )

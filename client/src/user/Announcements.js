@@ -70,23 +70,33 @@ const Announcement = props => {
                 {!isLoading && loadedAnnouncements && 
                 <ul className="announcements-list">
                     {loadedAnnouncements.map(announcements => (
-                        <li>
+                    <li>
+                        <Card>
 
-                    <h4>{announcements.title}</h4>
-
-
-                    {(auth.role == "Default" || auth.role == "Admin") &&
-                    <a href={`/${school}/espace-prof/annonces/maj-annnonce/${announcements.id}`}>
-                    <img className="announcement-modify" src="/svg/modify-red.svg" />
-                    </a>}
+                        <h6>Posté le: {announcements.posteddate.toString().substring(8, 10)}/{announcements.posteddate.toString().substring(5, 7)}/{announcements.posteddate.toString().substring(0, 4)}</h6>
+                        <br></br>
+                        <h4>{announcements.title}</h4>
+                        <p>{announcements.description}</p>
 
 
-                    <br></br><br></br><br></br>
+                        {auth.role == "Default" && announcements.target != "global" &&
+                         <a href={`/${school}/espace-prof/annonces/maj-annonce/${announcements.id}`}>
+                         <img className="announcement-modify" src="/svg/modify-red.svg" />
+                         </a>}
+                        
+                        {auth.role == "Admin" &&
+                        <a href={`/${school}/espace-prof/annonces/maj-annonce/${announcements.id}`}>
+                        <img className="announcement-modify" src="/svg/modify-red.svg" />
+                        </a>}</Card>
+
+
+                    <br></br>
                 </li>
             ))}
             </ul>}
                 
             </Card>
+            <br></br>
 
         </React.Fragment>
     )

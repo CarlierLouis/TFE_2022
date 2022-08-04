@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const annnoucementSchema = new Schema ({
+const annnouncementSchema = new Schema ({
     title: {type: String, required: true},
     description: {type: String, required: true},
     school: {type: String, enum: ['grand-hallet', 'moxhe'] , required: true},
@@ -11,4 +11,4 @@ const annnoucementSchema = new Schema ({
     posteddate: {type: Date, required: true}
 })
 
-module.exports = mongoose.model('Announcement', annnoucementSchema);
+module.exports = mongoose.model('Announcement', annnouncementSchema);

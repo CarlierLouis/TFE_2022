@@ -12,7 +12,7 @@ router.get('/:school/target/:target', calendarControllers.getEventsByTarget);
 
 router.get('/id/:eid', calendarControllers.getEventById);
 
-router.use(checkAuthAdmin);
+//router.use(checkAuthAdmin);
 
 router.post('/',
 [

@@ -28,7 +28,7 @@ import UpdateDocument from './teachers/Documents/UpdateDocument';
 import AddOuting from './teachers/SchoolOutings/AddOuting';
 import UpdateOuting from './teachers/SchoolOutings/UpdateOuting';
 import AddAnnouncement from './teachers/Announcements/AddAnnouncement';
-import UpdateAnnounement from './teachers/Announcements/UpdateAnnouncement';
+import UpdateAnnouncement from './teachers/Announcements/UpdateAnnouncement';
 
 import ScrollToTop from './common/navigation/ScrollToTop';
 
@@ -195,8 +195,8 @@ if (token && role === "Admin") {
     <AddAnnouncement />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/maj-annonce/:announceId">
-    <UpdateAnnounement />
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId">
+    <UpdateAnnouncement />
   </Route>
   
 
@@ -284,8 +284,8 @@ else if (token && role === "Default") {
     <AddAnnouncement />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/maj-annonce/:announceId">
-    <UpdateAnnounement />
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId">
+    <UpdateAnnouncement />
   </Route>
 
 </Switch>

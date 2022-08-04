@@ -10,8 +10,22 @@ const getAnnouncementByTarget = async (req, res, next) => {
     const target = req.params.target;
 
     let announcements;
+    let targettedAnnouncements;
+    let globalAnnouncements;
     try {
-        announcements = await Announcement.find({school: school}).where({target: target});
+        if (target != "global") {
+            targettedAnnouncements = await Announcement.find({school: school}).where({target: target});
+            globalAnnouncements = await Announcement.find({school: school}).where({target: "global"});
+            announcements = globalAnnouncements.concat(targettedAnnouncements).sort(function (a, b) {
+                var dateA = new Date(a.posteddate), dateB = new Date(b.posteddate)
+                return dateB - dateA
+            });
+           
+        }
+
+        if (target == "global") {
+            announcements = await Announcement.find({school: school}).where({target: "global"}).sort({posteddate: -1});
+        }
     }
     catch(err) {
         const error = new HttpError(
