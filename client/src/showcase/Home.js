@@ -199,7 +199,7 @@ Hannut centre (Saline).
     </elem>}
     
   
-  </Card><br></br>
+  </Card>
 
 
   <br></br>
@@ -233,11 +233,19 @@ Hannut centre (Saline).
     <h4>Notre équipe éducative traduit dans ses pratiques et par des actions concrètes les
   objectifs d’éducation que les enfants qui lui sont confiés méritent au quotidien.</h4>
   </div>
+
+ {school == "grand-hallet" && 
+<img className='home-foot-image' src="/img/Grand-Hallet-photo_6.jpg"/>}
+
+{school == "moxhe" && 
+<img className='home-foot-image' src="/img/Moxhe-photo_6.jpg"/>}
+
+
+  <br></br><br></br><br></br>
+
+
+  <h2 class="home-contact-title">Informations et contact</h2>
   
-
- 
-
-  <br></br><br></br>
 
 
   {school == "grand-hallet" && 
