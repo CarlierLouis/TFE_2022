@@ -29,7 +29,7 @@ const ProjectsAndRegulations = props => {
                 <div className="project-div">
 
                     <br></br>
-                    <Card>
+                    
 
                     <h4>Projet d'établissement de Hannut II</h4>
 
@@ -41,11 +41,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+                    
 
                     <br></br><br></br>
 
-                    <Card>
+                    
                     <h4 className="project-title">Projet pédagogique de Hannut II</h4>
 
                     <p className="project-description"></p>
@@ -56,11 +56,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+                  
 
                     <br></br><br></br>
 
-                    <Card>
+            
                     <h4 className="project-title">Projet éducatif et pédagogique du CECP</h4>
 
                     <p className="project-description"></p>
@@ -71,7 +71,7 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+                    
 
                     <br></br>
 
@@ -88,7 +88,6 @@ const ProjectsAndRegulations = props => {
 
                     <br></br>
 
-                    <Card>
                     <h4>Règlement d'ordre intérieur</h4>
 
                     <p className="project-description"></p>
@@ -99,11 +98,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+        
 
                     <br></br><br></br>
 
-                    <Card>
+
                     <h4 className="project-title">Règlement des études</h4>
 
                     <p className="project-description"></p>
@@ -114,11 +113,11 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+                    
 
                     <br></br><br></br>
 
-                    <Card>
+               
                     <h4 className="project-title">Fréquentation scolaire</h4>
 
                     <p className="project-description"></p>
@@ -129,7 +128,7 @@ const ProjectsAndRegulations = props => {
                         &nbsp;&nbsp;Document
                     </Button>
                     </a>
-                    </Card>
+                   
 
                     <br></br>
 

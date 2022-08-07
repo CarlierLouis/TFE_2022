@@ -71,6 +71,10 @@ const Announcement = props => {
                 <ul className="announcements-list">
                     {loadedAnnouncements.map(announcements => (
                     <li>
+                        {(((auth.role == "Student") 
+                        || (auth.role == "Admin") 
+                        || (auth.role == "Default" && announcements.teacherid == auth.userId))) &&
+                        
                         <Card className="announcement-item-card">
 
                         <h6>Posté le: {announcements.posteddate.toString().substring(8, 10)}/{announcements.posteddate.toString().substring(5, 7)}/{announcements.posteddate.toString().substring(0, 4)}</h6>
@@ -87,7 +91,9 @@ const Announcement = props => {
                         {auth.role == "Admin" &&
                         <a href={`/${school}/espace-prof/annonces/maj-annonce/${announcements.id}`}>
                         <img className="announcement-modify" src="/svg/modify-red.svg" />
-                        </a>}</Card>
+                        </a>}
+                        </Card>
+                        }
 
 
                     <br></br>

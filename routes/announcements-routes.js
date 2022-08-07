@@ -19,6 +19,7 @@ router.post('/',
     check('target').not().isEmpty(),
     check('target').isIn(['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6']),
     check('posteddate').not().isEmpty(),
+    check('teacherid').not().isEmpty(),
 ], annnouncementsControllers.createAnnouncement);
 
 router.patch('/:aid',

@@ -52,6 +52,7 @@ const AddAnnouncement = props => {
                     posteddate: today,
                     school: school,
                     target: classname,
+					teacherid: auth.userId
 				}),
 				{
 				'Content-Type': 'application/json',

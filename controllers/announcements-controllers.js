@@ -74,14 +74,15 @@ const createAnnouncement = async (req, res, next) => {
         return next(error);
     }
 
-    const { title, description, school, target, posteddate } = req.body;
+    const { title, description, school, target, posteddate, teacherid } = req.body;
 
     const createdAnnouncement = new Announcement ({
         title, 
         description,
         school, 
         target, 
-        posteddate
+        posteddate,
+        teacherid
     });
 
     try {
