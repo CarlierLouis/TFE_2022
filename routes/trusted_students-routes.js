@@ -21,6 +21,7 @@ router.post('/',
     check('name').not().isEmpty(),
     check('firstname').not().isEmpty(),
     check('classyear').not().isEmpty(),
+    check('classyear').isIn(['m0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6']),
     check('school').not().isEmpty(),
     check('school').isIn(['grand-hallet', 'moxhe']),
 ], trustedStudentsControllers.createTrustedStudent);
@@ -36,7 +37,7 @@ router.post('/add-xlsx',
 xlsxUpload.single('xlsx'),
 [
     check('school').not().isEmpty(),
-    check('school').isIn(['grand-hallet', 'moxhe'])
+    check('school').isIn(['grand-hallet', 'moxhe']),
 ], trustedStudentsControllers.createTrustedStudentsWithXLSX);
 
 

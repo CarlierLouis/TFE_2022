@@ -180,9 +180,22 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
     const jsonData = xlsx.getXLSXData("./uploads/xlsx/trustedStudents.xlsx");
 
+    const classyearArray = ['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+
     let existingTrustedStudent;
 
+    var jsonDataClassError = false;
+
     jsonData.forEach(async element => {
+        if (!classyearArray.includes(element.Classe)) {
+            jsonDataClassError = true;
+        }
+    })
+    
+    if (jsonDataClassError == false) {
+
+    jsonData.forEach(async element => {
+        
 
         existingTrustedStudent = await TrustedStudent.findOne({email: element.Email})
         .where({name: element.Nom}).where({firstname: element.Prenom});
@@ -196,6 +209,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
                 school
             });
 
+
             try {
                 createdTrustedStudent.save();
             }
@@ -206,6 +220,14 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             }
         }
     });
+
+    }
+
+    else {
+        const error = new HttpError(
+            'Entrées non valides, vérifiez vos données', 422);
+        return next(error);
+    }
 
     
 
