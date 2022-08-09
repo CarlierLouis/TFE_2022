@@ -7,6 +7,7 @@ const TrustedStudent = require('../models/trusted_student');
 const Student = require('../models/student')
 
 const xlsx =  require('../xlsx/xlsx.config');
+const { $where } = require('../models/trusted_student');
 
 // Get all trusted students by school
 const getTrustedStudents = async (req, res, next) => {
@@ -182,30 +183,29 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
     const classyearArray = ['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
 
-
     var jsonDataClassError = false;
+
+    var jsonDataEmailList = [];
 
     jsonData.forEach(async element => {
         if (!classyearArray.includes(element.Classe)) {
             jsonDataClassError = true;
         }
+
+        jsonDataEmailList.push(element.Email);
     })
 
-    let existingTrustedStudent;
+
 
     let existingStudent
     
     if (jsonDataClassError == false) {
 
+
        await TrustedStudent.deleteMany();
 
         jsonData.forEach(async element => {
             
-            /*  
-            existingTrustedStudent = await TrustedStudent.findOne({email: element.Email})
-            .where({name: element.Nom}).where({firstname: element.Prenom});
-            */
-
 
             existingStudent = await Student.findOne({email: element.Email})
             .where({name: element.Nom}).where({firstname: element.Prenom});
@@ -244,6 +244,37 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
         });
 
+
+        try {
+            
+            let StudentsList = await Student.find();
+
+            StudentsList.forEach(async element => {
+                if (!jsonDataEmailList.includes(element.email)) {
+                    let oldStudent = await Student.findById(element.id);
+                    try {
+                        await oldStudent.remove();
+                    }
+                    catch(err) {
+                        const error = new HttpError(
+                            'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                        return next(error);
+                    }
+                
+                }
+            });
+                
+       
+        }
+        catch(err) {
+            const error = new HttpError(
+                'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+            return next(error);
+        }
+
+
+
+
     }
 
     else {
@@ -251,6 +282,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             'Entrées non valides, vérifiez vos données', 422);
         return next(error);
     }
+
 
     
 
