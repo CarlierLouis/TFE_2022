@@ -87,7 +87,19 @@ const AddExcel = props => {
             <ErrorModal error={error} onClear={clearError} />
 			<br></br>
             <form className="excel-form" onSubmit={xlsxSubmitHandler}>
-                <h4 className='form-excel-title'>Ajouter des élèves de confiances</h4>
+                <h4 className='form-excel-title'>Ajouter des élèves de confiances à la White List</h4>
+
+                <hr></hr>
+                <p style={{color: "red", textAlign: "center"}}>L'ajout de ce fichier permet également de mofidier
+                 les classes des élèves ainsi que de supprimer les comptes de ceux n'étant plus inscrits 
+                 dans l'établissement.</p>
+
+                 <p style={{color: "red", textAlign: "center"}}>Vérifiez donc bien lors de la soumission 
+                 du fichier excel que les informations rensignées dans celui-ci soient bien correctes et que 
+                 tous les élèves inscrits pour la nouvelle année à venir soient mentionnés dans la liste.</p>
+
+                 <hr></hr>
+
                 <h6 className='form-excel-title italic'>Type de fichier accepté: XLSX</h6>
                 {isLoading && <LoadingSpinner asOverlay />}
                 <XLSXUpload
