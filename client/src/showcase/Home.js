@@ -25,7 +25,7 @@ const Home  = props => {
                   schoolLogo="/svg/Moxhe_blanc.svg" />}
 
       
-  <img className='home-title-div' src="/svg/Banner-Hannut2.svg" />
+  <img className='home-title-banner' src="/svg/Banner-Hannut2.svg" />
 
   <h4 className='home-title'>
   Restez informé sur toute l'actualité de notre école ainsi que sur les divers événements organisés
@@ -39,6 +39,8 @@ const Home  = props => {
   </div>
 
   <br></br><br></br>
+  
+  <div>
 
   <h4 className='home-title our-school'>
   Notre école
@@ -124,6 +126,11 @@ const Home  = props => {
 
 
   <Card className='home-card-div'>
+    
+    <div>
+    <img className='h2-home' src="/svg/h2-v1.svg" />
+    </div>
+
     {school == "moxhe" &&
     <elem style={{maxWidth: '50%'}}>
       Dans un cadre rénové et verdoyant, les enfants seront accueillis par une
@@ -195,6 +202,8 @@ Hannut centre (Saline).
     
   
   </Card>
+
+  </div>
 
 
   <br></br>
