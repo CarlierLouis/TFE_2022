@@ -38,9 +38,9 @@ const Home  = props => {
     <Button href={`/${school}/actualites`}>Voir toutes les actualités</Button>
   </div>
 
-  <br></br>
+  <br></br><br></br>
 
-  <h4 className='home-title'>
+  <h4 className='home-title our-school'>
   Notre école
   </h4>
 
@@ -127,14 +127,9 @@ const Home  = props => {
     {school == "moxhe" &&
     <elem style={{maxWidth: '50%'}}>
       Dans un cadre rénové et verdoyant, les enfants seront accueillis par une
-  équipe attentive à l’évolution de chaque enfant, et ouverte au dialogue
-  et à la communication. Soucieuse de l’environnement, du milieu,
-  ...nous participons régulièrement à des activités sportives, culturelles,
-  économiques et sociales. Nous avons le souci d’intégrer chaque enfant
-  afin d’œuvrer à son bien-être physique et intellectuel. Dans ce but,
-  nous organisons régulièrement des concertations afin que chaque
-  enfant soit pris en compte. De plus, nous nous remettons constamment
-  en question sur la qualité de l’approche pédagogique.<br></br><br></br>
+  équipe attentive à l’évolution de chaque enfant. 
+  Nous participons régulièrement à des activités sportives, culturelles,
+  économiques et sociales.<br></br><br></br>
   Dans le cadre d’un projet sur l’alimentation « saine », différentes
   activités verront le jour au bénéfice de vos enfants.<br></br><br></br>
   L’espace aux abords de l’établissement scolaire et la motivation de
@@ -203,6 +198,7 @@ Hannut centre (Saline).
 
 
   <br></br>
+
   
 
   {school == "grand-hallet" &&
