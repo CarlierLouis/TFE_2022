@@ -71,7 +71,7 @@ const createTrustedTeacher = async(req, res, next) => {
     let existingTrustedTeacher
     try {
         existingTrustedTeacher = await TrustedTeacher.findOne({email: email})
-        .where({name: createdTrustedTeacher.name}).where({firstname: createdTrustedTeacher.firstname})
+        //.where({name: createdTrustedTeacher.name}).where({firstname: createdTrustedTeacher.firstname})
     }
     catch(err) {
         const error = new HttpError (
@@ -81,7 +81,7 @@ const createTrustedTeacher = async(req, res, next) => {
 
     if (existingTrustedTeacher) {
         const error = new HttpError(
-            'Ce contact de confiance est déjà renseigné !', 422);
+            'Un contact de confiance est déjà renseigné avec cette addresse email !', 422);
         return next(error);
     }
 

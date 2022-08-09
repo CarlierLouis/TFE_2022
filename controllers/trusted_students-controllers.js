@@ -76,7 +76,7 @@ const createTrustedStudent = async(req, res, next) => {
     let existingTrustedStudent
     try {
         existingTrustedStudent = await TrustedStudent.findOne({email: email})
-        .where({name: name}).where({firstname: firstname})
+        //.where({name: name}).where({firstname: firstname})
     }
     catch(err) {
         const error = new HttpError (
@@ -86,7 +86,7 @@ const createTrustedStudent = async(req, res, next) => {
 
     if (existingTrustedStudent) {
         const error = new HttpError(
-            'Ce contact de confiance est déjà renseigné !', 422);
+            'Un contact de confiance est déjà renseigné avec cette addresse email !', 422);
         return next(error);
     }
 
@@ -182,7 +182,6 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
     const classyearArray = ['global', 'm0', 'm1', 'm2', 'm3', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
 
-    let existingTrustedStudent;
 
     var jsonDataClassError = false;
 
@@ -191,16 +190,39 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
             jsonDataClassError = true;
         }
     })
+
+    let existingTrustedStudent;
+
+    let existingStudent
     
     if (jsonDataClassError == false) {
 
-    jsonData.forEach(async element => {
-        
+       await TrustedStudent.deleteMany();
 
-        existingTrustedStudent = await TrustedStudent.findOne({email: element.Email})
-        .where({name: element.Nom}).where({firstname: element.Prenom});
+        jsonData.forEach(async element => {
+            
+            /*  
+            existingTrustedStudent = await TrustedStudent.findOne({email: element.Email})
+            .where({name: element.Nom}).where({firstname: element.Prenom});
+            */
 
-        if (!existingTrustedStudent) {
+
+            existingStudent = await Student.findOne({email: element.Email})
+            .where({name: element.Nom}).where({firstname: element.Prenom});
+
+            if (existingStudent) {
+                existingStudent.classyear = element.Classe;
+
+                try {
+                    await existingStudent.save();
+                }
+                catch(err) {
+                    const error = new HttpError(
+                        'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                    return next(error);
+                }
+            }
+
             const createdTrustedStudent =  new TrustedStudent ({
                 email: element.Email,
                 name: element.Nom,
@@ -211,15 +233,16 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
 
 
             try {
-                createdTrustedStudent.save();
+                await createdTrustedStudent.save();
             }
             catch(err) {
                 const error = new HttpError(
                     'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
                 return next(error);
-            }
-        }
-    });
+            }            
+
+
+        });
 
     }
 
