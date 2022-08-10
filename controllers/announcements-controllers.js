@@ -90,7 +90,7 @@ const createAnnouncement = async (req, res, next) => {
     }
     catch (err) {
         const error = new HttpError(
-            'Création de l\'annonce ratée, veillez réessayer', 500);
+            'Création de l\'annonce ratée, veuillez réessayer', 500);
         return next(error);
     }
 

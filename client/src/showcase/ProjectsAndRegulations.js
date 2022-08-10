@@ -5,6 +5,8 @@ import MainNavigation from "../common/navigation/MainNavigation";
 import Button from "../common/FormElements/Button";
 import Card from "../common/UIElements/Card";
 
+import Error404Page from "../common/UIElements/Error404Page";
+
 import './ProjectsAndRegulations.css';
 
 const ProjectsAndRegulations = props => {
@@ -12,6 +14,10 @@ const ProjectsAndRegulations = props => {
 
     return (
         <React.Fragment>
+             {(school == "grand-hallet" || school == "moxhe") && 
+             <div>
+
+
             {school == "grand-hallet" && 
                 <MainNavigation schoolLink="grand-hallet"
                                 schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
@@ -138,6 +144,11 @@ const ProjectsAndRegulations = props => {
 
 
             </div>
+
+            </div>}
+
+            {(school != "grand-hallet" && school != "moxhe") && 
+            <Error404Page />}
 
         </React.Fragment>
     )

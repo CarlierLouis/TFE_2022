@@ -13,6 +13,8 @@ import { useHttpClient } from '../common/hooks/http-hook';
 import Modal from '../common/UIElements/Modal';
 import MainNavigation from '../common/navigation/MainNavigation';
 
+import Error404Page from '../common/UIElements/Error404Page';
+
 import './Auth.css';
 
 
@@ -154,6 +156,11 @@ const Auth = props => {
 
 return (
 <React.Fragment>
+        {(school == "grand-hallet" || school == "moxhe") && 
+        (usertype ==  "prof" || usertype == "parent-eleve") &&
+        <div>
+
+
     {school == "grand-hallet" && 
     <MainNavigation schoolLink="grand-hallet"
                     schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
@@ -251,6 +258,14 @@ return (
 
         </Button>
     </Card>
+    
+    </div>}
+
+    {(school != "grand-hallet" && school != "moxhe") &&
+    <Error404Page />}
+
+    {(usertype !=  "prof" && usertype != "parent-eleve") &&
+    <Error404Page/>}
 
 </React.Fragment>
     );

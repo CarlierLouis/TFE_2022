@@ -8,6 +8,8 @@ import { AuthContext } from '../common/context/auth-context';
 import { useParams } from 'react-router-dom';
 import MainNavigation from '../common/navigation/MainNavigation';
 
+import Error404Page from '../common/UIElements/Error404Page';
+
 import './News.css';
 import '../admin/News/News.css';
 
@@ -44,6 +46,9 @@ const News = props => {
 
     return (
         <React.Fragment>
+             {(school == "grand-hallet" || school == "moxhe") && 
+             <div>
+
             {school == "grand-hallet" && 
                 <MainNavigation schoolLink="grand-hallet"
                                 schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
@@ -66,6 +71,12 @@ const News = props => {
             {!isLoading && loadedNews && 
             <NewsList items={loadedNews.slice(0,parseInt(props.numberofnews))} school={school} 
             />}
+
+        </div>}
+
+            {(school != "grand-hallet" && school != "moxhe") && 
+            <Error404Page />}
+
         </React.Fragment>
     );
 }

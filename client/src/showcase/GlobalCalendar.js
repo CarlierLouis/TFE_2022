@@ -15,6 +15,8 @@ import LoadingSpinner from '../common/UIElements/LoadingSpinner';
 import Modal from "../common/UIElements/Modal";
 import Button from "../common/FormElements/Button";
 
+import Error404Page from "../common/UIElements/Error404Page";
+
 import './GlobalCalendar.css';
 import '../admin/GlobalCalendar/GlobalCalendar.css';
 
@@ -121,6 +123,11 @@ const GlobalCalendar = props => {
 
     return(
         <React.Fragment>
+
+            {(school == "grand-hallet" || school == "moxhe") && 
+             <div>
+            
+
             {school == "grand-hallet" && 
                 <MainNavigation schoolLink="grand-hallet"
                                 schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
@@ -229,6 +236,12 @@ const GlobalCalendar = props => {
                 />
 
             </Card>}
+
+            </div>}
+
+
+            {(school != "grand-hallet" && school != "moxhe") && 
+            <Error404Page />}
 
         </React.Fragment>
     )

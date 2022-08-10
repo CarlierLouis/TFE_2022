@@ -14,7 +14,7 @@ const getGlobalEvents = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Echec de la récupération du calendrier, veillez réessayer', 500);
+            'Echec de la récupération du calendrier, veuillez réessayer', 500);
         return next(error);
     }
 
@@ -43,7 +43,7 @@ const getEventsByTarget = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Echec de la récupération du calendrier, veillez réessayer', 500);
+            'Echec de la récupération du calendrier, veuillez réessayer', 500);
         return next(error);
     }
 

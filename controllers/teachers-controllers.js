@@ -33,7 +33,7 @@ const signup = async (req, res, next) => {
 
     if (existingTeacher && existingTeacher.status == "Active") {
         const error = new HttpError(
-            'Email déjà utilisé, veillez réesser avec un autre email.', 422);
+            'Email déjà utilisé, veuillez réesser avec un autre email.', 422);
         return next(error);
     }
 
@@ -47,7 +47,7 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer.', 500);
+            'Création du compte ratée, veuillez réessayer.', 500);
         return next(error);
     }
 
@@ -101,7 +101,7 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Création du compte ratée, veillez réessayer plus tard.', 500);
+            'Création du compte ratée, veuillez réessayer plus tard.', 500);
         return next(error);
     }
 
@@ -122,7 +122,7 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Création du compte ratée, veillez réessayer plus tard.', 500);
+            'Création du compte ratée, veuillez réessayer plus tard.', 500);
         return next(error);
     }
 
@@ -144,7 +144,7 @@ const login = async (req, res, next) => {
     }
     catch (err) {
         const error = new HttpError(
-            'Connexion ratée, veillez réessayer', 500);
+            'Connexion ratée, veuillez réessayer', 500);
         return next(error);
     }
 
@@ -166,7 +166,7 @@ const login = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Vous ne pouvez pas vous connecter, veillez vérifier vos identfiants et réessayer.', 500)
+            'Vous ne pouvez pas vous connecter, veuillez vérifier vos identfiants et réessayer.', 500)
         return next(error);
     }
 
@@ -200,7 +200,7 @@ const login = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Conexion ratée, veillez réessayer plus tard.', 500);
+            'Conexion ratée, veuillez réessayer plus tard.', 500);
         return next(error);
     }
 

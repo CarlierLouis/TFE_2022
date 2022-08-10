@@ -16,7 +16,7 @@ const getNews = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Echec de la récupération des actualités, veillez réessayer', 500);
+            'Echec de la récupération des actualités, veuillez réessayer', 500);
         return next(error);
     }
 
@@ -78,7 +78,7 @@ const createNews = async(req, res, next) => {
     } 
     catch(err) {
         const error = new HttpError(
-            'Création de la nouvelle actualité raté, veillez réessayer', 500);
+            'Création de la nouvelle actualité raté, veuillez réessayer', 500);
         return next(error);
     }
 

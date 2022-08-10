@@ -10,6 +10,8 @@ import Announcements from './Announcements';
 import Documents from './Documents';
 import SchoolOutings from './SchoolOutings';
 
+import Error404Page from '../common/UIElements/Error404Page';
+
 import './PersonalSpace.css';
 
 
@@ -82,6 +84,12 @@ const PersonalSpace = props => {
 
     return (
         <React.Fragment>
+            {(school == "grand-hallet" || school == "moxhe") && 
+            (!section || section == "annonces" || section ==  "donnees-personnelles" || section == "horaires"
+            || section == "documents" || section == "sorties-scolaires") &&
+            <div>
+
+
              {school == "grand-hallet" && 
                 <MainNavigation schoolLink="grand-hallet"
                                 schoolLogo="/svg/Grand-Hallet_blanc.svg" />}
@@ -266,6 +274,15 @@ const PersonalSpace = props => {
             {section == "annonces" && auth.role == "Student" && loadedUser &&
             <Announcements classyear={loadedUser.classyear} />}
 
+
+            </div>}
+
+            {(school != "grand-hallet" && school != "moxhe") && 
+            <Error404Page />}
+
+            {(section && section != "annonces" &&  section !=  "donnees-personnelles" &&  section != "horaires"
+            &&  section != "documents" &&  section != "sorties-scolaires") &&
+            <Error404Page />}
 
         </React.Fragment>
     ); 

@@ -30,6 +30,8 @@ import UpdateOuting from './teachers/SchoolOutings/UpdateOuting';
 import AddAnnouncement from './teachers/Announcements/AddAnnouncement';
 import UpdateAnnouncement from './teachers/Announcements/UpdateAnnouncement';
 
+import Error404Page from './common/UIElements/Error404Page';
+
 import ScrollToTop from './common/navigation/ScrollToTop';
 
 let logoutTimer;
@@ -84,6 +86,7 @@ useEffect(() => {
 
 let routes;
 
+
 if (token && role === "Admin") {
   routes = (
     
@@ -91,6 +94,7 @@ if (token && role === "Admin") {
 
   <Redirect from="/grand-hallet/connexion/prof" to="/grand-hallet" />
   <Redirect from="/moxhe/connexion/prof" to="/moxhe" />
+
 
   {school === "grand-hallet" &&
     <Redirect from="/moxhe" to="/grand-hallet" />
@@ -100,8 +104,9 @@ if (token && role === "Admin") {
     <Redirect from="/grand-hallet" to="/moxhe" />
   }
 
+
   <Route path="/" exact>
-          <Portal />
+      <Portal />
   </Route>
 
   <Route path="/:school" exact>
@@ -118,24 +123,24 @@ if (token && role === "Admin") {
     <Footer />
   </Route>
 
-  <Route path="/:school/agenda/admin/ajouter-evenement-calendrier">
+  <Route path="/:school/agenda/admin/ajouter-evenement-calendrier" exact>
     <AddEvent />
   </Route>
 
-  <Route path="/:school/agenda/admin/maj-evenement-calendrier/:eventId">
+  <Route path="/:school/agenda/admin/maj-evenement-calendrier/:eventId" exact>
     <UpdateEvent />
   </Route>
 
-  <Route path="/:school/projets-et-reglements">
+  <Route path="/:school/projets-et-reglements" exact>
     <ProjectsAndRegulations />
     <Footer />
   </Route>
   
-  <Route path="/:school/actualites/admin/ajouter-actualite">
+  <Route path="/:school/actualites/admin/ajouter-actualite" exact>
       <AddNews />
   </Route>
 
-  <Route path="/:school/actualites/admin/maj-actualite/:newsId">
+  <Route path="/:school/actualites/admin/maj-actualite/:newsId" exact>
     <UpdateNews />
   </Route>
 
@@ -147,15 +152,15 @@ if (token && role === "Admin") {
     <Users />
   </Route>
 
-  <Route path="/:school/admin/utilisateurs/ajouter-utilisateur/:usertype">
+  <Route path="/:school/admin/utilisateurs/ajouter-utilisateur/:usertype" exact>
     <AddUser />
   </Route>
 
-  <Route path="/:school/admin/utilisateurs/maj-utilisateur/:usertype/:userId">
+  <Route path="/:school/admin/utilisateurs/maj-utilisateur/:usertype/:userId" exact>
     <UpdateUser />
   </Route>
 
-  <Route path="/:school/admin/utilisateurs/ajouter-excel/white-list-eleves">
+  <Route path="/:school/admin/utilisateurs/ajouter-excel/white-list-eleves" exact>
     <AddExcel />
   </Route>
 
@@ -167,38 +172,39 @@ if (token && role === "Admin") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier">
+  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier" exact>
     <AddTargetedEvent />
   </Route>
 
-  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId">
+  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId" exact>
     <UpdateTargetedEvent />
   </Route>
 
-  <Route path="/:school/espace-prof/documents/:classname/ajouter-document">
+  <Route path="/:school/espace-prof/documents/:classname/ajouter-document" exact>
     <AddDocument />
   </Route>
 
-  <Route path="/:school/espace-prof/documents/maj-document/:documentId">
+  <Route path="/:school/espace-prof/documents/maj-document/:documentId" exact>
     <UpdateDocument />
   </Route>
 
-  <Route path="/:school/espace-prof/sorties-scolaires/:classname/ajouter-sortie-scolaire">
+  <Route path="/:school/espace-prof/sorties-scolaires/:classname/ajouter-sortie-scolaire" exact>
     <AddOuting />
   </Route>
 
-  <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId">
+  <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId" exact>
     <UpdateOuting />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce">
+  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce" exact>
     <AddAnnouncement />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId">
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId" exact>
     <UpdateAnnouncement />
   </Route>
   
+  <Route path='*' component={Error404Page}/>
 
 </Switch>
 
@@ -237,12 +243,12 @@ else if (token && role === "Default") {
     <Footer />
   </Route>
 
-  <Route path="/:school/agenda">
+  <Route path="/:school/agenda" exact>
     <GlobalCalendar />
     <Footer />
   </Route>
 
-  <Route path="/:school/projets-et-reglements">
+  <Route path="/:school/projets-et-reglements" exact>
     <ProjectsAndRegulations />
     <Footer />
   </Route>
@@ -255,38 +261,40 @@ else if (token && role === "Default") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier">
+  <Route path="/:school/espace-prof/horaires/:classname/ajouter-evenement-calendrier" exact>
     <AddTargetedEvent />
   </Route>
 
-  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId">
+  <Route path="/:school/espace-prof/horaires/maj-evenement-calendrier/:eventId" exact>
     <UpdateTargetedEvent />
   </Route>
 
-  <Route path="/:school/espace-prof/documents/:classname/ajouter-document">
+  <Route path="/:school/espace-prof/documents/:classname/ajouter-document" exact>
     <AddDocument />
   </Route>
 
-  <Route path="/:school/espace-prof/documents/maj-document/:documentId">
+  <Route path="/:school/espace-prof/documents/maj-document/:documentId" exact>
     <UpdateDocument />
   </Route>
 
   
-  <Route path="/:school/espace-prof/sorties-scolaires/:classname/ajouter-sortie-scolaire">
+  <Route path="/:school/espace-prof/sorties-scolaires/:classname/ajouter-sortie-scolaire" exact>
     <AddOuting />
   </Route>
 
-  <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId">
+  <Route path="/:school/espace-prof/sorties-scolaires/maj-sortie-scolaire/:outingId" exact>
     <UpdateOuting />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce">
+  <Route path="/:school/espace-prof/annonces/:classname/ajouter-annonce" exact>
     <AddAnnouncement />
   </Route>
 
-  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId">
+  <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId" exact>
     <UpdateAnnouncement />
   </Route>
+
+  <Route path='*' component={Error404Page}/>
 
 </Switch>
 
@@ -325,12 +333,12 @@ else if (token && role === "Student") {
       <Footer />
   </Route>
 
-  <Route path="/:school/agenda">
+  <Route path="/:school/agenda" exact>
     <GlobalCalendar />
     <Footer />
   </Route>
 
-  <Route path="/:school/projets-et-reglements">
+  <Route path="/:school/projets-et-reglements" exact>
     <ProjectsAndRegulations />
     <Footer />
   </Route>
@@ -339,9 +347,11 @@ else if (token && role === "Student") {
       <PersonalSpace />
   </Route>
 
-  <Route path="/:school/espace-personnel/:section">
+  <Route path="/:school/espace-personnel/:section" exact>
       <PersonalSpace />
   </Route>
+
+  <Route path='*' component={Error404Page}/>
 
 </Switch>
 
@@ -367,27 +377,29 @@ else {
     <Footer />
   </Route>
 
-  <Route path="/:school/agenda">
+  <Route path="/:school/agenda" exact>
     <GlobalCalendar />
     <Footer />
   </Route>
 
-  <Route path="/:school/projets-et-reglements">
+  <Route path="/:school/projets-et-reglements" exact>
     <ProjectsAndRegulations />
     <Footer />
   </Route>
 
-  <Route path="/:school/connexion/:usertype">
+  <Route path="/:school/connexion/:usertype" exact>
       <Auth />
   </Route>
 
-  <Route path="/:usertype/email-confirmation/:confirmationCode">
+  <Route path="/:usertype/email-confirmation/:confirmationCode" exact>
     <WelcomeUser />
   </Route>
 
-  <Route path="/:school/info-email">
+  <Route path="/:school/info-email" exact>
     <CheckEmail />
   </Route>
+
+  <Route path='*' component={Error404Page}/>
 
 </Switch>
 

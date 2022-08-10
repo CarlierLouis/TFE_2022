@@ -81,7 +81,7 @@ const createTrustedStudent = async(req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du contact ratée, veillez réessayer.', 500);
+            'Création du contact ratée, veuillez réessayer.', 500);
         return next(error);
     }
 
@@ -218,7 +218,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
                 }
                 catch(err) {
                     const error = new HttpError(
-                        'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                        'Création des contacts "élèves de confiance" ratée, veuillez réessayer', 500);
                     return next(error);
                 }
             }
@@ -257,7 +257,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
                     }
                     catch(err) {
                         const error = new HttpError(
-                            'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                            'Création des contacts "élèves de confiance" ratée, veuillez réessayer', 500);
                         return next(error);
                     }
                 
@@ -268,7 +268,7 @@ const createTrustedStudentsWithXLSX = async(req, res, next) => {
         }
         catch(err) {
             const error = new HttpError(
-                'Création des contacts "élèves de confiance" ratée, veillez réessayer', 500);
+                'Création des contacts "élèves de confiance" ratée, veuillez réessayer', 500);
             return next(error);
         }
 
