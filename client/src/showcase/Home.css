@@ -2,12 +2,12 @@
     width: 100%;
     background-color: rgb(31, 30, 30);
     margin-top: -8px;
-    animation: fadeInAnimation ease 2s; 
+    animation: HomefadeInAnimation ease 2s; 
     animation-fill-mode: forwards; 
     animation-iteration-count: 1; 
 }
 
-@keyframes fadeInAnimation { 
+@keyframes HomefadeInAnimation { 
     0% { 
     opacity: 0; 
     margin-top: -40%;

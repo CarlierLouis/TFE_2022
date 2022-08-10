@@ -1,7 +1,21 @@
 .portal-img-div {
     align-items: center;
     width: 100%;
+    animation: PortalfadeInAnimation1 ease 2s; 
+    animation-fill-mode: forwards; 
+    animation-iteration-count: 1;
 }
+
+@keyframes PortalfadeInAnimation1 { 
+    0% { 
+    opacity: 0; 
+    margin-top: -10%;
+    } 
+    100% { 
+    opacity: 1; 
+    } 
+} 
+
 
 .portal-img-div img {
     width: 550px;
@@ -69,7 +83,22 @@
   transition: all 0.5s;
   cursor: pointer;
   margin-left: 7%;
+  animation: PortalfadeInAnimation2 ease 2s; 
+  animation-fill-mode: forwards; 
+  animation-iteration-count: 1; 
 }
+
+@keyframes PortalfadeInAnimation2 { 
+    0% { 
+    opacity: 0; 
+    margin-top: -80%;
+    } 
+    100% { 
+    opacity: 1; 
+    } 
+} 
+
+
 
 .animated-portal-div span {
   cursor: pointer;
