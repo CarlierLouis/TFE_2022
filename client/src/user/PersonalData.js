@@ -10,6 +10,7 @@ import Button from '../common/FormElements/Button';
 import Card from '../common/UIElements/Card';
 import ErrorModal from '../common/UIElements/ErrorModal';
 import LoadingSpinner from '../common/UIElements/LoadingSpinner';
+import Modal from "../common/UIElements/Modal";
 
 import './PersonalData.css';
 
@@ -21,6 +22,9 @@ const PersonalData = props => {
 	const history = useHistory();
     const userId = auth.userId;
     const usertype = auth.role;
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [validationText, setValidationText] = useState('');
+
 
     if (auth.isLoggedIn && (auth.role == "Admin" || auth.role == "Default")){
         var usertypeSpace = "espace-prof"
@@ -178,11 +182,82 @@ const PersonalData = props => {
 		}
 	}
 
+
+
+    const showDeleteWarningHandler = () => {
+		setShowConfirmModal(true);
+	};
+
+	const cancelDeleteHandler = () => {
+		setShowConfirmModal(false);
+	};
+
+
+    const confirmDeleteHandler = async () => {
+		setShowConfirmModal(false);
+		try {
+			await sendRequest(
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${auth.userId}`,
+				'DELETE',
+				null,
+				{Authorization: 'Bearer ' + auth.token}
+			);
+            history.push('/' + school);
+            auth.login();
+		}
+		catch(err) {}
+
+
+	};
+
+
+    const handleConfirmationTextChange = event => {
+        setValidationText(event.target.value);
+
+      };
+
+
+
     return (
         <React.Fragment>
 
             <ErrorModal error={error} onClear={clearError} />
             <br></br>
+
+
+            <Modal 
+            show={showConfirmModal}
+            onCancel={cancelDeleteHandler}
+            header="Êtes-vous sûr(e) ?" 
+            footerClass="personnal-data__modal-actions" 
+            footer={
+                <React.Fragment>
+                    <Button inverse onClick={cancelDeleteHandler}>Annuler</Button>
+                    <Button danger onClick={confirmDeleteHandler} 
+                    disabled={validationText != "Oui je souhaite supprimer mon profil"}>Supprimer</Button>
+                </React.Fragment>
+				  }>
+				<p>
+				Êtes-vous certain(e) de vouloir supprimer votre compte ?
+				Cette action entraînera la suppression irréversible de celui-ci !
+				</p><br></br>
+                
+                Afin de valider la suppression de votre compte, 
+                veuillez renseignez le texte <b>Oui je souhaite supprimer mon profil </b>
+                dans le champ qui suit
+                &nbsp;
+                
+                <input 
+                id="confirmationtext"
+                type="text" 
+                onChange={handleConfirmationTextChange} 
+                value={validationText} 
+                />
+
+                <br></br><br></br>
+			</Modal>
+
+
             
             <div>
                 {!isLoading && loadedUser && 
@@ -327,7 +402,17 @@ const PersonalData = props => {
                     <Button type="submit" disabled={!formState.isValid}>
                         Mettre à jour
                     </Button>
+
+                    
+
                 </form>}
+
+                <div className="delete-account-button">
+                    <Button onClick={showDeleteWarningHandler} danger>Supprimer mon compte</Button>
+                </div>
+
+                <br></br><br></br>
+
                  
                 <br></br>
             </div>

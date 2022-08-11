@@ -1,10 +1,24 @@
 .cardUIElem.error-404-Card {
     text-align: center;
-    margin: 9.5% 2% 2% 15%;
+    margin: 11.5% 2% 2% 15%;
     width: 70%;
     background-color: #ECF0F7;
     font-family: Arial, Helvetica, sans-serif;
+    animation: errorfadeInAnimation ease 4s; 
+    animation-fill-mode: forwards; 
+    animation-iteration-count: 1; 
 }
+
+@keyframes errorfadeInAnimation { 
+    0% { 
+    opacity: 0; 
+    margin-top: -40%;
+    } 
+    100% { 
+    opacity: 1; 
+    } 
+} 
+
 
 .cardUIElem.error-404-Card h1 {
     color: #628699;

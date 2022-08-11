@@ -95,7 +95,7 @@ const AddExcel = props => {
                  dans l'établissement.</p>
 
                  <p style={{color: "red", textAlign: "center"}}>Vérifiez donc bien lors de la soumission 
-                 du fichier excel que les informations rensignées dans celui-ci soient bien correctes et que 
+                 du fichier excel que les informations renseignées dans celui-ci soient bien correctes et que 
                  tous les élèves inscrits pour la nouvelle année à venir soient mentionnés dans la liste.</p>
 
                  <hr></hr>
@@ -114,7 +114,7 @@ const AddExcel = props => {
 				</Button>
             </form>
 
-            <br></br>
+        
 
             <div className="back-button">
                 <Button href={'/' + school + '/admin/utilisateurs/white-list-eleves'}>
