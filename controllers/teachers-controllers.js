@@ -357,6 +357,10 @@ const verifyEmail = async (req, res, next) => {
 
 };
 
+// Send losted password email
+
+// New password confirmation
+
 exports.signup = signup;
 exports.login = login;
 exports.getTeachers = getTeachers;

@@ -315,6 +315,8 @@ const deleteStudent = async (req, res, next) => {
     res.status(200).json({ message: 'Compte supprimé' })
 }
 
+
+// verify email and patch status to activeate the account
 const verifyEmail = async (req, res, next) => {
     const confirmationCode = req.params.code;
  

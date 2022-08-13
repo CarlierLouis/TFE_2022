@@ -27,6 +27,7 @@ const Auth = props => {
     const school = useParams().school;
 
     const [showQuestion, setShowQuestion] = useState(false);
+    const [showLostedPasswordModal, setShowLostedPasswordModal] = useState(false);
 
     const openQuestionHandler = () => {
 		setShowQuestion(true);
@@ -35,6 +36,15 @@ const Auth = props => {
 	const closeQuestionHandler = () => {
 		setShowQuestion(false);
 	};
+
+    const openLostedPasswordHandler = () => {
+		setShowLostedPasswordModal(true);
+	};
+
+	const closeLostedPasswordHandler = () => {
+		setShowLostedPasswordModal(false);
+	};
+
 
 
     const [formState, inputHandler, setFormData] = useForm ({ 
@@ -192,6 +202,24 @@ return (
     </Modal>
 
 
+    
+    <Modal className='question-modal-auth'
+        show={showLostedPasswordModal}
+        onCancel={closeLostedPasswordHandler}
+        footer={<Button onClick={closeLostedPasswordHandler}>Fermer</Button>}>
+
+        <div style={{textAlign: 'center'}}>
+            <p>Vous ne vous souvenez plus de votre mot de passe ? 
+            <br></br>Entrez votre adresse email dans le champ suivant pour recevoir un email 
+            afin de modifier votre mot de passe.</p>
+
+            <input></input>
+            <br></br><br></br>
+            <Button>Valider</Button>
+        </div>
+    </Modal>
+
+
     <ErrorModal error={error} onClear={clearError}/>    
     <br></br><br></br><br></br>
     <Card className="auth-card">
@@ -251,13 +279,20 @@ return (
         </Button>
         
         
+        
         </form>
 
         <Button inverse onClick={switchModeHandler}>
             {isLoginMode ? 'Créer un compte': 'Se connecter'}  
 
         </Button>
+
+        <br></br><br></br>
+
+        {isLoginMode &&
+        <button onClick={openLostedPasswordHandler} className='losted-password'>Mot de passe oublié ?</button>}
     </Card>
+    
     
     </div>}
 
