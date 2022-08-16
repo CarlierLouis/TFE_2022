@@ -74,6 +74,7 @@ const [role, setRole] = useState(false);
 const [school, setSchool] = useState(false);
 
 
+
 const login = useCallback((uid, token, role, school, expirationDate) => {
     setToken(token);
     setUserId(uid);
