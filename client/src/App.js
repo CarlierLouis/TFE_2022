@@ -1,38 +1,68 @@
-import React, { useState, useCallback, useEffect} from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import React, { useState, useCallback, useEffect, Suspense} from 'react';
 
-import Home from './showcase/Home';
-import Portal from './portal/Portal';
-import Footer from './showcase/Footer';
-import Auth from './user/Auth';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { AuthContext } from './common/context/auth-context';
-import News from './showcase/News';
-import AddNews from './admin/News/AddNews';
-import UpdateNews from './admin//News/UpdateNews';
-import WelcomeUser from './email-confirmation/WelcomeUser';
-import CheckEmail from './email-confirmation/CheckEmail';
-import Users from './admin/Users/Users';
-import UpdateUser from './admin/Users/UpdateUser';
-import AddUser from './admin/Users/AddUser';
-import AddExcel from './admin/Users/Excel/AddExcel';
-import PersonalSpace from './user/PersonalSpace';
-import GlobalCalendar from './showcase/GlobalCalendar';
-import AddEvent from './admin/GlobalCalendar/AddEvent';
-import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
-import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
-import AddTargetedEvent from './teachers/PersonnalCalendar/AddTargetedEvent';
-import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateTargetedEvent';
-import AddDocument from './teachers/Documents/AddDocument';
-import UpdateDocument from './teachers/Documents/UpdateDocument';
-import AddOuting from './teachers/SchoolOutings/AddOuting';
-import UpdateOuting from './teachers/SchoolOutings/UpdateOuting';
-import AddAnnouncement from './teachers/Announcements/AddAnnouncement';
-import UpdateAnnouncement from './teachers/Announcements/UpdateAnnouncement';
 
 import Error404Page from './common/UIElements/Error404Page';
-
 import ScrollToTop from './common/navigation/ScrollToTop';
+import LoadingSpinner from './common/UIElements/LoadingSpinner';
+
+import './App.css';
+
+//import Home from './showcase/Home';
+//import Portal from './portal/Portal';
+//import Footer from './showcase/Footer';
+//import Auth from './user/Auth';
+//import News from './showcase/News';
+//import AddNews from './admin/News/AddNews';
+//import UpdateNews from './admin//News/UpdateNews';
+//import WelcomeUser from './email-confirmation/WelcomeUser';
+//import CheckEmail from './email-confirmation/CheckEmail';
+//import Users from './admin/Users/Users';
+//import UpdateUser from './admin/Users/UpdateUser';
+//import AddUser from './admin/Users/AddUser';
+//import AddExcel from './admin/Users/Excel/AddExcel';
+//import PersonalSpace from './user/PersonalSpace';
+//import GlobalCalendar from './showcase/GlobalCalendar';
+//import AddEvent from './admin/GlobalCalendar/AddEvent';
+//import UpdateEvent from './admin/GlobalCalendar/UpdateEvent';
+//import ProjectsAndRegulations from './showcase/ProjectsAndRegulations';
+//import AddTargetedEvent from './teachers/PersonnalCalendar/AddTargetedEvent';
+//import UpdateTargetedEvent from './teachers/PersonnalCalendar/UpdateTargetedEvent';
+//import AddDocument from './teachers/Documents/AddDocument';
+//import UpdateDocument from './teachers/Documents/UpdateDocument';
+//import AddOuting from './teachers/SchoolOutings/AddOuting';
+//import UpdateOuting from './teachers/SchoolOutings/UpdateOuting';
+//import AddAnnouncement from './teachers/Announcements/AddAnnouncement';
+//import UpdateAnnouncement from './teachers/Announcements/UpdateAnnouncement';
+
+const Home = React.lazy(() => import('./showcase/Home'));
+const Portal = React.lazy(() => import('./portal/Portal'));
+const Footer = React.lazy(() => import('./showcase/Footer'));
+const Auth = React.lazy(() => import('./user/Auth'));
+const News = React.lazy(() => import('./showcase/News'));
+const AddNews = React.lazy(() => import('./admin/News/AddNews'));
+const UpdateNews = React.lazy(() => import('./admin//News/UpdateNews'));
+const WelcomeUser = React.lazy(() => import('./email-confirmation/WelcomeUser'));
+const CheckEmail = React.lazy(() => import('./email-confirmation/CheckEmail'));
+const Users = React.lazy(() => import('./admin/Users/Users'));
+const UpdateUser = React.lazy(() => import('./admin/Users/UpdateUser'));
+const AddUser = React.lazy(() => import('./admin/Users/AddUser'));
+const AddExcel = React.lazy(() => import('./admin/Users/Excel/AddExcel'));
+const PersonalSpace = React.lazy(() => import('./user/PersonalSpace'));
+const GlobalCalendar = React.lazy(() => import('./showcase/GlobalCalendar'));
+const AddEvent = React.lazy(() => import('./admin/GlobalCalendar/AddEvent'));
+const UpdateEvent = React.lazy(() => import('./admin/GlobalCalendar/UpdateEvent'));
+const ProjectsAndRegulations = React.lazy(() => import('./showcase/ProjectsAndRegulations'));
+const AddTargetedEvent = React.lazy(() => import('./teachers/PersonnalCalendar/AddTargetedEvent'));
+const UpdateTargetedEvent = React.lazy(() => import('./teachers/PersonnalCalendar/UpdateTargetedEvent'));
+const AddDocument = React.lazy(() => import('./teachers/Documents/AddDocument'));
+const UpdateDocument = React.lazy(() => import('./teachers/Documents/UpdateDocument'));
+const AddOuting = React.lazy(() => import('./teachers/SchoolOutings/AddOuting'));
+const UpdateOuting = React.lazy(() => import('./teachers/SchoolOutings/UpdateOuting'));
+const AddAnnouncement = React.lazy(() => import('./teachers/Announcements/AddAnnouncement'));
+const UpdateAnnouncement = React.lazy(() => import('./teachers/Announcements/UpdateAnnouncement'));
+
 
 let logoutTimer;
 
@@ -420,7 +450,11 @@ else {
     <Router>
       <ScrollToTop />
       <main>
+      <Suspense fallback=
+      {<div className='center'><LoadingSpinner />
+      </div>}>
       {routes}
+      </Suspense>
       </main>
     </Router>
   </AuthContext.Provider>
