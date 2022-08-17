@@ -111,7 +111,7 @@
     border: solid 2px;
     padding: 3px;
     background-color: #ECF0F7;
-    background-image: url(/svg/loupe.svg);
+    background-image: url(../../../public/svg/loupe.svg);
     background-repeat: no-repeat;
     background-size: 23px;
     background-position: left;
