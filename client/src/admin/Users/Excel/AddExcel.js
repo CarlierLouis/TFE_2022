@@ -108,7 +108,7 @@ const AddExcel = props => {
                 errorText="Veillez sélectionner un fichier valide"/>
 
                 <img className='question-excel' src='/svg/info.svg' onClick={openQuestionHandler} ></img>
-
+                <br></br>
                 <Button type="submit" disabled={!formState.isValid}>
 					Soumettre
 				</Button>

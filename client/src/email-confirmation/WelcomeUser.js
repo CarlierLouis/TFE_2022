@@ -29,6 +29,7 @@ useEffect(() => {
 
   return (
     <div style={{textAlign: 'center'}}>
+      <br></br>
       <header>
         <h3>
           <strong>Validation du compte terminée !</strong>
