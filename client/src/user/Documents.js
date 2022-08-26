@@ -80,7 +80,7 @@ const Documents = props => {
             <ul className="documents-list">
             {loadedDocuments.map(documents => (
                 <li>
-                <a href={process.env.REACT_APP_BACKEND_URL + `/${documents.file}`} target="_blank">
+                <a href={process.env.REACT_APP_WAS_S3_BUCKET_URL + `/files/${documents.file}`} target="_blank">
                 <Button>
                     <img className="document-img" src="/svg/pdf.svg" />
                     &nbsp;&nbsp;{documents.title}

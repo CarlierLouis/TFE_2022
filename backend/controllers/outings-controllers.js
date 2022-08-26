@@ -6,6 +6,13 @@ const HttpError = require('../models/http-error');
 
 const Outing = require('../models/outing');
 
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+  })
+
 // Get outing by school by class (target)
 const getOutingByTarget = async (req, res, next) => {
     const school = req.params.school;
@@ -70,11 +77,16 @@ const createOuting = async (req, res, next) => {
         target, 
         start, 
         end,
-        file: req.file.path
+        file: req.file.filename
     });
 
     try {
         await createdOuting.save();
+        s3.upload({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+            Key: req.file.filename,
+            Body: fs.readFileSync(req.file.path),
+          }).promise();
     }
     catch (err) {
         const error = new HttpError(
@@ -114,19 +126,32 @@ const updateOuting = async (req, res, next) => {
     outing.end = end;
     
     if (req.file != undefined) {
-        outing.file = req.file.path;
+        outing.file = req.file.filename;
     }
 
     try {
         await outing.save();
 
-        /*
+        
         if (req.file != undefined) {
+            /*
             fs.unlink(oldFilePath, err => {
                 console.log(err);
         });
+        */
+
+         s3.deleteObject({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+        Key: oldFilePath,
+        }).promise();
+
+        s3.upload({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+            Key: req.file.filename,
+            Body: fs.readFileSync(req.file.path),
+          }).promise();
     }
-    */
+    
 
     }
     catch(err){
@@ -162,6 +187,13 @@ const deleteOuting = async (req, res, next) => {
             'Quelque chose ne s\'est pas passé comme prévu, suppression de la sortie scolaire impossible', 500);
             return next(error);
     }
+
+
+    s3.deleteObject({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+        Key: filePath,
+      }).promise();
+
 
     /*
     

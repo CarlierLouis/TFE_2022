@@ -6,6 +6,9 @@ import { AuthContext } from '../common/context/auth-context';
 import { useHttpClient } from '../common/hooks/http-hook';
 import ErrorModal from '../common/UIElements/ErrorModal';
 
+import AWS from 'aws-sdk'
+
+
 import './NewsItem.css';
 
 const NewsItem = props => {
@@ -64,10 +67,13 @@ const closeMoreHandler = () => {
   const refreshPage = ()=>{
     window.location.reload(true);
  }
-  
+
+
+
 
   return (
     <React.Fragment>
+
       <ErrorModal error={error} onClear={clearError} />
       <Modal className='question-modal'
           show={showMore}
@@ -99,7 +105,8 @@ const closeMoreHandler = () => {
         <Card className="news-item__content">
             <div className="news-item__info">
               <div className='news-item-box__image'>
-                <img className='news-item__image' src={process.env.REACT_APP_BACKEND_URL + `/${props.image}`} />
+                <img className='news-item__image' 
+                src={process.env.REACT_APP_WAS_S3_BUCKET_URL + `/images/${props.image}`} />
               </div>
               <h2 className="news-date">{props.date}</h2>
               <h2 className='news-title'>{props.title}</h2>

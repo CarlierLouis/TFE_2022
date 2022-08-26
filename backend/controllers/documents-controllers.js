@@ -6,6 +6,13 @@ const HttpError = require('../models/http-error');
 
 const Document = require('../models/document');
 
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+  })
+
 // Get document by school by class (target)
 const getDocumentsByTarget = async (req, res, next) => {
     const school = req.params.school;
@@ -78,11 +85,16 @@ const createDocument = async (req, res, next) => {
         title,
         school, 
         target, 
-        file: req.file.path
+        file: req.file.filename
     });
 
     try {
         await createdDocument.save();
+        s3.upload({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+            Key: req.file.filename,
+            Body: fs.readFileSync(req.file.path),
+          }).promise();
     }
     catch(err) {
         const error = new HttpError(
@@ -120,7 +132,7 @@ const updateDocument = async (req, res, next) => {
     document.title = title;
 
     if (req.file != undefined) {
-        document.file = req.file.path;
+        document.file = req.file.filename;
     }
 
 
@@ -128,13 +140,26 @@ const updateDocument = async (req, res, next) => {
     try {
         await document.save();
 
-        /*
         if (req.file != undefined) {
+            /*
             fs.unlink(oldFilePath, err => {
                 console.log(err);
         });
+        */
+    
+
+    s3.deleteObject({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+        Key: oldFilePath,
+    }).promise();
+
+    s3.upload({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+        Key: req.file.filename,
+        Body: fs.readFileSync(req.file.path),
+      }).promise();
+
     }
-    */
 
     }
     catch(err){
@@ -170,6 +195,11 @@ const deleteDocument = async (req, res, next) => {
             'Quelque chose ne s\'est pas passé comme prévu, suppression du document impossible', 500);
             return next(error);
     }
+
+    s3.deleteObject({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/files`,
+        Key: filePath,
+      }).promise();
 
 
     /*

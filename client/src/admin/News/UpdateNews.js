@@ -175,7 +175,7 @@ return (
 				errorText="Veillez entrer une image"
 				initialValue={loadedNews.image}
 				initialValid={true}
-				updatePreview={process.env.REACT_APP_BACKEND_URL + `/${loadedNews.image}`}
+				updatePreview={process.env.REACT_APP_WAS_S3_BUCKET_URL + `/images/${loadedNews.image}`}
 			/>
 			
 

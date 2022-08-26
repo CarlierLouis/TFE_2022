@@ -85,7 +85,7 @@ const SchoolOutings = props => {
                 &nbsp;au {outings.end.toString().substring(8, 10)}/{outings.end.toString().substring(5, 7)}/{outings.end.toString().substring(0, 4)}</h5>
                 }               
                 </div>
-                <a href={process.env.REACT_APP_BACKEND_URL + `/${outings.file}`} target="_blank">
+                <a href={process.env.REACT_APP_WAS_S3_BUCKET_URL + `/files/${outings.file}`} target="_blank">
                 <Button>
                     <img className="outing-img" src="/svg/pdf.svg" />
                     &nbsp;&nbsp;Document

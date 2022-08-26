@@ -6,6 +6,14 @@ const HttpError = require('../models/http-error');
 
 const News = require('../models/news');
 
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+  })
+
+
 // Get all News by school
 const getNews = async (req, res, next) => {
     const school = req.params.school;
@@ -69,12 +77,19 @@ const createNews = async(req, res, next) => {
         description,
         date,
         school,
-        image: req.file.path
+        image: req.file.filename
     });
 
 
+  
+
     try {
         await createdNews.save();
+        s3.upload({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/images`,
+            Key: req.file.filename,
+            Body: fs.readFileSync(req.file.path),
+          }).promise();
     } 
     catch(err) {
         const error = new HttpError(
@@ -114,7 +129,7 @@ const updateNews = async (req, res, next) => {
     news.date = date;
 
     if (req.file != undefined) {
-        news.image = req.file.path;
+        news.image = req.file.filename;
     }
 
 
@@ -122,9 +137,22 @@ const updateNews = async (req, res, next) => {
         await news.save();
 
         if (req.file != undefined) {
+            /*
             fs.unlink(oldImagePath, err => {
                 console.log(err);
-        });
+            });
+            */
+
+        s3.deleteObject({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/images`,
+            Key: oldImagePath,
+        }).promise();
+
+        s3.upload({
+            Bucket: `${process.env.AWS_S3_BUCKET_NAME}/images`,
+            Key: req.file.filename,
+            Body: fs.readFileSync(req.file.path),
+          }).promise();
     }
 
     }
@@ -162,9 +190,16 @@ const deleteNews =  async (req, res, next) => {
         return next(error);
     }
 
+    s3.deleteObject({
+        Bucket: `${process.env.AWS_S3_BUCKET_NAME}/images`,
+        Key: imagePath,
+      }).promise();
+
+      /*
     fs.unlink(imagePath, err => {
         console.log(err);
     });
+    */
 
     res.status(200).json({ message: 'Actualité supprimée' });
 }
