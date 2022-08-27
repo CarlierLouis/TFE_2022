@@ -37,11 +37,11 @@ const Footer = props => {
         
     </footer>
     <div className='legal-notice-div'>
-        <a className='legal-notice'>Mentions légales</a>
+        <a className='legal-notice' href={`/${school}/mentions-legales`}>Mentions légales</a>
     </div>
 
     <div className='end-footer-div'>
-        <p>© 2022 - .... - Tous droits réservés</p>
+        <p>© Écoles fondamentales de Hannut II - 2022</p>
     </div>
     </div>
     

@@ -32,6 +32,11 @@
     color: white;
 }
 
+
+.legal-notice:hover {
+    color: #628699;
+}
+
 .legal-notice-div {
     background-color: rgb(30, 30, 31);
     height: 80px;

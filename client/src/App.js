@@ -62,6 +62,7 @@ const AddOuting = React.lazy(() => import('./teachers/SchoolOutings/AddOuting'))
 const UpdateOuting = React.lazy(() => import('./teachers/SchoolOutings/UpdateOuting'));
 const AddAnnouncement = React.lazy(() => import('./teachers/Announcements/AddAnnouncement'));
 const UpdateAnnouncement = React.lazy(() => import('./teachers/Announcements/UpdateAnnouncement'));
+const LegalNotice = React.lazy(() => import('./showcase/LegalNotice'));
 
 
 let logoutTimer;
@@ -234,6 +235,11 @@ if (token && role === "Admin") {
   <Route path="/:school/espace-prof/annonces/maj-annonce/:announcementId" exact>
     <UpdateAnnouncement />
   </Route>
+
+  <Route path="/:school/mentions-legales" exact>
+    <LegalNotice />
+    <Footer />
+  </Route>
   
   <Route path='*' component={Error404Page}/>
 
@@ -325,6 +331,11 @@ else if (token && role === "Default") {
     <UpdateAnnouncement />
   </Route>
 
+  <Route path="/:school/mentions-legales" exact>
+    <LegalNotice />
+    <Footer />
+  </Route>
+
   <Route path='*' component={Error404Page}/>
 
 </Switch>
@@ -382,6 +393,11 @@ else if (token && role === "Student") {
       <PersonalSpace />
   </Route>
 
+  <Route path="/:school/mentions-legales" exact>
+    <LegalNotice />
+    <Footer />
+  </Route>
+
   <Route path='*' component={Error404Page}/>
 
 </Switch>
@@ -428,6 +444,11 @@ else {
 
   <Route path="/:school/info-email" exact>
     <CheckEmail />
+  </Route>
+
+  <Route path="/:school/mentions-legales" exact>
+    <LegalNotice />
+    <Footer />
   </Route>
 
   <Route path='*' component={Error404Page}/>

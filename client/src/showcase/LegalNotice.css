@@ -1,0 +1,29 @@
+.legal-notice-main-title {
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1%;
+    background-color: #1F1E1E;
+    font-style: italic;
+    color: #ECF0F7;
+}
+
+.legal-notice-second-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-bottom: 1%;
+}
+
+.legal-notice-para {
+   
+}
+
+.legal-notice-para-list {
+   
+}
+
+
+@media (max-width: 1300px) {
+    .legal-notice-para-list {
+        
+    }
+}

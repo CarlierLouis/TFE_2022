@@ -6,8 +6,6 @@ import { AuthContext } from '../common/context/auth-context';
 import { useHttpClient } from '../common/hooks/http-hook';
 import ErrorModal from '../common/UIElements/ErrorModal';
 
-import AWS from 'aws-sdk'
-
 
 import './NewsItem.css';
 
