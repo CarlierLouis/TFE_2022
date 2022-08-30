@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const HttpError = require('../models/http-error');
 
 const nodemailer = require('../nodemailer/nodemailer.config');
+const nodemailer2 = require('../nodemailer/nodemailer.config2');
 
 const Student = require('../models/student');
 const TrustedStudent = require('../models/trusted_student');
@@ -27,13 +28,13 @@ const signup = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError (
-            'Création du compte ratée, veillez réessayer.', 500);
+            'Création du compte ratée, veuillez réessayer.', 500);
         return next(error);
     }
 
     if (existingStudent && existingStudent.status == "Active") {
         const error = new HttpError(
-            'Email déjà utilisé, veillez réesser avec un autre email.', 422);
+            'Email déjà utilisé, veuillez réesser avec un autre email.', 422);
         return next(error);
     }
 
@@ -76,7 +77,7 @@ const signup = async (req, res, next) => {
         hashedPassword = await bcrypt.hash(password, 12);
     }
     catch(err) {
-        const error = new HttpError('Le compte n\'a pas pu être créé, veillez réessayer plus tard.', 500);
+        const error = new HttpError('Le compte n\'a pas pu être créé, veuillez réessayer plus tard.', 500);
         return next(error);
     }
 
@@ -102,7 +103,7 @@ const signup = async (req, res, next) => {
         await createdStudent.save();
     }
     catch(err) {
-        const error = new HttpError('Création du compte ratée, veillez réessayer plus tard.', 500);
+        const error = new HttpError('Création du compte ratée, veuillez réessayer plus tard.', 500);
         return next(error);
     } 
 
@@ -121,7 +122,7 @@ const signup = async (req, res, next) => {
     );
     }
     catch(err) {
-        const error = new HttpError('Création du compte ratée, veillez réessayer plus tard.', 500);
+        const error = new HttpError('Création du compte ratée, veuillez réessayer plus tard.', 500);
         return next(error);
     }
 
@@ -143,7 +144,7 @@ const login = async (req, res, next) => {
     }
     catch (err) {
         const error = new HttpError(
-            'Connexion ratée, veillez réessayer', 500);
+            'Connexion ratée, veuillez réessayer', 500);
         return next(error);
     }
 
@@ -165,7 +166,7 @@ const login = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Vous ne pouvez pas vous connecter, veillez vérifier vos identfiants et réessayer.', 500)
+            'Vous ne pouvez pas vous connecter, veuillez vérifier vos identfiants et réessayer.', 500)
         return next(error);
     }
 
@@ -350,6 +351,126 @@ const verifyEmail = async (req, res, next) => {
  
  };
 
+// Send new password email
+const sendNewPasswordEmail = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+        return next (
+            new HttpError('Entrées non valides, vérifiez vos données', 422)
+        );
+    }
+
+    const { email } =  req.body;
+
+    let student;
+    try {
+        student = await Student.findOne({email: email});
+    }
+    catch (err) {
+        const error = new HttpError(
+            'Erreur, veillez réessayer', 500);
+        return next(error);
+    }
+
+    if (!student) {
+        const error = new HttpError(
+            'Aucun compte existant avec cette adresse mail', 422);
+        return next(error);
+    }
+
+    
+    // confirmation code generation
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let confirmationCodeToken = '';
+    for (let i = 0; i < 25; i++) {
+        confirmationCodeToken += characters[Math.floor(Math.random() * characters.length )];
+    }
+    
+    student.confirmationCode = confirmationCodeToken;
+
+    try {
+        await student.save();
+    }
+    catch(err) {
+        const error = new HttpError('Erreur, veuillez réessayer', 500);
+        return next(error);
+    } 
+   
+
+    nodemailer2.sendLostedPasswordEmail(
+        student.firstname,
+        student.email,
+        "students",
+        student.confirmationCode,
+    );
+
+
+    res.json({student: student.toObject({getters: true})});
+
+};
+
+// New password confirmation
+const newPasswordConfirmation = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+        return next (
+            new HttpError('Entrées non valides, vérifiez vos données', 422)
+        );
+    }
+
+    const confirmationCode = req.params.code;
+    const { password } =  req.body;
+
+    let student;
+    try {
+        student= await Student.findOne({confirmationCode: confirmationCode});
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour du mot de passe impossible', 500);
+        return next(error);
+    }
+
+    if (!student) {
+        const error = new HttpError(
+            'Cet URL a expiré !', 422);
+        return next(error);
+    }
+
+
+    let hashedPassword;
+    try {
+        hashedPassword = await bcrypt.hash(password, 12);
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Quelque chose ne s\'est pas passé comme prévu, mise à jour du mot de passe impossible', 500);
+        return next(error);
+    }
+
+
+    student.password = hashedPassword;
+
+    // confirmation code generation
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let confirmationCodeToken = '';
+    for (let i = 0; i < 25; i++) {
+        confirmationCodeToken += characters[Math.floor(Math.random() * characters.length )];
+    }
+
+    student.confirmationCode = confirmationCodeToken;
+
+    try {
+        await student.save();
+    }
+    catch(err) {
+        const error = new HttpError('Le nouveau mot de passe n\'a pas pu être mis à jour, veuillez réessayer', 500);
+        return next(error);
+    }
+
+    res.json({student: student.toObject({getters: true})})
+}
+
 exports.signup = signup;
 exports.login = login;
 exports.getStudents = getStudents;
@@ -357,3 +478,5 @@ exports.getStudentById = getStudentById;
 exports.updateStudent = updateStudent;
 exports.deleteStudent = deleteStudent;
 exports.verifyEmail = verifyEmail;
+exports.sendNewPasswordEmail = sendNewPasswordEmail;
+exports.newPasswordConfirmation = newPasswordConfirmation;

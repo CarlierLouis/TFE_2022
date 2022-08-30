@@ -63,6 +63,7 @@ const UpdateOuting = React.lazy(() => import('./teachers/SchoolOutings/UpdateOut
 const AddAnnouncement = React.lazy(() => import('./teachers/Announcements/AddAnnouncement'));
 const UpdateAnnouncement = React.lazy(() => import('./teachers/Announcements/UpdateAnnouncement'));
 const LegalNotice = React.lazy(() => import('./showcase/LegalNotice'));
+const NewPassword = React.lazy(() => import('./common/losted-password/NewPassword'));
 
 
 let logoutTimer;
@@ -449,6 +450,10 @@ else {
   <Route path="/:school/mentions-legales" exact>
     <LegalNotice />
     <Footer />
+  </Route>
+
+  <Route path="/:usertype/mot-de-passe-oublie/:confirmationCode" exact>
+    <NewPassword />
   </Route>
 
   <Route path='*' component={Error404Page}/>

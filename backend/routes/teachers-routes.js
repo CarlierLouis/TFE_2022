@@ -9,6 +9,17 @@ const router = express.Router();
 
 router.patch('/login/email-confirmation/:code', teachersControllers.verifyEmail);
 
+router.patch('/email-password',
+[ 
+    check('email').isEmail(),
+    check('email').not().isEmpty(),
+], teachersControllers.sendNewPasswordEmail);
+
+router.patch('/new-password/:code', 
+[
+    check('password').not().isEmpty(),
+], teachersControllers.newPasswordConfirmation);
+
 router.post('/signup',
 [   
     check('email').isEmail(),

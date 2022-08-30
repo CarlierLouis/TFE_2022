@@ -25,6 +25,7 @@ const Auth = props => {
     const history = useHistory();
     const usertype = useParams().usertype;
     const school = useParams().school;
+    const [emailfornewpassword, setEmailfornewpassword] = useState();
 
     const [showQuestion, setShowQuestion] = useState(false);
     const [showLostedPasswordModal, setShowLostedPasswordModal] = useState(false);
@@ -43,6 +44,7 @@ const Auth = props => {
 
 	const closeLostedPasswordHandler = () => {
 		setShowLostedPasswordModal(false);
+        setEmailfornewpassword("");
 	};
 
 
@@ -137,6 +139,7 @@ const Auth = props => {
     };
 
 
+
     const switchModeHandler = () => {
         if (!isLoginMode) {
             setFormData({
@@ -160,6 +163,36 @@ const Auth = props => {
             }, false);
         }
        setIsLoginMode(prevMode => !prevMode)
+    };
+
+
+
+    const newPasswordMailSubmitHandler = async event => {
+		event.preventDefault();
+		try {
+			await sendRequest(
+				process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/email-password`,
+				'PATCH',
+				JSON.stringify({
+					email: emailfornewpassword,
+				}),
+				{
+				'Content-Type': 'application/json',
+                }
+			);
+            history.push('/' + school + '/connexion/' + usertype);
+            setShowLostedPasswordModal(false);
+            setEmailfornewpassword("");
+		}
+		catch(err) {
+            setShowLostedPasswordModal(false);
+            setEmailfornewpassword("");
+        }
+	};
+
+
+    const handleChange = event => {
+        setEmailfornewpassword(event.target.value);
     };
 
 
@@ -206,18 +239,25 @@ return (
     <Modal className='question-modal-auth'
         show={showLostedPasswordModal}
         onCancel={closeLostedPasswordHandler}
-        footer={<Button onClick={closeLostedPasswordHandler}>Fermer</Button>}>
-
-        <div style={{textAlign: 'center'}}>
-            <p>Vous ne vous souvenez plus de votre mot de passe ? 
-            <br></br>Entrez votre adresse email dans le champ suivant pour recevoir un email 
-            afin de modifier votre mot de passe.</p>
-
-            <input></input>
-            <br></br><br></br>
-            <Button>Valider</Button>
-        </div>
+        footer={
+            <React.Fragment>
+            <div style={{textAlign: 'center'}}>
+                <p>Vous ne vous souvenez plus de votre mot de passe ? 
+                <br></br>Entrez votre adresse email dans le champ suivant pour recevoir un email 
+                afin de modifier votre mot de passe.</p>
+                
+                <input type="text" id="emailfornewpassword" 
+                onChange={handleChange} value={emailfornewpassword}/>
+                <br></br><br></br>
+                <Button onClick={newPasswordMailSubmitHandler}>Valider</Button>
+            </div>
+            <br></br>
+            <Button onClick={closeLostedPasswordHandler}>Fermer</Button>
+        </React.Fragment>
+        }>
+        
     </Modal>
+
 
 
     <ErrorModal error={error} onClear={clearError}/>    
@@ -292,6 +332,7 @@ return (
         {isLoginMode &&
         <button onClick={openLostedPasswordHandler} className='losted-password'>Mot de passe oublié ?</button>}
     </Card>
+    
     
     
     </div>}

@@ -12,12 +12,11 @@ const transport = nodemailer.createTransport({
 });
 
 sendLostedPasswordEmail = (firstname, email, usertype, confirmationCode) => {
-    console.log("Check");
     transport.sendMail({
       from: user,
       to: email,
-      subject: "Veillez confirmez votre email",
-      html: `<h1>Email de confirmation</h1>
+      subject: "Réinitialisation de mot de passe",
+      html: `<h1>Mot de passe oublié ?</h1>
           <h2>Bonjour ${firstname}</h2>
           <p>Vous avez oublié votre mot de passe ?<br></br> 
           Cliquez sur le lien suivant afin d'en créer un nouveau</p>

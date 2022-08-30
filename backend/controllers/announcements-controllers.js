@@ -1,8 +1,10 @@
 const { validationResult } = require('express-validator');
 
 const HttpError = require('../models/http-error');
+const nodemailer = require('../nodemailer/nodemailer.announcements.config');
 
 const Announcement = require('../models/announcement');
+const Student =  require('../models/student');
 
 // Get announcement by school by class (target)
 const getAnnouncementByTarget = async (req, res, next) => {
@@ -93,6 +95,20 @@ const createAnnouncement = async (req, res, next) => {
             'Création de l\'annonce ratée, veuillez réessayer', 500);
         return next(error);
     }
+
+    let studentsofthisschoolandclass = await Student.find({school: school}).where({classyear: target});
+    studentsarray = [];
+    studentsofthisschoolandclass.forEach(element => {
+        studentsarray.push(element.email);
+    });
+    
+    nodemailer.sendAnnouncementEmail(
+        studentsarray,
+        createdAnnouncement.title,
+        createdAnnouncement.school,
+    );
+   
+
 
     res.status(201).json({announcement: createdAnnouncement});
 }

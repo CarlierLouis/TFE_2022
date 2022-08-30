@@ -16,7 +16,7 @@ sendConfirmationEmail = (firstname, email, usertype, confirmationCode) => {
     transport.sendMail({
       from: user,
       to: email,
-      subject: "Veillez confirmez votre email",
+      subject: "Veillez confirmer votre email",
       html: `<h1>Email de confirmation</h1>
           <h2>Bonjour ${firstname}</h2>
           <p>Merci pour votre inscription. Veuillez confirmer votre email en cliquant sur le lien suivant</p>
