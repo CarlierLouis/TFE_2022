@@ -2,8 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const teachersControllers = require('../controllers/teachers-controllers');
-const checkAuthAdmin = require('../middleware/check-auth-admin');
-const checkAuthTeacher = require('../middleware/check-auth-teacher');
+const checkAuthUser = require('../middleware/check-auth-user');
 
 const router = express.Router();
 
@@ -33,7 +32,11 @@ router.post('/signup',
 
 router.post('/login', teachersControllers.login);
 
+
 router.get('/:school', teachersControllers.getTeachers);
+
+router.use(checkAuthUser);
+
 
 router.get('/id/:tid', teachersControllers.getTeacherById);
 

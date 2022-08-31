@@ -66,7 +66,8 @@ const PersonalData = props => {
 		const fetchUser = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/id/${userId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/id/${userId}`, 'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedUser(responseData.user);
 

@@ -2,8 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const studentsControllers = require('../controllers/students-controllers');
-const checkAuthAdmin = require('../middleware/check-auth-admin');
-const checkAuthStudent = require('../middleware/check-auth-student');
+const checkAuthUser = require('../middleware/check-auth-user');
 
 const router = express.Router();
 
@@ -17,7 +16,7 @@ router.patch('/email-password',
 
 router.patch('/new-password/:code', 
 [
-    check('password').not().isEmpty()
+    check('password').not().isEmpty(),
 ], studentsControllers.newPasswordConfirmation);
 
 router.post('/signup',
@@ -34,7 +33,11 @@ router.post('/signup',
 router.post('/login', studentsControllers.login);
 
 
+
 router.get('/:school', studentsControllers.getStudents);
+
+router.use(checkAuthUser);
+
 
 router.get('/id/:sid', studentsControllers.getStudentById);
 

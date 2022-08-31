@@ -42,7 +42,9 @@ const UpdateAnnouncement = props => {
 		const fetchAnnouncement = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/announcements/id/${announcementId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/announcements/id/${announcementId}`,
+					'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedAnnouncement(responseData.announcement);
 

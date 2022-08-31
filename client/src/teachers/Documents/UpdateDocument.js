@@ -44,7 +44,9 @@ const UpdateDocument = props => {
 		const fetchDocument = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/documents/id/${documentId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/documents/id/${documentId}`,
+					'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedDocument(responseData.document);
                 

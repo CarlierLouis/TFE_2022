@@ -20,7 +20,9 @@ const Announcement = props => {
 		const fetchAnnouncements = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/announcements/${school}/target/${props.classyear}`
+					process.env.REACT_APP_BACKEND_URL + `/api/announcements/${school}/target/${props.classyear}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedAnnouncements(responseData.announcements);
 			}

@@ -52,7 +52,9 @@ const UpdateOuting = props => {
 		const fetchOuting = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/outings/id/${outingId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/outings/id/${outingId}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedOuting(responseData.outing);
                 

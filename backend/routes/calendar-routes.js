@@ -2,17 +2,17 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const calendarControllers =  require('../controllers/calendar-controllers');
-const checkAuthAdmin = require('../middleware/check-auth-admin');
+const checkAuthUser = require('../middleware/check-auth-user');
 
 const router = express.Router();
 
 router.get('/:school', calendarControllers.getGlobalEvents);
 
+router.use(checkAuthUser);
+
 router.get('/:school/target/:target', calendarControllers.getEventsByTarget);
 
 router.get('/id/:eid', calendarControllers.getEventById);
-
-//router.use(checkAuthAdmin);
 
 router.post('/',
 [

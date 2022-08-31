@@ -21,7 +21,9 @@ const SchoolOutings = props => {
 		const fetchOutings = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/outings/${school}/target/${props.classyear}`
+					process.env.REACT_APP_BACKEND_URL + `/api/outings/${school}/target/${props.classyear}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedOutings(responseData.outings);
 			}

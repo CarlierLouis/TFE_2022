@@ -2,9 +2,11 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const annnouncementsControllers = require ('../controllers/announcements-controllers');
-const checkAuthAdmin = require('../middleware/check-auth-admin');
+const checkAuthUser = require('../middleware/check-auth-user');
 
 const router = express.Router();
+
+router.use(checkAuthUser);
 
 router.get('/:school/target/:target', annnouncementsControllers.getAnnouncementByTarget);
 

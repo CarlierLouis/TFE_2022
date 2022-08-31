@@ -22,7 +22,9 @@ const Documents = props => {
 		const fetchDocuments = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/documents/${school}/target/${props.classyear}`
+					process.env.REACT_APP_BACKEND_URL + `/api/documents/${school}/target/${props.classyear}`,
+                    'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedDocuments(responseData.documents);
 			}

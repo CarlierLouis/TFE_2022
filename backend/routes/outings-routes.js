@@ -2,11 +2,13 @@ const express = require('express');
 const { check } = require('express-validator');
 
 const outingsControllers = require('../controllers/outings-controllers');
-const checkAuthAdmin = require('../middleware/check-auth-admin');
+const checkAuthUser = require('../middleware/check-auth-user');
 
 const fileUpload = require('../middleware/file-upload');
 
 const router = express.Router();
+
+router.use(checkAuthUser);
 
 router.get('/:school/target/:target', outingsControllers.getOutingByTarget);
 

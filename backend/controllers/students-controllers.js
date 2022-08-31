@@ -117,7 +117,7 @@ const signup = async (req, res, next) => {
     let token;
     try {
     token = jwt.sign({userId: createdStudent.id, email: createdStudent.email},
-        process.env.TOKENKEY_STUDENT,
+        process.env.TOKENKEY_USER,
         {expiresIn: '24h'}
     );
     }
@@ -185,7 +185,7 @@ const login = async (req, res, next) => {
     let token;
     try {
     token = jwt.sign({userId: existingStudent.id, email: existingStudent.email},
-        process.env.TOKENKEY_STUDENT,
+        process.env.TOKENKEY_USER,
         {expiresIn: '24h'}
     );
     }
@@ -194,6 +194,7 @@ const login = async (req, res, next) => {
             'Connexion ratée, veillez réessayer plus tard.', 500);
         return next(error);
     }
+
     
     res.json({ 
         userId: existingStudent.id,

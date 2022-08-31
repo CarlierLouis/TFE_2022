@@ -51,8 +51,7 @@ const GlobalCalendar = props => {
             const events = [];
             try {
             const responseData = await sendRequest(
-                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}`, 'GET', null,
-            {Authorization: 'Bearer ' + auth.token});
+                process.env.REACT_APP_BACKEND_URL + `/api/calendar/${school}`);
 
             responseData.events.forEach(element => {
                 const event = {

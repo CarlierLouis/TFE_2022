@@ -117,7 +117,7 @@ const signup = async (req, res, next) => {
     let token;
     try {
     token = jwt.sign({userId: createdTeacher.id, email: createdTeacher.email},
-        process.env.TOKENKEY_TEACHER,
+        process.env.TOKENKEY_USER,
         {expiresIn: '24h'}
     );
     }
@@ -188,13 +188,13 @@ const login = async (req, res, next) => {
     try {
         if (existingTeacher.role == "Admin") {
             token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
-                process.env.TOKENKEY_ADMIN,
+                process.env.TOKENKEY_USER,
                 {expiresIn: '24h'}
             ); 
         }
         else {
         token = jwt.sign({userId: existingTeacher.id, email: existingTeacher.email},
-            process.env.TOKENKEY_TEACHER,
+            process.env.TOKENKEY_USER,
             {expiresIn: '24h'}
     );
         }
