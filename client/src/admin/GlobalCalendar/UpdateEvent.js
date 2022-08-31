@@ -44,7 +44,9 @@ const UpdateEvent = props => {
 		const fetchEvent = async () => {
 			try {
 				const responseData = await sendRequest(
-					process.env.REACT_APP_BACKEND_URL + `/api/calendar/id/${eventId}`
+					process.env.REACT_APP_BACKEND_URL + `/api/calendar/id/${eventId}`,
+					'GET', null,
+                    {Authorization: 'Bearer ' + auth.token}
 				);
 				setLoadedEvent(responseData.event);
 
