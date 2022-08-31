@@ -212,6 +212,34 @@ const login = async (req, res, next) => {
      });
 }
 
+// Check if teacher is admin
+const checkIfAdmin = async (req, res, next) => {
+    const email = req.body.email;
+
+    let teacher;
+    try {
+        teacher =  await Teacher.findOne({email: email})
+    }
+    catch(err) {
+        const error = new HttpError(
+            'Echec, veuillez réessayer', 500);
+        return next(error);
+    }
+
+    if (!teacher) {
+        const error = new HttpError(
+            'Identifiants invalides, connexion impossible', 401)
+        return next(error);
+    };
+
+    if (teacher.role == "Admin") {
+        res.json(true);
+    }
+    else {
+        res.json(false);
+    }
+}
+
 
 // Get all teachers by school 
 const getTeachers = async (req, res, next) => {
@@ -223,7 +251,7 @@ const getTeachers = async (req, res, next) => {
     }
     catch(err) {
         const error = new HttpError(
-            'Echec de la récupération des professeurs, veillez réessayer', 500);
+            'Echec de la récupération des professeurs, veuillez réessayer', 500);
         return next(error);
     }
     if (!teachers) {
@@ -480,6 +508,7 @@ const newPasswordConfirmation = async (req, res, next) => {
 
 exports.signup = signup;
 exports.login = login;
+exports.checkIfAdmin = checkIfAdmin;
 exports.getTeachers = getTeachers;
 exports.getTeacherById = getTeacherById;
 exports.updateTeacher = updateTeacher;

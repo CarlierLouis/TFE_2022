@@ -32,11 +32,9 @@ router.post('/signup',
 
 router.post('/login', studentsControllers.login);
 
-
+router.use(checkAuthUser);
 
 router.get('/:school', studentsControllers.getStudents);
-
-router.use(checkAuthUser);
 
 
 router.get('/id/:sid', studentsControllers.getStudentById);

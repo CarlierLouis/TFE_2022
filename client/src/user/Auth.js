@@ -87,7 +87,7 @@ const Auth = props => {
                     {'Content-Type': 'application/json'},
                 );
 
-                
+                /*
                 const responseData2 = await sendRequest( 
                     process.env.REACT_APP_BACKEND_URL + `/api/${usertyperequest}/${school}`,
                     'GET', null,
@@ -105,10 +105,40 @@ const Auth = props => {
                     }
                 }
                 });
+                
             }
             else {
                 auth.login(responseData.userId , responseData.token, "Student", school); 
-            }   
+            } 
+            */
+
+
+            if (usertyperequest == "teachers") {
+                const responseData2 = await sendRequest( 
+                    process.env.REACT_APP_BACKEND_URL + `/api/teachers/check-if-admin`,
+                    'POST',
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                    }),
+                    {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + auth.token
+                    }
+                );
+
+                if (responseData2 == false) {
+                    auth.login(responseData.userId , responseData.token, "Default", school);
+                }
+                else {
+                    auth.login(responseData.userId , responseData.token, "Admin", school);
+                }
+            }
+            else {
+                auth.login(responseData.userId , responseData.token, "Student", school); 
+            } 
+
+
+
         }
 
         catch(err) {

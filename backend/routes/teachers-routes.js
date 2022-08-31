@@ -32,11 +32,15 @@ router.post('/signup',
 
 router.post('/login', teachersControllers.login);
 
-
-router.get('/:school', teachersControllers.getTeachers);
+router.post('/check-if-admin',
+[
+    check('email').isEmail(),
+    check('email').not().isEmpty(),
+], teachersControllers.checkIfAdmin);
 
 router.use(checkAuthUser);
 
+router.get('/:school', teachersControllers.getTeachers);
 
 router.get('/id/:tid', teachersControllers.getTeacherById);
 
