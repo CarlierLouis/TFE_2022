@@ -96,17 +96,28 @@ const createAnnouncement = async (req, res, next) => {
         return next(error);
     }
 
-    let studentsofthisschoolandclass = await Student.find({school: school}).where({classyear: target});
-    studentsarray = [];
-    studentsofthisschoolandclass.forEach(element => {
-        studentsarray.push(element.email);
-    });
+    if (target == "global") {
+        let studentsofthisschool = await Student.find({school: school});
+        studentsarray = [];
+        studentsofthisschool.forEach(element => {
+            studentsarray.push(element.email);
+        });
+    }
+    else {
+
+        let studentsofthisschoolandclass = await Student.find({school: school}).where({classyear: target});
+        studentsarray = [];
+        studentsofthisschoolandclass.forEach(element => {
+            studentsarray.push(element.email);
+        });
+    }   
     
     nodemailer.sendAnnouncementEmail(
         studentsarray,
         createdAnnouncement.title,
         createdAnnouncement.school,
     );
+    
    
 
 
